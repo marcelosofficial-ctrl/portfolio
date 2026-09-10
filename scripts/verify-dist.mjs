@@ -121,7 +121,7 @@ else {
   const qrText = readFileSync(qr, 'utf8');
   if (!qrText.includes('<svg')) fail('portfolio QR is not valid SVG text');
   else if (!qrText.includes('viewBox="0 0 41 41"')) fail('portfolio QR is missing the verified four-module quiet-zone geometry');
-  else if (!qrText.includes('fill="#ffffff"')) fail('portfolio QR is missing its explicit white scan background');
+  else if (!/fill=["']#(?:fff|ffffff)["']/i.test(qrText)) fail('portfolio QR is missing its explicit white scan background');
   else pass('portfolio QR scan-safe SVG geometry');
 }
 
