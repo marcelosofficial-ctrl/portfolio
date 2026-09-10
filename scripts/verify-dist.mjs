@@ -75,7 +75,7 @@ function requireContent(label, html, required) {
 }
 
 const routes = [
-  'index.html', 'about/index.html', 'contact/index.html',
+  'index.html', 'ja/index.html', 'about/index.html', 'contact/index.html',
   'resume/index.html', 'resume/support/index.html', 'resume/software/index.html',
   'projects/vektordeck/index.html', 'projects/reseller-ai/index.html',
   'projects/crashscope/index.html', 'projects/reelshelf/index.html',
@@ -117,8 +117,13 @@ for (const [asset, minimumBytes] of webpAssets) {
 
 const qr = join(root, 'portfolio-qr.svg');
 if (!existsSync(qr)) fail('missing portfolio QR code');
-else if (!readFileSync(qr, 'utf8').includes('<svg')) fail('portfolio QR is not valid SVG text');
-else pass('portfolio QR');
+else {
+  const qrText = readFileSync(qr, 'utf8');
+  if (!qrText.includes('<svg')) fail('portfolio QR is not valid SVG text');
+  else if (!qrText.includes('viewBox="0 0 41 41"')) fail('portfolio QR is missing the verified four-module quiet-zone geometry');
+  else if (!qrText.includes('fill="#ffffff"')) fail('portfolio QR is missing its explicit white scan background');
+  else pass('portfolio QR scan-safe SVG geometry');
+}
 
 const home = readRoute('index.html');
 requireContent('homepage', home, [
@@ -133,6 +138,30 @@ requireContent('homepage', home, [
   'EasyFLix',
   'Software engineering, QA / automation and technical systems roles.'
 ]);
+
+const japaneseHome = readRoute('ja/index.html');
+requireContent('Japanese homepage', japaneseHome, [
+  '<html lang="ja">',
+  'ソフトウェアと',
+  '現実の「使いにくい」を、信頼できるソフトウェアに変えます。',
+  '実際の課題から作ったもの。',
+  '現在の公開連絡先はLinkedInです。',
+  'ケーススタディ（英語）',
+  'hreflang="en"'
+]);
+
+if (home && japaneseHome) {
+  for (const [label, html] of [['English homepage', home], ['Japanese homepage', japaneseHome]]) {
+    for (const alternate of ['hreflang="en"', 'hreflang="ja"', 'hreflang="x-default"']) {
+      if (!html.includes(alternate)) fail(`${label} is missing language alternate: ${alternate}`);
+      else pass(`${label} language alternate: ${alternate}`);
+    }
+  }
+  if (!home.includes('data-language-choice="ja"')) fail('English homepage is missing the Japanese language switch');
+  else pass('English homepage exposes Japanese language switch');
+  if (!japaneseHome.includes('data-language-choice="en"')) fail('Japanese homepage is missing the English language switch');
+  else pass('Japanese homepage exposes English language switch');
+}
 
 const about = readRoute('about/index.html');
 requireContent('about page', about, [
@@ -187,6 +216,7 @@ requireContent('CrashScope case study', crashscope, [
 
 const identityPages = [
   ['homepage', home],
+  ['Japanese homepage', japaneseHome],
   ['about page', about],
   ['general resume', resume],
   ['software resume', softwareResume],
@@ -197,16 +227,17 @@ for (const [label, html] of identityPages) {
   else pass(`${label} has no stale Junior self-label`);
 }
 
-/* Privacy guard: until a separate public employer address is supplied, generated
-   pages must contain no literal email address and no mailto links. */
+/* Privacy guard: LinkedIn is the deliberate public contact route. Until a separate
+   public email is configured, generated pages must contain no literal email address
+   and no mailto links. */
 const generatedHtml = walk(root).filter((file) => file.endsWith('.html'));
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const mailtoPattern = /mailto:/i;
 for (const htmlFile of generatedHtml) {
   const html = readFileSync(htmlFile, 'utf8');
   const page = relative(root, htmlFile).replaceAll('\\', '/');
-  if (emailPattern.test(html)) fail(`${page} contains a literal email address while public contact is intentionally pending`);
-  if (mailtoPattern.test(html)) fail(`${page} contains a mailto link while public contact is intentionally pending`);
+  if (emailPattern.test(html)) fail(`${page} contains a literal email address while no public email is configured`);
+  if (mailtoPattern.test(html)) fail(`${page} contains a mailto link while no public email is configured`);
 }
 if (!generatedHtml.some((file) => emailPattern.test(readFileSync(file, 'utf8')))) pass('generated HTML contains no literal email addresses');
 if (!generatedHtml.some((file) => mailtoPattern.test(readFileSync(file, 'utf8')))) pass('generated HTML contains no mailto links');
