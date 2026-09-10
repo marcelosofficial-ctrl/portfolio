@@ -143,11 +143,12 @@ const japaneseHome = readRoute('ja/index.html');
 requireContent('Japanese homepage', japaneseHome, [
   '<html lang="ja">',
   'ソフトウェアと',
-  '現実の「使いにくい」を、信頼できるソフトウェアに変えます。',
-  '実際の課題から作ったもの。',
-  '現在の公開連絡先はLinkedInです。',
+  '現場の不便や複雑さを、信頼して使えるソフトウェアに変える。',
+  '実際の課題から生まれたプロジェクト。',
+  '現在、公開の連絡窓口はLinkedInにまとめています。',
   'ケーススタディ（英語）',
-  'hreflang="en"'
+  'hreflang="en"',
+  'class="language-toggle"'
 ]);
 
 if (home && japaneseHome) {
@@ -156,11 +157,15 @@ if (home && japaneseHome) {
       if (!html.includes(alternate)) fail(`${label} is missing language alternate: ${alternate}`);
       else pass(`${label} language alternate: ${alternate}`);
     }
+    if (!html.includes('class="language-toggle"')) fail(`${label} is missing the top-bar language toggle`);
+    else pass(`${label} top-bar language toggle`);
+    if (!html.includes('>ENG</span>') || !html.includes('>日本語</span>')) fail(`${label} language toggle is missing ENG / 日本語 labels`);
+    else pass(`${label} language toggle labels`);
   }
-  if (!home.includes('data-language-choice="ja"')) fail('English homepage is missing the Japanese language switch');
-  else pass('English homepage exposes Japanese language switch');
-  if (!japaneseHome.includes('data-language-choice="en"')) fail('Japanese homepage is missing the English language switch');
-  else pass('Japanese homepage exposes English language switch');
+  if (!home.includes('data-language-choice="ja"')) fail('English homepage is missing the Japanese language choice');
+  else pass('English homepage exposes Japanese language choice');
+  if (!japaneseHome.includes('data-language-choice="en"')) fail('Japanese homepage is missing the English language choice');
+  else pass('Japanese homepage exposes English language choice');
 }
 
 const about = readRoute('about/index.html');
