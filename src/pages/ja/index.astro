@@ -20,7 +20,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="hero-actions">
           <a class="button primary" href="#work">プロジェクトを見る ↓</a>
           <a class="button" href="#about">プロフィール ↗</a>
-          <a class="button" href="/resume/software/" lang="en">Software / QA Résumé ↗</a>
+          <a class="button" href="/resume/software/" lang="en" hreflang="en">Software / QA Résumé ↗</a>
         </div>
         <div class="identity-foot mono">
           <span>日本在住</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>実際に使うものを作る</span>
@@ -32,7 +32,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div class="identity-author"><span><b>FROM MARCELO'S DESK</b><small>JAPAN / 2026</small></span></div>
           <span class="status-dot">BUILDING</span>
         </div>
-        <a class="identity-current" href="/projects/crashscope/" lang="en">
+        <a class="identity-current" href="/projects/crashscope/" hreflang="en">
           <span class="mono">V0.1 BETA READY · WINDOWS SYSTEMS</span>
           <strong>CrashScope</strong>
           <p>ハードウェア状態、Event Log、WER、永続化したインシデント証拠をローカルで整理するWindowsクラッシュ診断システム。</p>
@@ -65,13 +65,13 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </section>
 
   <section class="section wrap" id="work">
-    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>実際の課題から作ったもの。</h2><p class="section-intro">リリース済み、フィールド検証済み、開発中のプロジェクトを状態ごとに分けています。完成度を大きく見せるのではなく、今どこまで検証できているかをそのまま示します。</p></div></div>
+    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>実際の課題から作ったもの。</h2><p class="section-intro">リリース済み、フィールド検証済み、開発中のプロジェクトを状態ごとに分けています。完成度を大きく見せるのではなく、今どこまで検証できているかをそのまま示します。技術ケーススタディの詳細は現在英語で公開しています。</p></div></div>
 
     <div class="project-tier">
       <div class="project-tier-head"><div><p class="eyebrow">Flagship systems</p><h3>リリース済み / 実地検証済み。</h3></div><p>設計・検証・実運用まで含めて、最も深く取り組んでいるシステムです。</p></div>
 
       <div class="featured-project">
-        <a class="project project-featured" href="/projects/reseller-ai/" lang="en">
+        <a class="project project-featured" href="/projects/reseller-ai/" hreflang="en">
           <div class="project-copy">
             <div class="project-kicker"><span class="eyebrow">01 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
             <h3>Retro Game Vision &<br />Resale System</h3>
@@ -91,7 +91,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       </div>
 
       <div class="project-grid secondary-grid">
-        <a class="project compact-project project-showcase" href="/projects/vektordeck/" lang="en">
+        <a class="project compact-project project-showcase" href="/projects/vektordeck/" hreflang="en">
           <div class="project-showcase-copy">
             <div class="project-top"><span class="eyebrow">02 · Flagship release</span><span class="project-state">1.0.0</span></div>
             <h3>VektorDeck</h3>
@@ -116,7 +116,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div class="project-tier-head"><div><p class="eyebrow">Active builds</p><h3>現在も開発しているもの。</h3></div><p>実際に動作・検証できる段階まで進んでいますが、完成済みとして見せないプロジェクトです。</p></div>
 
       <div class="active-project-grid">
-        <a class="project compact-project" href="/projects/crashscope/" lang="en">
+        <a class="project compact-project" href="/projects/crashscope/" hreflang="en">
           <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state active">V0.1 BETA READY</span></div>
           <h3>CrashScope</h3>
           <p>ハードウェアテレメトリ、Windows Event Log、WER、永続化したインシデント情報を関連付ける、プライバシー重視のWindowsクラッシュ診断システム。</p>
@@ -131,7 +131,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <span class="text-link">検証内容を見る（英語）↗</span>
         </a>
 
-        <a class="project compact-project" href="/projects/reelshelf/" lang="en">
+        <a class="project compact-project" href="/projects/reelshelf/" hreflang="en">
           <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
           <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
           <p>複数ドライブにある自分のローカル動画を、元ファイルを移動・変更せずに整理するWPF/.NET 10デスクトップアプリ。映画・TV・アニメ、アートワーク、字幕ワークフローを扱います。</p>
@@ -151,7 +151,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <div class="project-tier">
       <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>小さく、完成させたもの。</h3></div><p>大規模システムのように見せず、UIや技術判断をコンパクトに示すプロジェクトです。</p></div>
       <div class="focused-project-grid">
-        <a class="project compact-project clock-project" href="/projects/rainmeter-clock/" lang="en">
+        <a class="project compact-project clock-project" href="/projects/rainmeter-clock/" hreflang="en">
           <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
           <h3>MinimalClock</h3>
           <p>ブラウザ描画、タイポグラフィ、軽量Rainmeter統合を試した小さなデスクトップ時計。</p>
@@ -187,8 +187,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="hero-actions">
           <a class="button primary" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a class="button" href="/resume/software/" lang="en">英文履歴書 ↗</a>
-          <a class="button" href="/" lang="en" data-language-choice="en">English version ↗</a>
+          <a class="button" href="/resume/software/" hreflang="en">英文履歴書 ↗</a>
+          <a class="button" href="/" lang="en" hreflang="en" data-language-choice="en">English version ↗</a>
         </div>
       </div>
     </div>
