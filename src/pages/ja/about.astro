@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout
+  locale="ja"
+  alternatePath="/about/"
+  title="Marcelo Ellwangerについて | エンジニアリング・ポートフォリオ"
+  description="Marcelo Ellwangerの経歴、エンジニアリング実績、現在の開発テーマ、仕事への考え方を日本語で紹介します。"
+>
+  <section class="about-hero wrap">
+    <div class="about-hero-copy">
+      <p class="eyebrow">Marceloについて · Professional profile</p>
+      <h1>実用的な仕組みをつくり、信頼して使えるところまで仕上げる。</h1>
+      <p class="about-lead">Marcelo Ellwangerです。電気工事、店舗運営、海外での接客・教育、そしてソフトウェア開発と、少し遠回りな経歴を歩んできました。分野は違っても、興味の中心は一貫しています。仕組みがどう動くのかを理解し、不便や曖昧さの原因を見つけ、現実の制約に合う形でより良くすることです。</p>
+      <div class="case-actions">
+        <a class="button primary" href="/ja/resume/software/">ソフトウェア / QA レジュメ ↗</a>
+        <a class="button" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="button" href="/ja/contact/">お問い合わせ ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+      <div class="about-factline" aria-label="プロフィール概要">
+        <span>日本在住</span>
+        <span>リモート・海外チーム対応</span>
+        <span>5言語を使用</span>
+        <span>現場実務 4,000時間以上</span>
+      </div>
+      <blockquote class="about-signature">ソフトウェアまでの道のりは一直線ではありませんでした。ただ、ずっと共通していたのは、仕組みを理解し、問題を見つけ、前より良い状態にして終えることです。</blockquote>
+    </div>
+
+    <aside class="about-profile-panel" aria-label="Marcelo Ellwanger プロフィール">
+      <figure class="about-portrait">
+        <img src={`${baseURL}profile/marcelo-profile.webp`} alt="Marcelo Ellwangerのプロフィール写真" width="640" height="853" loading="eager" decoding="async" />
+        <figcaption class="mono"><span>MARCELO ELLWANGER</span><small>JAPAN · 2026</small></figcaption>
+      </figure>
+      <div class="about-card mono">
+        <div><span>FOCUS</span><strong>Software · Systems · Automation</strong></div>
+        <div><span>WORK STYLE</span><strong>根拠を重視</strong></div>
+        <div><span>LANGUAGES</span><strong>5</strong></div>
+        <div><span>BACKGROUND</span><strong>技術職 · 運営 · 接客</strong></div>
+        <div><span>CURRENT</span><strong>CrashScope beta ready · EasyFLix active</strong></div>
+        <div><span>AVAILABILITY</span><strong>Remote · global time zones</strong></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="case-section wrap about-story">
+    <div class="case-section-heading"><p class="eyebrow">これまでの道のり</p><h2>現場経験からソフトウェアへ。</h2></div>
+    <div class="about-story-grid">
+      <article><span class="mono">01 / TRADE</span><h3>電気工事</h3><p>カナダで数年間、電気工事の仕事に携わり、電気・機械設備、高圧・低圧配線、トラブルシューティングなど、約4,000時間の現場経験を積みました。画面の中だけではなく、現実の設備で「正しく動く」ことが求められる仕事でした。</p></article>
+      <article><span class="mono">02 / OPERATIONS</span><h3>カフェ運営・コーヒー部門マネジメント</h3><p>オーストラリア・ゴールドコーストのAlmaでは、スタッフのシフト、発注、在庫、スペシャルティコーヒーの品質管理を担当しました。エスプレッソのレシピや調整も、粉量・抽出量・抽出時間まで数値で管理し、接客と運営の両方で安定した品質を保つことを重視していました。</p></article>
+      <article><span class="mono">03 / SOFTWARE</span><h3>自分が欲しい道具を、自分でつくる</h3><p>その経験がソフトウェアで一つにつながりました。ローカルAIの運用、中古ゲームの調査、不安定なPCの診断、メディア整理、小さなデスクトップUIなど、自分が実際に困っていたことを解決するところから始め、少しずつ検証・保守・配布まで考えた製品へ発展させています。</p></article>
+    </div>
+  </section>
+
+  <section class="about-manifesto">
+    <div class="wrap about-manifesto-inner">
+      <div class="about-manifesto-label mono">PERSONAL / ENGINEERING NOTE</div>
+      <p>特に惹かれるのは、きれいなデモだけでは済まないソフトウェアです。<em>実機、不完全なデータ、人の作業、そして説明しなければならない失敗。</em></p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">主な実績</p><h2>言葉だけではなく、実際に示せるもの。</h2></div>
+    <div class="achievement-grid">
+      <article><span class="achievement-kicker mono">WINDOWS DIAGNOSTICS</span><strong>CrashScope v0.1 beta ready</strong><p>ローカルファーストのWindowsクラッシュ診断システムを開発・検証。185件の自動.NETテスト、ネイティブトレイ、Auto Assist / Everyday Mode、継続保存されるセッションとインシデント、Event Log + WERの証拠、プライバシーに配慮したサポートバンドルを実装しています。Ryzen 5 7500F + Radeon RX 9070 XTでの最終統合検証では、Agentの平均CPU使用率0.2657%、ワーキングセット平均93 MB・最大95.83 MBを記録しました。</p></article>
+      <article><span class="achievement-kicker mono">SHIPPED PRODUCT</span><strong>VektorDeck 1.0</strong><p>GGUF Model Intelligence、安全なランタイム管理、ハードウェアテレメトリ、Smart Launch提案、CI、アップデート後のスモーク検証まで含むローカルAI向けワークステーションマネージャーを設計・開発し、1.0としてリリースしました。</p></article>
+      <article><span class="achievement-kicker mono">FIELD-TESTED SYSTEM</span><strong>Retro Game Vision</strong><p>中古ショップの写真から判断まで、証拠の出所を追跡できるリセール分析パイプラインを構築。数百件の基準アイテムと1,000件を超える現物観測まで拡張しながら、不確実性と証拠のつながりを保持しています。</p></article>
+      <article><span class="achievement-kicker mono">ACTIVE WINDOWS APP</span><strong>EasyFLix · pre-1.0 ReelShelf</strong><p>元ファイルを変更しないWPF/.NET 10のローカルメディアアプリを開発中。複数ドライブの読み取り専用スキャン、48件の自動テスト、ビルド警告0件、portable win-x64の検証まで進めています。</p></article>
+      <article><span class="achievement-kicker mono">NON-TRADITIONAL EXPERIENCE</span><strong>現場実務 4,000時間以上</strong><p>電気工事の経験から、障害の起こり方、再現性、安全性、そして管理されたデモの外でも正しく動くことを重視する姿勢を身につけました。</p></article>
+      <article><span class="achievement-kicker mono">COMMUNICATION</span><strong>5言語の環境で働く</strong><p>カナダ、オーストラリア、日本での仕事を通じて、相手や文化に合わせながら、複雑なことを分かりやすく伝え、状況に素早く適応する力を磨いてきました。</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">現在の開発</p><h2>今、取り組んでいるもの。</h2></div>
+    <div class="current-focus-grid">
+      <a href="/projects/crashscope/" hreflang="en"><span class="mono">V0.1 BETA READY / WINDOWS SYSTEMS</span><strong>CrashScope</strong><p>インシデントを継続保存し、Event Log + WERの証拠、ネイティブトレイ操作、プライバシーに配慮したサポートバンドルを扱うローカルファーストのWindows診断システム。現在の公開ポートフォリオでは、v0.1 beta readyとして掲載しています。</p><b>ケーススタディ（英語）↗</b></a>
+      <a href="/projects/reelshelf/" hreflang="en"><span class="mono">ACTIVE / WINDOWS LOCAL MEDIA</span><strong>EasyFLix</strong><p>1.0以前の現在の名称はReelShelf。複数ドライブを読み取り専用で扱い、映画・TV・アニメの整理、アートワーク、字幕ワークフローを提供しながら、元のメディアファイルを変更しないWPF/.NET 10アプリです。</p><b>ケーススタディ（英語）↗</b></a>
+    </div>
+  </section>
+
+  <section class="case-section wrap about-goals">
+    <div><p class="eyebrow">目標</p><h2>信頼して使えるソフトウェアを、これからもつくりたい。</h2></div>
+    <div class="about-goal-copy">
+      <p>仕事としては、実務的なデバッグ、信頼性、システム思考が活かせるソフトウェア開発、QA / 自動化、テクニカルシステム領域を中心に探しています。ローカルソフトウェア、開発者向けツール、自動化、データシステム、診断ツールは特に相性の良い分野です。</p>
+      <p>また、技術的なトラブルシューティング、明確なコミュニケーション、自立して進める力が重要なテクニカルサポートやオペレーションの仕事にも関心があります。海外のチームやタイムゾーンにも柔軟に対応できます。</p>
+      <p>このサイトは、採用担当者向けのポートフォリオであると同時に、共同開発やプロジェクトの相談時にも、そのまま自己紹介として使える場所にしたいと考えています。</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">仕事の進め方</p><h2>プロジェクトに共通する考え方。</h2></div>
+    <div class="skill-matrix">
+      <div><span>現実から始める</span><p>きれいに用意された課題より、入力が不完全で制約のある現実の問題を好みます。制約があるからこそ、必要な設計が見えてきます。</p></div>
+      <div><span>根拠を残す</span><p>自信のある答えに見せることより、データの出所、不確実性、再現可能な検証を残すことを優先します。</p></div>
+      <div><span>失敗を次に活かす</span><p>バグはその場しのぎで隠さず、テスト、より明確な境界、あるいは製品ルールへ変えます。</p></div>
+      <div><span>マシンへの負荷を意識する</span><p>監視、AIツール、バックグラウンド処理は、CPU・RAM・GPUの使用量とユーザーのコントロールを意識して設計します。</p></div>
+      <div><span>保守まで含めてつくる</span><p>アップデート、修復、診断、何度実行しても安全な処理、状態の分かりやすさまで含めて製品だと考えています。</p></div>
+      <div><span>判断の理由を説明する</span><p>ソフトウェアが推薦・分類・診断を行うなら、ユーザーが「なぜそうなったのか」を理解できる形にしたいと考えています。</p></div>
+    </div>
+  </section>
+
+  <section class="about-contact wrap" id="contact">
+    <div>
+      <p class="eyebrow">Professional use</p>
+      <h2>仕事、共同開発、真剣なプロジェクトのご相談に。</h2>
+      <p>このサイトでは全体像を、GitHubでは実装やエンジニアリングノートを公開しています。リモートでの仕事、技術的な共同開発、プロジェクトのご相談はLinkedInまたはお問い合わせページからご連絡ください。</p>
+      <div class="professional-contact mono">
+        <span>PUBLIC CONTACT · LINKEDIN</span>
+        <span>REMOTE · FLEXIBLE TIME ZONES · AVAILABLE</span>
+      </div>
+      <div class="case-actions">
+        <a class="button primary" href="/ja/contact/">お問い合わせ ↗</a>
+        <a class="button" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="button" href="/ja/resume/software/">ソフトウェア / QA レジュメ ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <figure class="portfolio-qr-card">
+      <img src={`${baseURL}portfolio-qr.svg`} alt="Marcelo EllwangerのポートフォリオQRコード" loading="lazy" />
+      <figcaption><span class="mono">PORTFOLIO / QR</span><p>名刺、レジュメ、対面での自己紹介に。</p></figcaption>
+    </figure>
+  </section>
+
+  <style>
+    html[lang="ja"] .about-hero h1,
+    html[lang="ja"] .case-section h2,
+    html[lang="ja"] .about-contact h2 { line-height:1.16; letter-spacing:-.035em; }
+    html[lang="ja"] .about-lead,
+    html[lang="ja"] .about-story-grid p,
+    html[lang="ja"] .achievement-grid p,
+    html[lang="ja"] .about-goal-copy p,
+    html[lang="ja"] .skill-matrix p,
+    html[lang="ja"] .current-focus-grid p,
+    html[lang="ja"] .about-contact p { line-height:1.85; line-break:strict; }
+    @media (max-width:820px) {
+      html[lang="ja"] .about-hero h1 { font-size:clamp(2.35rem,10vw,3.5rem) !important; line-height:1.12 !important; }
+      html[lang="ja"] .about-signature { line-height:1.72; }
+    }
+  </style>
+</BaseLayout>
