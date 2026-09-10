@@ -15,8 +15,72 @@
 .focused-project-grid { display:grid; grid-template-columns:minmax(0,520px); }
 .status-note { display:inline-flex; align-items:center; gap:8px; color:#858d91; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.62rem; letter-spacing:.06em; }
 .status-note::before { content:""; width:6px; height:6px; border-radius:50%; background:#e5c96f; box-shadow:0 0 12px rgba(229,201,111,.3); }
-.alias-page { min-height:60vh; display:grid; align-content:center; }
-.alias-page .case-copy { max-width:680px; }
+
+/* Legacy project aliases are intentionally simple, but should still feel like a
+   designed continuity surface rather than an abandoned article. */
+.alias-page {
+  min-height:60vh;
+  display:grid;
+  align-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.alias-page .eyebrow,
+.alias-page h1,
+.alias-page .case-copy,
+.alias-page .case-actions {
+  position:relative;
+  z-index:2;
+}
+.alias-page h1 {
+  max-width:780px;
+  font-weight:520;
+  text-wrap:balance;
+}
+.alias-page .case-copy {
+  max-width:680px;
+  text-wrap:pretty;
+}
+.alias-page::after {
+  content:"";
+  position:absolute;
+  z-index:0;
+  right:0;
+  top:50%;
+  width:min(30vw,330px);
+  height:150px;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.07);
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px),
+    linear-gradient(145deg,rgba(17,21,23,.88),rgba(11,14,16,.94));
+  background-size:24px 24px,24px 24px,auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.012);
+  opacity:.82;
+  pointer-events:none;
+}
+.alias-page::before {
+  content:"ROUTE / CONTINUITY   →   CURRENT CASE STUDY";
+  position:absolute;
+  z-index:1;
+  right:24px;
+  top:calc(50% - 5px);
+  width:min(26vw,286px);
+  color:#697276;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.50rem;
+  line-height:1.7;
+  letter-spacing:.11em;
+  text-align:center;
+  pointer-events:none;
+}
+
+@media (max-width:980px) {
+  .alias-page::before,
+  .alias-page::after { display:none; }
+}
+
 @media (max-width:760px) {
   .project-tier { margin-top:52px; }
   .project-tier-head { display:block; }
@@ -24,4 +88,14 @@
   .active-project-grid { grid-template-columns:1fr; }
   .active-project-grid .project { min-height:0; }
   .focused-project-grid { grid-template-columns:1fr; }
+  .alias-page {
+    min-height:auto;
+    padding-top:58px;
+    padding-bottom:70px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .alias-page::before,
+  .alias-page::after { transform:none; }
 }
