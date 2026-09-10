@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  locale="ja"
+  alternatePath="/resume/support/"
+  title="テクニカルサポート・オペレーション 職務プロフィール | Marcelo Ellwanger"
+  description="Marcelo Ellwangerのテクニカルサポート、オペレーション、顧客対応向け職務プロフィール。現場トラブルシューティング、チーム運営、海外での接客経験を日本語で紹介します。"
+>
+  <section class="resume-page wrap">
+    <div class="resume-toolbar mono">
+      <a href="/ja/resume/">← 職務プロフィール一覧</a>
+      <button type="button" onclick="window.print()">印刷 / PDFとして保存</button>
+    </div>
+
+    <header class="resume-head">
+      <p class="eyebrow">Targeted profile · Support / Operations</p>
+      <h1>Marcelo Ellwanger</h1>
+      <p class="resume-title">リモートテクニカルサポート · オペレーション · カスタマー対応</p>
+      <div class="resume-contact mono">
+        <a href="/ja/contact/">お問い合わせ</a><span>·</span>
+        <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn</a><span>·</span>
+        <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub</a><span>·</span>
+        <a href="/ja/">ポートフォリオ</a>
+      </div>
+    </header>
+
+    <section class="resume-section">
+      <h2>職務要約</h2>
+      <p>スタッフのシフト管理、在庫・発注、品質管理などのオペレーション経験に加え、4,000時間以上の現場トラブルシューティング経験を持つ多言語対応の技術・顧客対応人材です。未知の問題でも状況を整理して原因を切り分け、分かりやすく記録し、新しいツールや業務を素早く学ぶことを得意としています。ソフトウェア開発の経験もあり、リモートのテクニカルサポートやオペレーション業務で技術的な背景を活かせます。</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>主なスキル</h2>
+      <p><strong>サポート:</strong> 技術的なトラブルシューティング · 問題の切り分け · 顧客対応 · ドキュメント作成 · Windows診断 · リモートでの問題解決<br/><strong>オペレーション:</strong> シフト作成 · 発注 · 在庫管理 · 品質保証 · 開店・閉店業務 · 業務手順の遵守と改善<br/><strong>技術:</strong> Python · C#/.NET · FastAPI · SQLite · Git/GitHub · ローカルAIツール · 5言語でのコミュニケーション</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>主な職務経験</h2>
+      <article>
+        <div><strong>コーヒー部門マネージャー / カフェ運営</strong><span>Alma · Surfers Paradise, Gold Coast, Australia</span></div>
+        <ul>
+          <li>高品質なオールデイカフェ・レストランで、スタッフのシフト作成、発注、在庫管理、スペシャルティコーヒーの品質管理を担当。</li>
+          <li>エスプレッソの粉量・抽出量・抽出時間を数値で管理し、プロのバリスタと業務用機材を使って品質基準を維持。</li>
+          <li>日中のカフェ営業から夜の飲食サービスまで、品質管理、チーム調整、繁忙時の顧客対応を並行して行いました。</li>
+        </ul>
+      </article>
+      <article>
+        <div><strong>電気工事・技術職</strong><span>Vancouver, Canada · 4,000時間以上</span></div>
+        <ul>
+          <li>電気・機械設備の不具合診断と施工、高圧・低圧システムを扱う作業に従事し、安全手順を守りながら現場で原因を切り分けました。</li>
+          <li>「症状を確認する → 原因範囲を絞る → 根拠を確認する → 修正する → 正常動作を再確認する」というトラブルシューティングの型を実務で身につけました。</li>
+        </ul>
+      </article>
+      <article>
+        <div><strong>接客 / ホスピタリティ</strong><span>Australia & Japan · 主な職歴 2023–2025</span></div>
+        <ul><li>カフェやホテルサービスなどで、POS、接客、開店・閉店作業、品質調整、日々の顧客対応を経験しました。</li></ul>
+      </article>
+      <article>
+        <div><strong>英語講師</strong><span>Smile International School · 2023</span></div>
+        <ul><li>フルタイムで英語の授業・アクティビティを計画・実施し、相手の理解度に合わせて内容を説明。校外活動の引率も担当しました。</li></ul>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2>技術プロジェクト</h2>
+      <article>
+        <div><strong>CrashScope · v0.1 beta ready</strong><span>Windows diagnostics · C# / .NET 10</span></div>
+        <ul><li>185件の自動.NETテスト、ネイティブトレイ、Auto Assist / Everyday Mode、永続化されるインシデント、Event Log + WERの証拠を備えたローカルファースト診断システムを開発・検証。主要AMD開発PCでの最終統合検証ではAgentの平均CPU使用率0.2657%、ワーキングセット平均93 MB・最大95.83 MBを計測しました。</li></ul>
+      </article>
+      <article>
+        <div><strong>VektorDeck 1.0</strong><span>2026年リリース</span></div>
+        <ul><li>テレメトリ、ランタイム診断、自動アップデート、修復ツール、実環境スモーク検証を備えたWindows向けローカルAIワークステーション管理ツールを開発・リリースしました。</li></ul>
+      </article>
+    </section>
+
+    <section class="resume-section resume-last">
+      <h2>学歴・資格</h2>
+      <p>電気分野の学習・職業訓練 - BCIT, Canada · High School Diploma - Queen Elizabeth School, Canada · First Aid & CPR · RSA License · Barista Training - Code Black</p>
+    </section>
+
+    <footer class="resume-availability mono">リモート勤務可 · 海外のタイムゾーンや勤務時間にも柔軟に対応</footer>
+  </section>
+
+  <style>
+    html[lang="ja"] .resume-title,
+    html[lang="ja"] .resume-section h2 { line-height:1.4; }
+    html[lang="ja"] .resume-section p,
+    html[lang="ja"] .resume-section li { line-height:1.85; line-break:strict; }
+  </style>
+</BaseLayout>
