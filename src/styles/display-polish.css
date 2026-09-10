@@ -173,3 +173,96 @@
   .contact-panel>div,
   .contact-paths .model-grid article::after { transition:none !important; }
 }
+
+/* --------------------------------------------------------------------------
+   Screenshot QA 28: resolve concrete wide-screen artifacts from real captures.
+   Keep these fixes evidence-led and leave phone composition to the mobile layers.
+   -------------------------------------------------------------------------- */
+
+@media (min-width:981px) {
+  /* The signal wave is intentionally irregular. Do not frame it with a symmetric baseline. */
+  main:has(.identity-hero) .identity-skills::before {
+    content:none !important;
+    display:none !important;
+  }
+
+  /* Closing strips need a deliberate inset so the headlines do not sit on the frame edge. */
+  main:has(.identity-hero) .home-about-strip {
+    padding-left:clamp(28px,2.2vw,42px) !important;
+    padding-right:clamp(28px,2.2vw,42px) !important;
+  }
+  main:has(.identity-hero) .home-about-strip::before {
+    left:clamp(28px,2.2vw,42px) !important;
+  }
+
+  /* Keep the button signal inside its own box at rest. Animation is transform-only. */
+  main:has(.identity-hero) .home-about-strip .button {
+    overflow:hidden !important;
+    contain:paint;
+  }
+  main:has(.identity-hero) .home-about-strip .button::after {
+    left:0 !important;
+    right:auto !important;
+    bottom:0 !important;
+    width:100% !important;
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform .28s ease !important;
+  }
+  main:has(.identity-hero) .home-about-strip .button:hover::after,
+  main:has(.identity-hero) .home-about-strip .button:focus-visible::after {
+    left:0 !important;
+    transform:scaleX(1);
+  }
+
+  /* VektorDeck control deck: every visual now represents real release evidence.
+     Remove ambiguous progress bars and turn the existing glow into a release beacon. */
+  main:has(.identity-hero) .project-snapshot {
+    background:
+      radial-gradient(circle at 84% 22%,rgba(214,255,87,.105),transparent 24%),
+      linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px),
+      #0b0f10 !important;
+    background-size:auto,28px 28px,28px 28px,auto !important;
+  }
+  main:has(.identity-hero) .project-snapshot::before {
+    content:"VEKTORDECK  /  CONTROL DECK\A\A CPU   RAM   GPU   VRAM\A LIVE TELEMETRY  ·  SAFE RUNTIME OWNERSHIP\A\A MODEL PACKAGE\A QWEN 27B · IQ3_XS  /  11.15 GB\A\A SMART LAUNCH\A 8K · EXPERIMENTAL\A\A RELEASE READINESS\A 0 BLOCKERS" !important;
+    white-space:pre-wrap !important;
+    inset:28px 190px 66px 26px !important;
+    line-height:1.72 !important;
+  }
+  main:has(.identity-hero) .project-snapshot::after {
+    content:"1.0.0\A SHIPPED" !important;
+    white-space:pre-line !important;
+    left:auto !important;
+    right:clamp(30px,3.3vw,58px) !important;
+    top:clamp(62px,6vw,96px) !important;
+    width:clamp(108px,8vw,142px) !important;
+    height:auto !important;
+    aspect-ratio:1;
+    display:grid !important;
+    place-items:center;
+    border:1px solid rgba(214,255,87,.18);
+    border-radius:50%;
+    background:
+      radial-gradient(circle at center,transparent 0 31%,rgba(214,255,87,.14) 31.5% 32.2%,transparent 32.7%),
+      linear-gradient(to right,transparent calc(50% - .5px),rgba(214,255,87,.12) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+      linear-gradient(to bottom,transparent calc(50% - .5px),rgba(214,255,87,.12) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+      rgba(11,15,16,.42) !important;
+    box-shadow:0 0 52px rgba(214,255,87,.075),inset 0 0 36px rgba(214,255,87,.025) !important;
+    color:var(--accent) !important;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:clamp(.52rem,.62vw,.66rem) !important;
+    line-height:1.55 !important;
+    letter-spacing:.12em;
+    text-align:center;
+    opacity:.82 !important;
+    pointer-events:none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  main:has(.identity-hero) .home-about-strip .button::after {
+    transition:none !important;
+  }
+}
