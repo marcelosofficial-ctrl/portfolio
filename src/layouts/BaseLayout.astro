@@ -69,8 +69,11 @@ const languagePairs = new Map<string, string>([
 ]);
 const reverseLanguagePairs = new Map(Array.from(languagePairs, ([en, ja]) => [ja, en]));
 const inferredAlternatePath = isJapanese ? reverseLanguagePairs.get(localPath) : languagePairs.get(localPath);
+const inferredAlternateHref = inferredAlternatePath
+  ? (inferredAlternatePath === '/' ? '/' : `${inferredAlternatePath}/`)
+  : undefined;
 const languageTarget = isJapanese ? 'en' : 'ja';
-const languageHref = alternatePath ?? inferredAlternatePath ?? (isJapanese ? '/' : '/ja/');
+const languageHref = alternatePath ?? inferredAlternateHref ?? (isJapanese ? '/' : '/ja/');
 const languageAria = isJapanese ? '英語に切り替える' : '日本語に切り替える';
 const hasLocalizedPair = isLocalizedHome || Boolean(alternatePath) || Boolean(inferredAlternatePath);
 const alternateLanguageURL = new URL(withBase(languageHref), origin);
