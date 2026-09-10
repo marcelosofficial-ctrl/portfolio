@@ -18,13 +18,17 @@ interface Props {
   description?: string;
   noindex?: boolean;
   canonicalPath?: string;
+  locale?: 'en' | 'ja';
+  alternatePath?: string;
 }
 
 const {
   title = 'Marcelo Ellwanger | Software & Systems Developer',
   description = 'Software and systems developer building practical tools across Windows diagnostics, local AI, automation, computer vision and evidence-driven data systems.',
   noindex = false,
-  canonicalPath
+  canonicalPath,
+  locale: localeProp,
+  alternatePath
 } = Astro.props;
 
 const origin = Astro.site ?? new URL(Astro.url.origin);
@@ -40,12 +44,55 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const localPath = basePrefix && currentPath.startsWith(basePrefix)
   ? (currentPath.slice(basePrefix.length) || '/')
   : currentPath;
+const locale = localeProp ?? (localPath === '/ja' || localPath.startsWith('/ja/') ? 'ja' : 'en');
+const isJapanese = locale === 'ja';
 const navCurrent = (path: string) => localPath === path || (path !== '/' && localPath.startsWith(`${path}/`));
-const workCurrent = localPath === '/' || localPath.startsWith('/projects/');
+const workCurrent = isJapanese ? localPath === '/ja' : (localPath === '/' || localPath.startsWith('/projects/'));
 const siteURL = new URL(`${basePrefix || ''}/`, origin);
 const profileImageURL = new URL(`${basePrefix}/profile/marcelo-profile.webp`, origin);
 const brandImageURL = new URL(`${basePrefix}/brand/social.png`, origin);
 const personURL = new URL(`${basePrefix}/about/`, origin);
+const englishHomeURL = new URL(`${basePrefix || ''}/`, origin);
+const japaneseHomeURL = new URL(`${basePrefix || ''}/ja/`, origin);
+const isLocalizedHome = localPath === '/' || localPath === '/ja';
+const languageTarget = isJapanese ? 'en' : 'ja';
+const languageHref = alternatePath ?? (isJapanese ? '/' : '/ja/');
+const languageLabel = isJapanese ? 'EN' : '日本語';
+const languageLongLabel = isJapanese ? 'ENGLISH' : '日本語';
+const languageAria = isJapanese ? 'Switch to English' : '日本語に切り替える';
+
+const labels = isJapanese ? {
+  work: '作品',
+  about: 'プロフィール',
+  resume: '履歴書',
+  contact: '連絡',
+  menu: 'メニュー',
+  openMenu: 'ナビゲーションを開く',
+  closeMenu: 'ナビゲーションを閉じる',
+  footer: 'Windows診断、ローカルAI、自動化、データ、コンピュータビジョンを中心に、実用的なソフトウェアを開発しています。'
+} : {
+  work: 'Work',
+  about: 'About',
+  resume: 'Résumé',
+  contact: 'Contact',
+  menu: 'MENU',
+  openMenu: 'Open navigation',
+  closeMenu: 'Close navigation',
+  footer: 'Building practical software across Windows diagnostics, local AI, automation, data and computer vision.'
+};
+
+const navHrefs = isJapanese ? {
+  work: '/ja/#work',
+  about: '/ja/#about',
+  resume: '/resume/software/',
+  contact: '/ja/#contact'
+} : {
+  work: '/#work',
+  about: '/about/',
+  resume: '/resume/',
+  contact: '/contact/'
+};
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -79,11 +126,11 @@ const websiteSchema = {
   name: 'MARCELO/LAB',
   url: siteURL.toString(),
   creator: { '@id': `${personURL.toString()}#marcelo` },
-  inLanguage: 'en'
+  inLanguage: locale
 };
 ---
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -98,10 +145,13 @@ const websiteSchema = {
     <link rel="icon" type="image/png" sizes="64x64" href={`${basePrefix}/brand/favicon.png`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${basePrefix}/brand/apple-touch-icon.png`} />
     <link rel="canonical" href={canonicalURL} />
+    {isLocalizedHome && <link rel="alternate" hreflang="en" href={englishHomeURL} />}
+    {isLocalizedHome && <link rel="alternate" hreflang="ja" href={japaneseHomeURL} />}
+    {isLocalizedHome && <link rel="alternate" hreflang="x-default" href={englishHomeURL} />}
     <link rel="me" href="https://github.com/marcelosofficial-ctrl" />
     <link rel="me" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={isJapanese ? 'ja_JP' : 'en_US'} />
     <meta property="og:site_name" content="MARCELO/LAB" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -117,9 +167,21 @@ const websiteSchema = {
     <meta name="twitter:image" content={brandImageURL} />
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
-    <script is:inline>document.documentElement.classList.add('mobile-nav-ready');</script>
+    <script is:inline define:vars={{ basePrefix, locale, localPath }}>
+      document.documentElement.classList.add('mobile-nav-ready');
+      try {
+        const savedLanguage = localStorage.getItem('marcelo-language');
+        const browserJapanese = /^ja(?:-|$)/i.test(navigator.language || '');
+        if (localPath === '/' && locale === 'en' && (savedLanguage === 'ja' || (!savedLanguage && browserJapanese))) {
+          window.location.replace(`${basePrefix}/ja/`);
+        }
+      } catch (_) {}
+    </script>
     <title>{title}</title>
     <style is:global>
+      html[lang="ja"] body {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", Meiryo, "Segoe UI", sans-serif;
+      }
       .brand > img {
         width: 30px;
         height: 30px;
@@ -167,6 +229,128 @@ const websiteSchema = {
         background: #0d1012;
         filter: drop-shadow(0 0 20px rgba(189, 255, 0, .10));
       }
+
+      .nav-language-switch {
+        display:inline-flex;
+        align-items:center;
+        gap:7px;
+        color:#aeb6b3 !important;
+        font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+        font-size:.66rem !important;
+        letter-spacing:.07em !important;
+        white-space:nowrap;
+      }
+      .nav-language-switch small {
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        min-width:24px;
+        min-height:20px;
+        padding:2px 5px;
+        border:1px solid rgba(214,255,87,.18);
+        color:var(--accent);
+        font-size:.48rem;
+        letter-spacing:.08em;
+      }
+
+      /* Mobile hero identity field: same signal/grid language as the desktop rail and banner,
+         but integrated behind the opening typography so it adds identity without adding scroll. */
+      @media (max-width: 820px) {
+        main:has(.identity-hero) .identity-main {
+          position:relative;
+          isolation:isolate;
+        }
+        main:has(.identity-hero) .identity-main::before {
+          content:"";
+          position:absolute;
+          z-index:0;
+          top:34px;
+          left:-7%;
+          width:114%;
+          height:170px;
+          pointer-events:none;
+          opacity:.64;
+          background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 180' preserveAspectRatio='none'%3E%3Cg fill='none'%3E%3Cg stroke='%23d6ff57' stroke-width='1'%3E%3Cpath opacity='.06' d='M0 28H720M0 68H720M0 108H720M0 148H720'/%3E%3Cpath opacity='.045' d='M88 0V180M208 0V180M328 0V180M448 0V180M568 0V180M688 0V180'/%3E%3Cpath opacity='.16' d='M0 109 C70 91 114 129 184 108 S298 78 370 106 S484 137 552 107 S654 89 720 104'/%3E%3Cpath opacity='.085' d='M0 119 C70 101 114 139 184 118 S298 88 370 116 S484 147 552 117 S654 99 720 114'/%3E%3Ccircle cx='602' cy='65' r='31' opacity='.16'/%3E%3Ccircle cx='602' cy='65' r='17' opacity='.08'/%3E%3Cpath opacity='.18' d='M553 65H651M602 16V114'/%3E%3C/g%3E%3Ccircle cx='602' cy='65' r='3' fill='%23d6ff57' opacity='.82'/%3E%3C/g%3E%3C/svg%3E");
+          background-repeat:no-repeat;
+          background-size:100% 100%;
+          -webkit-mask-image:linear-gradient(90deg,transparent 0,black 12%,black 90%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,black 12%,black 90%,transparent 100%);
+          animation:mobile-hero-field-drift 8s ease-in-out infinite alternate;
+        }
+        main:has(.identity-hero) .identity-main::after {
+          content:"M/E · SIGNAL / 01";
+          position:absolute;
+          z-index:1;
+          top:46px;
+          right:2px;
+          color:#59645f;
+          font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+          font-size:.43rem;
+          letter-spacing:.13em;
+          pointer-events:none;
+        }
+        main:has(.identity-hero) .identity-kicker,
+        main:has(.identity-hero) .identity-name,
+        main:has(.identity-hero) .identity-statement,
+        main:has(.identity-hero) .hero-actions,
+        main:has(.identity-hero) .identity-foot {
+          position:relative;
+          z-index:2;
+        }
+        main:has(.identity-hero) .identity-name {
+          text-shadow:0 20px 64px rgba(0,0,0,.30);
+        }
+        @keyframes mobile-hero-field-drift {
+          from { transform:translate3d(-1.2%,0,0); opacity:.52; }
+          to { transform:translate3d(1.2%,0,0); opacity:.72; }
+        }
+
+        .nav-language-switch {
+          color:#d5dad7 !important;
+          min-height:48px !important;
+        }
+        .nav-language-switch small {
+          margin-left:auto;
+          min-width:30px;
+          min-height:24px;
+        }
+
+        /* No-JS resilience: if the enhancement script never marks the document ready,
+           show the navigation directly instead of leaving a dead hamburger. */
+        html:not(.mobile-nav-ready) .mobile-nav-toggle,
+        html:not(.mobile-nav-ready) .mobile-nav-backdrop { display:none !important; }
+        html:not(.mobile-nav-ready) .site-header {
+          flex-wrap:wrap;
+          height:auto;
+          padding-bottom:8px;
+        }
+        html:not(.mobile-nav-ready) .site-header nav {
+          position:static !important;
+          width:100%;
+          margin-top:4px;
+          display:grid !important;
+          grid-template-columns:repeat(2,minmax(0,1fr));
+          max-height:none !important;
+          padding:6px 0 !important;
+          border:0 !important;
+          background:transparent !important;
+          box-shadow:none !important;
+          transform:none !important;
+          opacity:1 !important;
+          visibility:visible !important;
+          pointer-events:auto !important;
+          overflow:visible !important;
+        }
+        html:not(.mobile-nav-ready) .site-header nav a {
+          min-height:44px !important;
+          padding:0 8px !important;
+          opacity:1 !important;
+          transform:none !important;
+          animation:none !important;
+        }
+        html:not(.mobile-nav-ready) .mobile-nav-meta { display:none !important; }
+      }
+
       @media (max-width: 700px) {
         .project-title-row { gap: 14px; }
         .project-brand-icon { width: 40px; height: 40px; margin-top: 15px; border-radius: 11px; }
@@ -312,7 +496,8 @@ const websiteSchema = {
         #main-content { view-transition-name: none !important; }
         .project .meter i,
         .project .decision-item,
-        .project .active-build-visual > div {
+        .project .active-build-visual > div,
+        main:has(.identity-hero) .identity-main::before {
           animation: none !important;
           transform: none !important;
         }
@@ -320,20 +505,21 @@ const websiteSchema = {
     </style>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">{isJapanese ? '本文へ移動' : 'Skip to content'}</a>
     <div class="site-shell">
       <header class="site-header wrap">
-        <a class="brand" href={withBase('/')} aria-label="Marcelo Ellwanger home"><img src={`${basePrefix}/brand/marcelo-lab.webp`} alt="" width="30" height="30" />MARCELO<span>/</span>LAB</a>
+        <a class="brand" href={withBase(isJapanese ? '/ja/' : '/')} aria-label={isJapanese ? 'Marcelo Ellwanger 日本語ホーム' : 'Marcelo Ellwanger home'}><img src={`${basePrefix}/brand/marcelo-lab.webp`} alt="" width="30" height="30" />MARCELO<span>/</span>LAB</a>
         <div class="header-meta mono" aria-hidden="true">ENGINEERING · SYSTEMS · AI</div>
-        <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
-          <span class="mobile-nav-label">MENU</span>
+        <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label={labels.openMenu}>
+          <span class="mobile-nav-label">{labels.menu}</span>
           <span class="mobile-nav-icon" aria-hidden="true"></span>
         </button>
-        <nav id="primary-navigation" aria-label="Primary navigation">
-          <a href={withBase('/#work')} aria-current={workCurrent ? 'page' : undefined}>Work</a>
-          <a href={withBase('/about/')} aria-current={navCurrent('/about') ? 'page' : undefined}>About</a>
-          <a href={withBase('/resume/')} aria-current={navCurrent('/resume') ? 'page' : undefined}>Résumé</a>
-          <a href={withBase('/contact/')} aria-current={navCurrent('/contact') ? 'page' : undefined}>Contact</a>
+        <nav id="primary-navigation" aria-label={isJapanese ? 'メインナビゲーション' : 'Primary navigation'}>
+          <a href={withBase(navHrefs.work)} aria-current={workCurrent ? 'page' : undefined}>{labels.work}</a>
+          <a href={withBase(navHrefs.about)} aria-current={!isJapanese && navCurrent('/about') ? 'page' : undefined}>{labels.about}</a>
+          <a href={withBase(navHrefs.resume)} aria-current={!isJapanese && navCurrent('/resume') ? 'page' : undefined}>{labels.resume}{isJapanese && <small> EN</small>}</a>
+          <a href={withBase(navHrefs.contact)} aria-current={!isJapanese && navCurrent('/contact') ? 'page' : undefined}>{labels.contact}</a>
+          <a class="nav-language-switch" href={withBase(languageHref)} hreflang={languageTarget} lang={languageTarget} data-language-choice={languageTarget} aria-label={languageAria}><span>{languageLongLabel}</span><small>{languageLabel}</small></a>
           <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <div class="mobile-nav-meta" aria-hidden="true"><span>JAPAN / 2026</span><span>REMOTE / GLOBAL</span></div>
@@ -346,19 +532,20 @@ const websiteSchema = {
     <footer class="footer wrap">
       <div>
         <strong>Marcelo Ellwanger</strong>
-        <p>Building practical software across Windows diagnostics, local AI, automation, data and computer vision.</p>
+        <p>{labels.footer}</p>
       </div>
       <div class="footer-links mono">
-        <a href={withBase('/#work')}>WORK</a>
-        <a href={withBase('/about/')}>ABOUT</a>
-        <a href={withBase('/resume/')}>RÉSUMÉ</a>
-        <a href={withBase('/contact/')}>CONTACT</a>
+        <a href={withBase(navHrefs.work)}>{isJapanese ? '作品' : 'WORK'}</a>
+        <a href={withBase(navHrefs.about)}>{isJapanese ? 'プロフィール' : 'ABOUT'}</a>
+        <a href={withBase(navHrefs.resume)}>{isJapanese ? '履歴書 EN' : 'RÉSUMÉ'}</a>
+        <a href={withBase(navHrefs.contact)}>{isJapanese ? '連絡' : 'CONTACT'}</a>
+        <a href={withBase(languageHref)} hreflang={languageTarget} lang={languageTarget} data-language-choice={languageTarget}>{isJapanese ? 'ENGLISH' : '日本語'}</a>
         <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GITHUB ↗</a>
         <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
       </div>
     </footer>
 
-    <script is:inline define:vars={{ basePrefix }}>
+    <script is:inline define:vars={{ basePrefix, labels }}>
       if (basePrefix) {
         for (const link of document.querySelectorAll('a[href^="/"]')) {
           const href = link.getAttribute('href');
@@ -366,6 +553,12 @@ const websiteSchema = {
           link.setAttribute('href', `${basePrefix}${href}`);
         }
       }
+
+      document.querySelectorAll('[data-language-choice]').forEach((link) => {
+        link.addEventListener('click', () => {
+          try { localStorage.setItem('marcelo-language', link.dataset.languageChoice || 'en'); } catch (_) {}
+        });
+      });
 
       const navToggle = document.querySelector('.mobile-nav-toggle');
       const primaryNav = document.getElementById('primary-navigation');
@@ -377,7 +570,7 @@ const websiteSchema = {
         const shouldOpen = Boolean(open && mobileNavQuery.matches);
         document.documentElement.classList.toggle('mobile-nav-open', shouldOpen);
         navToggle?.setAttribute('aria-expanded', String(shouldOpen));
-        navToggle?.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
+        navToggle?.setAttribute('aria-label', shouldOpen ? labels.closeMenu : labels.openMenu);
 
         if (shouldOpen) {
           navReturnFocus = document.activeElement;
