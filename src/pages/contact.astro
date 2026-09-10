@@ -7,15 +7,15 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <div>
       <p class="eyebrow">Contact · Professional use</p>
       <h1>Let’s talk about useful work.</h1>
-      <p class="case-copy">For software engineering, QA / automation, technical systems, support or serious project conversations, LinkedIn is the current public contact route while I finalize a separate employer-facing email address.</p>
+      <p class="case-copy">For software engineering, QA / automation, technical systems, support or serious project conversations, LinkedIn is my current public contact route. The links below make it easy to start with the right context.</p>
       <div class="case-actions">
         <a class="button primary" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         <a class="button" href="/resume/">Choose a résumé ↗</a>
         <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
-    <aside class="contact-panel mono">
-      <div class="contact-email-status"><span>PUBLIC CONTACT EMAIL</span><strong>PRIVACY-SAFE ADDRESS · PENDING</strong></div>
+    <aside class="contact-panel mono" aria-label="Professional contact and availability">
+      <div class="contact-route-status"><span>PUBLIC CONTACT</span><strong>LINKEDIN · CURRENT ROUTE</strong></div>
       <div><span>AVAILABILITY</span><strong>Remote · flexible schedules</strong></div>
       <div><span>TIME ZONES</span><strong>Global</strong></div>
       <div><span>ROLE FOCUS</span><strong>Software · QA / Automation · Technical Systems</strong></div>
@@ -28,12 +28,12 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <div class="model-grid">
       <article><span class="mono model-index">01</span><h3>Hiring / recruiting</h3><p>Start with the Software / QA résumé for engineering roles, then use CrashScope, VektorDeck and Retro Game Vision as evidence of how I actually build, test and reason about systems.</p><a class="text-link" href="/resume/software/">Software / QA résumé ↗</a></article>
       <article><span class="mono model-index">02</span><h3>Technical collaboration</h3><p>VektorDeck, CrashScope and Retro Game Vision are the clearest examples of systems design, diagnostics, local-first software and evidence-first engineering.</p><a class="text-link" href="/#work">Selected work ↗</a></article>
-      <article><span class="mono model-index">03</span><h3>Business / project inquiry</h3><p>Send the problem, constraints and what success would look like through LinkedIn. A dedicated public employer/contact email will be added here once the privacy-safe address is finalized.</p><a class="text-link" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">Start on LinkedIn ↗</a></article>
+      <article><span class="mono model-index">03</span><h3>Business / project inquiry</h3><p>Send the problem, constraints and what success would look like through LinkedIn. It is the current public route for project and collaboration inquiries.</p><a class="text-link" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">Start on LinkedIn ↗</a></article>
     </div>
   </section>
 
   <section class="about-contact wrap">
-    <div><p class="eyebrow">In person</p><h2>One URL for introductions.</h2><p>The QR code points to this live portfolio, so the same public identity can work on a résumé, event badge or future business card.</p></div>
+    <div><p class="eyebrow">In person</p><h2>One URL for introductions.</h2><p>The QR code points to this live portfolio, so the same public identity can work on a résumé, event badge or business card.</p></div>
     <figure class="portfolio-qr-card"><img src={`${baseURL}portfolio-qr.svg`} alt="QR code for Marcelo Ellwanger's portfolio" /><figcaption><span class="mono">MARCELO/LAB</span><p>Portfolio · projects · résumé · contact</p></figcaption></figure>
   </section>
 
@@ -90,21 +90,21 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         font-size:.72rem !important;
         line-height:1.4 !important;
       }
-      .contact-email-status {
+      .contact-route-status {
         position:relative;
         background:linear-gradient(90deg,rgba(214,255,87,.035),rgba(214,255,87,.006) 68%,transparent);
         box-shadow:inset 2px 0 0 rgba(214,255,87,.62);
       }
-      .contact-email-status strong {
-        color:#bac4a2 !important;
+      .contact-route-status strong {
+        color:#c7d3a7 !important;
         letter-spacing:.035em;
       }
-      .contact-email-status::after {
-        content:"PENDING";
+      .contact-route-status::after {
+        content:"CURRENT";
         position:absolute;
         right:10px;
         top:7px;
-        color:#68725a;
+        color:#7f8d61;
         font-size:.39rem;
         letter-spacing:.10em;
       }
@@ -173,7 +173,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       .contact-panel strong {
         text-align:left !important;
       }
-      .contact-email-status::after {
+      .contact-route-status::after {
         position:static;
         display:block;
         grid-column:1;
