@@ -74,9 +74,44 @@ function requireContent(label, html, required) {
   }
 }
 
+function requireLanguagePair(label, englishHtml, japaneseHtml, englishPath, japanesePath) {
+  if (!englishHtml || !japaneseHtml) return;
+
+  for (const [side, html] of [['English', englishHtml], ['Japanese', japaneseHtml]]) {
+    for (const alternate of ['hreflang="en"', 'hreflang="ja"', 'hreflang="x-default"']) {
+      if (!html.includes(alternate)) fail(`${label} ${side} page is missing language alternate: ${alternate}`);
+      else pass(`${label} ${side} language alternate: ${alternate}`);
+    }
+    if (!html.includes('class="language-toggle"')) fail(`${label} ${side} page is missing the top-bar language toggle`);
+    else pass(`${label} ${side} top-bar language toggle`);
+    if (!html.includes('>ENG</span>') || !html.includes('>日本語</span>')) fail(`${label} ${side} language toggle is missing ENG / 日本語 labels`);
+    else pass(`${label} ${side} language toggle labels`);
+  }
+
+  const expectedJapaneseHref = `/portfolio${japanesePath}`;
+  const expectedEnglishHref = `/portfolio${englishPath}`;
+  if (!englishHtml.includes(`href="${expectedJapaneseHref}"`) || !englishHtml.includes('data-language-choice="ja"')) {
+    fail(`${label} English page does not switch directly to ${expectedJapaneseHref}`);
+  } else pass(`${label} English → Japanese route-aware switch`);
+
+  if (!japaneseHtml.includes(`href="${expectedEnglishHref}"`) || !japaneseHtml.includes('data-language-choice="en"')) {
+    fail(`${label} Japanese page does not switch directly to ${expectedEnglishHref}`);
+  } else pass(`${label} Japanese → English route-aware switch`);
+}
+
 const routes = [
-  'index.html', 'ja/index.html', 'about/index.html', 'contact/index.html',
-  'resume/index.html', 'resume/support/index.html', 'resume/software/index.html',
+  'index.html',
+  'ja/index.html',
+  'about/index.html',
+  'ja/about/index.html',
+  'contact/index.html',
+  'ja/contact/index.html',
+  'resume/index.html',
+  'ja/resume/index.html',
+  'resume/support/index.html',
+  'ja/resume/support/index.html',
+  'resume/software/index.html',
+  'ja/resume/software/index.html',
   'projects/vektordeck/index.html', 'projects/reseller-ai/index.html',
   'projects/crashscope/index.html', 'projects/reelshelf/index.html',
   'projects/rainmeter-clock/index.html', '404.html',
@@ -147,26 +182,8 @@ requireContent('Japanese homepage', japaneseHome, [
   '実際の課題から生まれたプロジェクト。',
   '現在、公開の連絡窓口はLinkedInにまとめています。',
   'ケーススタディ（英語）',
-  'hreflang="en"',
   'class="language-toggle"'
 ]);
-
-if (home && japaneseHome) {
-  for (const [label, html] of [['English homepage', home], ['Japanese homepage', japaneseHome]]) {
-    for (const alternate of ['hreflang="en"', 'hreflang="ja"', 'hreflang="x-default"']) {
-      if (!html.includes(alternate)) fail(`${label} is missing language alternate: ${alternate}`);
-      else pass(`${label} language alternate: ${alternate}`);
-    }
-    if (!html.includes('class="language-toggle"')) fail(`${label} is missing the top-bar language toggle`);
-    else pass(`${label} top-bar language toggle`);
-    if (!html.includes('>ENG</span>') || !html.includes('>日本語</span>')) fail(`${label} language toggle is missing ENG / 日本語 labels`);
-    else pass(`${label} language toggle labels`);
-  }
-  if (!home.includes('data-language-choice="ja"')) fail('English homepage is missing the Japanese language choice');
-  else pass('English homepage exposes Japanese language choice');
-  if (!japaneseHome.includes('data-language-choice="en"')) fail('Japanese homepage is missing the English language choice');
-  else pass('Japanese homepage exposes English language choice');
-}
 
 const about = readRoute('about/index.html');
 requireContent('about page', about, [
@@ -177,10 +194,54 @@ requireContent('about page', about, [
   'EasyFLix · pre-1.0 ReelShelf'
 ]);
 
+const japaneseAbout = readRoute('ja/about/index.html');
+requireContent('Japanese about page', japaneseAbout, [
+  '<html lang="ja">',
+  '実用的な仕組みをつくり、信頼して使えるところまで仕上げる。',
+  '現場経験からソフトウェアへ。',
+  '5言語でのコミュニケーション',
+  'ソフトウェア / QA 職務プロフィール'
+]);
+
+const contact = readRoute('contact/index.html');
+requireContent('contact page', contact, [
+  'Let’s talk about useful work.',
+  'LINKEDIN · CURRENT ROUTE',
+  'Software / QA résumé'
+]);
+
+const japaneseContact = readRoute('ja/contact/index.html');
+requireContent('Japanese contact page', japaneseContact, [
+  '<html lang="ja">',
+  'まずは、取り組みたいことを聞かせてください。',
+  '現在の公開連絡窓口はLinkedInです。',
+  '採用・転職について',
+  '職務プロフィールを見る'
+]);
+
 const resume = readRoute('resume/index.html');
 requireContent('general resume', resume, [
   'Alma', 'VektorDeck', 'CrashScope', 'ReelShelf', '750+', '1,800+',
   'Software / QA', 'QA / automation', '185 automated .NET tests', '0.2657% average Agent CPU'
+]);
+
+const japaneseResume = readRoute('ja/resume/index.html');
+requireContent('Japanese career profile', japaneseResume, [
+  '<html lang="ja">',
+  'Professional profile · 職務プロフィール',
+  '4,000時間以上',
+  '185件の自動.NETテスト',
+  '海外のタイムゾーンや勤務時間にも柔軟に対応'
+]);
+
+const supportResume = readRoute('resume/support/index.html');
+const japaneseSupportResume = readRoute('ja/resume/support/index.html');
+requireContent('Japanese support profile', japaneseSupportResume, [
+  '<html lang="ja">',
+  'リモートテクニカルサポート · オペレーション · カスタマー対応',
+  '問題の切り分け',
+  'コーヒー部門マネージャー / カフェ運営',
+  '4,000時間以上'
 ]);
 
 const softwareResume = readRoute('resume/software/index.html');
@@ -195,6 +256,23 @@ requireContent('software resume', softwareResume, [
   'Retro Game Vision',
   'EasyFLix'
 ]);
+
+const japaneseSoftwareResume = readRoute('ja/resume/software/index.html');
+requireContent('Japanese software profile', japaneseSoftwareResume, [
+  '<html lang="ja">',
+  'ソフトウェア開発 · QA · テクニカルシステム',
+  '英文PDFをダウンロード',
+  '185件の自動.NETテスト',
+  'localhost限定',
+  '48件のテスト'
+]);
+
+requireLanguagePair('homepage', home, japaneseHome, '/', '/ja/');
+requireLanguagePair('about', about, japaneseAbout, '/about/', '/ja/about/');
+requireLanguagePair('contact', contact, japaneseContact, '/contact/', '/ja/contact/');
+requireLanguagePair('general career profile', resume, japaneseResume, '/resume/', '/ja/resume/');
+requireLanguagePair('support career profile', supportResume, japaneseSupportResume, '/resume/support/', '/ja/resume/support/');
+requireLanguagePair('software career profile', softwareResume, japaneseSoftwareResume, '/resume/software/', '/ja/resume/software/');
 
 const reelshelf = readRoute('projects/reelshelf/index.html');
 requireContent('ReelShelf case study', reelshelf, [
@@ -223,8 +301,13 @@ const identityPages = [
   ['homepage', home],
   ['Japanese homepage', japaneseHome],
   ['about page', about],
+  ['Japanese about page', japaneseAbout],
   ['general resume', resume],
+  ['Japanese career profile', japaneseResume],
+  ['support resume', supportResume],
+  ['Japanese support profile', japaneseSupportResume],
   ['software resume', softwareResume],
+  ['Japanese software profile', japaneseSoftwareResume],
 ];
 for (const [label, html] of identityPages) {
   if (!html) continue;

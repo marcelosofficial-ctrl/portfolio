@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  locale="ja"
+  alternatePath="/resume/software/"
+  title="ソフトウェア・QA 職務プロフィール | Marcelo Ellwanger"
+  description="Marcelo Ellwangerのソフトウェア開発・QA・テクニカルシステム向け職務プロフィール。Windows診断、ローカルAI、コンピュータビジョン、データシステムの実績を日本語で紹介します。"
+>
+  <section class="resume-page wrap">
+    <div class="resume-toolbar mono">
+      <a href="/ja/resume/">← 職務プロフィール一覧</a>
+      <div class="resume-toolbar-actions">
+        <a class="resume-download" href="/resume/Marcelo_Ellwanger_Software_QA_Resume.pdf" download hreflang="en">英文PDFをダウンロード</a>
+        <button type="button" onclick="window.print()">印刷 / PDFとして保存</button>
+      </div>
+    </div>
+
+    <header class="resume-head">
+      <p class="eyebrow">Targeted profile · Software / QA</p>
+      <h1>Marcelo Ellwanger</h1>
+      <p class="resume-title">ソフトウェア開発 · QA · テクニカルシステム</p>
+      <div class="resume-contact mono">
+        <a href="/ja/contact/">お問い合わせ</a><span>·</span>
+        <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn</a><span>·</span>
+        <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub</a><span>·</span>
+        <a href="/ja/">ポートフォリオ</a>
+      </div>
+    </header>
+
+    <section class="resume-section">
+      <h2>職務要約</h2>
+      <p>Windows診断、ローカルAI、コンピュータビジョン、メディア自動化、根拠を追跡できるデータシステムなど、実際の課題を起点にソフトウェアを設計・実装しています。Python、C#/.NET、SQLite、Git/GitHubを中心に、デバッグ、自動テスト、性能検証、障害の記録と再現性を重視しています。電気工事やオペレーション業務で培った現場でのトラブルシューティング経験も、信頼性を意識した開発姿勢につながっています。</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>技術スキル</h2>
+      <p><strong>言語 / フレームワーク:</strong> Python · C#/.NET 10 · FastAPI · React · TypeScript · WPF<br/><strong>データ / ツール:</strong> SQLite · Git/GitHub · GitHub Actions · Windows診断 · REST API · ローカルAI / GGUFツール<br/><strong>エンジニアリング:</strong> 自動テスト · デバッグ · テレメトリ · 性能予算 · データ来歴管理 · 再現可能な検証 · リリース工程 · 技術ドキュメント</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>主な開発プロジェクト</h2>
+      <article>
+        <div><strong>CrashScope · v0.1 beta ready</strong><span>C# / .NET 10 / React / TypeScript / SQLite · Windows diagnostics</span></div>
+        <ul>
+          <li>ネイティブのWindowsトレイ、Auto Assist / Everyday Mode、永続化されるセッションとインシデント、Event Log + WERの証拠、プライバシーに配慮したサポートバンドルを備えたローカルファーストのクラッシュ診断システムを設計・実装。</li>
+          <li>185件の自動.NETテストを実装。Ryzen 5 7500F + Radeon RX 9070 XTでの最終統合検証では、Agentの平均CPU使用率0.2657%、ワーキングセット平均93 MB・最大95.83 MBを計測。localhost限定で動作し、分析用テレメトリや自動アップロードは行いません。公開ベータのリリースを準備中です。</li>
+        </ul>
+      </article>
+      <article>
+        <div><strong>VektorDeck 1.0</strong><span>Python / FastAPI / React / TypeScript / SQLite · 2026年リリース</span></div>
+        <ul>
+          <li>GGUF Model Intelligence、安全なランタイム管理、ハードウェアテレメトリ、根拠を示せるSmart Launch提案をまとめたローカルファーストのWindows向けAIワークステーション管理ツールを設計・リリース。</li>
+          <li>自動アップデートと修復、診断、CI、アップデート後のスモークテスト、デプロイ前ガードを実装し、重要な状態不整合を見えないまま進めない構成にしました。</li>
+        </ul>
+      </article>
+      <article>
+        <div><strong>Retro Game Vision</strong><span>Computer vision + decision pipeline · Python / SQLite · 実地検証済み</span></div>
+        <ul>
+          <li>店舗写真やOCRの不完全な入力を扱うため、型付きデータモデル、証拠の出所を追跡できる保存設計、互換性ガード、再現可能な収益計算、冪等な検証処理を構築。</li>
+          <li>750件以上の基準アイテム、1,000件以上の現物観測、1,800件以上の市場観測まで実地データで拡張し、不確実性と証拠の対応関係を維持しています。</li>
+        </ul>
+      </article>
+      <article>
+        <div><strong>EasyFLix · 開発中</strong><span>現在のpre-1.0名称: ReelShelf · WPF / .NET 10</span></div>
+        <ul>
+          <li>複数ドライブの映画・TV・アニメを読み取り専用でスキャンし、元ファイルを移動・書き換えずに整理するWindows向けローカルメディアアプリを開発。グループ表示、アートワーク取得、ソースを壊さないショートカット、再開可能な処理を実装しています。</li>
+          <li>埋め込み/サイドカー字幕の監査、SubDLの対象エピソード選択、ハッシュ・タイトル・エピソードを照合するOpenSubtitlesフォールバック、プロバイダー別クォータキャッシュ、オフライン文字起こしと翻訳品質ゲートを実装。現在の検証には48件のテスト、ビルド警告0件、依存関係の脆弱性監査、CI、portable win-x64成果物が含まれます。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2>関連する実務経験</h2>
+      <article><div><strong>電気工事・技術職</strong><span>Vancouver, Canada · 4,000時間以上</span></div><ul><li>電気・機械設備の不具合対応や施工を通じて、安全を前提に原因を切り分け、再現し、修正後の状態を確認する習慣を身につけました。</li></ul></article>
+      <article><div><strong>コーヒー部門マネージャー / カフェ運営</strong><span>Alma · Surfers Paradise, Gold Coast, Australia</span></div><ul><li>スタッフのシフト、発注・在庫管理、スペシャルティコーヒーの品質管理を担当。高品質な接客環境で、数値に基づく工程管理とチーム運営を両立しました。</li></ul></article>
+      <article><div><strong>接客 / 教育</strong><span>Australia & Japan · 主な職歴 2023–2025</span></div><ul><li>ホスピタリティと英語教育を通じて、相手に合わせた説明、トレーニング、繁忙時の問題解決、異文化環境でのコミュニケーションを経験しました。</li></ul></article>
+    </section>
+
+    <section class="resume-section resume-last">
+      <h2>学歴・資格</h2>
+      <p>電気分野の学習・職業訓練 - BCIT, Canada · High School Diploma - Queen Elizabeth School, Canada · First Aid & CPR · RSA License</p>
+    </section>
+
+    <footer class="resume-availability mono">リモートのソフトウェア開発 · QA / 自動化 · テクニカルシステム職を希望</footer>
+  </section>
+
+  <style>
+    html[lang="ja"] .resume-title,
+    html[lang="ja"] .resume-section h2 { line-height:1.4; }
+    html[lang="ja"] .resume-section p,
+    html[lang="ja"] .resume-section li { line-height:1.85; line-break:strict; }
+  </style>
+</BaseLayout>

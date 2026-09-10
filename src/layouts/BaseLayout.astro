@@ -48,6 +48,9 @@ const locale = localeProp ?? (localPath === '/ja' || localPath.startsWith('/ja/'
 const isJapanese = locale === 'ja';
 const navCurrent = (path: string) => localPath === path || (path !== '/' && localPath.startsWith(`${path}/`));
 const workCurrent = isJapanese ? localPath === '/ja' : (localPath === '/' || localPath.startsWith('/projects/'));
+const aboutCurrent = isJapanese ? navCurrent('/ja/about') : navCurrent('/about');
+const resumeCurrent = isJapanese ? navCurrent('/ja/resume') : navCurrent('/resume');
+const contactCurrent = isJapanese ? navCurrent('/ja/contact') : navCurrent('/contact');
 const siteURL = new URL(`${basePrefix || ''}/`, origin);
 const profileImageURL = new URL(`${basePrefix}/profile/marcelo-profile.webp`, origin);
 const brandImageURL = new URL(`${basePrefix}/brand/social.png`, origin);
@@ -55,14 +58,32 @@ const personURL = new URL(`${basePrefix}/about/`, origin);
 const englishHomeURL = new URL(`${basePrefix || ''}/`, origin);
 const japaneseHomeURL = new URL(`${basePrefix || ''}/ja/`, origin);
 const isLocalizedHome = localPath === '/' || localPath === '/ja';
+
+const languagePairs = new Map<string, string>([
+  ['/', '/ja'],
+  ['/about', '/ja/about'],
+  ['/contact', '/ja/contact'],
+  ['/resume', '/ja/resume'],
+  ['/resume/software', '/ja/resume/software'],
+  ['/resume/support', '/ja/resume/support']
+]);
+const reverseLanguagePairs = new Map(Array.from(languagePairs, ([en, ja]) => [ja, en]));
+const inferredAlternatePath = isJapanese ? reverseLanguagePairs.get(localPath) : languagePairs.get(localPath);
+const inferredAlternateHref = inferredAlternatePath
+  ? (inferredAlternatePath === '/' ? '/' : `${inferredAlternatePath}/`)
+  : undefined;
 const languageTarget = isJapanese ? 'en' : 'ja';
-const languageHref = alternatePath ?? (isJapanese ? '/' : '/ja/');
-const languageAria = isJapanese ? 'Switch to English' : '日本語に切り替える';
+const languageHref = alternatePath ?? inferredAlternateHref ?? (isJapanese ? '/' : '/ja/');
+const languageAria = isJapanese ? '英語に切り替える' : '日本語に切り替える';
+const hasLocalizedPair = isLocalizedHome || Boolean(alternatePath) || Boolean(inferredAlternatePath);
+const alternateLanguageURL = new URL(withBase(languageHref), origin);
+const pairedEnglishURL = isJapanese ? alternateLanguageURL : canonicalURL;
+const pairedJapaneseURL = isJapanese ? canonicalURL : alternateLanguageURL;
 
 const labels = isJapanese ? {
   work: 'プロジェクト',
   about: 'プロフィール',
-  resume: '英文レジュメ',
+  resume: '職務プロフィール',
   contact: 'お問い合わせ',
   menu: 'メニュー',
   openMenu: 'ナビゲーションを開く',
@@ -81,9 +102,9 @@ const labels = isJapanese ? {
 
 const navHrefs = isJapanese ? {
   work: '/ja/#work',
-  about: '/ja/#about',
-  resume: '/resume/software/',
-  contact: '/ja/#contact'
+  about: '/ja/about/',
+  resume: '/ja/resume/',
+  contact: '/ja/contact/'
 } : {
   work: '/#work',
   about: '/about/',
@@ -143,9 +164,9 @@ const websiteSchema = {
     <link rel="icon" type="image/png" sizes="64x64" href={`${basePrefix}/brand/favicon.png`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${basePrefix}/brand/apple-touch-icon.png`} />
     <link rel="canonical" href={canonicalURL} />
-    {isLocalizedHome && <link rel="alternate" hreflang="en" href={englishHomeURL} />}
-    {isLocalizedHome && <link rel="alternate" hreflang="ja" href={japaneseHomeURL} />}
-    {isLocalizedHome && <link rel="alternate" hreflang="x-default" href={englishHomeURL} />}
+    {hasLocalizedPair && <link rel="alternate" hreflang="en" href={pairedEnglishURL} />}
+    {hasLocalizedPair && <link rel="alternate" hreflang="ja" href={pairedJapaneseURL} />}
+    {hasLocalizedPair && <link rel="alternate" hreflang="x-default" href={pairedEnglishURL} />}
     <link rel="me" href="https://github.com/marcelosofficial-ctrl" />
     <link rel="me" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" />
     <meta property="og:type" content="website" />
@@ -593,9 +614,9 @@ const websiteSchema = {
         <div class="header-meta mono" aria-hidden="true">ENGINEERING · SYSTEMS · AI</div>
         <nav id="primary-navigation" aria-label={isJapanese ? 'メインナビゲーション' : 'Primary navigation'}>
           <a href={withBase(navHrefs.work)} aria-current={workCurrent ? 'page' : undefined}>{labels.work}</a>
-          <a href={withBase(navHrefs.about)} aria-current={!isJapanese && navCurrent('/about') ? 'page' : undefined}>{labels.about}</a>
-          <a href={withBase(navHrefs.resume)} aria-current={!isJapanese && navCurrent('/resume') ? 'page' : undefined} hreflang={isJapanese ? 'en' : undefined}>{labels.resume}</a>
-          <a href={withBase(navHrefs.contact)} aria-current={!isJapanese && navCurrent('/contact') ? 'page' : undefined}>{labels.contact}</a>
+          <a href={withBase(navHrefs.about)} aria-current={aboutCurrent ? 'page' : undefined}>{labels.about}</a>
+          <a href={withBase(navHrefs.resume)} aria-current={resumeCurrent ? 'page' : undefined}>{labels.resume}</a>
+          <a href={withBase(navHrefs.contact)} aria-current={contactCurrent ? 'page' : undefined}>{labels.contact}</a>
           <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <div class="mobile-nav-meta" aria-hidden="true"><span>JAPAN / 2026</span><span>REMOTE / GLOBAL</span></div>
@@ -622,7 +643,7 @@ const websiteSchema = {
       <div class="footer-links mono">
         <a href={withBase(navHrefs.work)}>{isJapanese ? 'プロジェクト' : 'WORK'}</a>
         <a href={withBase(navHrefs.about)}>{isJapanese ? 'プロフィール' : 'ABOUT'}</a>
-        <a href={withBase(navHrefs.resume)} hreflang={isJapanese ? 'en' : undefined}>{isJapanese ? '英文レジュメ' : 'RÉSUMÉ'}</a>
+        <a href={withBase(navHrefs.resume)}>{isJapanese ? '職務プロフィール' : 'RÉSUMÉ'}</a>
         <a href={withBase(navHrefs.contact)}>{isJapanese ? 'お問い合わせ' : 'CONTACT'}</a>
         <a href={withBase(languageHref)} hreflang={languageTarget} data-language-choice={languageTarget}>{isJapanese ? 'ENGLISH' : '日本語'}</a>
         <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GITHUB ↗</a>
