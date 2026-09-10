@@ -509,3 +509,89 @@
     animation-duration:0s !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Runtime polish 16: preserve the animated phone identity while keeping costly
+   continuous effects on compositor-friendly transform/opacity paths.
+   -------------------------------------------------------------------------- */
+
+@media (max-width:820px) {
+  /* A slightly more opaque header needs less live blur to retain the same separation. */
+  .site-shell {
+    background:rgba(10,12,13,.90) !important;
+    backdrop-filter:blur(14px) saturate(116%) !important;
+    -webkit-backdrop-filter:blur(14px) saturate(116%) !important;
+  }
+
+  /* The full-screen veil remains soft, but avoids an unnecessarily heavy filter pass. */
+  .mobile-nav-backdrop {
+    backdrop-filter:blur(3px) !important;
+    -webkit-backdrop-filter:blur(3px) !important;
+  }
+
+  /* Move the vector signal itself instead of repainting background-position each frame. */
+  .identity-skills::after {
+    left:-6% !important;
+    right:auto !important;
+    width:112% !important;
+    background-position:center !important;
+    background-size:100% 100% !important;
+    animation:mobile-signal-composited 7s ease-in-out infinite alternate !important;
+  }
+
+  html.mobile-nav-open .site-header nav {
+    will-change:transform,opacity;
+  }
+  html.mobile-nav-open .mobile-nav-backdrop {
+    will-change:opacity;
+  }
+
+  /* Page changes should feel immediate on a phone, not like a presentation slide. */
+  ::view-transition-group(root) {
+    animation-duration:.28s !important;
+  }
+}
+
+@keyframes mobile-signal-composited {
+  from { transform:translate3d(-1.5%,0,0); opacity:.43; }
+  to { transform:translate3d(1.5%,0,0); opacity:.60; }
+}
+
+/* Respect transparency preferences as well as motion preferences. */
+@media (max-width:820px) and (prefers-reduced-transparency:reduce) {
+  .site-shell {
+    background:#0b0d0e !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+  .mobile-nav-backdrop {
+    background:rgba(3,5,6,.86) !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+}
+
+/* Slow-update displays and constrained devices get the same composition without a loop. */
+@media (max-width:820px) and (update:slow) {
+  .identity-skills::after {
+    animation:none !important;
+    transform:none !important;
+    opacity:.50 !important;
+  }
+  ::view-transition-group(root) {
+    animation-duration:.18s !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation:none !important;
+    animation-duration:0s !important;
+  }
+  .identity-skills::after {
+    animation:none !important;
+    transform:none !important;
+  }
+}
