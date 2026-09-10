@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  locale="ja"
+  alternatePath="/resume/"
+  title="レジュメ | Marcelo Ellwanger"
+  description="Marcelo Ellwangerの職務プロフィール。テクニカルサポート、ソフトウェア・QA、オペレーションの経験とスキルを日本語で紹介します。"
+>
+  <section class="resume-page wrap">
+    <div class="resume-toolbar mono">
+      <a href="/ja/about/">← プロフィール</a>
+      <button type="button" onclick="window.print()">印刷 / PDFとして保存</button>
+    </div>
+
+    <header class="resume-head">
+      <p class="eyebrow">Professional profile · レジュメ</p>
+      <h1>Marcelo Ellwanger</h1>
+      <p class="resume-title">リモートテクニカルサポート · ソフトウェア / QA · オペレーション</p>
+      <div class="resume-contact mono">
+        <a href="/ja/contact/">お問い合わせ</a><span>·</span>
+        <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn</a><span>·</span>
+        <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub</a><span>·</span><a href="/ja/">ポートフォリオ</a>
+      </div>
+    </header>
+
+    <nav class="resume-variants" aria-label="レジュメの種類">
+      <a class="resume-variant active" href="/ja/resume/"><span class="mono">GENERAL</span><strong>総合プロフィール</strong><small>運営 · 技術 · ソフトウェア</small></a>
+      <a class="resume-variant" href="/ja/resume/support/"><span class="mono">TARGETED</span><strong>サポート / オペレーション</strong><small>顧客対応 · 運営 · トラブルシューティング</small></a>
+      <a class="resume-variant" href="/ja/resume/software/"><span class="mono">TARGETED</span><strong>ソフトウェア / QA</strong><small>開発 · QA · テクニカルシステム</small></a>
+    </nav>
+
+    <section class="resume-section">
+      <h2>プロフィール概要</h2>
+      <p>4,000時間以上の現場トラブルシューティング、チーム運営、海外での接客経験に加え、リリース済み・実地検証済み・ベータ準備済みのソフトウェアプロジェクトを持つ、多言語対応の技術・オペレーション人材です。自立した問題解決、ドキュメント作成、品質管理、異なる文化や背景を持つ相手との明確なコミュニケーションを強みとしています。リモートのテクニカルサポート、QA / 自動化、オペレーション、テクニカルシステム領域を中心に仕事を探しています。</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>技術・オペレーションスキル</h2>
+      <p><strong>ソフトウェア:</strong> Python · C#/.NET 10 · FastAPI · React/TypeScript · WPF · SQLite · Git/GitHub · Windows診断 · ローカルAIツール<br/><strong>サポート / QA:</strong> 技術的なトラブルシューティング · 問題の切り分け · 自動テスト · ドキュメント作成 · 品質保証 · プロセス検証 · 顧客対応<br/><strong>オペレーション:</strong> シフト作成 · 在庫・発注管理 · トレーニング · 繁忙環境での接客 · 5言語でのコミュニケーション</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>主な技術プロジェクト</h2>
+      <article><div><strong>CrashScope · v0.1 beta ready</strong><span>Windows crash diagnostics · C# / .NET 10 / React / TypeScript / SQLite</span></div><ul><li>ネイティブトレイ、Auto Assist / Everyday Mode、継続保存されるセッションとインシデント、Event Log + WERの証拠、プライバシーに配慮したサポートバンドルを備えたローカルファーストのWindows診断プラットフォームを開発・検証。</li><li>185件の自動.NETテストを実装。Ryzen 5 7500F + Radeon RX 9070 XTでの最終統合検証では、Agentの平均CPU使用率0.2657%、ワーキングセット平均93 MB・最大95.83 MBを記録。現在の公開ポートフォリオではv0.1 beta readyとして掲載。</li></ul></article>
+      <article><div><strong>VektorDeck 1.0</strong><span>Python / FastAPI / React / TypeScript / SQLite · 2026年リリース</span></div><ul><li>GGUF Model Intelligence、安全なランタイム管理、ハードウェアテレメトリ、検証データを踏まえたベンチマークを統合した、ローカルファーストのWindows向けAIワークステーション管理ツールをリリース。</li><li>自動アップデート、修復、診断、CI、アップデート後のスモーク検証を実装し、重要な不整合をリリース前に見つけられる仕組みを構築。</li></ul></article>
+      <article><div><strong>Retro Game Vision</strong><span>Computer vision + decision system · Python / SQLite · 実地検証済み</span></div><ul><li>証拠の出所を追跡できる保存設計、互換性ガード、再現可能な収益計算、検証処理を含む写真から判断までのパイプラインを構築。</li><li>750件以上の基準アイテム、1,000件以上の現物観測、1,800件以上の構造化された市場観測まで実地データで拡張。</li></ul></article>
+      <article><div><strong>EasyFLix · 開発中</strong><span>現在のpre-1.0名称: ReelShelf · Windows WPF / .NET 10</span></div><ul><li>映画・TV・アニメを複数ドライブから読み取り専用で整理し、グループ表示、アートワーク、ショートカットを提供しながら元ファイルを移動・変更しないローカルメディアアプリを開発。</li><li>SubDL、ハッシュ・タイトル・エピソードを照合するOpenSubtitles SRT取得、プロバイダー別クォータキャッシュ、オフライン文字起こしと翻訳品質ゲートを実装。現在の公開実績には48件のテスト、ビルド警告0件、CI、portable win-x64検証を掲載。</li></ul></article>
+    </section>
+
+    <section class="resume-section">
+      <h2>主な職務経験</h2>
+      <article><div><strong>コーヒー部門マネージャー / カフェ運営</strong><span>Alma · Surfers Paradise, Gold Coast, Australia</span></div><ul><li>高品質なオールデイカフェ・レストランで、スタッフのシフト、発注、在庫、スペシャルティコーヒーの品質管理を担当。</li><li>プロのバリスタと業務用機材を使用し、エスプレッソの粉量・抽出量・抽出時間まで数値で管理。</li></ul></article>
+      <article><div><strong>電気工事・技術職</strong><span>Vancouver, Canada · 4,000時間以上</span></div><ul><li>電気・機械設備、高圧・低圧システムの設置と不具合対応に携わり、安全手順を守りながら現場で原因の切り分けと確認を実施。</li></ul></article>
+      <article><div><strong>接客 / 教育</strong><span>Australia & Japan · 主な職歴 2023–2025</span></div><ul><li>カフェ、ホテルサービス、英語教育などで、POS、開店・閉店作業、トレーニング、授業計画、繁忙時の落ち着いたコミュニケーションを経験。</li></ul></article>
+    </section>
+
+    <section class="resume-section resume-last">
+      <h2>学歴・資格</h2>
+      <p>電気分野の学習・職業訓練 - BCIT, Canada · High School Diploma - Queen Elizabeth School, Canada · First Aid & CPR · RSA License · Barista Training - Code Black</p>
+    </section>
+
+    <footer class="resume-availability mono">リモート勤務可 · 海外のタイムゾーンや勤務時間にも柔軟に対応</footer>
+  </section>
+
+  <style>
+    html[lang="ja"] .resume-title,
+    html[lang="ja"] .resume-section h2 { line-height:1.4; }
+    html[lang="ja"] .resume-section p,
+    html[lang="ja"] .resume-section li { line-height:1.85; line-break:strict; }
+    html[lang="ja"] .resume-variant small { line-height:1.5; }
+  </style>
+</BaseLayout>
