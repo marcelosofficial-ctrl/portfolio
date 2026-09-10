@@ -5,8 +5,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <BaseLayout
   locale="ja"
   alternatePath="/"
-  title="Marcelo Ellwanger | ソフトウェア・システム開発"
-  description="Marcelo Ellwanger の日本語ポートフォリオ。Windows診断、ローカルAI、自動化、コンピュータビジョン、データシステムを中心に、実際の課題からソフトウェアを開発しています。"
+  title="Marcelo Ellwanger | ソフトウェアエンジニア・システム開発"
+  description="Marcelo Ellwangerの日本語ポートフォリオ。Windows診断、ローカルAI、自動化、コンピュータビジョン、データシステムなど、実際の課題から生まれたソフトウェア開発と検証の記録です。"
 >
   <section class="hero identity-hero wrap ja-home">
     <div class="identity-grid">
@@ -14,8 +14,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="identity-kicker mono"><span class="identity-dot"></span><span>MARCELO ELLWANGER</span><span class="identity-kicker-muted">SOFTWARE · SYSTEMS · AI</span></div>
         <h1 class="identity-name">ソフトウェアと<br />システムをつくる。</h1>
         <div class="identity-statement">
-          <p class="identity-role">現実の「使いにくい」を、信頼できるソフトウェアに変えます。</p>
-          <p class="hero-copy">ローカルAI、Windows診断、自動化、コンピュータビジョン、データシステムを中心に、実際に自分が困ったこと・理解したいことからプロジェクトを始めています。</p>
+          <p class="identity-role">現場の不便や複雑さを、信頼して使えるソフトウェアに変える。</p>
+          <p class="hero-copy">ローカルAI、Windows診断、自動化、コンピュータビジョン、データシステムを中心に開発しています。出発点はいつも、実際に困ったことや「もっと理解したい」と思ったことです。</p>
         </div>
         <div class="hero-actions">
           <a class="button primary" href="#work">プロジェクトを見る ↓</a>
@@ -23,7 +23,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <a class="button" href="/resume/software/" lang="en" hreflang="en">Software / QA Résumé ↗</a>
         </div>
         <div class="identity-foot mono">
-          <span>日本在住</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>実際に使うものを作る</span>
+          <span>日本在住</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>実用から始める</span>
         </div>
       </div>
 
@@ -35,7 +35,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <a class="identity-current" href="/projects/crashscope/" hreflang="en">
           <span class="mono">V0.1 BETA READY · WINDOWS SYSTEMS</span>
           <strong>CrashScope</strong>
-          <p>ハードウェア状態、Event Log、WER、永続化したインシデント証拠をローカルで整理するWindowsクラッシュ診断システム。</p>
+          <p>ハードウェアテレメトリ、Event Log、WER、継続保存されるインシデント情報をローカルでまとめて確認できる、Windows向けクラッシュ診断システム。</p>
           <b>ケーススタディ（英語）↗</b>
         </a>
         <div class="identity-release">
@@ -48,7 +48,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div><span>03</span><b>CrashScope</b><em>BETA READY</em></div>
           <div><span>04</span><b>ReelShelf → EasyFLix 1.0</b><em>ACTIVE</em></div>
         </div>
-        <div class="identity-contact"><span>REMOTE / GLOBAL · OPEN TO WORK</span><a href="#contact">連絡する ↗</a></div>
+        <div class="identity-contact"><span>リモート勤務可 · グローバル対応</span><a href="#contact">連絡する ↗</a></div>
       </aside>
     </div>
 
@@ -65,7 +65,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </section>
 
   <section class="section wrap" id="work">
-    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>実際の課題から作ったもの。</h2><p class="section-intro">リリース済み、フィールド検証済み、開発中のプロジェクトを状態ごとに分けています。完成度を大きく見せるのではなく、今どこまで検証できているかをそのまま示します。技術ケーススタディの詳細は現在英語で公開しています。</p></div></div>
+    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>実際の課題から生まれたプロジェクト。</h2><p class="section-intro">リリース済み・実地検証済み・開発中を明確に分け、見せ方よりも「何を、どこまで検証できたか」を優先して掲載しています。詳細な技術ケーススタディは現在英語で公開しています。</p></div></div>
 
     <div class="project-tier">
       <div class="project-tier-head"><div><p class="eyebrow">Flagship systems</p><h3>リリース済み / 実地検証済み。</h3></div><p>設計・検証・実運用まで含めて、最も深く取り組んでいるシステムです。</p></div>
@@ -75,8 +75,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div class="project-copy">
             <div class="project-kicker"><span class="eyebrow">01 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
             <h3>Retro Game Vision &<br />Resale System</h3>
-            <p>日本の中古ショップで撮影した写真を、根拠を追跡できるリセール判断へ変換するパイプライン。価格だけでなく、現物の状態、版、証拠、確信度まで残します。</p>
-            <span class="status-note">「安い」というだけでは本当に買う価値があるか分からない、という実際の中古ゲーム探しから始まりました。</span>
+            <p>日本の中古ショップで撮影した写真から、根拠を追跡できるリセール判断を組み立てるパイプラインです。価格だけでなく、現物の状態、版、証拠、確信度まで記録します。</p>
+            <span class="status-note">中古ゲームを見ていて、「安い」という情報だけでは本当に買う価値があるか判断できないと気づいたことが出発点です。</span>
             <div class="project-tags"><span>Python</span><span>SQLite</span><span>Vision</span><span>Decision systems</span><span>CI</span></div>
             <span class="text-link">ケーススタディ（英語）↗</span>
           </div>
@@ -95,8 +95,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div class="project-showcase-copy">
             <div class="project-top"><span class="eyebrow">02 · Flagship release</span><span class="project-state">1.0.0</span></div>
             <h3>VektorDeck</h3>
-            <p>GGUFモデルの情報整理、安全なランタイム管理、ハードウェアテレメトリ、ベンチマーク、説明可能な起動提案をまとめたローカルAIワークステーションマネージャー。</p>
-            <span class="status-note">自分のローカルAI環境が、複雑な起動フラグ・散らばったモデル・ターミナル操作に依存しすぎていたことから作り始めました。</span>
+            <p>GGUFモデルの情報整理、安全なランタイム管理、ハードウェアテレメトリ、検証データを踏まえたベンチマーク、説明可能な起動提案を一つにまとめた、ローカルAI向けワークステーションマネージャー。</p>
+            <span class="status-note">自分のローカルAI環境が、細かな起動フラグや散らばったモデルファイル、毎回のターミナル操作に依存しすぎていたことから作り始めました。</span>
             <div class="forge-visual mono" aria-hidden="true">
               <div><span>QWEN 27B · IQ3_XS</span><b>11.15 GB</b></div><div class="meter"><i style="width:82%"></i></div>
               <div><span>SMART LAUNCH</span><b>8K · EXPERIMENTAL</b></div><div class="meter"><i style="width:64%"></i></div>
@@ -113,49 +113,49 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     </div>
 
     <div class="project-tier">
-      <div class="project-tier-head"><div><p class="eyebrow">Active builds</p><h3>現在も開発しているもの。</h3></div><p>実際に動作・検証できる段階まで進んでいますが、完成済みとして見せないプロジェクトです。</p></div>
+      <div class="project-tier-head"><div><p class="eyebrow">Active builds</p><h3>現在進行中の開発。</h3></div><p>すでに実際に動作し、検証も進んでいますが、完成済みの製品としては扱わないプロジェクトです。</p></div>
 
       <div class="active-project-grid">
         <a class="project compact-project" href="/projects/crashscope/" hreflang="en">
           <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state active">V0.1 BETA READY</span></div>
           <h3>CrashScope</h3>
-          <p>ハードウェアテレメトリ、Windows Event Log、WER、永続化したインシデント情報を関連付ける、プライバシー重視のWindowsクラッシュ診断システム。</p>
-          <span class="status-note">ゲーム、GPU、AIワークロードの障害時に、Windowsの有用な診断情報が複数の場所に分散していることがきっかけでした。</span>
+          <p>ハードウェアテレメトリ、Windows Event Log、WER、継続保存されるインシデント情報を関連付けて確認できる、プライバシー重視のWindowsクラッシュ診断システム。</p>
+          <span class="status-note">ゲームやGPU、AIワークロードの不具合を追うたびに、Windowsの有用な診断情報が複数の場所に分散していることが問題だと感じたのがきっかけです。</span>
           <div class="active-build-visual" aria-hidden="true">
             <div><span>AGENT CPU · AVG</span><b>0.2657%</b></div>
             <div><span>WORKING SET · AVG</span><b>93 MB</b></div>
             <div><span>AUTOMATED TESTS</span><b>185</b></div>
             <div><span>RELEASE STATE</span><b class="good">BETA READY</b></div>
           </div>
-          <span class="status-note">Ryzen 5 7500F + Radeon RX 9070 XTで最終統合検証済み。NVIDIA / Intelの実機検証は今後の範囲です。</span>
+          <span class="status-note">Ryzen 5 7500F + Radeon RX 9070 XTで最終統合検証済み。NVIDIA / Intel環境での追加実機検証は今後の予定です。</span>
           <span class="text-link">検証内容を見る（英語）↗</span>
         </a>
 
         <a class="project compact-project" href="/projects/reelshelf/" hreflang="en">
           <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
           <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
-          <p>複数ドライブにある自分のローカル動画を、元ファイルを移動・変更せずに整理するWPF/.NET 10デスクトップアプリ。映画・TV・アニメ、アートワーク、字幕ワークフローを扱います。</p>
-          <span class="status-note">「すでにディスク上にあるメディアを、元ファイルを壊さず整理したい」という自分のライブラリ運用から始まりました。</span>
+          <p>複数ドライブに保存した自分のローカルメディアを、元ファイルを移動・変更せずに整理するWPF/.NET 10デスクトップアプリ。映画・TV・アニメの分類、アートワーク、字幕ワークフローを扱います。</p>
+          <span class="status-note">自分のメディアライブラリで「すでにあるファイルを壊さず、見やすく整理したい」と感じたことが出発点です。</span>
           <div class="active-build-visual" aria-hidden="true">
             <div><span>STACK</span><b>WPF · .NET 10</b></div>
             <div><span>SAFETY</span><b>READ-ONLY SCAN</b></div>
             <div><span>VALIDATION</span><b>48 TESTS · 0 WARNINGS</b></div>
             <div><span>ARTIFACT</span><b class="good">PORTABLE WIN-X64</b></div>
           </div>
-          <span class="status-note">0.6.1 · relocation-safe dual-provider build · EasyFLix planned for 1.0</span>
+          <span class="status-note">0.6.1 · relocation-safe dual-provider build · 1.0でEasyFLixへ移行予定</span>
           <span class="text-link">開発中ケーススタディ（英語）↗</span>
         </a>
       </div>
     </div>
 
     <div class="project-tier">
-      <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>小さく、完成させたもの。</h3></div><p>大規模システムのように見せず、UIや技術判断をコンパクトに示すプロジェクトです。</p></div>
+      <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>小さく、きちんと完成させたもの。</h3></div><p>大規模システムのように見せるのではなく、UIや技術判断をコンパクトに示すプロジェクトです。</p></div>
       <div class="focused-project-grid">
         <a class="project compact-project clock-project" href="/projects/rainmeter-clock/" hreflang="en">
           <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
           <h3>MinimalClock</h3>
-          <p>ブラウザ描画、タイポグラフィ、軽量Rainmeter統合を試した小さなデスクトップ時計。</p>
-          <span class="status-note">自分のデスクトップ用の小さな時計を、性能計測・パッケージング・不要なランタイムを避ける設計まで含めて仕上げました。</span>
+          <p>Rainmeter上で動く軽量なデスクトップ時計。タイポグラフィ、小さな設定UI、実測性能、パッケージングまで含めて仕上げたフォーカスプロジェクトです。</p>
+          <span class="status-note">自分のデスクトップに欲しかった小さな時計を、性能計測・配布方法・不要なランタイムを増やさない設計まで含めて完成させました。</span>
           <div class="clock-visual mono" aria-hidden="true"><strong id="portfolio-clock-ja">20:25</strong><span>LOCAL / SYSTEM TIME</span></div>
           <span class="text-link">ケーススタディ（英語）↗</span>
         </a>
@@ -165,30 +165,30 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   <section class="field-note wrap" aria-label="個人的なフィールドノート">
     <div class="field-note-mark mono">FIELD NOTE / 001</div>
-    <blockquote>多くのプロジェクトは同じところから始まります。まず気になって、次に「欲しいツールが存在しない」ことに少し腹が立つ。</blockquote>
+    <blockquote>多くのプロジェクトは、だいたい同じところから始まります。まず気になって、次に「欲しいツールがない」のが少し悔しくなる。そこで、自分で作り始めます。</blockquote>
     <div class="field-note-signoff"><span class="note-line"></span><span>Marcelo</span></div>
   </section>
 
   <section class="section wrap principles" id="about">
-    <div class="section-head"><p class="eyebrow">About Marcelo</p><div><h2>現場経験から、ソフトウェアへ。</h2><p class="section-intro">カナダでの電気工事、オーストラリアと日本を含む接客・運営の仕事を経て、実際に自分が使いたいツールをソフトウェアとして作るようになりました。</p></div></div>
+    <div class="section-head"><p class="eyebrow">About Marcelo</p><div><h2>現場経験から、ソフトウェアへ。</h2><p class="section-intro">カナダでの電気工事、オーストラリアや日本を含む接客・運営の仕事を経て、今は実際に自分が使いたいツールをソフトウェアとして作っています。分野は変わっても、共通しているのは「仕組みを理解し、問題を見つけ、より良い状態にする」ことです。</p></div></div>
     <div class="principle-grid">
-      <article><span class="mono principle-no">01</span><h3>現実から始める。</h3><p>きれいなチュートリアル問題より、入力が不完全で制約があり、本当に解く理由がある課題を好みます。</p></article>
-      <article><span class="mono principle-no">02</span><h3>根拠を残す。</h3><p>データの出所、不確実性、なぜその結果になったのかを説明できるシステムを大切にしています。</p></article>
-      <article><span class="mono principle-no">03</span><h3>失敗を次に使う。</h3><p>バグや例外ケースを隠すのではなく、テスト・設計判断・より良い境界へ変えていきます。</p></article>
+      <article><span class="mono principle-no">01</span><h3>現実の課題から始める。</h3><p>きれいに用意されたチュートリアルより、不完全な入力や制約があり、解く理由がはっきりしている課題に惹かれます。</p></article>
+      <article><span class="mono principle-no">02</span><h3>根拠を残す。</h3><p>データの出所や不確実性を残し、「なぜその結果になったのか」を説明できるシステムを大切にしています。</p></article>
+      <article><span class="mono principle-no">03</span><h3>失敗を次に活かす。</h3><p>バグや例外ケースは隠さず、テストや設計判断、より明確な境界に変えていきます。</p></article>
     </div>
   </section>
 
   <section class="section wrap ja-contact" id="contact">
-    <div class="section-head"><p class="eyebrow">Contact</p><div><h2>仕事・共同開発・技術的な相談。</h2><p class="section-intro">現在の公開連絡先はLinkedInです。ソフトウェア開発、QA / 自動化、技術システム、リモートでの仕事やプロジェクトについて気軽にご連絡ください。</p></div></div>
+    <div class="section-head"><p class="eyebrow">Contact</p><div><h2>仕事、共同開発、技術的なご相談。</h2><p class="section-intro">現在、公開の連絡窓口はLinkedInにまとめています。ソフトウェア開発、QA / 自動化、技術システム、リモートでの仕事やプロジェクトについて、お気軽にご連絡ください。</p></div></div>
     <div class="home-about-strip">
-      <div><p class="eyebrow">Open to work</p><h3>Software engineering · QA / Automation · Technical Systems</h3></div>
+      <div><p class="eyebrow">Open to work</p><h3>ソフトウェア開発 · QA / 自動化 · テクニカルシステム</h3></div>
       <div>
-        <p>実際のデバッグ、信頼性、明確なコミュニケーション、素早く学ぶことが重要なチームを探しています。日本在住ですが、リモート・グローバルなタイムゾーンに柔軟に対応できます。</p>
+        <p>実務的なデバッグや信頼性、明確なコミュニケーション、素早く学ぶ姿勢を大切にするチームを探しています。日本在住ですが、海外のタイムゾーンにも柔軟に対応できます。</p>
         <div class="hero-actions">
           <a class="button primary" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a class="button" href="/resume/software/" hreflang="en">英文履歴書 ↗</a>
-          <a class="button" href="/" lang="en" hreflang="en" data-language-choice="en">English version ↗</a>
+          <a class="button" href="/resume/software/" hreflang="en">英文レジュメ ↗</a>
+          <a class="button" href="/" lang="en" hreflang="en" data-language-choice="en">英語版に切り替える ↗</a>
         </div>
       </div>
     </div>
