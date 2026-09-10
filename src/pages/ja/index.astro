@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout
+  locale="ja"
+  alternatePath="/"
+  title="Marcelo Ellwanger | ソフトウェア・システム開発"
+  description="Marcelo Ellwanger の日本語ポートフォリオ。Windows診断、ローカルAI、自動化、コンピュータビジョン、データシステムを中心に、実際の課題からソフトウェアを開発しています。"
+>
+  <section class="hero identity-hero wrap ja-home">
+    <div class="identity-grid">
+      <div class="identity-main">
+        <div class="identity-kicker mono"><span class="identity-dot"></span><span>MARCELO ELLWANGER</span><span class="identity-kicker-muted">SOFTWARE · SYSTEMS · AI</span></div>
+        <h1 class="identity-name">ソフトウェアと<br />システムをつくる。</h1>
+        <div class="identity-statement">
+          <p class="identity-role">現実の「使いにくい」を、信頼できるソフトウェアに変えます。</p>
+          <p class="hero-copy">ローカルAI、Windows診断、自動化、コンピュータビジョン、データシステムを中心に、実際に自分が困ったこと・理解したいことからプロジェクトを始めています。</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">プロジェクトを見る ↓</a>
+          <a class="button" href="#about">プロフィール ↗</a>
+          <a class="button" href="/resume/software/" lang="en">Software / QA Résumé ↗</a>
+        </div>
+        <div class="identity-foot mono">
+          <span>日本在住</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>実際に使うものを作る</span>
+        </div>
+      </div>
+
+      <aside class="identity-rail" aria-label="現在の開発状況">
+        <div class="identity-rail-head mono">
+          <div class="identity-author"><span><b>FROM MARCELO'S DESK</b><small>JAPAN / 2026</small></span></div>
+          <span class="status-dot">BUILDING</span>
+        </div>
+        <a class="identity-current" href="/projects/crashscope/" lang="en">
+          <span class="mono">V0.1 BETA READY · WINDOWS SYSTEMS</span>
+          <strong>CrashScope</strong>
+          <p>ハードウェア状態、Event Log、WER、永続化したインシデント証拠をローカルで整理するWindowsクラッシュ診断システム。</p>
+          <b>ケーススタディ（英語）↗</b>
+        </a>
+        <div class="identity-release">
+          <span class="mono">LATEST SHIP</span>
+          <div><strong>VektorDeck 1.0</strong><b>RELEASED</b></div>
+        </div>
+        <div class="identity-project-log mono">
+          <div><span>01</span><b>VektorDeck</b><em>SHIPPED</em></div>
+          <div><span>02</span><b>Retro Game Vision</b><em>FIELD TESTED</em></div>
+          <div><span>03</span><b>CrashScope</b><em>BETA READY</em></div>
+          <div><span>04</span><b>ReelShelf → EasyFLix 1.0</b><em>ACTIVE</em></div>
+        </div>
+        <div class="identity-contact"><span>REMOTE / GLOBAL · OPEN TO WORK</span><a href="#contact">連絡する ↗</a></div>
+      </aside>
+    </div>
+
+    <div class="identity-proof" aria-label="実績サマリー">
+      <div><strong>1.0</strong><span>VektorDeck リリース済み</span></div>
+      <div><strong>185</strong><span>CrashScope v0.1 自動 .NET テスト</span></div>
+      <div><strong>0.2657%</strong><span>CrashScope 統合検証時の平均 Agent CPU</span></div>
+      <div><strong>4,000+</strong><span>電気工事・現場技術の実務時間</span></div>
+    </div>
+
+    <div class="hero-meta identity-skills" aria-label="主な技術">
+      <span class="pill">Python</span><span class="pill">C# / .NET</span><span class="pill">FastAPI</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">SQLite</span><span class="pill">Computer Vision</span><span class="pill">Windows Diagnostics</span><span class="pill">Automation</span>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>実際の課題から作ったもの。</h2><p class="section-intro">リリース済み、フィールド検証済み、開発中のプロジェクトを状態ごとに分けています。完成度を大きく見せるのではなく、今どこまで検証できているかをそのまま示します。</p></div></div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Flagship systems</p><h3>リリース済み / 実地検証済み。</h3></div><p>設計・検証・実運用まで含めて、最も深く取り組んでいるシステムです。</p></div>
+
+      <div class="featured-project">
+        <a class="project project-featured" href="/projects/reseller-ai/" lang="en">
+          <div class="project-copy">
+            <div class="project-kicker"><span class="eyebrow">01 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
+            <h3>Retro Game Vision &<br />Resale System</h3>
+            <p>日本の中古ショップで撮影した写真を、根拠を追跡できるリセール判断へ変換するパイプライン。価格だけでなく、現物の状態、版、証拠、確信度まで残します。</p>
+            <span class="status-note">「安い」というだけでは本当に買う価値があるか分からない、という実際の中古ゲーム探しから始まりました。</span>
+            <div class="project-tags"><span>Python</span><span>SQLite</span><span>Vision</span><span>Decision systems</span><span>CI</span></div>
+            <span class="text-link">ケーススタディ（英語）↗</span>
+          </div>
+          <div class="resale-visual" aria-hidden="true">
+            <div class="visual-head mono"><span>DECISION ENGINE</span><span>LIVE MODEL</span></div>
+            <div class="decision-item"><span class="decision-index">A-042</span><div><strong>Japanese PS1 title</strong><small>compatible evidence · 4 observations</small></div><b class="buy">BUY</b></div>
+            <div class="decision-item"><span class="decision-index">A-043</span><div><strong>Collector edition</strong><small>edition mismatch detected</small></div><b class="research">RESEARCH</b></div>
+            <div class="decision-item"><span class="decision-index">A-044</span><div><strong>Disc-only copy</strong><small>condition adjusted · margin below gate</small></div><b class="skip">SKIP</b></div>
+            <div class="integrity mono"><span>FOREIGN KEYS: 0</span><span>INTEGRITY: OK</span><span>EVIDENCE: LINKED</span></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="project-grid secondary-grid">
+        <a class="project compact-project project-showcase" href="/projects/vektordeck/" lang="en">
+          <div class="project-showcase-copy">
+            <div class="project-top"><span class="eyebrow">02 · Flagship release</span><span class="project-state">1.0.0</span></div>
+            <h3>VektorDeck</h3>
+            <p>GGUFモデルの情報整理、安全なランタイム管理、ハードウェアテレメトリ、ベンチマーク、説明可能な起動提案をまとめたローカルAIワークステーションマネージャー。</p>
+            <span class="status-note">自分のローカルAI環境が、複雑な起動フラグ・散らばったモデル・ターミナル操作に依存しすぎていたことから作り始めました。</span>
+            <div class="forge-visual mono" aria-hidden="true">
+              <div><span>QWEN 27B · IQ3_XS</span><b>11.15 GB</b></div><div class="meter"><i style="width:82%"></i></div>
+              <div><span>SMART LAUNCH</span><b>8K · EXPERIMENTAL</b></div><div class="meter"><i style="width:64%"></i></div>
+              <div><span>RELEASE READINESS</span><b>0 BLOCKERS</b></div>
+            </div>
+            <span class="text-link">1.0 ケーススタディ（英語）↗</span>
+          </div>
+          <figure class="project-snapshot">
+            <img src={`${baseURL}vektordeck/dashboard.webp`} alt="VektorDeck 1.0 ダッシュボード" width="1920" height="1079" loading="lazy" decoding="async" />
+            <figcaption class="mono"><span>REAL PRODUCT / 1.0</span><b>LOCAL WORKSTATION · RELEASED</b></figcaption>
+          </figure>
+        </a>
+      </div>
+    </div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Active builds</p><h3>現在も開発しているもの。</h3></div><p>実際に動作・検証できる段階まで進んでいますが、完成済みとして見せないプロジェクトです。</p></div>
+
+      <div class="active-project-grid">
+        <a class="project compact-project" href="/projects/crashscope/" lang="en">
+          <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state active">V0.1 BETA READY</span></div>
+          <h3>CrashScope</h3>
+          <p>ハードウェアテレメトリ、Windows Event Log、WER、永続化したインシデント情報を関連付ける、プライバシー重視のWindowsクラッシュ診断システム。</p>
+          <span class="status-note">ゲーム、GPU、AIワークロードの障害時に、Windowsの有用な診断情報が複数の場所に分散していることがきっかけでした。</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>AGENT CPU · AVG</span><b>0.2657%</b></div>
+            <div><span>WORKING SET · AVG</span><b>93 MB</b></div>
+            <div><span>AUTOMATED TESTS</span><b>185</b></div>
+            <div><span>RELEASE STATE</span><b class="good">BETA READY</b></div>
+          </div>
+          <span class="status-note">Ryzen 5 7500F + Radeon RX 9070 XTで最終統合検証済み。NVIDIA / Intelの実機検証は今後の範囲です。</span>
+          <span class="text-link">検証内容を見る（英語）↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/reelshelf/" lang="en">
+          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
+          <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
+          <p>複数ドライブにある自分のローカル動画を、元ファイルを移動・変更せずに整理するWPF/.NET 10デスクトップアプリ。映画・TV・アニメ、アートワーク、字幕ワークフローを扱います。</p>
+          <span class="status-note">「すでにディスク上にあるメディアを、元ファイルを壊さず整理したい」という自分のライブラリ運用から始まりました。</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>WPF · .NET 10</b></div>
+            <div><span>SAFETY</span><b>READ-ONLY SCAN</b></div>
+            <div><span>VALIDATION</span><b>48 TESTS · 0 WARNINGS</b></div>
+            <div><span>ARTIFACT</span><b class="good">PORTABLE WIN-X64</b></div>
+          </div>
+          <span class="status-note">0.6.1 · relocation-safe dual-provider build · EasyFLix planned for 1.0</span>
+          <span class="text-link">開発中ケーススタディ（英語）↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>小さく、完成させたもの。</h3></div><p>大規模システムのように見せず、UIや技術判断をコンパクトに示すプロジェクトです。</p></div>
+      <div class="focused-project-grid">
+        <a class="project compact-project clock-project" href="/projects/rainmeter-clock/" lang="en">
+          <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
+          <h3>MinimalClock</h3>
+          <p>ブラウザ描画、タイポグラフィ、軽量Rainmeter統合を試した小さなデスクトップ時計。</p>
+          <span class="status-note">自分のデスクトップ用の小さな時計を、性能計測・パッケージング・不要なランタイムを避ける設計まで含めて仕上げました。</span>
+          <div class="clock-visual mono" aria-hidden="true"><strong id="portfolio-clock-ja">20:25</strong><span>LOCAL / SYSTEM TIME</span></div>
+          <span class="text-link">ケーススタディ（英語）↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="field-note wrap" aria-label="個人的なフィールドノート">
+    <div class="field-note-mark mono">FIELD NOTE / 001</div>
+    <blockquote>多くのプロジェクトは同じところから始まります。まず気になって、次に「欲しいツールが存在しない」ことに少し腹が立つ。</blockquote>
+    <div class="field-note-signoff"><span class="note-line"></span><span>Marcelo</span></div>
+  </section>
+
+  <section class="section wrap principles" id="about">
+    <div class="section-head"><p class="eyebrow">About Marcelo</p><div><h2>現場経験から、ソフトウェアへ。</h2><p class="section-intro">カナダでの電気工事、オーストラリアと日本を含む接客・運営の仕事を経て、実際に自分が使いたいツールをソフトウェアとして作るようになりました。</p></div></div>
+    <div class="principle-grid">
+      <article><span class="mono principle-no">01</span><h3>現実から始める。</h3><p>きれいなチュートリアル問題より、入力が不完全で制約があり、本当に解く理由がある課題を好みます。</p></article>
+      <article><span class="mono principle-no">02</span><h3>根拠を残す。</h3><p>データの出所、不確実性、なぜその結果になったのかを説明できるシステムを大切にしています。</p></article>
+      <article><span class="mono principle-no">03</span><h3>失敗を次に使う。</h3><p>バグや例外ケースを隠すのではなく、テスト・設計判断・より良い境界へ変えていきます。</p></article>
+    </div>
+  </section>
+
+  <section class="section wrap ja-contact" id="contact">
+    <div class="section-head"><p class="eyebrow">Contact</p><div><h2>仕事・共同開発・技術的な相談。</h2><p class="section-intro">現在の公開連絡先はLinkedInです。ソフトウェア開発、QA / 自動化、技術システム、リモートでの仕事やプロジェクトについて気軽にご連絡ください。</p></div></div>
+    <div class="home-about-strip">
+      <div><p class="eyebrow">Open to work</p><h3>Software engineering · QA / Automation · Technical Systems</h3></div>
+      <div>
+        <p>実際のデバッグ、信頼性、明確なコミュニケーション、素早く学ぶことが重要なチームを探しています。日本在住ですが、リモート・グローバルなタイムゾーンに柔軟に対応できます。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button" href="/resume/software/" lang="en">英文履歴書 ↗</a>
+          <a class="button" href="/" lang="en" data-language-choice="en">English version ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const clock = document.getElementById('portfolio-clock-ja');
+    const tick = () => {
+      if (!clock) return;
+      const now = new Date();
+      clock.textContent = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    };
+    tick();
+    window.setInterval(tick, 30000);
+  </script>
+
+  <style>
+    .ja-home .identity-name {
+      max-width:900px;
+      letter-spacing:-.055em;
+      line-height:.98;
+    }
+    .ja-home .identity-role,
+    .ja-home .hero-copy,
+    .ja-home .project p,
+    .ja-home .status-note,
+    .ja-home + .section p,
+    .ja-contact p {
+      line-break:strict;
+      word-break:normal;
+    }
+    .ja-home .identity-role { font-weight:620; }
+    .ja-home .identity-proof span { line-height:1.45; }
+    .ja-home .project h3 { word-break:keep-all; }
+    .ja-contact { border-top:1px solid var(--line); }
+
+    @media (max-width:820px) {
+      .ja-home .identity-name {
+        font-size:clamp(2.65rem,11.4vw,3.8rem) !important;
+        line-height:1.03 !important;
+        letter-spacing:-.055em !important;
+      }
+      .ja-home .identity-role {
+        max-width:100%;
+        font-size:1.08rem !important;
+        line-height:1.55 !important;
+      }
+      .ja-home .hero-copy {
+        line-height:1.82 !important;
+      }
+      .ja-home .identity-kicker-muted { font-size:.92em; }
+      .ja-home .identity-foot { line-height:1.55; }
+      .ja-home .project p,
+      .ja-home .status-note,
+      .ja-home .section-intro,
+      .ja-home + .section p,
+      .ja-contact p {
+        line-height:1.82 !important;
+      }
+      .ja-home .project-tier-head h3,
+      .ja-contact h2 { line-height:1.23; }
+      .ja-home .identity-proof span { font-size:.50rem !important; }
+      .ja-contact { padding-top:64px !important; }
+    }
+  </style>
+</BaseLayout>
