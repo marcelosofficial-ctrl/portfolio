@@ -172,6 +172,151 @@ const websiteSchema = {
         .project-brand-icon { width: 40px; height: 40px; margin-top: 15px; border-radius: 11px; }
         .case-brand-icon { width: 68px; height: 68px; border-radius: 17px; }
       }
+
+      /* Final real-phone pass: safe areas, stable page chrome, tactile one-shot motion. */
+      @media (max-width: 820px) {
+        .wrap {
+          width: auto !important;
+          max-width: var(--max);
+          margin-left: max(var(--mobile-gutter, 18px), env(safe-area-inset-left, 0px)) !important;
+          margin-right: max(var(--mobile-gutter, 18px), env(safe-area-inset-right, 0px)) !important;
+        }
+        .site-header nav {
+          left: max(var(--mobile-gutter, 18px), env(safe-area-inset-left, 0px)) !important;
+          right: max(var(--mobile-gutter, 18px), env(safe-area-inset-right, 0px)) !important;
+        }
+        .identity-name,
+        .section-head h2,
+        .project-tier-head h3,
+        .project h3,
+        .case-title-block h1,
+        .case-hero h1,
+        .about-hero h1,
+        .contact-hero h1,
+        .resume-head h1,
+        .resume-title,
+        .field-note blockquote {
+          text-wrap: balance;
+        }
+        .identity-role,
+        .hero-copy,
+        .section-intro,
+        .project p,
+        .status-note,
+        .case-copy,
+        .case-section p,
+        .case-section li,
+        .about-hero-copy p,
+        .resume-section p,
+        .resume-section li,
+        .contact-hero p,
+        .home-about-strip p {
+          text-wrap: pretty;
+        }
+        .project-rename-note {
+          display: block;
+          margin-top: .32rem;
+          color: #7f898c;
+          font-size: .46em;
+          line-height: 1.25;
+          font-weight: 520;
+          letter-spacing: -.01em;
+        }
+        .button,
+        .mobile-nav-toggle,
+        .site-header nav a,
+        .project,
+        .text-link,
+        .resume-variant,
+        .current-focus-grid a {
+          -webkit-tap-highlight-color: transparent;
+        }
+      }
+
+      /* iPhone-class 375–390px screens keep the proof block compact as a 2×2 grid. */
+      @media (min-width: 360px) and (max-width: 390px) {
+        .identity-proof {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+        .identity-proof > div,
+        .identity-proof > div + div,
+        .identity-proof > div:nth-child(3),
+        .identity-proof > div:nth-child(4) {
+          min-height: 84px !important;
+          border-right: 1px solid rgba(255,255,255,.06) !important;
+          border-bottom: 1px solid rgba(255,255,255,.06) !important;
+        }
+        .identity-proof > div:nth-child(2),
+        .identity-proof > div:nth-child(4) { border-right: 0 !important; }
+        .identity-proof > div:nth-child(3),
+        .identity-proof > div:nth-child(4) { border-bottom: 0 !important; }
+      }
+
+      @media (max-width: 820px) and (prefers-reduced-motion: no-preference) {
+        .site-shell { view-transition-name: site-chrome; }
+        #main-content { view-transition-name: page-content; }
+        ::view-transition-group(root) { animation: none !important; }
+        ::view-transition-group(site-chrome) { animation: none !important; }
+        ::view-transition-old(page-content) {
+          animation: mobile-content-out .14s cubic-bezier(.4,0,1,1) both !important;
+        }
+        ::view-transition-new(page-content) {
+          animation: mobile-content-in .24s cubic-bezier(.22,.75,.24,1) both !important;
+        }
+        .project.reveal-in .meter i {
+          transform-origin: left center;
+          animation: mobile-meter-fill .62s cubic-bezier(.22,.75,.24,1) both;
+        }
+        .project.reveal-in .decision-item,
+        .project.reveal-in .active-build-visual > div {
+          animation: mobile-readout-in .36s cubic-bezier(.22,.75,.24,1) both;
+        }
+        .project.reveal-in .decision-item:nth-child(3),
+        .project.reveal-in .active-build-visual > div:nth-child(2) { animation-delay: 45ms; }
+        .project.reveal-in .decision-item:nth-child(4),
+        .project.reveal-in .active-build-visual > div:nth-child(3) { animation-delay: 85ms; }
+        .project.reveal-in .active-build-visual > div:nth-child(4) { animation-delay: 125ms; }
+      }
+
+      @keyframes mobile-content-out {
+        to { opacity: 0; transform: translate3d(0,-4px,0); }
+      }
+      @keyframes mobile-content-in {
+        from { opacity: 0; transform: translate3d(0,7px,0); }
+        to { opacity: 1; transform: translate3d(0,0,0); }
+      }
+      @keyframes mobile-meter-fill {
+        from { transform: scaleX(.14); opacity: .48; }
+        to { transform: scaleX(1); opacity: 1; }
+      }
+      @keyframes mobile-readout-in {
+        from { opacity: .40; transform: translate3d(0,5px,0); }
+        to { opacity: 1; transform: translate3d(0,0,0); }
+      }
+
+      @media (max-width: 820px) and (hover: none) and (pointer: coarse) {
+        .button:active,
+        .mobile-nav-toggle:active {
+          border-color: rgba(214,255,87,.26) !important;
+          box-shadow: inset 0 0 0 1px rgba(214,255,87,.035), 0 0 22px rgba(214,255,87,.055) !important;
+        }
+        .project:active {
+          border-color: rgba(214,255,87,.24) !important;
+          box-shadow: inset 0 -1px 0 rgba(214,255,87,.18), 0 18px 42px rgba(0,0,0,.18) !important;
+        }
+        .text-link:active { color: var(--accent) !important; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .site-shell,
+        #main-content { view-transition-name: none !important; }
+        .project .meter i,
+        .project .decision-item,
+        .project .active-build-visual > div {
+          animation: none !important;
+          transform: none !important;
+        }
+      }
     </style>
   </head>
   <body>
