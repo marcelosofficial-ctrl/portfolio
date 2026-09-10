@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Retro Game Vision & Resale System | Marcelo Ellwanger" description="A field-tested computer vision, SQLite and decision-system case study built around real Japanese second-hand store sourcing.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">01 · Flagship case study · Field tested</p>
+      <h1>Retro Game Vision & Resale System</h1>
+      <p class="case-copy">A production-minded pipeline for turning Japanese second-hand store photos into traceable buying decisions. The difficult part is not recognizing a game. It is deciding whether <em>this exact physical copy</em> is worth buying without silently mixing incompatible evidence.</p>
+      <div class="case-actions">
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/Retro-Game-Vision-Pipeline" target="_blank" rel="noreferrer">Open public repository ↗</a>
+        <a class="button" href="#architecture">Explore architecture ↓</a>
+      </div>
+    </div>
+
+    <div class="case-status-panel mono" aria-label="Project status">
+      <div class="case-status-head"><span>SYSTEM / FIELD STATE</span><b>VALIDATED</b></div>
+      <div class="case-status-row"><span>Canonical items</span><strong>750+</strong></div>
+      <div class="case-status-row"><span>Physical observations</span><strong>1,000+</strong></div>
+      <div class="case-status-row"><span>Market observations</span><strong>1,800+</strong></div>
+      <div class="case-status-row"><span>Integrity model</span><strong>SQLite</strong></div>
+      <div class="case-status-foot"><span class="status-dot">PUBLIC DEMO RUNNABLE</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div>
+      <p class="eyebrow">The problem</p>
+      <h2>A price tag is not a valuation.</h2>
+    </div>
+    <div class="case-long-copy">
+      <p>I started with a practical question while looking through retro-game stores in Japan: which copies are actually worth buying for resale?</p>
+      <p>A title can look profitable until the details change. The disc may be missing. The copy may be a budget reissue. The market result may be for a different platform. A nearby price label may belong to another game. A high retail asking price may be mistaken for a sold value.</p>
+      <p>The project grew from photo reading into a system for preserving evidence, resolving identity, filtering incompatible market data and producing decisions that can explain themselves.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="architecture">
+    <div class="case-section-heading">
+      <p class="eyebrow">Architecture</p>
+      <h2>Evidence first. Decision last.</h2>
+      <p>The pipeline deliberately keeps recognition, physical-copy state, market evidence and economics separate. Each stage can refuse to continue when the evidence is not good enough.</p>
+    </div>
+
+    <div class="architecture-flow" aria-label="System architecture flow">
+      <div class="arch-node arch-input"><span class="mono">01 / INPUT</span><strong>Store photo</strong><small>immutable source evidence</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">02 / EVIDENCE</span><strong>Hash + region</strong><small>dedupe and spatial lineage</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">03 / VISION</span><strong>OCR + candidates</strong><small>titles, labels, positions</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">04 / IDENTITY</span><strong>Canonical item</strong><small>platform, region, edition</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">05 / MARKET</span><strong>Compatible evidence</strong><small>sold, ask, buyback, guide</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">06 / MODEL</span><strong>Economics</strong><small>fees, ROI, max buy</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node arch-output"><span class="mono">07 / OUTPUT</span><strong>Decision</strong><small>BUY / MAYBE / RESEARCH / SKIP</small></div>
+    </div>
+
+    <div class="architecture-note mono"><span>RULE</span><p>No downstream stage is allowed to manufacture certainty that the evidence layer does not have.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Data model</p>
+      <h2>The separation that makes the system trustworthy.</h2>
+    </div>
+    <div class="model-grid">
+      <article>
+        <span class="mono model-index">A</span>
+        <h3>Canonical item</h3>
+        <p>The shared identity of a title: platform, region, edition and other attributes that define what the product actually is.</p>
+      </article>
+      <article>
+        <span class="mono model-index">B</span>
+        <h3>Physical observation</h3>
+        <p>One exact copy at one store, on one visit, at one visible price, with its own condition and completeness state.</p>
+      </article>
+      <article>
+        <span class="mono model-index">C</span>
+        <h3>Market observation</h3>
+        <p>One sold result, active ask, retail ask, buyback quote or guide observation. Evidence types stay semantically distinct.</p>
+      </article>
+      <article>
+        <span class="mono model-index">D</span>
+        <h3>Evidence asset</h3>
+        <p>The source image or document supporting a claim, linked through hashes and image regions instead of being discarded after OCR.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Hard rules</p>
+      <h2>The system is designed to say “I don’t know.”</h2>
+    </div>
+    <div class="rules-table">
+      <div class="rule-row"><span class="rule-no mono">01</span><strong>Different platform?</strong><p>Reject the comp. A Saturn market result cannot price a PlayStation copy.</p><b>BLOCK</b></div>
+      <div class="rule-row"><span class="rule-no mono">02</span><strong>Different edition?</strong><p>Do not silently borrow standard-edition pricing for a budget or collector release.</p><b>BLOCK</b></div>
+      <div class="rule-row"><span class="rule-no mono">03</span><strong>Different completeness?</strong><p>Disc-only and complete-copy evidence remain separate unless an explicit rule allows otherwise.</p><b>BLOCK</b></div>
+      <div class="rule-row"><span class="rule-no mono">04</span><strong>Obscured price?</strong><p>Store NULL. Research time is not substituted for an unreadable source value.</p><b>UNKNOWN</b></div>
+      <div class="rule-row"><span class="rule-no mono">05</span><strong>Weak market evidence?</strong><p>Return RESEARCH rather than forcing a confident-looking purchase decision.</p><b>DEFER</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Failure → redesign</p>
+      <h2>The useful mistakes changed the architecture.</h2>
+    </div>
+    <div class="failure-grid">
+      <article>
+        <span class="failure-label mono">EARLY FAILURE</span>
+        <h3>Whole-shelf OCR attached the wrong price to the wrong game.</h3>
+        <p>Reading a dense shelf as a flat block of text lost the spatial relationship between titles and nearby labels.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>Keep the original image immutable, derive crops and grid regions, and preserve explicit spatial lineage back to the source.</p></div>
+      </article>
+      <article>
+        <span class="failure-label mono">EARLY FAILURE</span>
+        <h3>Headline market value looked useful until copy state disagreed.</h3>
+        <p>A complete-copy comp can turn a damaged or incomplete physical copy into a fake bargain.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>Physical-copy state became a separate entity, with compatibility gates before any market evidence reaches economics.</p></div>
+      </article>
+      <article>
+        <span class="failure-label mono">EARLY FAILURE</span>
+        <h3>Repeat imports risked duplicating evidence and changing history.</h3>
+        <p>A sourcing tool that cannot safely re-run becomes difficult to trust during iterative research.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>Hash-based evidence identity, idempotent writes, integrity checks and checkpoint validation became part of the workflow.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="field-grid">
+      <div class="case-section-heading">
+        <p class="eyebrow">Field validation</p>
+        <h2>Built against messy store data, not a clean demo CSV.</h2>
+        <p>A recent validation batch illustrates how the system behaves when the evidence is imperfect.</p>
+      </div>
+      <div class="field-console mono" aria-label="Anonymized field validation summary">
+        <div><span>uploaded photos</span><b>10</b></div>
+        <div><span>unique evidence assets</span><b>9</b></div>
+        <div><span>distinct physical copies</span><b>49</b></div>
+        <div><span>directly readable prices</span><b>48</b></div>
+        <div><span>obscured prices guessed</span><b class="accent-value">0</b></div>
+        <div><span>compatible market observations added</span><b>55</b></div>
+        <div class="field-result"><span>resulting screen</span><strong>1 BUY · 7 MAYBE · 41 RESEARCH</strong></div>
+        <div class="field-health"><span>FK CHECK</span><b>0</b><span>INTEGRITY</span><b>OK</b><span>REPEAT IMPORT</span><b>NO-OP</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Engineering surface</p>
+      <h2>What the project demonstrates.</h2>
+    </div>
+    <div class="skill-matrix">
+      <div><span>Python</span><p>Typed domain models, modular decision logic, CLI workflows, hashing, validation and testable business rules.</p></div>
+      <div><span>SQLite / data modeling</span><p>Normalized entities, foreign keys, append-only evidence, idempotent writes and integrity checks.</p></div>
+      <div><span>Computer vision workflow</span><p>Image preservation, OCR candidate extraction, crop/grid derivation and evidence-region tracking.</p></div>
+      <div><span>Data engineering</span><p>Deduplication, canonical resolution, provenance, evidence typing, compatibility and freshness handling.</p></div>
+      <div><span>Decision systems</span><p>Deterministic fees, profit, ROI, confidence gates, maximum-buy thresholds and explicit failure states.</p></div>
+      <div><span>Reliability</span><p>Regression tests, checkpoint validation, repeat-import checks and CI-safe publication boundaries.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="boundary-grid">
+      <div>
+        <p class="eyebrow">Public / private boundary</p>
+        <h2>Inspectable without publishing the operational sourcing system.</h2>
+        <p class="case-copy-small">The public repository is deliberately runnable. A reviewer can inspect the architecture, execute the synthetic demo, exercise the SQLite layer and run the tests. Real store photos, production market datasets, private adapters and operational thresholds remain private.</p>
+      </div>
+      <div class="boundary-table">
+        <div><span>PUBLIC</span><p>Typed Python models</p></div>
+        <div><span>PRIVATE</span><p>Production database and sourcing history</p></div>
+        <div><span>PUBLIC</span><p>Synthetic end-to-end demo</p></div>
+        <div><span>PRIVATE</span><p>Real store photographs and market evidence</p></div>
+        <div><span>PUBLIC</span><p>Compatibility tests + CI</p></div>
+        <div><span>PRIVATE</span><p>Operational thresholds and source adapters</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Repository</p>
+    <h2>The public implementation is built to be read, run and challenged.</h2>
+    <p>Architecture notes, data-model documentation, ADRs, regression tests and the synthetic demo are all available in the repository.</p>
+    <div class="case-actions">
+      <a class="button primary" href="https://github.com/marcelosofficial-ctrl/Retro-Game-Vision-Pipeline" target="_blank" rel="noreferrer">View source on GitHub ↗</a>
+      <a class="button" href="/">Back to portfolio ↑</a>
+    </div>
+  </section>
+</BaseLayout>

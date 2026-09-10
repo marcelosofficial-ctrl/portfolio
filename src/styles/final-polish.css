@@ -1,0 +1,562 @@
+/* Final targeted polish for recruiter-facing surfaces. Imported last. */
+
+/* Resolve inherited inset/opacity from the earlier generic project hover layer so
+   the MARCELO/LAB architectural project edge is anchored to the bottom as intended. */
+.project::after {
+  top: auto;
+  right: auto;
+  opacity: 1;
+}
+
+/* About portrait: use the supplied high-resolution source as an editorial portrait,
+   not as a generic card image. Keep the warm Japanese interior and frame it like a
+   deliberate profile plate beside the technical biography. */
+.about-hero {
+  grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr);
+  gap:clamp(56px,6.5vw,104px);
+}
+.about-profile-panel {
+  width:100%;
+  max-width:500px;
+  justify-self:end;
+  position:relative;
+}
+.about-profile-panel::before {
+  content:"PROFILE / M.E. / 2026";
+  position:absolute;
+  right:0;
+  top:-26px;
+  color:#4e575b;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.49rem;
+  letter-spacing:.15em;
+}
+.about-portrait {
+  position:relative;
+  isolation:isolate;
+  width:min(100%,360px);
+  aspect-ratio:3 / 4;
+  align-self:flex-end;
+  margin-left:auto;
+  background:#0d1012;
+  border-color:rgba(255,255,255,.105);
+  box-shadow:0 26px 74px rgba(0,0,0,.30);
+}
+.about-portrait::before {
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:10px;
+  pointer-events:none;
+  background:
+    linear-gradient(var(--accent),var(--accent)) left top/18px 1px no-repeat,
+    linear-gradient(var(--accent),var(--accent)) left top/1px 18px no-repeat,
+    linear-gradient(rgba(242,239,233,.34),rgba(242,239,233,.34)) right bottom/18px 1px no-repeat,
+    linear-gradient(rgba(242,239,233,.34),rgba(242,239,233,.34)) right bottom/1px 18px no-repeat;
+  opacity:.52;
+}
+.about-portrait img {
+  object-position:50% 20%;
+  filter:saturate(.84) contrast(1.025) brightness(.94);
+  transform:scale(1.001);
+}
+.about-portrait:hover img {
+  filter:saturate(.98) contrast(1.015) brightness(.98);
+  transform:scale(1.008);
+}
+.about-portrait figcaption {
+  position:relative;
+  z-index:3;
+  min-height:43px;
+  padding:11px 13px 10px;
+  background:#0c1011;
+  border-top:1px solid rgba(255,255,255,.085);
+}
+.about-portrait figcaption::before {
+  content:"01";
+  color:var(--accent);
+  margin-right:10px;
+  opacity:.78;
+}
+
+/* The resume chooser is semantically a nav, but it is not the site-header nav.
+   Suppress the global navigation underline pseudo-element here. */
+.resume-variants .resume-variant::after {
+  content: none !important;
+  display: none !important;
+}
+.resume-variants .resume-variant:hover {
+  border-color: rgba(214,255,87,.38);
+  background: rgba(214,255,87,.018);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+}
+.resume-variants .resume-variant.active:hover {
+  border-color: rgba(214,255,87,.52);
+}
+
+/* The original VektorDeck web screenshots are real product captures, but the
+   checked-in copies are compact web previews (1000px / 760px wide). Never
+   stretch those previews beyond their native pixel width on large displays. */
+.product-shot img[src*="vektordeck/dashboard.webp"] {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+}
+.product-shot img[src*="vektordeck/intelligence-tour.webp"],
+.product-shot img[src*="vektordeck/evidence-tour.webp"] {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+.product-shot:has(img[src*="vektordeck/"]) {
+  background:
+    linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(145deg,#0f1315,#0b0e10);
+  background-size: 30px 30px, 30px 30px, auto;
+}
+
+/* The homepage previously enlarged the compressed VektorDeck dashboard preview.
+   Use a crisp CSS product-summary panel there instead. The real screenshots
+   remain available inside the case study. */
+.project-snapshot {
+  position: relative;
+  min-height: 270px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 22%, rgba(214,255,87,.08), transparent 26%),
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px, transparent 1px),
+    #0b0f10;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.project-snapshot > img {
+  display: none;
+}
+.project-snapshot::before {
+  content: "VEKTORDECK  /  CONTROL DECK\A\A CPU   RAM   GPU   VRAM\A LIVE TELEMETRY  ·  SAFE RUNTIME OWNERSHIP\A SMART LAUNCH     RELEASE READINESS\A\A 1.0.0  /  LOCAL-FIRST";
+  white-space: pre-wrap;
+  position: absolute;
+  inset: 28px 26px 70px;
+  color: #8b9497;
+  font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size: clamp(.62rem,.85vw,.78rem);
+  line-height: 1.9;
+  letter-spacing: .08em;
+}
+.project-snapshot::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  top: 50%;
+  height: 5px;
+  background: linear-gradient(90deg,var(--accent) 0 66%,#252b2e 66% 100%);
+  box-shadow: 0 34px 0 #252b2e, 0 68px 0 #252b2e;
+  opacity: .78;
+}
+.project-snapshot figcaption {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(10,13,14,.94);
+  color: #687176;
+  font-size: .55rem;
+  letter-spacing: .08em;
+}
+.project-snapshot figcaption b {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Refinement pass 02: quiet confidence, better rhythm, more tactile details.
+   -------------------------------------------------------------------------- */
+
+::selection { background:rgba(214,255,87,.86); color:#090b0c; }
+:focus-visible { outline:1px solid var(--accent); outline-offset:4px; }
+
+/* Header reads like a compact instrument bar instead of a generic nav row. */
+.site-header { position:relative; }
+.site-header::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:54px;
+  height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:.42;
+}
+.site-header nav a {
+  position:relative;
+  padding:7px 0;
+  transition:color .18s ease,transform .18s ease;
+}
+.site-header nav a:hover { transform:translateY(-1px); }
+.site-header nav a::before {
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:1px;
+  width:0;
+  height:1px;
+  background:var(--accent);
+  opacity:.56;
+  transform:translateX(-50%);
+  transition:width .2s ease;
+}
+.site-header nav a:hover::before { width:100%; }
+
+/* Hero: reduce the headline's visual weight and make the statement do more work. */
+.identity-hero { padding-top:clamp(62px,7vh,88px); }
+.identity-name {
+  max-width:780px;
+  font-size:clamp(3.35rem,4.45vw,5.35rem);
+  line-height:.96;
+  letter-spacing:-.047em;
+  font-weight:510;
+  text-wrap:balance;
+}
+.identity-role { max-width:330px; }
+.identity-statement { max-width:860px; gap:clamp(28px,4vw,54px); }
+.identity-main .hero-actions { margin-top:30px; }
+.identity-main .button { min-height:42px; display:inline-flex; align-items:center; }
+.identity-foot { margin-top:30px; opacity:.92; }
+
+/* Make the lab rail feel like one carefully assembled object. */
+.identity-rail { box-shadow:0 28px 80px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.018); }
+.identity-rail-head { background:rgba(255,255,255,.008); }
+.identity-current strong { font-weight:585; }
+.identity-current p { max-width:420px; }
+.identity-project-log div { transition:background .18s ease,padding-left .18s ease; }
+.identity-project-log div:hover { background:rgba(255,255,255,.012); padding-left:4px; }
+.identity-contact { min-height:58px; }
+
+/* Skills are supporting evidence, so make them quieter until interaction. */
+.identity-skills .pill {
+  background:rgba(255,255,255,.006);
+  color:#aeb5b2;
+  border-color:#252b2e;
+  padding:7px 10px;
+  font-size:.75rem;
+}
+.identity-skills .pill:hover { background:rgba(214,255,87,.018); color:#eef0ec; }
+
+/* More breathing room before the portfolio starts, then a tighter internal rhythm. */
+main:has(.identity-hero) #work { padding-top:126px; }
+main:has(.identity-hero) .project-tier { margin-top:72px; }
+main:has(.identity-hero) .project-tier:first-of-type { margin-top:0; }
+main:has(.identity-hero) .project-tier-head { margin-bottom:26px; }
+main:has(.identity-hero) .project { transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+main:has(.identity-hero) .project:hover {
+  transform:translateY(-2px);
+  border-color:#424a4e;
+  box-shadow:0 22px 54px rgba(0,0,0,.16);
+}
+main:has(.identity-hero) .project-state { backdrop-filter:blur(4px); }
+
+/* The field note is the warm human pause, so give it more editorial breathing room. */
+.field-note { padding-top:clamp(88px,9vw,138px); padding-bottom:clamp(88px,9vw,138px); }
+.field-note-mark { margin-bottom:22px; }
+.field-note blockquote { max-width:900px; }
+.field-note-signoff { margin-top:34px; }
+
+/* About: let the portrait feel integrated with the text rather than like a separate widget. */
+.about-hero-copy { position:relative; }
+.about-hero-copy::after {
+  content:"";
+  display:block;
+  width:72px;
+  height:1px;
+  margin-top:30px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:.46;
+}
+.about-portrait { transform:rotate(.18deg); transition:transform .3s ease,border-color .3s ease; }
+.about-portrait:hover { transform:rotate(0deg) translateY(-2px); border-color:rgba(214,255,87,.22); }
+.about-card { margin-top:4px; }
+.about-card>div { transition:background .18s ease; }
+.about-card>div:hover { background:rgba(255,255,255,.012); }
+
+/* Footer gets a clearer endpoint without becoming another hero. */
+.footer { position:relative; padding-top:42px; }
+.footer::before {
+  content:"END / FIELD NOTE";
+  position:absolute;
+  top:13px;
+  left:0;
+  color:#464f53;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.14em;
+}
+.footer-links a { transition:color .18s ease; }
+.footer-links a:hover { color:var(--accent); }
+
+@media (min-width: 1800px) {
+  .identity-name { font-size:clamp(4.3rem,4.05vw,5.8rem); max-width:860px; }
+}
+
+@media (max-width: 980px) {
+  .about-hero { grid-template-columns:1fr; gap:50px; }
+  .about-profile-panel {
+    max-width:720px;
+    justify-self:start;
+  }
+  .about-profile-panel::before { left:0; right:auto; }
+  .about-portrait {
+    width:min(100%,340px);
+    align-self:start;
+    margin-left:0;
+  }
+  .identity-name { max-width:700px; }
+  main:has(.identity-hero) #work { padding-top:100px; }
+}
+
+@media (max-width: 760px) {
+  .site-header::after { width:36px; }
+  .site-header nav a::before { display:none; }
+  .site-header nav a:hover { transform:none; }
+  .identity-name { font-size:clamp(3rem,12.8vw,4.35rem); line-height:.94; }
+  .identity-statement { gap:18px; }
+  .about-profile-panel::before { display:none; }
+  .about-portrait {
+    width:min(100%,300px);
+    transform:none;
+  }
+  .about-portrait:hover { transform:none; }
+  .project-snapshot { min-height:230px; }
+  .project-snapshot::before { inset:22px 20px 62px; font-size:.56rem; }
+  .project-snapshot::after { left:20px; right:20px; }
+  .project-snapshot figcaption { display:grid; gap:4px; }
+  main:has(.identity-hero) #work { padding-top:84px; }
+  main:has(.identity-hero) .project-tier { margin-top:56px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .about-portrait img,.about-portrait,.site-header nav a,.site-header nav a::before,.identity-project-log div { transition:none !important; transform:none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   Precision pass 03: resolve visual collisions and unify interaction language.
+   Presentation only. Project content and product state stay untouched.
+   -------------------------------------------------------------------------- */
+
+/* Header: one hover signal, not several competing lime lines. */
+.site-header nav a {
+  isolation:isolate;
+  transform:none;
+  border-radius:7px;
+  transition:color .18s ease,text-shadow .18s ease;
+}
+.site-header nav a::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-5px -10px;
+  width:auto;
+  height:auto;
+  left:-10px;
+  bottom:-5px;
+  border-radius:9px;
+  background:radial-gradient(ellipse at 50% 55%,rgba(214,255,87,.105),rgba(214,255,87,.025) 48%,transparent 76%);
+  opacity:0;
+  transform:none;
+  transition:opacity .18s ease;
+  pointer-events:none;
+}
+.site-header nav a::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  right:auto;
+  bottom:-4px;
+  width:0;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(214,255,87,.92),transparent);
+  opacity:0;
+  transition:width .2s ease,opacity .2s ease;
+  pointer-events:none;
+}
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color:#eef1ed;
+  transform:none;
+  text-shadow:0 0 13px rgba(214,255,87,.12);
+}
+.site-header nav a:hover::before,
+.site-header nav a:focus-visible::before {
+  width:auto;
+  opacity:1;
+}
+.site-header nav a:hover::after,
+.site-header nav a:focus-visible::after {
+  right:auto;
+  width:72%;
+  opacity:.82;
+}
+/* The reading-progress line stays useful, but no longer impersonates a second nav underline. */
+.scroll-progress span {
+  background:linear-gradient(90deg,rgba(242,239,233,.24),rgba(214,255,87,.20),rgba(242,239,233,.14));
+  opacity:.34;
+}
+
+/* Hero: replace the stray diagonal stroke with a restrained signal-wave motif.
+   It occupies the negative space between the masthead and lab rail and fades at
+   both ends so it never becomes a divider or crosses important copy. */
+main:has(.identity-hero) .identity-hero::after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:40%;
+  top:10.5%;
+  width:min(28%,430px);
+  height:132px;
+  transform:none;
+  transform-origin:center;
+  opacity:.52;
+  pointer-events:none;
+  background:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 120'%3E%3Cg fill='none' stroke='%23d6ff57' stroke-width='1'%3E%3Cpath opacity='.12' d='M0 66 C88 24 158 103 248 63 S417 22 560 65'/%3E%3Cpath opacity='.19' d='M0 73 C88 31 158 110 248 70 S417 29 560 72'/%3E%3Cpath opacity='.15' d='M0 80 C88 38 158 117 248 77 S417 36 560 79'/%3E%3Cpath opacity='.10' d='M0 87 C88 45 158 124 248 84 S417 43 560 86'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100% 100%;
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 14%,black 86%,transparent);
+  mask-image:linear-gradient(90deg,transparent,black 14%,black 86%,transparent);
+}
+
+/* Active builds: align both the cards and the internal diagnostic/readout start.
+   ReelShelf's rename note makes its heading taller, so explicit rhythm is needed. */
+.active-project-grid {
+  align-items:stretch;
+}
+.active-project-grid > .project {
+  align-self:stretch;
+  height:100%;
+  margin-top:0 !important;
+}
+.active-project-grid > .project .project-top {
+  min-height:31px;
+}
+.active-project-grid > .project .project-title-row {
+  min-height:92px;
+  align-items:flex-start;
+}
+.active-project-grid > .project > p {
+  min-height:84px;
+}
+.active-project-grid > .project > .status-note:first-of-type {
+  min-height:46px;
+  align-items:flex-start;
+}
+/* These paired cards keep their outer edges fixed on hover. Interaction happens
+   through border, icon and internal readout changes instead of vertical movement. */
+main:has(.identity-hero) .active-project-grid > .project:hover {
+  transform:none;
+  border-color:#424a4e;
+  box-shadow:0 20px 50px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.012);
+}
+
+/* VektorDeck summary: metadata is now in the caption rail, away from the meters. */
+.project-snapshot::before {
+  content:"VEKTORDECK  /  CONTROL DECK\A\A CPU   RAM   GPU   VRAM\A LIVE TELEMETRY  ·  SAFE RUNTIME OWNERSHIP\A SMART LAUNCH     RELEASE READINESS";
+  inset:26px 26px 72px;
+  line-height:1.82;
+}
+.project-snapshot::after {
+  top:56%;
+  height:4px;
+  box-shadow:0 24px 0 #252b2e,0 48px 0 #252b2e;
+}
+.project-snapshot figcaption {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px 18px;
+  min-height:48px;
+}
+.project-snapshot figcaption::before {
+  content:"1.0.0 / LOCAL-FIRST";
+  color:#8b9497;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.54rem;
+  letter-spacing:.09em;
+  white-space:nowrap;
+}
+.project-snapshot figcaption > span {
+  color:#626c70;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Small consistency upgrades that make interaction feel deliberate. */
+.identity-proof strong,
+.active-build-visual b,
+.forge-visual b {
+  font-variant-numeric:tabular-nums;
+}
+.button:hover:not(.primary),
+.button:focus-visible:not(.primary) {
+  background:rgba(214,255,87,.018);
+  border-color:rgba(214,255,87,.24);
+  box-shadow:0 0 24px rgba(214,255,87,.035);
+}
+.project:focus-visible {
+  border-color:rgba(214,255,87,.34);
+  box-shadow:0 0 0 1px rgba(214,255,87,.08),0 20px 48px rgba(0,0,0,.16);
+}
+.project-state {
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+.project-tier-head h3,
+.identity-role {
+  text-wrap:balance;
+}
+
+@media (max-width:1180px) {
+  main:has(.identity-hero) .identity-hero::after { display:none; }
+  .active-project-grid > .project .project-title-row,
+  .active-project-grid > .project > p,
+  .active-project-grid > .project > .status-note:first-of-type { min-height:0; }
+}
+
+@media (max-width:760px) {
+  .site-header nav a::before,
+  .site-header nav a::after { display:none; }
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible { text-shadow:none; }
+  .project-snapshot::before {
+    inset:20px 20px 66px;
+    font-size:.55rem;
+    line-height:1.72;
+  }
+  .project-snapshot::after {
+    left:20px;
+    right:20px;
+    top:54%;
+    box-shadow:0 20px 0 #252b2e,0 40px 0 #252b2e;
+  }
+  .project-snapshot figcaption {
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+  .project-snapshot figcaption::before { white-space:normal; }
+  .project-snapshot figcaption > span { white-space:normal; overflow:visible; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .site-header nav a,
+  .site-header nav a::before,
+  .site-header nav a::after { transition:none !important; }
+}

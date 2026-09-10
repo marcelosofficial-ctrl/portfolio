@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Resume | Marcelo Ellwanger" description="General, remote support/operations, and software/QA resume versions for Marcelo Ellwanger.">
+  <section class="resume-page wrap">
+    <div class="resume-toolbar mono">
+      <a href="/about/">← ABOUT</a>
+      <button type="button" onclick="window.print()">PRINT / SAVE AS PDF</button>
+    </div>
+
+    <header class="resume-head">
+      <p class="eyebrow">Professional résumé</p>
+      <h1>Marcelo Ellwanger</h1>
+      <p class="resume-title">Remote Technical Support · Software & QA · Operations</p>
+      <div class="resume-contact mono">
+        <a href="/contact/">Contact</a><span>·</span>
+        <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn</a><span>·</span>
+        <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub</a><span>·</span><a href="/">Portfolio</a>
+      </div>
+    </header>
+
+    <nav class="resume-variants" aria-label="Resume versions">
+      <a class="resume-variant active" href="/resume/"><span class="mono">GENERAL</span><strong>Balanced profile</strong><small>Operations + technical + software</small></a>
+      <a class="resume-variant" href="/resume/support/"><span class="mono">TARGETED</span><strong>Support / Operations</strong><small>Customer support, operations, troubleshooting</small></a>
+      <a class="resume-variant" href="/resume/software/"><span class="mono">TARGETED</span><strong>Software / QA</strong><small>Engineering, QA, technical systems</small></a>
+    </nav>
+
+    <section class="resume-section">
+      <h2>Professional summary</h2>
+      <p>Multilingual technical and operations professional combining 4,000+ hours of hands-on troubleshooting, people-management experience and a portfolio of released, field-tested and beta-ready software systems. Strong in independent problem solving, documentation, quality control and clear cross-cultural communication. Targeting remote technical support, QA / automation, operations and technical systems roles.</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>Technical & operations skills</h2>
+      <p><strong>Software:</strong> Python · C#/.NET 10 · FastAPI · React/TypeScript · WPF · SQLite · Git/GitHub · Windows diagnostics · local AI tooling<br/><strong>Support / QA:</strong> Technical troubleshooting · issue triage · automated testing · documentation · quality assurance · process validation · customer support<br/><strong>Operations:</strong> Team scheduling · inventory & stock control · training · high-pressure service · five-language communication</p>
+    </section>
+
+    <section class="resume-section">
+      <h2>Selected technical projects</h2>
+      <article><div><strong>CrashScope · v0.1 beta ready</strong><span>Windows crash diagnostics · C# / .NET 10 / React / TypeScript / SQLite</span></div><ul><li>Built and validated a local-first Windows diagnostics platform with native tray controls, Auto Assist / Everyday Mode, persistent sessions/incidents, Event Log + WER evidence and privacy-safe support bundles.</li><li>Current evidence includes 185 automated .NET tests and final integrated validation at 0.2657% average Agent CPU, 93 MB average / 95.83 MB peak working set on Ryzen 5 7500F + Radeon RX 9070 XT. First public beta release is in preparation.</li></ul></article>
+      <article><div><strong>VektorDeck 1.0</strong><span>Python / FastAPI / React / TypeScript / SQLite · Released 2026</span></div><ul><li>Released a local-first Windows control deck for GGUF Model Intelligence, safe runtime ownership, hardware telemetry and evidence-aware benchmarking.</li><li>Built automated update, repair and diagnostics workflows plus CI and post-update smoke validation so failures become visible before release.</li></ul></article>
+      <article><div><strong>Retro Game Vision</strong><span>Computer vision + decision system · Python / SQLite · Field tested</span></div><ul><li>Built a provenance-first photo-to-decision pipeline with compatibility guards, deterministic economics, evidence lineage and reproducible validation.</li><li>Field-tested at 750+ canonical items, 1,000+ physical observations and 1,800+ structured market observations.</li></ul></article>
+      <article><div><strong>EasyFLix · active build</strong><span>Current pre-1.0 working title: ReelShelf · Windows WPF / .NET 10</span></div><ul><li>Building safe read-only multi-drive indexing for legally acquired movie, TV and anime media with expandable grouping, artwork lookup and shortcuts that never move or rewrite source files.</li><li>Implements SubDL plus hash/title/episode-verified OpenSubtitles SRT retrieval, provider-specific quota caching and offline transcription with a benchmark-backed translation quality gate; current validation includes 48 passing tests, zero build warnings, CI and a portable win-x64 release.</li></ul></article>
+    </section>
+
+    <section class="resume-section">
+      <h2>Selected experience</h2>
+      <article><div><strong>Coffee Manager / Cafe Operations</strong><span>Alma · Surfers Paradise, Gold Coast, Australia</span></div><ul><li>Managed staff scheduling, stock ordering, inventory control and specialty-coffee quality for an upscale all-day cafe, dinner and drinks venue.</li><li>Maintained highly precise espresso recipes and calibration standards with professional baristas and premium commercial equipment.</li></ul></article>
+      <article><div><strong>Electrical Trade Experience</strong><span>Vancouver, Canada · 4,000+ hours</span></div><ul><li>Troubleshot and installed electrical/mechanical equipment and high- and low-voltage systems while following safety procedures and practical fault-finding workflows.</li></ul></article>
+      <article><div><strong>Customer Service / Teaching</strong><span>Australia & Japan · selected roles, 2023–2025</span></div><ul><li>Worked across cafes, hotel service and English teaching, requiring POS accuracy, opening/closing routines, training, lesson planning and calm communication under pressure.</li></ul></article>
+    </section>
+
+    <section class="resume-section resume-last">
+      <h2>Education & credentials</h2>
+      <p>Electrical studies/training - BCIT, Canada · High School Diploma - Queen Elizabeth School, Canada · First Aid & CPR · RSA License · Barista Training - Code Black</p>
+    </section>
+
+    <footer class="resume-availability mono">Available for remote work · flexible across global time zones and schedules</footer>
+  </section>
+</BaseLayout>

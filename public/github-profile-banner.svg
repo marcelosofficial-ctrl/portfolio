@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+  <title id="title">Marcelo Ellwanger — Software, Systems, AI, Automation</title>
+  <desc id="desc">Dark editorial MARCELO/LAB banner with Marcelo Ellwanger's name, engineering focus and portfolio URL.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d0e"/>
+      <stop offset="1" stop-color="#111517"/>
+    </linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="accentFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d6ff57" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#d6ff57" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="360" fill="url(#bg)"/>
+  <rect width="1280" height="360" fill="url(#grid)"/>
+  <circle cx="1120" cy="28" r="280" fill="#d6ff57" fill-opacity="0.035"/>
+  <rect x="64" y="58" width="7" height="7" rx="3.5" fill="#d6ff57"/>
+  <text x="86" y="67" fill="#a8b0ad" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" letter-spacing="2">MARCELO/LAB · PROFESSIONAL PROFILE</text>
+
+  <text x="62" y="168" fill="#f2efe9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="72" font-weight="650" letter-spacing="-4">Marcelo Ellwanger</text>
+  <text x="65" y="211" fill="#b7bdb9" font-family="Georgia, Times New Roman, serif" font-size="25" font-style="italic">I turn real-world friction into software that earns trust.</text>
+
+  <rect x="64" y="244" width="610" height="1" fill="#2a2f32"/>
+  <rect x="64" y="244" width="170" height="1" fill="url(#accentFade)"/>
+
+  <text x="64" y="286" fill="#d6ff57" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" letter-spacing="2">SOFTWARE · SYSTEMS · AI · AUTOMATION</text>
+  <text x="64" y="320" fill="#687176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="1.5">JAPAN · REMOTE / GLOBAL · marcelosofficial-ctrl.github.io/portfolio</text>
+
+  <g transform="translate(1014 78)">
+    <rect width="194" height="194" rx="0" fill="#0d1012" stroke="#2a2f32"/>
+    <text x="24" y="55" fill="#697276" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" letter-spacing="2">CURRENT</text>
+    <text x="24" y="91" fill="#f2efe9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">CrashScope</text>
+    <text x="24" y="124" fill="#8d9692" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">ACTIVE BUILD</text>
+    <line x1="24" y1="148" x2="170" y2="148" stroke="#2a2f32"/>
+    <text x="24" y="174" fill="#d6ff57" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">VEKTORDECK 1.0 · SHIPPED</text>
+  </g>
+</svg>

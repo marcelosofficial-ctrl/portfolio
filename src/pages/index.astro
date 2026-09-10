@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="Marcelo Ellwanger | Software & Systems Developer" description="Software and systems developer building practical tools across Windows diagnostics, local AI, automation, computer vision and evidence-driven data systems.">
+  <section class="hero identity-hero wrap">
+    <div class="identity-grid">
+      <div class="identity-main">
+        <div class="identity-kicker mono"><span class="identity-dot"></span><span>MARCELO ELLWANGER</span><span class="identity-kicker-muted">SOFTWARE · SYSTEMS · AI</span></div>
+        <h1 class="identity-name">Software &amp;<br />systems developer.</h1>
+        <div class="identity-statement">
+          <p class="identity-role">I turn real-world friction into software that earns trust.</p>
+          <p class="hero-copy">A hands-on builder working across local AI, Windows diagnostics, automation, computer vision and data. My projects usually begin with something I genuinely want to understand, fix or make easier.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">Explore selected work ↓</a>
+          <a class="button" href="/about/">About me ↗</a>
+          <a class="button" href="/resume/software/">Software / QA Résumé ↗</a>
+        </div>
+        <div class="identity-foot mono">
+          <span>BASED IN JAPAN</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>BUILDING IN PUBLIC</span>
+        </div>
+      </div>
+
+      <aside class="identity-rail" aria-label="Current engineering work">
+        <div class="identity-rail-head mono">
+          <div class="identity-author">
+            <span><b>FROM MARCELO'S DESK</b><small>JAPAN / 2026</small></span>
+          </div>
+          <span class="status-dot">BUILDING</span>
+        </div>
+        <a class="identity-current" href="/projects/crashscope/">
+          <span class="mono">V0.1 BETA READY · WINDOWS SYSTEMS</span>
+          <strong>CrashScope</strong>
+          <p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p>
+          <b>OPEN CASE STUDY ↗</b>
+        </a>
+        <div class="identity-release">
+          <span class="mono">LATEST SHIP</span>
+          <div><strong>VektorDeck 1.0</strong><b>RELEASED</b></div>
+        </div>
+        <div class="identity-project-log mono">
+          <div><span>01</span><b>VektorDeck</b><em>SHIPPED</em></div>
+          <div><span>02</span><b>Retro Game Vision</b><em>FIELD TESTED</em></div>
+          <div><span>03</span><b>CrashScope</b><em>BETA READY</em></div>
+          <div><span>04</span><b>ReelShelf → EasyFLix 1.0</b><em>ACTIVE</em></div>
+        </div>
+        <div class="identity-contact"><span>REMOTE / GLOBAL · OPEN TO WORK</span><a href="/contact/">Start a conversation ↗</a></div>
+      </aside>
+    </div>
+
+    <div class="identity-proof" aria-label="Professional snapshot">
+      <div><strong>1.0</strong><span>VektorDeck released and shipped</span></div>
+      <div><strong>185</strong><span>automated .NET tests in CrashScope v0.1</span></div>
+      <div><strong>0.2657%</strong><span>CrashScope final integrated Agent CPU</span></div>
+      <div><strong>4,000+</strong><span>hands-on electrical trade hours</span></div>
+    </div>
+
+    <div class="hero-meta identity-skills" aria-label="Core technologies">
+      <span class="pill">Python</span><span class="pill">C# / .NET</span><span class="pill">FastAPI</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">SQLite</span><span class="pill">Computer Vision</span><span class="pill">Windows Diagnostics</span><span class="pill">Automation</span>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>Built from real use cases.</h2><p class="section-intro">Shipped systems, active engineering work and smaller focused tools are separated clearly so the state of each project is obvious.</p></div></div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Flagship systems</p><h3>Released or field-tested.</h3></div><p>The deepest case studies: products with substantial architecture, validation and real-world use behind them.</p></div>
+
+      <div class="featured-project">
+        <a class="project project-featured" href="/projects/reseller-ai/">
+          <div class="project-copy">
+            <div class="project-kicker"><span class="eyebrow">01 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
+            <h3>Retro Game Vision &<br />Resale System</h3>
+            <p>A pipeline that turns Japanese second-hand store photos into traceable resale decisions while preserving uncertainty, evidence lineage and exact physical-copy state.</p>
+            <span class="status-note">Started after noticing that a cheap price tag in a Japanese retro shop was rarely enough evidence to know whether a copy was actually worth buying.</span>
+            <div class="project-tags"><span>Python</span><span>SQLite</span><span>Vision</span><span>Decision systems</span><span>CI</span></div>
+            <span class="text-link">Open case study ↗</span>
+          </div>
+          <div class="resale-visual" aria-hidden="true">
+            <div class="visual-head mono"><span>DECISION ENGINE</span><span>LIVE MODEL</span></div>
+            <div class="decision-item"><span class="decision-index">A-042</span><div><strong>Japanese PS1 title</strong><small>compatible evidence · 4 observations</small></div><b class="buy">BUY</b></div>
+            <div class="decision-item"><span class="decision-index">A-043</span><div><strong>Collector edition</strong><small>edition mismatch detected</small></div><b class="research">RESEARCH</b></div>
+            <div class="decision-item"><span class="decision-index">A-044</span><div><strong>Disc-only copy</strong><small>condition adjusted · margin below gate</small></div><b class="skip">SKIP</b></div>
+            <div class="integrity mono"><span>FOREIGN KEYS: 0</span><span>INTEGRITY: OK</span><span>EVIDENCE: LINKED</span></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="project-grid secondary-grid">
+        <a class="project compact-project project-showcase" href="/projects/vektordeck/">
+          <div class="project-showcase-copy">
+            <div class="project-top"><span class="eyebrow">02 · Flagship release</span><span class="project-state">1.0.0</span></div>
+            <h3>VektorDeck</h3>
+            <p>A released local-first AI workstation manager for GGUF model intelligence, safe runtime ownership, hardware telemetry, evidence-aware benchmarking and explainable launch recommendations.</p>
+            <span class="status-note">Built because my own local-AI setup had become too dependent on exact flags, scattered model files and terminal archaeology.</span>
+            <div class="forge-visual mono" aria-hidden="true">
+              <div><span>QWEN 27B · IQ3_XS</span><b>11.15 GB</b></div><div class="meter"><i style="width:82%"></i></div>
+              <div><span>SMART LAUNCH</span><b>8K · EXPERIMENTAL</b></div><div class="meter"><i style="width:64%"></i></div>
+              <div><span>RELEASE READINESS</span><b>0 BLOCKERS</b></div>
+            </div>
+            <span class="text-link">Open 1.0 case study ↗</span>
+          </div>
+          <figure class="project-snapshot">
+            <img src={`${baseURL}vektordeck/dashboard.webp`} alt="VektorDeck 1.0 dashboard with hardware telemetry and local runtime controls" width="1920" height="1079" loading="lazy" decoding="async" />
+            <figcaption class="mono"><span>REAL PRODUCT / 1.0</span><b>LOCAL WORKSTATION · RELEASED</b></figcaption>
+          </figure>
+        </a>
+      </div>
+    </div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Active builds</p><h3>Engineering in progress.</h3></div><p>Serious projects already grounded in real problems, shown honestly before they reach a finished release.</p></div>
+
+      <div class="active-project-grid">
+        <a class="project compact-project" href="/projects/crashscope/">
+          <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state active">V0.1 BETA READY</span></div>
+          <h3>CrashScope</h3>
+          <p>A privacy-first Windows crash-diagnostics system that correlates hardware telemetry with Event Log, WER and persistent incident evidence without pretending correlation proves root cause.</p>
+          <span class="status-note">Built after repeated game, GPU and workload failures made it obvious how fragmented useful Windows diagnostic evidence can be.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>AGENT CPU · AVG</span><b>0.2657%</b></div>
+            <div><span>WORKING SET · AVG</span><b>93 MB</b></div>
+            <div><span>AUTOMATED TESTS</span><b>185</b></div>
+            <div><span>RELEASE STATE</span><b class="good">BETA READY</b></div>
+          </div>
+          <span class="status-note">Final integrated validation passed on Ryzen 5 7500F + Radeon RX 9070 XT. Public beta release is in preparation; broader NVIDIA/Intel hardware validation is upcoming.</span>
+          <span class="text-link">Open validated case study ↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/reelshelf/">
+          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
+          <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
+          <p>A Windows WPF/.NET 10 desktop application for legally acquired local media, with safe read-only multi-drive scanning, expandable movie/TV/anime grouping, artwork and subtitle workflows, and unified shortcuts that leave source files untouched.</p>
+          <span class="status-note">Built around a simple constraint from my own media library: organize what is already on disk without rearranging or risking the source files.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>WPF · .NET 10</b></div>
+            <div><span>SAFETY</span><b>READ-ONLY SCAN</b></div>
+            <div><span>VALIDATION</span><b>48 TESTS · 0 WARNINGS</b></div>
+            <div><span>ARTIFACT</span><b class="good">PORTABLE WIN-X64</b></div>
+          </div>
+          <span class="status-note">0.6.1 · relocation-safe dual-provider build · EasyFLix planned for 1.0</span>
+          <span class="text-link">Open active case study ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="project-tier">
+      <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>Small, finished, intentional.</h3></div><p>Compact projects that show interface craft or a focused technical idea without pretending to be flagship systems.</p></div>
+      <div class="focused-project-grid">
+        <a class="project compact-project clock-project" href="/projects/rainmeter-clock/">
+          <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
+          <h3>MinimalClock</h3>
+          <p>A compact desktop clock experiment in browser rendering, typography and lightweight Rainmeter integration.</p>
+          <span class="status-note">A tiny utility I wanted on my own desktop became an exercise in measuring overhead, packaging cleanly and resisting unnecessary runtime complexity.</span>
+          <div class="clock-visual mono" aria-hidden="true"><strong id="portfolio-clock">20:25</strong><span>LOCAL / SYSTEM TIME</span></div>
+          <span class="text-link">View focused project ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-about-strip">
+      <div><p class="eyebrow">About Marcelo</p><h3>Technical work, people skills, and a hands-on engineering path.</h3></div>
+      <div><p>I came into software through years of electrical work and international customer-facing roles, then started building the tools I wished existed. That background is why the projects here care so much about real constraints, failure modes, evidence and maintainability.</p><a class="button" href="/about/">Read the professional profile ↗</a></div>
+    </div>
+
+    <div class="home-about-strip" aria-label="Recruiter contact">
+      <div><p class="eyebrow">Open to work</p><h3>Software engineering, QA / automation and technical systems roles.</h3></div>
+      <div>
+        <p>I am looking for remote-friendly teams where practical debugging, software reliability, clear communication and the ability to learn quickly matter. The case studies above show the work; these links make the next step easy.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="button" href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button" href="/contact/">Contact ↗</a>
+          <a class="button" href="/resume/software/">Software / QA Résumé ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="field-note wrap" aria-label="Personal field note">
+    <div class="field-note-mark mono">FIELD NOTE / 001</div>
+    <blockquote>Most of these projects began the same way: I got curious, then annoyed that the tool I wanted didn’t exist.</blockquote>
+    <div class="field-note-signoff"><span class="note-line"></span><span>Marcelo</span></div>
+  </section>
+
+  <section class="section wrap principles" id="about">
+    <div class="section-head"><p class="eyebrow">How I work</p><div><h2>Build. Test. Find the edge case. Rebuild.</h2></div></div>
+    <div class="principle-grid">
+      <article><span class="mono principle-no">01</span><h3>Start with reality.</h3><p>I prefer problems with imperfect inputs, awkward constraints and a reason for the software to exist beyond the demo.</p></article>
+      <article><span class="mono principle-no">02</span><h3>Keep the evidence.</h3><p>I care about provenance, explicit uncertainty and systems that can explain why they produced a result.</p></article>
+      <article><span class="mono principle-no">03</span><h3>Make failure useful.</h3><p>Unexpected cases become tests, architecture decisions and better boundaries rather than something to hide from the portfolio.</p></article>
+    </div>
+  </section>
+
+  <script is:inline>
+    const clock = document.getElementById('portfolio-clock');
+    const tick = () => {
+      if (!clock) return;
+      clock.textContent = new Intl.DateTimeFormat([], { hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
+    };
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</BaseLayout>

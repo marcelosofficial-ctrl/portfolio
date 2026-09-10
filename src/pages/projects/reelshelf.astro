@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="ReelShelf → EasyFLix at 1.0 | Marcelo Ellwanger" description="A Windows WPF/.NET 10 local-media desktop application for safely organizing legally acquired movie, TV and anime files across multiple drives without moving or rewriting the source media.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">04 · Active build · Windows desktop · Local media</p>
+      <h1>ReelShelf <em>→ EasyFLix at 1.0</em></h1>
+      <p class="case-copy">A Windows WPF/.NET 10 desktop application for turning legally acquired local movie, TV and anime files into one browseable library while leaving the original media exactly where it is.</p>
+      <div class="case-actions"><a class="button" href="#workflow">Explore the workflow ↓</a></div>
+    </div>
+    <div class="case-status-panel mono" aria-label="ReelShelf working-title project status">
+      <div class="case-status-head"><span>PROJECT / STATE</span><b>ACTIVE BUILD</b></div>
+      <div class="case-status-row"><span>Platform</span><strong>WPF · .NET 10</strong></div>
+      <div class="case-status-row"><span>Scan model</span><strong>READ-ONLY</strong></div>
+      <div class="case-status-row"><span>Tests</span><strong>40 PASSING</strong></div>
+      <div class="case-status-row"><span>Build</span><strong>0 WARNINGS</strong></div>
+      <div class="case-status-row"><span>Artifact</span><strong>0.6.1 · PORTABLE WIN-X64 · SHA-256</strong></div>
+      <div class="case-status-foot"><span class="status-dot">WORKING TITLE · EASYFLIX PLANNED FOR 1.0</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The problem</p><h2>One library, without surrendering the files.</h2></div>
+    <div class="case-long-copy">
+      <p>A real local media collection can span several drives, mixed folder structures and different content types. The useful interface should make that collection easier to browse without forcing a destructive reorganization first.</p>
+      <p>ReelShelf (working title) scans configured sources read-only, groups movies, TV and anime into expandable views, and creates unified shortcuts back to the originals. It does not move, rename or rewrite the media files.</p>
+      <p>The project is built for legally acquired local media. Its value is organization, navigation, artwork and subtitle tooling around files the user already controls.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="workflow">
+    <div class="case-section-heading"><p class="eyebrow">Core workflow</p><h2>Index the archive. Keep the archive authoritative.</h2><p>The application behaves as a non-destructive layer over existing storage, including multiple drives and protected-folder exclusions.</p></div>
+    <div class="architecture-flow">
+      <div class="arch-node arch-input"><span class="mono">SOURCES</span><strong>Multiple drives</strong><small>native folder pickers · protected paths excluded</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">SCAN</span><strong>Read-only inventory</strong><small>movies · TV · anime · embedded + sidecar subtitles</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">ORGANIZE</span><strong>Expandable groups</strong><small>artwork lookup · unified library records</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node arch-output"><span class="mono">NAVIGATE</span><strong>Stable shortcuts</strong><small>open source locations without relocating media</small></div>
+    </div>
+    <div class="architecture-note mono"><span>NON-DESTRUCTIVE CONTRACT</span><p>Media remains authoritative at its source path. The application never overwrites media or existing subtitle files.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Library behavior</p><h2>Useful organization without a proprietary filesystem.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Read-only multi-drive scanning</h3><p>Configured locations can live across several drives. Scanning discovers local media while protected folders are explicitly excluded.</p></article>
+      <article><span class="mono model-index">02</span><h3>Movie / TV / anime grouping</h3><p>Detected media is organized into expandable groups so a mixed archive can be browsed as a collection rather than as raw folder trees.</p></article>
+      <article><span class="mono model-index">03</span><h3>Unified shortcuts</h3><p>The library creates navigation back to the original files and source locations without moving or rewriting the underlying media.</p></article>
+      <article><span class="mono model-index">04</span><h3>Artwork lookup</h3><p>Artwork can be looked up and associated with library entries to make local collections easier to recognize visually.</p></article>
+      <article><span class="mono model-index">05</span><h3>Native Windows navigation</h3><p>Native folder pickers and source navigation keep drive selection and file access consistent with normal Windows workflows.</p></article>
+      <article><span class="mono model-index">06</span><h3>Resumable operations</h3><p>Long-running jobs support resumption, cancellation and activity history instead of assuming every operation finishes in one uninterrupted session.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Subtitle pipeline</p><h2>Audit first. Download safely. Fall back locally.</h2><p>Subtitle handling distinguishes what already exists from what may need to be acquired or generated, while preserving existing files.</p></div>
+    <div class="field-console mono" aria-label="ReelShelf subtitle workflow">
+      <div class="field-console-head"><span>SUBTITLE / WORKFLOW</span><span>LOCAL + VALIDATED</span></div>
+      <div class="field-console-body">
+        <div class="field-input"><span>01 · AUDIT</span><strong>Embedded tracks + sidecar files</strong><small>inspect existing subtitle coverage before creating anything new</small></div>
+        <div class="field-result"><span>02 · PRIMARY SOURCE</span><strong>SubDL</strong><small>checksum-verified .srt downloads · exact episode selection · quota-aware</small></div>
+        <div class="field-result"><span>03 · VERIFIED FALLBACK</span><strong>OpenSubtitles REST API</strong><small>hash or exact title/year/episode · duration-fit validation · human-made SRT only</small></div>
+        <div class="field-input"><span>04 · PRIVATE FALLBACK</span><strong>Whisper.net · offline</strong><small>same-language English/Japanese transcription · generated tracks clearly labeled</small></div>
+      </div>
+      <div class="field-health"><span>QUALITY GATE</span><b>Cross-language draft translation paused · verified human subtitles remain preferred</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Measured quality</p><h2>Good timing is not the same as a good translation.</h2><p>A controlled anime benchmark compared locally generated English against a trusted embedded human track. The result changed the product design.</p></div>
+    <div class="rules-table">
+      <div class="rule-row"><span>SPEECH WINDOWS</span><strong>99.36% detected with Whisper Medium</strong><b>STRONG</b></div>
+      <div class="rule-row"><span>LOUD DIALOGUE</span><strong>100% timing coverage</strong><b>STRONG</b></div>
+      <div class="rule-row"><span>TRANSLATION</span><strong>Meaning-changing errors remained</strong><b>GATED</b></div>
+      <div class="rule-row"><span>PRODUCT RESPONSE</span><strong>Automatic cross-language drafts paused</strong><b>SAFE</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Safety boundaries</p><h2>Automation is useful only when the source archive stays safe.</h2></div>
+    <div class="skill-matrix">
+      <div><span>Never moves media</span><p>Library organization does not relocate source movie, TV or anime files.</p></div>
+      <div><span>Never rewrites media</span><p>The application does not modify the encoded media as part of organization or subtitle handling.</p></div>
+      <div><span>Never overwrites subtitles</span><p>Existing subtitle files are preserved rather than replaced by downloaded or generated alternatives.</p></div>
+      <div><span>Protected folders excluded</span><p>Folder-selection and scan rules prevent protected locations from becoming normal media sources.</p></div>
+      <div><span>Jobs remain controllable</span><p>Resumable jobs, cancellation and activity history make long operations observable and interruptible.</p></div>
+      <div><span>Source remains reachable</span><p>Native source navigation keeps the relationship between a library entry and its original location visible.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering evidence</p><h2>Validated beyond the interface.</h2><p>The current build has automated tests, compiler/build quality checks, dependency review, CI and a distributable Windows artifact.</p></div>
+    <div class="rules-table">
+      <div class="rule-row"><span>TEST SUITE</span><strong>48 passing tests</strong><b>PASS</b></div>
+      <div class="rule-row"><span>BUILD QUALITY</span><strong>Zero build warnings</strong><b>PASS</b></div>
+      <div class="rule-row"><span>DEPENDENCIES</span><strong>Dependency vulnerability audit included</strong><b>AUDITED</b></div>
+      <div class="rule-row"><span>AUTOMATION</span><strong>Continuous integration</strong><b>CI</b></div>
+      <div class="rule-row"><span>PROVIDER RESILIENCE</span><strong>SubDL + verified OpenSubtitles fallback</strong><b>2 SOURCES</b></div>
+      <div class="rule-row"><span>QUOTA EFFICIENCY</span><strong>Provider-specific seven-day terminal-attempt cache</strong><b>RESUMABLE</b></div>
+      <div class="rule-row"><span>DRIVE RELOCATION</span><strong>Existing shortcuts repair stale targets and artwork</strong><b>MOVE-SAFE</b></div>
+      <div class="rule-row"><span>DISTRIBUTION</span><strong>Portable win-x64 release</strong><b>BUILT</b></div>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Active development</p>
+    <h2>ReelShelf today. EasyFLix at 1.0.</h2>
+    <p>ReelShelf remains the working title through the pre-1.0 releases. EasyFLix is the planned 1.0 product name, with a compatibility-safe migration for existing settings, encrypted provider keys, job history and the stable <span class="mono">/projects/reelshelf/</span> route.</p>
+    <div class="case-actions"><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+</BaseLayout>

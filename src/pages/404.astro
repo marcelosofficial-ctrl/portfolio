@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found | Marcelo Ellwanger" description="The requested portfolio page could not be found. Return to Marcelo Ellwanger's work, profile, or résumé." noindex={true}>
+  <section class="error-page wrap">
+    <p class="eyebrow">404 · Route not found</p>
+    <h1>This path doesn’t exist anymore.</h1>
+    <p>If you followed an old project link, the work may have been renamed or reorganized. The portfolio itself is still here.</p>
+    <div class="case-actions">
+      <a class="button primary" href="/">Portfolio home ↑</a>
+      <a class="button" href="/#work">Selected work ↗</a>
+      <a class="button" href="/about/">About Marcelo ↗</a>
+      <a class="button" href="/resume/">Résumé ↗</a>
+    </div>
+  </section>
+</BaseLayout>

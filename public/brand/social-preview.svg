@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Marcelo Ellwanger — MARCELO/LAB</title>
+  <desc id="desc">Software and systems developer portfolio preview.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090b0c"/>
+      <stop offset="1" stop-color="#121619"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".035"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <path d="M58 520C220 440 290 495 420 390S665 310 760 238 958 120 1140 166" fill="none" stroke="#d6ff57" stroke-width="3" stroke-opacity=".52"/>
+  <path d="M58 540C240 470 320 515 450 420S690 355 805 274 980 185 1142 205" fill="none" stroke="#d6ff57" stroke-width="1" stroke-opacity=".18"/>
+  <circle cx="1020" cy="152" r="92" fill="none" stroke="#d6ff57" stroke-opacity=".11"/>
+  <circle cx="1020" cy="152" r="54" fill="none" stroke="#ffffff" stroke-opacity=".06"/>
+  <g transform="translate(68 72)">
+    <rect width="96" height="96" rx="20" fill="#0d1012" stroke="#ffffff" stroke-opacity=".12"/>
+    <path d="M22 70V26h12l14 22 14-22h12v44H62V46L48 66 34 46v24Z" fill="#f3f1e8"/>
+    <path d="M72 70h16" stroke="#d6ff57" stroke-width="6" stroke-linecap="square" filter="url(#glow)"/>
+  </g>
+  <text x="190" y="111" fill="#f3f1e8" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" letter-spacing="4">MARCELO<tspan fill="#d6ff57">/</tspan>LAB</text>
+  <text x="68" y="286" fill="#f3f1e8" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="700" letter-spacing="-2">Marcelo Ellwanger</text>
+  <text x="70" y="348" fill="#d6ff57" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" letter-spacing="3">SOFTWARE · SYSTEMS · AUTOMATION · AI</text>
+  <text x="70" y="416" fill="#c8c8c2" font-family="Georgia,serif" font-size="31" font-style="italic">I turn real-world friction into software that earns trust.</text>
+  <text x="70" y="558" fill="#969b9c" font-family="Courier New,monospace" font-size="17" letter-spacing="2">C#/.NET · PYTHON · REACT/TYPESCRIPT · WINDOWS DIAGNOSTICS · LOCAL AI</text>
+</svg>

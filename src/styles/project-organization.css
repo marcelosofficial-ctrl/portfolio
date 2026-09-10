@@ -1,0 +1,27 @@
+.project-tier { margin-top:72px; }
+.project-tier:first-of-type { margin-top:0; }
+.project-tier-head { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+.project-tier-head h3 { margin:0; font-size:clamp(1.6rem,3vw,2.6rem); letter-spacing:-.04em; }
+.project-tier-head p { margin:0; max-width:520px; color:var(--muted); line-height:1.6; font-size:.9rem; text-align:right; }
+.project-state.active { color:#e5c96f; border-color:rgba(229,201,111,.34); }
+.project-state.private { color:#9ea3a6; border-color:rgba(158,163,166,.28); }
+.active-project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.active-project-grid .project { min-height:430px; }
+.active-build-visual { margin:28px 0 10px; padding:18px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.66rem; }
+.active-build-visual div { display:flex; justify-content:space-between; gap:16px; padding:7px 0; }
+.active-build-visual span { color:#6f777b; }
+.active-build-visual b { color:#c9cecc; font-weight:500; }
+.active-build-visual b.good { color:var(--accent); }
+.focused-project-grid { display:grid; grid-template-columns:minmax(0,520px); }
+.status-note { display:inline-flex; align-items:center; gap:8px; color:#858d91; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.62rem; letter-spacing:.06em; }
+.status-note::before { content:""; width:6px; height:6px; border-radius:50%; background:#e5c96f; box-shadow:0 0 12px rgba(229,201,111,.3); }
+.alias-page { min-height:60vh; display:grid; align-content:center; }
+.alias-page .case-copy { max-width:680px; }
+@media (max-width:760px) {
+  .project-tier { margin-top:52px; }
+  .project-tier-head { display:block; }
+  .project-tier-head p { margin-top:10px; text-align:left; }
+  .active-project-grid { grid-template-columns:1fr; }
+  .active-project-grid .project { min-height:0; }
+  .focused-project-grid { grid-template-columns:1fr; }
+}

@@ -1,0 +1,360 @@
+/*
+ * MARCELO/LAB final art-direction layer.
+ * Keep identity polish here so project-specific pages can evolve without
+ * silently changing the shared visual language.
+ */
+
+:root {
+  --editorial-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+}
+
+/* Shared tactile details */
+.brand { transition:letter-spacing .24s ease,color .24s ease; }
+.brand:hover { letter-spacing:.135em; }
+.brand:hover span { text-shadow:0 0 18px rgba(214,255,87,.35); }
+.button { position:relative; overflow:hidden; }
+.button::after { content:""; position:absolute; left:-120%; bottom:0; width:100%; height:1px; background:var(--accent); transition:left .32s ease; }
+.button:hover::after { left:0; }
+.button.primary::after { background:#0b0d0e; opacity:.55; }
+
+/* Homepage: evidence of the person behind the projects */
+.identity-proof {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  margin-top:34px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.008);
+}
+.identity-proof div { min-width:0; padding:18px 18px 17px 0; border-right:1px solid var(--line-soft); }
+.identity-proof div+div { padding-left:18px; }
+.identity-proof div:last-child { border-right:0; }
+.identity-proof strong { display:block; color:#e8ebe7; font-size:clamp(1.3rem,2vw,1.85rem); line-height:1; letter-spacing:-.045em; font-weight:560; }
+.identity-proof span { display:block; margin-top:7px; color:#687176; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.56rem; line-height:1.45; letter-spacing:.08em; text-transform:uppercase; }
+.identity-skills { margin-top:22px; }
+
+.identity-rail { isolation:isolate; }
+.identity-rail::after { content:"M / E"; position:absolute; right:-7px; top:50%; z-index:-1; transform:translateY(-50%) rotate(90deg); color:rgba(242,239,233,.026); font-size:5rem; font-weight:800; letter-spacing:.08em; white-space:nowrap; pointer-events:none; }
+.identity-current b,.text-link { transition:transform .22s ease,color .22s ease; }
+.identity-current:hover b { transform:translateX(4px); color:var(--accent); }
+
+/* Project cards get a quiet architectural edge rather than a glow effect. */
+.project::after {
+  content:"";
+  position:absolute;
+  left:-1px;
+  bottom:-1px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),rgba(214,255,87,0));
+  transition:width .36s cubic-bezier(.2,.75,.25,1);
+  pointer-events:none;
+}
+.project:hover::after { width:46%; }
+.project:hover .text-link { transform:translateX(4px); color:var(--accent); }
+.project .text-link { display:inline-block; }
+.project h3 { text-wrap:balance; }
+
+/* Personal field note: the one deliberately warmer voice on the homepage. */
+.field-note { position:relative; overflow:hidden; }
+.field-note::before { content:"“"; position:absolute; right:2%; top:-46px; color:rgba(214,255,87,.045); font-family:var(--editorial-serif); font-size:17rem; line-height:1; pointer-events:none; }
+.field-note blockquote { position:relative; max-width:980px; font-family:var(--editorial-serif); font-size:clamp(2rem,4.2vw,4.25rem); font-weight:400; line-height:1.03; letter-spacing:-.038em; }
+.field-note-signoff span:last-child { font-family:var(--editorial-serif); font-style:italic; font-size:1rem; color:#b7bcb9; }
+
+/* About: portrait becomes a considered editorial object, not a giant card. */
+.about-profile-panel { align-items:stretch; }
+.about-portrait { width:min(100%,360px); align-self:flex-end; aspect-ratio:auto; background:#0b0e10; }
+.about-portrait img { aspect-ratio:3/4; object-position:50% 23%; }
+.about-portrait figcaption { display:flex; justify-content:space-between; gap:16px; padding:11px 13px; border-top:1px solid var(--line); background:#0d1012; color:#6d767a; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.55rem; line-height:1.4; letter-spacing:.08em; text-transform:uppercase; }
+.about-portrait figcaption span:last-child { color:#9ca3a0; }
+
+.about-factline { display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:24px; padding-top:18px; border-top:1px solid var(--line); color:#767f83; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.62rem; letter-spacing:.06em; }
+.about-factline span { display:inline-flex; align-items:center; gap:8px; }
+.about-factline span::before { content:""; width:4px; height:4px; border-radius:50%; background:var(--accent); opacity:.72; }
+
+.about-manifesto { position:relative; padding:74px 0 82px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.about-manifesto-inner { display:grid; grid-template-columns:180px minmax(0,900px); gap:42px; align-items:start; }
+.about-manifesto-label { padding-top:10px; color:#687176; font-size:.6rem; letter-spacing:.1em; }
+.about-manifesto p { margin:0; font-family:var(--editorial-serif); color:#e2e5df; font-size:clamp(2rem,4vw,4rem); line-height:1.05; letter-spacing:-.035em; }
+.about-manifesto p em { color:var(--accent); font-style:normal; }
+
+/* Give long case studies a little more rhythm without changing their architecture. */
+.case-section-heading .eyebrow,.section-head>.eyebrow { position:relative; }
+.case-section-heading .eyebrow::after,.section-head>.eyebrow::after { content:""; display:inline-block; width:28px; height:1px; margin-left:10px; vertical-align:middle; background:rgba(214,255,87,.34); }
+.case-status-panel,.identity-rail,.about-card { transition:border-color .28s ease,transform .28s ease; }
+.case-status-panel:hover,.about-card:hover { border-color:#3f474b; }
+
+/* --------------------------------------------------------------------------
+   Authored homepage pass
+   More personality through composition, micro-type and project fingerprints.
+   No new runtime dependency and no information is removed.
+   -------------------------------------------------------------------------- */
+
+/* Header: preserve every destination, but make external profiles secondary. */
+.site-header nav a[href^="https://github.com"],
+.site-header nav a[href^="https://www.linkedin.com"] {
+  color:#697276;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.7rem;
+  letter-spacing:.055em;
+}
+.site-header nav a[href^="https://github.com"]::after,
+.site-header nav a[href^="https://www.linkedin.com"]::after { opacity:.58; }
+.site-header nav a[href^="https://github.com"]:hover,
+.site-header nav a[href^="https://www.linkedin.com"]:hover { color:#cbd0cd; }
+.brand > img { transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease; }
+.brand:hover > img { transform:translateY(-1px); box-shadow:0 8px 22px rgba(0,0,0,.22),0 0 20px rgba(214,255,87,.12); }
+
+/* Homepage cover: registration geometry ties person to lab. The previous diagonal
+   signal route was retired; the approved signal motif now lives below the skills. */
+main:has(.identity-hero) .identity-hero { position:relative; isolation:isolate; }
+main:has(.identity-hero) .identity-hero::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:220px;
+  height:220px;
+  left:clamp(-120px,-6vw,-42px);
+  top:16%;
+  opacity:.34;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent calc(50% - .5px),rgba(242,239,233,.10) 50%,transparent calc(50% + .5px)),
+    linear-gradient(transparent calc(50% - .5px),rgba(242,239,233,.10) 50%,transparent calc(50% + .5px)),
+    radial-gradient(circle at center,transparent 0 35%,rgba(214,255,87,.10) 35.4%,transparent 35.9% 49%,rgba(242,239,233,.055) 49.4%,transparent 49.9%);
+}
+main:has(.identity-hero) .identity-main { position:relative; }
+main:has(.identity-hero) .identity-main::after {
+  content:"M/E · FIELD SYSTEM 01";
+  position:absolute;
+  right:0;
+  top:-4px;
+  color:#424a4e;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.52rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+
+/* Evidence reads like a measured instrument rather than four generic statistics. */
+main:has(.identity-hero) .identity-proof div { position:relative; transition:background .22s ease,border-color .22s ease; }
+main:has(.identity-hero) .identity-proof div::before {
+  position:absolute;
+  right:12px;
+  top:9px;
+  color:#3e464a;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.48rem;
+  letter-spacing:.12em;
+}
+main:has(.identity-hero) .identity-proof div:nth-child(1)::before { content:"01 / SHIP"; }
+main:has(.identity-hero) .identity-proof div:nth-child(2)::before { content:"02 / TEST"; }
+main:has(.identity-hero) .identity-proof div:nth-child(3)::before { content:"03 / PERF"; }
+main:has(.identity-hero) .identity-proof div:nth-child(4)::before { content:"04 / FIELD"; }
+main:has(.identity-hero) .identity-proof div:hover { background:rgba(255,255,255,.012); }
+main:has(.identity-hero) .identity-proof div:hover strong { color:var(--accent); }
+main:has(.identity-hero) .identity-proof strong { transition:color .2s ease; }
+
+/* Project icons behave like physical identity plates, not floating app badges. */
+main:has(.identity-hero) .project-brand-icon {
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease;
+}
+main:has(.identity-hero) .project:hover .project-brand-icon {
+  transform:translateY(-2px);
+  border-color:rgba(214,255,87,.23);
+  background:#0b0f10;
+  box-shadow:0 12px 30px rgba(0,0,0,.24),0 0 22px rgba(214,255,87,.08);
+}
+
+/* Every project keeps MARCELO/LAB, but gets a distinct visual fingerprint. */
+main:has(.identity-hero) .project[href*="/projects/reseller-ai/"] {
+  background:
+    radial-gradient(circle at 82% 20%,rgba(214,255,87,.045),transparent 24%),
+    linear-gradient(90deg,transparent 0 73%,rgba(214,255,87,.028) 73% 73.15%,transparent 73.15%),
+    linear-gradient(145deg,rgba(19,23,25,.96),rgba(13,16,18,.99));
+}
+main:has(.identity-hero) .project[href*="/projects/reseller-ai/"]::before {
+  content:"FIELD / PROVENANCE";
+  position:absolute;
+  right:9px;
+  bottom:18px;
+  color:rgba(214,255,87,.30);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+main:has(.identity-hero) .project[href*="/projects/reseller-ai/"]:hover .decision-item:nth-of-type(2) { transform:translateX(2px); }
+main:has(.identity-hero) .project[href*="/projects/reseller-ai/"]:hover .decision-item:nth-of-type(3) { transform:translateX(4px); }
+main:has(.identity-hero) .decision-item { transition:transform .24s ease,border-color .24s ease; }
+
+main:has(.identity-hero) .project[href*="/projects/vektordeck/"] {
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 32px) right top / 220px 100% no-repeat,
+    linear-gradient(90deg,transparent 0 78%,rgba(214,255,87,.02) 78% 78.2%,transparent 78.2%),
+    linear-gradient(145deg,rgba(18,22,24,.96),rgba(12,15,17,.99));
+}
+main:has(.identity-hero) .project[href*="/projects/vektordeck/"]::before {
+  content:"MODEL / RUNTIME";
+  position:absolute;
+  right:9px;
+  bottom:18px;
+  color:rgba(178,192,184,.27);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+main:has(.identity-hero) .project[href*="/projects/vektordeck/"] .meter i { transition:filter .24s ease,opacity .24s ease; }
+main:has(.identity-hero) .project[href*="/projects/vektordeck/"]:hover .meter i { filter:brightness(1.16); }
+
+main:has(.identity-hero) .project[href*="/projects/crashscope/"] {
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 36px) right top / 136px 100% no-repeat,
+    linear-gradient(90deg,transparent 0 88%,rgba(214,255,87,.055) 88% 88.12%,transparent 88.12%),
+    radial-gradient(circle at 88% 16%,rgba(214,255,87,.035),transparent 21%),
+    linear-gradient(145deg,rgba(18,22,24,.96),rgba(12,15,17,.99));
+}
+main:has(.identity-hero) .project[href*="/projects/crashscope/"]::before {
+  content:"INCIDENT / TRACE";
+  position:absolute;
+  right:9px;
+  bottom:18px;
+  color:rgba(214,255,87,.30);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+main:has(.identity-hero) .project[href*="/projects/crashscope/"] .active-build-visual div { transition:transform .22s ease,color .22s ease; }
+main:has(.identity-hero) .project[href*="/projects/crashscope/"]:hover .active-build-visual div:nth-child(2) { transform:translateX(2px); }
+main:has(.identity-hero) .project[href*="/projects/crashscope/"]:hover .active-build-visual div:nth-child(3) { transform:translateX(4px); }
+
+main:has(.identity-hero) .project[href*="/projects/reelshelf/"] {
+  background:
+    repeating-linear-gradient(0deg,rgba(242,239,233,.055) 0 5px,transparent 5px 17px) right 13px top / 5px 100% no-repeat,
+    linear-gradient(90deg,transparent 0 84%,rgba(255,255,255,.02) 84% 84.12%,transparent 84.12%),
+    linear-gradient(145deg,rgba(18,22,24,.96),rgba(12,15,17,.99));
+}
+main:has(.identity-hero) .project[href*="/projects/reelshelf/"]::before {
+  content:"LIBRARY / SOURCE";
+  position:absolute;
+  right:24px;
+  bottom:18px;
+  color:rgba(178,192,184,.25);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+main:has(.identity-hero) .project[href*="/projects/reelshelf/"] .active-build-visual b { transition:color .22s ease; }
+main:has(.identity-hero) .project[href*="/projects/reelshelf/"]:hover .active-build-visual div:nth-child(2) b { color:#e1e5e2; }
+
+main:has(.identity-hero) .project[href*="/projects/rainmeter-clock/"] {
+  background:
+    repeating-linear-gradient(90deg,rgba(242,239,233,.055) 0 1px,transparent 1px 24px) left bottom / 100% 42px no-repeat,
+    linear-gradient(145deg,rgba(18,22,24,.96),rgba(12,15,17,.99));
+}
+main:has(.identity-hero) .project[href*="/projects/rainmeter-clock/"]::before {
+  content:"TIME / OVERHEAD";
+  position:absolute;
+  right:9px;
+  bottom:18px;
+  color:rgba(178,192,184,.25);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.47rem;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+  pointer-events:none;
+}
+main:has(.identity-hero) .clock-visual strong { transition:letter-spacing .24s ease,transform .24s ease; }
+main:has(.identity-hero) .clock-project:hover .clock-visual strong { letter-spacing:-.045em; transform:translateX(2px); }
+
+/* Editorial asymmetry: keep differing column proportions, but paired Active Builds
+   now share one top edge. The previous 24px/20px stagger was intentionally removed. */
+@media (min-width:981px) {
+  main:has(.identity-hero) .project-tier-head { position:relative; }
+  main:has(.identity-hero) .project-tier-head::before {
+    content:"M/E";
+    position:absolute;
+    left:-42px;
+    bottom:13px;
+    color:#3e4649;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.46rem;
+    letter-spacing:.12em;
+  }
+  main:has(.identity-hero) .active-project-grid { grid-template-columns:1.06fr .94fr; }
+}
+
+/* Field note becomes the deliberate human interruption in the engineering rhythm. */
+main:has(.identity-hero) .field-note::after {
+  content:"M/E · 2026 / HUMAN IN THE LOOP";
+  position:absolute;
+  width:auto;
+  height:auto;
+  right:0;
+  top:auto;
+  bottom:22px;
+  transform:none;
+  border:0;
+  border-radius:0;
+  color:#424a4e;
+  opacity:1;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.5rem;
+  letter-spacing:.13em;
+  pointer-events:none;
+}
+
+/* GitHub-profile banner preview helpers are deliberately not used in site layout. */
+
+@media (min-width:1800px) {
+  .identity-proof strong { font-size:2rem; }
+  .identity-proof div { padding-top:21px; padding-bottom:20px; }
+  .about-portrait { width:390px; }
+}
+
+@media (max-width:980px) {
+  .identity-proof { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .identity-proof div:nth-child(2) { border-right:0; }
+  .identity-proof div:nth-child(-n+2) { border-bottom:1px solid var(--line-soft); }
+  .identity-proof div:nth-child(3) { padding-left:0; }
+  .about-portrait { align-self:flex-start; width:min(100%,420px); }
+  .about-manifesto-inner { grid-template-columns:1fr; gap:18px; }
+  .about-manifesto-label { padding-top:0; }
+  main:has(.identity-hero) .identity-main::after { display:none; }
+  main:has(.identity-hero) .identity-hero::before { width:160px; height:160px; left:-90px; opacity:.22; }
+}
+
+@media (max-width:760px) {
+  .identity-proof { margin-top:28px; }
+  .identity-proof div { padding:15px 12px 14px 0; }
+  .identity-proof div+div { padding-left:12px; }
+  .identity-proof div:nth-child(3) { padding-left:0; }
+  .identity-proof strong { font-size:1.35rem; }
+  .identity-proof span { font-size:.51rem; }
+  .identity-rail::after { font-size:3.4rem; }
+  .field-note::before { font-size:10rem; top:-22px; }
+  .field-note blockquote { font-size:clamp(1.85rem,9vw,2.85rem); line-height:1.06; }
+  .about-portrait { width:min(100%,340px); }
+  .about-manifesto { padding:56px 0 62px; }
+  .about-manifesto p { font-size:clamp(1.85rem,9vw,3rem); line-height:1.07; }
+  .about-factline { display:grid; gap:9px; }
+  .site-header nav a[href^="https://github.com"],
+  .site-header nav a[href^="https://www.linkedin.com"] { font-family:inherit; font-size:inherit; letter-spacing:normal; }
+  main:has(.identity-hero) .identity-hero::before,
+  main:has(.identity-hero) .project::before { display:none; }
+  main:has(.identity-hero) .identity-proof div::before { right:7px; top:7px; font-size:.42rem; }
+  main:has(.identity-hero) .field-note::after { display:none; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .brand,.brand > img,.button::after,.project::after,.project .text-link,.project-brand-icon,.identity-current b,.identity-proof div,.identity-proof strong,.decision-item,.meter i,.active-build-visual div,.active-build-visual b,.clock-visual strong,.case-status-panel,.about-card { transition:none !important; }
+  .project:hover .text-link,.identity-current:hover b,.project:hover .project-brand-icon,.project[href*="/projects/reseller-ai/"]:hover .decision-item,.project[href*="/projects/crashscope/"]:hover .active-build-visual div,.clock-project:hover .clock-visual strong { transform:none !important; }
+}

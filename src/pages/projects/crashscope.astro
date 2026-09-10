@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="CrashScope v0.1 Beta Ready | Marcelo Ellwanger" description="CrashScope is a validated beta-ready, local-first Windows crash-diagnostics system with 185 automated tests, persistent incidents, Event Log and WER evidence, native tray controls and privacy-safe support bundles.">
+  <section class="case-hero case-hero-featured wrap crashscope-hero">
+    <div class="case-title-block">
+      <p class="eyebrow">03 · Windows diagnostics · v0.1 beta ready · Systems engineering</p>
+      <h1>CrashScope</h1>
+      <p class="case-copy">A local-first Windows crash-diagnostics system built to answer a practical question: <em>what happened around the moment my game, GPU driver, AI workload, application or PC failed?</em></p>
+      <div class="case-actions"><a class="button primary" href="#evidence">See validated evidence ↓</a><a class="button" href="#architecture">Explore architecture ↓</a></div>
+    </div>
+    <div class="case-status-panel mono" aria-label="CrashScope project status">
+      <div class="case-status-head"><span>PROJECT / STATE</span><b>V0.1 BETA READY</b></div>
+      <div class="case-status-row"><span>Core</span><strong>C# / .NET 10</strong></div>
+      <div class="case-status-row"><span>Dashboard</span><strong>React / TypeScript</strong></div>
+      <div class="case-status-row"><span>Persistence</span><strong>SQLite</strong></div>
+      <div class="case-status-row"><span>Automated tests</span><strong>185</strong></div>
+      <div class="case-status-foot"><span class="status-dot">FIRST PUBLIC BETA VALIDATED · RELEASE IN PREPARATION</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The problem</p><h2>A crash message is not a diagnosis.</h2></div>
+    <div class="case-long-copy">
+      <p>I started CrashScope after repeatedly dealing with game, GPU and workload failures where Windows had useful evidence, but it was scattered across hardware state, application events, Windows Error Reporting and reboot history.</p>
+      <p>The useful question is rarely “did something crash?” It is “what changed around the incident, what evidence did Windows record, and which conclusions are actually supported?” CrashScope keeps a lightweight view of the machine, preserves sessions and incidents, and correlates evidence without turning correlation into a fake root-cause claim.</p>
+      <p>The product is aimed at gamers, PC enthusiasts, hardware testers and local-AI users who want useful diagnostics without another heavyweight monitoring workload or a cloud account in the failure path.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Beta-ready product surface</p><h2>Built for the moment after something goes wrong.</h2><p>The v0.1 beta-ready build now covers the complete local workflow from quiet background observation to persistent evidence and a privacy-safe support bundle.</p></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Native Windows tray</h3><p>CrashScope lives in the Windows tray so monitoring state and common actions stay available without keeping a dashboard window open.</p></article>
+      <article><span class="mono model-index">02</span><h3>Auto Assist / Everyday Mode</h3><p>A low-friction everyday mode is designed for users who want CrashScope available in the background without manually managing a diagnostic session every time.</p></article>
+      <article><span class="mono model-index">03</span><h3>Persistent sessions + incidents</h3><p>SQLite-backed sessions and incidents survive restarts, keeping the evidence trail available for later review instead of treating every run as disposable.</p></article>
+      <article><span class="mono model-index">04</span><h3>Privacy-safe support bundles</h3><p>Support bundles package useful diagnostic evidence deliberately, with privacy boundaries designed into the workflow rather than relying on automatic uploads.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="architecture">
+    <div class="case-section-heading"><p class="eyebrow">Architecture</p><h2>Read the machine once. Reuse the evidence everywhere.</h2><p>CrashScope is a modular monolith with explicit boundaries between domain logic, Windows and hardware adapters, runtime orchestration, persistence and the local dashboard.</p></div>
+    <div class="architecture-flow">
+      <div class="arch-node arch-input"><span class="mono">CORE</span><strong>CrashScope.Core</strong><small>incidents, telemetry contracts, evidence roles, sessions</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">ADAPTERS</span><strong>Infrastructure</strong><small>hardware, Event Log, WER, SQLite, environment</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">HOST</span><strong>CrashScope.Agent</strong><small>sampler, persistence, correlation, local API</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node arch-output"><span class="mono">UI</span><strong>React dashboard + tray</strong><small>telemetry, sessions, incidents, evidence, controls</small></div>
+    </div>
+    <div class="architecture-note mono"><span>RULE</span><p>The dashboard consumes telemetry already produced by the central Agent. Opening the UI does not create a second independent hardware polling system.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Evidence pipeline</p><h2>Machine state, Windows evidence and incidents stay distinct until correlation earns the link.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Hardware telemetry</h3><p>CPU, RAM, GPU, VRAM and available sensor data are sampled with a deliberately small resource budget so the observer does not become the workload.</p></article>
+      <article><span class="mono model-index">02</span><h3>Event Log + WER</h3><p>Windows Event Log and Windows Error Reporting evidence are collected and correlated around relevant sessions and incidents.</p></article>
+      <article><span class="mono model-index">03</span><h3>Workload identity</h3><p>Persistent session identity keeps workload history meaningful across time instead of reducing diagnosis to one transient process state.</p></article>
+      <article><span class="mono model-index">04</span><h3>Incident preservation</h3><p>CrashScope preserves incident context and supporting evidence for later inspection, comparison and privacy-safe sharing.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="evidence">
+    <div class="field-grid">
+      <div class="case-section-heading"><p class="eyebrow">Final integrated validation</p><h2>The beta-ready Agent stays inside its resource target.</h2><p>These are measured results from the final integrated validation on the primary AMD development machine. They describe this validated configuration, not a universal performance guarantee for every PC.</p></div>
+      <div class="field-console mono">
+        <div><span>average Agent CPU</span><b class="accent-value">0.2657%</b></div>
+        <div><span>average working set</span><b class="accent-value">93 MB</b></div>
+        <div><span>peak working set</span><b>95.83 MB</b></div>
+        <div><span>automated .NET tests</span><b>185</b></div>
+        <div><span>validated CPU</span><b>RYZEN 5 7500F</b></div>
+        <div><span>validated GPU</span><b>RADEON RX 9070 XT</b></div>
+        <div><span>network boundary</span><b>LOCALHOST ONLY</b></div>
+        <div><span>analytics / auto upload</span><b>NONE</b></div>
+        <div class="field-result"><span>release interpretation</span><strong>V0.1 BETA READY</strong></div>
+        <div class="field-health"><span>TESTS</span><b>185</b><span>PRIMARY HARDWARE</span><b>AMD</b><span>PUBLIC RELEASE</span><b>PREPARING</b></div>
+      </div>
+    </div>
+    <div class="architecture-note mono"><span>VALIDATION SCOPE</span><p>Integrated validation was completed on a Ryzen 5 7500F with a Radeon RX 9070 XT. NVIDIA GPU and Intel CPU/GPU paths are architecture-ready, but broader real-hardware validation is still upcoming and is not presented here as completed testing.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Privacy + security</p><h2>Useful diagnostics without making a cloud account part of the failure path.</h2></div>
+    <div class="rules-table">
+      <div class="rule-row"><span class="rule-no mono">01</span><strong>Network boundary</strong><p>The API and dashboard are localhost-only rather than exposed as a remote service.</p><b>LOCALHOST</b></div>
+      <div class="rule-row"><span class="rule-no mono">02</span><strong>Data handling</strong><p>No analytics or automatic diagnostic upload is required for normal runtime use.</p><b>LOCAL-FIRST</b></div>
+      <div class="rule-row"><span class="rule-no mono">03</span><strong>Support bundles</strong><p>Diagnostic bundles are created deliberately for support rather than silently transmitting machine evidence in the background.</p><b>USER-CONTROLLED</b></div>
+      <div class="rule-row"><span class="rule-no mono">04</span><strong>Persistent evidence</strong><p>Sessions and incidents are retained locally so diagnosis does not depend on a cloud history service.</p><b>SQLITE</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Evidence philosophy</p><h2>Observation is not causation.</h2></div>
+    <div class="failure-grid">
+      <article><span class="failure-label mono">BAD DIAGNOSIS</span><h3>“VRAM caused your crash.”</h3><p>A single high metric around a failure is not enough to prove component-level root cause.</p><div class="failure-fix"><span>CRASHSCOPE</span><p>Report the observed hardware state and nearby Windows evidence, then keep the interpretation proportional to what the evidence can actually support.</p></div></article>
+      <article><span class="failure-label mono">BAD DIAGNOSIS</span><h3>“The process exited, therefore it crashed.”</h3><p>Applications exit normally, are killed manually, restart themselves and can disappear for many reasons.</p><div class="failure-fix"><span>CRASHSCOPE</span><p>Process state, Windows evidence and incident classification remain separate until supporting signals justify stronger language.</p></div></article>
+      <article><span class="failure-label mono">BAD DIAGNOSIS</span><h3>“One Windows event tells us the root cause.”</h3><p>System records can be extremely useful without being complete explanations of why a component or application failed.</p><div class="failure-fix"><span>CRASHSCOPE</span><p>Event Log and WER records are correlated with the surrounding session and machine evidence rather than promoted automatically into a definitive diagnosis.</p></div></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Release engineering</p><h2>The first public beta has passed integrated validation.</h2><p>CrashScope v0.1 is beta ready. The application, persistence, evidence pipeline, tray experience, privacy boundaries and integrated performance behavior have been validated on the primary AMD test machine.</p></div>
+    <div class="skill-matrix">
+      <div><span>Automated coverage</span><p>185 automated .NET tests protect the current beta-ready behavior and engineering boundaries.</p></div>
+      <div><span>Native Windows UX</span><p>The tray integration and Everyday Mode make the product usable as an actual background diagnostic tool rather than only as a development dashboard.</p></div>
+      <div><span>Persistent state</span><p>SQLite keeps sessions and incidents available across restarts and later investigation.</p></div>
+      <div><span>Evidence handling</span><p>Event Log and WER evidence are preserved alongside local incident state without claiming unsupported causation.</p></div>
+      <div><span>Privacy-safe support</span><p>Support bundles are user-controlled, with localhost-only runtime behavior and no analytics or automatic upload.</p></div>
+      <div><span>Release status</span><p>The clean public repository and first public release are still being prepared. No public download is claimed until those release channels exist.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering surface</p><h2>What CrashScope demonstrates.</h2></div>
+    <div class="skill-matrix">
+      <div><span>C# / .NET 10</span><p>Domain boundaries, Agent lifecycle, typed telemetry and incident models, local APIs, persistence and automated test coverage.</p></div>
+      <div><span>React / TypeScript</span><p>A local dashboard for telemetry, sessions, incidents, evidence and workflow controls.</p></div>
+      <div><span>Windows diagnostics</span><p>Event Log and WER evidence integrated into a cautious incident-correlation workflow.</p></div>
+      <div><span>Data + state</span><p>SQLite-backed persistent sessions and incidents preserve evidence beyond one process lifetime.</p></div>
+      <div><span>Performance engineering</span><p>Final integrated validation measured 0.2657% average Agent CPU with 93 MB average and 95.83 MB peak working set on the primary machine.</p></div>
+      <div><span>Release engineering</span><p>Beta-readiness is treated as a validated state separate from the existence of a public repository or download.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">CrashScope v0.1 · beta ready</p>
+    <h2>Validated for a first public beta. Release in preparation.</h2>
+    <p>The v0.1 system has passed final integrated validation on the primary AMD machine. The next step is broader real-hardware coverage and preparation of the clean public repository and release channel. Until those exist, this portfolio intentionally does not advertise a public download.</p>
+    <div class="case-actions"><span class="button release-pending" aria-disabled="true">PUBLIC RELEASE · COMING SOON</span><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+
+  <style>
+    @media (max-width:820px) {
+      .crashscope-hero {
+        gap:27px !important;
+        padding-top:40px !important;
+        padding-bottom:50px !important;
+      }
+      .crashscope-hero .case-title-block h1 {
+        margin-top:13px !important;
+        margin-bottom:18px !important;
+      }
+      .crashscope-hero .case-copy {
+        font-size:.98rem !important;
+        line-height:1.67 !important;
+      }
+      .crashscope-hero .case-actions {
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:8px !important;
+        margin-top:22px !important;
+      }
+      .crashscope-hero .case-actions .button {
+        min-height:46px !important;
+        width:100%;
+        justify-content:center;
+        font-size:.74rem !important;
+      }
+      .crashscope-hero .case-actions .button.primary {
+        min-height:50px !important;
+        font-size:.80rem !important;
+      }
+
+      .crashscope-hero .case-status-panel {
+        padding:14px !important;
+        border-radius:10px;
+        box-shadow:0 24px 60px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.015);
+      }
+      .crashscope-hero .case-status-head {
+        padding-bottom:11px !important;
+      }
+      .crashscope-hero .case-status-head b {
+        width:max-content;
+        max-width:100%;
+        padding:5px 7px;
+        border:1px solid rgba(214,255,87,.20);
+        border-radius:5px;
+        background:rgba(214,255,87,.025);
+      }
+      .crashscope-hero .case-status-row {
+        min-height:45px !important;
+        padding:10px 0 !important;
+      }
+      .crashscope-hero .case-status-row span {
+        font-size:.55rem !important;
+      }
+      .crashscope-hero .case-status-row strong {
+        font-size:.88rem !important;
+      }
+      .crashscope-hero .case-status-foot {
+        padding-top:11px !important;
+      }
+      .crashscope-hero .case-status-foot .status-dot {
+        font-size:.49rem !important;
+        line-height:1.42 !important;
+      }
+
+      #evidence .field-console {
+        box-shadow:0 20px 48px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.012);
+      }
+      #evidence .field-console .accent-value {
+        font-size:.84rem;
+      }
+      #evidence .field-console .field-result {
+        background:linear-gradient(90deg,rgba(214,255,87,.025),transparent 76%);
+      }
+
+      .case-closing .case-actions {
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:8px !important;
+      }
+      .release-pending {
+        position:relative;
+        min-height:46px !important;
+        justify-content:center;
+        color:#8b938d !important;
+        border-color:rgba(255,255,255,.08) !important;
+        background:rgba(255,255,255,.006) !important;
+        cursor:default;
+        pointer-events:none;
+      }
+      .release-pending::before {
+        content:"";
+        width:6px;
+        height:6px;
+        margin-right:8px;
+        border-radius:50%;
+        background:#79845e;
+        box-shadow:0 0 10px rgba(214,255,87,.16);
+      }
+
+      /* Status rows enter after the hero copy, making the panel feel intentionally assembled. */
+      .crashscope-hero .case-status-row,
+      .crashscope-hero .case-status-foot {
+        animation:crashscope-mobile-row-in .38s cubic-bezier(.22,.75,.24,1) both;
+      }
+      .crashscope-hero .case-status-row:nth-child(2) { animation-delay:.14s; }
+      .crashscope-hero .case-status-row:nth-child(3) { animation-delay:.17s; }
+      .crashscope-hero .case-status-row:nth-child(4) { animation-delay:.20s; }
+      .crashscope-hero .case-status-row:nth-child(5) { animation-delay:.23s; }
+      .crashscope-hero .case-status-foot { animation-delay:.26s; }
+      @keyframes crashscope-mobile-row-in {
+        from { opacity:0; transform:translateY(5px); }
+        to { opacity:1; transform:translateY(0); }
+      }
+    }
+
+    @media (min-width:430px) and (max-width:820px) {
+      .crashscope-hero .case-actions {
+        grid-template-columns:1.15fr .85fr !important;
+      }
+    }
+
+    @media (max-width:370px) {
+      .crashscope-hero .case-status-row {
+        min-height:0 !important;
+      }
+      .crashscope-hero .case-status-head b {
+        width:100%;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .crashscope-hero .case-status-row,
+      .crashscope-hero .case-status-foot {
+        animation:none !important;
+        transform:none !important;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,370 @@
+/* MARCELO/LAB homepage refinement layer.
+   Stable, presentation-only rules for the portfolio landing page plus shared QA
+   behaviors that complement the foundational styles without changing content. */
+
+/* Active Builds: neutralize the older editorial stagger so paired cards share one baseline. */
+@media (min-width:981px) {
+  main:has(.identity-hero) .active-project-grid .project:nth-child(2),
+  main:has(.identity-hero) .active-project-grid .project:nth-child(2):hover {
+    transform:none !important;
+  }
+  main:has(.identity-hero) .active-project-grid {
+    align-items:stretch;
+  }
+  main:has(.identity-hero) .active-project-grid > .project {
+    align-self:stretch;
+    margin-top:0 !important;
+  }
+}
+
+/* The original diagonal hero route is retired. The signal motif lives below the skills. */
+main:has(.identity-hero) .identity-hero::after {
+  display:none !important;
+}
+
+/* Dedicated signal strip. Vector paths remain crisp at high DPI and ultrawide resolutions. */
+main:has(.identity-hero) .identity-skills {
+  position:relative;
+  margin-top:22px;
+  padding-bottom:84px;
+}
+main:has(.identity-hero) .identity-skills::after {
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:3px;
+  height:64px;
+  pointer-events:none;
+  opacity:.72;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 84' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23d6ff57' stroke-width='1'%3E%3Cpath opacity='.08' d='M0 39 C155 12 255 66 405 40 S660 14 816 40 S1080 66 1242 39 S1460 17 1600 40'/%3E%3Cpath opacity='.14' d='M0 45 C155 18 255 72 405 46 S660 20 816 46 S1080 72 1242 45 S1460 23 1600 46'/%3E%3Cpath opacity='.20' d='M0 51 C155 24 255 78 405 52 S660 26 816 52 S1080 78 1242 51 S1460 29 1600 52'/%3E%3Cpath opacity='.13' d='M0 57 C155 30 255 84 405 58 S660 32 816 58 S1080 84 1242 57 S1460 35 1600 58'/%3E%3Cpath opacity='.07' d='M0 63 C155 36 255 90 405 64 S660 38 816 64 S1080 90 1242 63 S1460 41 1600 64'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100% 100%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+}
+main:has(.identity-hero) .identity-skills::before {
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.075) 8%,rgba(255,255,255,.075) 92%,transparent);
+  pointer-events:none;
+}
+
+/* Hero-to-work handoff. */
+main:has(.identity-hero) #work {
+  padding-top:108px;
+}
+
+/* Paired active cards share top rhythm and bottom action line. */
+.active-project-grid > .project {
+  display:flex;
+  flex-direction:column;
+}
+.active-project-grid > .project .text-link {
+  margin-top:auto;
+  padding-top:22px;
+}
+.active-project-grid > .project .active-build-visual {
+  width:100%;
+}
+@media (min-width:981px) {
+  main:has(.identity-hero) .active-project-grid > .project::before {
+    opacity:.72;
+  }
+}
+
+/* Selected Work opens like an editorial chapter. */
+main:has(.identity-hero) #work > .section-head {
+  position:relative;
+  padding-left:20px;
+  align-items:start;
+}
+main:has(.identity-hero) #work > .section-head::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:2px;
+  width:2px;
+  height:clamp(58px,7vw,92px);
+  background:linear-gradient(to bottom,var(--accent),rgba(214,255,87,.08));
+  opacity:.68;
+}
+main:has(.identity-hero) #work > .section-head::after {
+  content:"PORTFOLIO / SELECTED SYSTEMS";
+  position:absolute;
+  right:0;
+  top:-25px;
+  color:#444d51;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.48rem;
+  letter-spacing:.14em;
+}
+
+/* Tier headers act as chapter dividers. */
+main:has(.identity-hero) .project-tier-head {
+  position:relative;
+  padding-top:8px;
+  padding-bottom:18px;
+}
+main:has(.identity-hero) .project-tier-head::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:72px;
+  height:1px;
+  background:linear-gradient(90deg,var(--accent),rgba(214,255,87,0));
+  opacity:.54;
+}
+main:has(.identity-hero) .project-tier-head > p {
+  max-width:470px;
+  color:#858e91;
+}
+main:has(.identity-hero) .project-tier-head h3 {
+  font-weight:540;
+}
+
+/* Status plates share one physical language. */
+main:has(.identity-hero) .project-state {
+  min-height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 9px;
+  background:rgba(214,255,87,.018);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+  white-space:nowrap;
+}
+main:has(.identity-hero) .project:hover .project-state {
+  border-color:rgba(214,255,87,.34);
+  background:rgba(214,255,87,.026);
+}
+
+/* Flagship cards read like case-study covers. */
+main:has(.identity-hero) .project-featured,
+main:has(.identity-hero) .project-showcase {
+  box-shadow:0 24px 70px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.015);
+}
+main:has(.identity-hero) .project-featured:hover,
+main:has(.identity-hero) .project-showcase:hover {
+  box-shadow:0 30px 80px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.022);
+}
+main:has(.identity-hero) .resale-visual,
+main:has(.identity-hero) .project-snapshot {
+  transition:border-color .24s ease,box-shadow .24s ease;
+}
+main:has(.identity-hero) .project-featured:hover .resale-visual,
+main:has(.identity-hero) .project-showcase:hover .project-snapshot {
+  border-color:rgba(214,255,87,.16);
+  box-shadow:inset 0 0 0 1px rgba(214,255,87,.018),0 22px 50px rgba(0,0,0,.15);
+}
+
+/* VektorDeck becomes a split cover on large displays. */
+@media (min-width:1100px) {
+  main:has(.identity-hero) .project-showcase {
+    display:grid;
+    grid-template-columns:minmax(0,.92fr) minmax(430px,1.08fr);
+    gap:clamp(30px,3.4vw,52px);
+    align-items:stretch;
+    min-height:540px;
+  }
+  main:has(.identity-hero) .project-showcase-copy {
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+  }
+  main:has(.identity-hero) .project-showcase-copy .text-link {
+    margin-top:auto;
+    padding-top:26px;
+  }
+  main:has(.identity-hero) .project-showcase .project-snapshot {
+    align-self:stretch;
+    min-height:100%;
+    margin:0;
+  }
+}
+
+/* Readout panels share one spacing rhythm. */
+main:has(.identity-hero) .forge-visual,
+main:has(.identity-hero) .active-build-visual,
+main:has(.identity-hero) .clock-visual {
+  border-color:rgba(255,255,255,.09);
+}
+main:has(.identity-hero) .forge-visual > div:not(.meter),
+main:has(.identity-hero) .active-build-visual > div {
+  min-height:29px;
+  align-items:center;
+}
+
+main:has(.identity-hero) .project .text-link {
+  color:#d5d9d6;
+  font-weight:520;
+}
+main:has(.identity-hero) .project .text-link::after { opacity:.72; }
+main:has(.identity-hero) .project:hover .text-link::after { opacity:1; }
+
+/* Recruiter-facing closing strips form an editorial coda. */
+main:has(.identity-hero) .home-about-strip {
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);
+  gap:clamp(38px,6vw,88px);
+  align-items:start;
+  padding:48px 0 50px;
+  border-top:1px solid rgba(255,255,255,.085);
+}
+main:has(.identity-hero) .home-about-strip + .home-about-strip { margin-top:0; }
+main:has(.identity-hero) .home-about-strip::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  width:44px;
+  height:1px;
+  background:var(--accent);
+  opacity:.52;
+}
+main:has(.identity-hero) .home-about-strip h3 {
+  margin:9px 0 0;
+  max-width:520px;
+  font-size:clamp(1.55rem,2.7vw,2.6rem);
+  line-height:1.08;
+  letter-spacing:-.04em;
+  font-weight:530;
+  text-wrap:balance;
+}
+main:has(.identity-hero) .home-about-strip > div:last-child > p {
+  margin-top:2px;
+  max-width:690px;
+  color:#929a9d;
+  line-height:1.72;
+}
+main:has(.identity-hero) .home-about-strip .hero-actions { margin-top:24px; }
+main:has(.identity-hero) .home-about-strip .button { background:rgba(255,255,255,.004); }
+main:has(.identity-hero) .home-about-strip .button.primary { background:var(--text); }
+
+/* MinimalClock stays intentionally compact without feeling stranded. */
+main:has(.identity-hero) .focused-project-grid { grid-template-columns:minmax(0,620px); }
+main:has(.identity-hero) .clock-project { min-height:390px; }
+main:has(.identity-hero) .clock-project .clock-visual { margin-top:auto; }
+
+main:has(.identity-hero) .project-tier-head,
+main:has(.identity-hero) .home-about-strip {
+  transform:none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Final QA: navigation state, accessibility and rendering efficiency.
+   -------------------------------------------------------------------------- */
+
+/* Current section/page is visible without turning the header into a tab bar. */
+.site-header nav a[aria-current="page"] {
+  color:#edf0ec;
+  text-shadow:0 0 16px rgba(214,255,87,.10);
+}
+.site-header nav a[aria-current="page"]::after {
+  width:62%;
+  opacity:.76;
+}
+.site-header nav a[aria-current="page"]::before {
+  opacity:.34;
+}
+
+/* Anchored navigation should never land underneath the sticky header. */
+#work,
+[id].case-section,
+[id].section {
+  scroll-margin-top:96px;
+}
+
+/* Progressive rendering optimization for long pages. Browsers without support simply ignore it. */
+@supports (content-visibility:auto) {
+  main:has(.identity-hero) .project-tier,
+  main:has(.identity-hero) .field-note,
+  main:has(.identity-hero) .home-about-strip,
+  .case-section,
+  .about-manifesto,
+  .resume-section,
+  .contact-paths,
+  .about-contact {
+    content-visibility:auto;
+    contain-intrinsic-size:auto 620px;
+  }
+  .case-section { contain-intrinsic-size:auto 760px; }
+  .resume-section { contain-intrinsic-size:auto 360px; }
+}
+
+/* Respect users who explicitly ask their OS/browser for stronger contrast. */
+@media (prefers-contrast:more) {
+  :root {
+    --muted:#bcc2c0;
+    --line:#454c4f;
+    --line-soft:#32383b;
+    --hairline:rgba(255,255,255,.20);
+  }
+  .identity-kicker-muted,
+  .identity-foot,
+  .identity-proof span,
+  .project-no,
+  .project-tier-head > p,
+  .about-card span,
+  .resume-section article span,
+  .contact-panel span {
+    color:#aeb5b2 !important;
+  }
+  .site-header nav a,
+  .footer-links a { color:#c3c8c5; }
+  .site-header nav a[aria-current="page"] { color:#fff; }
+}
+
+/* Touch devices keep the composition stable instead of inheriting desktop hover motion. */
+@media (hover:none) {
+  .project:hover,
+  .current-focus-grid a:hover,
+  .resume-variant:hover,
+  .about-portrait:hover {
+    transform:none !important;
+  }
+}
+
+@media (max-width:1099px) {
+  main:has(.identity-hero) .project-showcase .project-snapshot { margin-top:26px; }
+}
+
+@media (max-width:980px) {
+  main:has(.identity-hero) .identity-skills { padding-bottom:64px; }
+  main:has(.identity-hero) .identity-skills::after { height:48px; opacity:.56; }
+  main:has(.identity-hero) #work { padding-top:88px; }
+  main:has(.identity-hero) #work > .section-head { padding-left:16px; }
+  main:has(.identity-hero) #work > .section-head::after { display:none; }
+  main:has(.identity-hero) .home-about-strip {
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:40px 0 42px;
+  }
+}
+
+@media (max-width:760px) {
+  main:has(.identity-hero) .identity-skills { padding-bottom:48px; }
+  main:has(.identity-hero) .identity-skills::after { height:36px; opacity:.42; }
+  main:has(.identity-hero) #work { padding-top:78px; }
+  main:has(.identity-hero) #work > .section-head { padding-left:12px; }
+  main:has(.identity-hero) #work > .section-head::before { width:1px; height:58px; }
+  main:has(.identity-hero) .project-tier-head { padding-top:4px; }
+  main:has(.identity-hero) .project-tier-head::after { width:48px; }
+  main:has(.identity-hero) .home-about-strip { padding:34px 0 36px; }
+  main:has(.identity-hero) .focused-project-grid { grid-template-columns:1fr; }
+  .site-header nav a[aria-current="page"]::before,
+  .site-header nav a[aria-current="page"]::after { display:none; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .active-project-grid > .project { transform:none !important; }
+  main:has(.identity-hero) .resale-visual,
+  main:has(.identity-hero) .project-snapshot { transition:none !important; }
+}

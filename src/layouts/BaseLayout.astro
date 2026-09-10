@@ -1,0 +1,363 @@
+---
+import '../styles/global.css';
+import '../styles/polish.css';
+import '../styles/product-shots.css';
+import '../styles/project-organization.css';
+import '../styles/about.css';
+import '../styles/resume.css';
+import '../styles/display-polish.css';
+import '../styles/identity-home.css';
+import '../styles/art-direction.css';
+import '../styles/final-polish.css';
+import '../styles/homepage-polish.css';
+import '../styles/mobile-experience.css';
+import '../styles/mobile-qa.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  canonicalPath?: string;
+}
+
+const {
+  title = 'Marcelo Ellwanger | Software & Systems Developer',
+  description = 'Software and systems developer building practical tools across Windows diagnostics, local AI, automation, computer vision and evidence-driven data systems.',
+  noindex = false,
+  canonicalPath
+} = Astro.props;
+
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const configuredBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const rawPath = canonicalPath ?? Astro.url.pathname ?? '/';
+const pathWithBase = configuredBase && configuredBase !== '/' && !rawPath.startsWith(`${configuredBase}/`) && rawPath !== configuredBase
+  ? `${configuredBase}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`
+  : rawPath;
+const canonicalURL = new URL(pathWithBase || '/', origin);
+const basePrefix = configuredBase && configuredBase !== '/' ? configuredBase : '';
+const withBase = (path: string) => `${basePrefix}${path.startsWith('/') ? path : `/${path}`}`;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const localPath = basePrefix && currentPath.startsWith(basePrefix)
+  ? (currentPath.slice(basePrefix.length) || '/')
+  : currentPath;
+const navCurrent = (path: string) => localPath === path || (path !== '/' && localPath.startsWith(`${path}/`));
+const workCurrent = localPath === '/' || localPath.startsWith('/projects/');
+const siteURL = new URL(`${basePrefix || ''}/`, origin);
+const profileImageURL = new URL(`${basePrefix}/profile/marcelo-profile.webp`, origin);
+const brandImageURL = new URL(`${basePrefix}/brand/social.png`, origin);
+const personURL = new URL(`${basePrefix}/about/`, origin);
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${personURL.toString()}#marcelo`,
+  name: 'Marcelo Ellwanger',
+  url: personURL.toString(),
+  image: profileImageURL.toString(),
+  sameAs: [
+    'https://github.com/marcelosofficial-ctrl',
+    'https://www.linkedin.com/in/marcelo-ellwanger-10657a435/'
+  ],
+  jobTitle: 'Software and Systems Developer',
+  knowsAbout: [
+    'Software engineering',
+    'QA automation',
+    'Release engineering',
+    'AI tooling',
+    'Automation',
+    'Windows diagnostics',
+    'Computer vision',
+    'Data systems',
+    'Technical support',
+    'Operations management',
+    'Electrical troubleshooting'
+  ]
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteURL.toString()}#website`,
+  name: 'MARCELO/LAB',
+  url: siteURL.toString(),
+  creator: { '@id': `${personURL.toString()}#marcelo` },
+  inLanguage: 'en'
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Marcelo Ellwanger" />
+    <meta name="creator" content="Marcelo Ellwanger" />
+    <meta name="application-name" content="MARCELO/LAB" />
+    <meta name="keywords" content="Marcelo Ellwanger, software engineering, systems engineering, QA automation, release engineering, Windows diagnostics, local AI, computer vision, Python, C#, .NET, React, TypeScript" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
+    <meta name="theme-color" content="#0b0d0e" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/png" sizes="64x64" href={`${basePrefix}/brand/favicon.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${basePrefix}/brand/apple-touch-icon.png`} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="me" href="https://github.com/marcelosofficial-ctrl" />
+    <link rel="me" href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="MARCELO/LAB" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={brandImageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Marcelo Ellwanger — MARCELO/LAB software and systems portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={brandImageURL} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    <script is:inline>document.documentElement.classList.add('mobile-nav-ready');</script>
+    <title>{title}</title>
+    <style is:global>
+      .brand > img {
+        width: 30px;
+        height: 30px;
+        margin-right: .55rem;
+        border-radius: 8px;
+        vertical-align: middle;
+        object-fit: cover;
+        box-shadow: 0 0 18px rgba(189, 255, 0, .13);
+      }
+      .project-title-row {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .project-title-row > h3 {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .project-brand-icon {
+        position: static;
+        flex: 0 0 auto;
+        width: 48px;
+        height: 48px;
+        margin-top: 18px;
+        padding: 4px;
+        object-fit: contain;
+        border: 1px solid rgba(255,255,255,.09);
+        border-radius: 13px;
+        background: #0d1012;
+        opacity: 1;
+        pointer-events: none;
+        box-shadow: 0 10px 24px rgba(0,0,0,.18), 0 0 18px rgba(189,255,0,.09);
+      }
+      .project { position: relative; overflow: hidden; }
+      .case-brand-icon {
+        width: 82px;
+        height: 82px;
+        padding: 5px;
+        object-fit: contain;
+        border: 1px solid rgba(255,255,255,.09);
+        border-radius: 20px;
+        margin-bottom: 1.2rem;
+        background: #0d1012;
+        filter: drop-shadow(0 0 20px rgba(189, 255, 0, .10));
+      }
+      @media (max-width: 700px) {
+        .project-title-row { gap: 14px; }
+        .project-brand-icon { width: 40px; height: 40px; margin-top: 15px; border-radius: 11px; }
+        .case-brand-icon { width: 68px; height: 68px; border-radius: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header wrap">
+        <a class="brand" href={withBase('/')} aria-label="Marcelo Ellwanger home"><img src={`${basePrefix}/brand/marcelo-lab.webp`} alt="" width="30" height="30" />MARCELO<span>/</span>LAB</a>
+        <div class="header-meta mono" aria-hidden="true">ENGINEERING · SYSTEMS · AI</div>
+        <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+          <span class="mobile-nav-label">MENU</span>
+          <span class="mobile-nav-icon" aria-hidden="true"></span>
+        </button>
+        <nav id="primary-navigation" aria-label="Primary navigation">
+          <a href={withBase('/#work')} aria-current={workCurrent ? 'page' : undefined}>Work</a>
+          <a href={withBase('/about/')} aria-current={navCurrent('/about') ? 'page' : undefined}>About</a>
+          <a href={withBase('/resume/')} aria-current={navCurrent('/resume') ? 'page' : undefined}>Résumé</a>
+          <a href={withBase('/contact/')} aria-current={navCurrent('/contact') ? 'page' : undefined}>Contact</a>
+          <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <div class="mobile-nav-meta" aria-hidden="true"><span>JAPAN / 2026</span><span>REMOTE / GLOBAL</span></div>
+        </nav>
+      </header>
+      <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+    </div>
+    <div class="mobile-nav-backdrop" aria-hidden="true"></div>
+    <main id="main-content"><slot /></main>
+    <footer class="footer wrap">
+      <div>
+        <strong>Marcelo Ellwanger</strong>
+        <p>Building practical software across Windows diagnostics, local AI, automation, data and computer vision.</p>
+      </div>
+      <div class="footer-links mono">
+        <a href={withBase('/#work')}>WORK</a>
+        <a href={withBase('/about/')}>ABOUT</a>
+        <a href={withBase('/resume/')}>RÉSUMÉ</a>
+        <a href={withBase('/contact/')}>CONTACT</a>
+        <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GITHUB ↗</a>
+        <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+      </div>
+    </footer>
+
+    <script is:inline define:vars={{ basePrefix }}>
+      if (basePrefix) {
+        for (const link of document.querySelectorAll('a[href^="/"]')) {
+          const href = link.getAttribute('href');
+          if (!href || href.startsWith('//') || href === basePrefix || href.startsWith(`${basePrefix}/`) || href.startsWith(`${basePrefix}#`)) continue;
+          link.setAttribute('href', `${basePrefix}${href}`);
+        }
+      }
+
+      const navToggle = document.querySelector('.mobile-nav-toggle');
+      const primaryNav = document.getElementById('primary-navigation');
+      const navBackdrop = document.querySelector('.mobile-nav-backdrop');
+      const mobileNavQuery = window.matchMedia('(max-width: 820px)');
+      let navReturnFocus = null;
+
+      const setMobileNav = (open, restoreFocus = true) => {
+        const shouldOpen = Boolean(open && mobileNavQuery.matches);
+        document.documentElement.classList.toggle('mobile-nav-open', shouldOpen);
+        navToggle?.setAttribute('aria-expanded', String(shouldOpen));
+        navToggle?.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
+
+        if (shouldOpen) {
+          navReturnFocus = document.activeElement;
+          window.requestAnimationFrame(() => primaryNav?.querySelector('a[href]')?.focus({ preventScroll: true }));
+        } else if (restoreFocus && navReturnFocus instanceof HTMLElement && document.contains(navReturnFocus)) {
+          navReturnFocus.focus({ preventScroll: true });
+          navReturnFocus = null;
+        }
+      };
+
+      navToggle?.addEventListener('click', () => {
+        setMobileNav(!document.documentElement.classList.contains('mobile-nav-open'), false);
+      });
+      navBackdrop?.addEventListener('click', () => setMobileNav(false));
+      primaryNav?.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', () => setMobileNav(false, false));
+      });
+      mobileNavQuery.addEventListener?.('change', (event) => {
+        if (!event.matches) setMobileNav(false, false);
+      });
+      window.addEventListener('pageshow', () => setMobileNav(false, false));
+
+      document.addEventListener('keydown', (event) => {
+        if (!document.documentElement.classList.contains('mobile-nav-open')) return;
+
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          setMobileNav(false);
+          return;
+        }
+
+        if (event.key !== 'Tab' || !primaryNav) return;
+        const focusable = [navToggle, ...primaryNav.querySelectorAll('a[href]')].filter((el) => el instanceof HTMLElement);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      const projectMarks = [
+        ['reseller-ai', 'reseller.webp', 'Retro Game Vision & Resale System'],
+        ['vektordeck', 'vektordeck.webp', 'VektorDeck'],
+        ['crashscope', 'crashscope.webp', 'CrashScope'],
+        ['reelshelf', 'reelshelf.webp', 'ReelShelf / EasyFLix']
+      ];
+
+      for (const [slug, file, label] of projectMarks) {
+        const src = `${basePrefix}/brand/${file}`;
+        const card = document.querySelector(`.project[href*="/projects/${slug}/"]`);
+        if (card && !card.querySelector('.project-brand-icon')) {
+          const heading = card.querySelector('h3');
+          if (heading && heading.parentElement) {
+            const titleRow = document.createElement('div');
+            titleRow.className = 'project-title-row';
+            heading.before(titleRow);
+
+            const mark = document.createElement('img');
+            mark.className = 'project-brand-icon';
+            mark.src = src;
+            mark.alt = '';
+            mark.width = 48;
+            mark.height = 48;
+            mark.loading = 'lazy';
+            mark.decoding = 'async';
+
+            titleRow.appendChild(heading);
+            titleRow.appendChild(mark);
+          }
+        }
+
+        if (window.location.pathname.includes(`/projects/${slug}`)) {
+          const titleBlock = document.querySelector('.case-title-block');
+          if (titleBlock && !titleBlock.querySelector('.case-brand-icon')) {
+            const mark = document.createElement('img');
+            mark.className = 'case-brand-icon';
+            mark.src = src;
+            mark.alt = `${label} icon`;
+            mark.width = 82;
+            mark.height = 82;
+            mark.loading = 'eager';
+            mark.decoding = 'async';
+            titleBlock.prepend(mark);
+          }
+        }
+      }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        const targets = document.querySelectorAll('.section-head, .project, .principle-grid article, .case-section-heading, .arch-node, .model-grid article, .failure-grid article, .skill-matrix div, .field-console, .boundary-table, .field-note, .about-story-grid article, .achievement-grid article, .current-focus-grid a, .home-about-strip, .about-manifesto');
+        targets.forEach((el) => el.classList.add('reveal-ready'));
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal-in');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: mobileNavQuery.matches ? 0.08 : 0.12, rootMargin: mobileNavQuery.matches ? '0px 0px -4% 0px' : '0px 0px -7% 0px' });
+
+        targets.forEach((el) => observer.observe(el));
+
+        const progress = document.getElementById('scroll-progress-bar');
+        let progressFrame = 0;
+        const updateProgress = () => {
+          progressFrame = 0;
+          if (!progress) return;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const ratio = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+          progress.style.transform = `scaleX(${ratio})`;
+        };
+        const queueProgress = () => {
+          if (progressFrame) return;
+          progressFrame = window.requestAnimationFrame(updateProgress);
+        };
+        updateProgress();
+        window.addEventListener('scroll', queueProgress, { passive: true });
+        window.addEventListener('resize', queueProgress, { passive: true });
+      }
+    </script>
+  </body>
+</html>

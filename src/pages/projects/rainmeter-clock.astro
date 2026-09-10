@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="MinimalClock | Marcelo Ellwanger" description="A lightweight Rainmeter desktop clock for Windows with persistent settings, measured overhead, automated validation and a dependency-free browser implementation.">
+  <section class="case-hero wrap">
+    <p class="eyebrow">05 · Focused project · Shipped · Rainmeter + Web</p>
+    <h1>MinimalClock</h1>
+    <p class="case-copy">A small desktop utility I wanted for my own Windows setup that became an exercise in finishing a focused tool properly: restrained architecture, persistent settings, measurable performance, validation and release packaging.</p>
+    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/MinimalClock" target="_blank" rel="noreferrer">Open repository ↗</a><a class="button" href="#evidence">See measured overhead ↓</a></div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The design choice</p><h2>Use the smallest runtime that solves the job.</h2></div>
+    <div class="case-long-copy">
+      <p>The desktop version only needs local time, text rendering and a small settings surface. Rainmeter already provides those capabilities, so embedding a browser runtime or desktop framework would add memory use and complexity without improving the core job.</p>
+      <p>The project therefore ships as a native Rainmeter skin with no plugins or network measures. A separate dependency-free HTML/CSS/JavaScript implementation demonstrates the same visual idea in the browser without making the web runtime a dependency of the desktop clock.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="evidence">
+    <div class="field-grid">
+      <div class="case-section-heading"><p class="eyebrow">Measured performance</p><h2>“Lightweight” is measured rather than assumed.</h2><p>Three 45-second scenarios were sampled on the same Windows development machine: Rainmeter baseline, MinimalClock with seconds hidden, and MinimalClock with seconds visible.</p></div>
+      <div class="field-console mono">
+        <div><span>Rainmeter baseline CPU</span><b>0.0029%</b></div>
+        <div><span>clock CPU · seconds off</span><b class="accent-value">0.0086%</b></div>
+        <div><span>clock CPU · seconds on</span><b>0.0287%</b></div>
+        <div><span>working set · baseline</span><b>57.86 MB</b></div>
+        <div><span>working set · seconds off</span><b>60.03 MB</b></div>
+        <div><span>working set · seconds on</span><b>60.21 MB</b></div>
+        <div class="field-result"><span>added working set</span><strong>~2.17–2.35 MB ON TEST SYSTEM</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering surface</p><h2>Small software can still be deliberate.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Persistent settings</h3><p>12/24-hour modes, optional seconds, scale, opacity and theme choices persist through a native Rainmeter settings panel rather than source-file editing.</p></article>
+      <article><span class="mono model-index">02</span><h3>Performance validation</h3><p>Repeatable PowerShell tooling measures CPU and memory overhead against a Rainmeter baseline instead of relying on subjective “feels lightweight” claims.</p></article>
+      <article><span class="mono model-index">03</span><h3>Release engineering</h3><p>Windows GitHub Actions validates project structure and browser JavaScript, while the native release is packaged through Rainmeter's Skin Packager.</p></article>
+      <article><span class="mono model-index">04</span><h3>Scope discipline</h3><p>No Electron, Node runtime, embedded WebView, background service or unnecessary network dependency is added to a utility whose job is simply to show time well.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Shipped utility</p>
+    <h2>A tiny project that still has architecture, benchmarks, CI and a release path.</h2>
+    <p>The point of MinimalClock is not complexity. It shows that even a one-purpose desktop tool can be finished with measurable non-functional requirements and a clean technical boundary.</p>
+    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/MinimalClock" target="_blank" rel="noreferrer">View source and release docs ↗</a><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+</BaseLayout>

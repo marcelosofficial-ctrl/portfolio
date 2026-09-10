@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="VektorDeck 1.0 | Marcelo Ellwanger" description="A finished local-first AI workstation manager for GGUF model intelligence, safe runtime control, hardware telemetry, evidence-aware benchmarking and transparent launch recommendations.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">02 · Flagship case study · Released 1.0.0 · Local AI systems</p>
+      <h1>VektorDeck</h1>
+      <p class="case-copy">A local-first workstation manager for the parts of local AI that become difficult to trust once a setup grows: model files, multimodal projectors, launch flags, runtime ownership, RAM/VRAM pressure and benchmark history.</p>
+      <div class="case-actions">
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/VektorDeck" target="_blank" rel="noreferrer">Open repository ↗</a>
+        <a class="button" href="#evidence">See real validation ↓</a>
+      </div>
+    </div>
+
+    <div class="case-status-panel mono" aria-label="VektorDeck release status">
+      <div class="case-status-head"><span>PRODUCT / RELEASE</span><b>1.0.0</b></div>
+      <div class="case-status-row"><span>Installation status</span><strong>READY + NOTES</strong></div>
+      <div class="case-status-row"><span>Blocking issues</span><strong>0</strong></div>
+      <div class="case-status-row"><span>Validation</span><strong>CI + LOCAL + SMOKE</strong></div>
+      <div class="case-status-row"><span>Primary runtime</span><strong>llama.cpp</strong></div>
+      <div class="case-status-foot"><span class="status-dot">RELEASED / DAILY-USE READY</span></div>
+    </div>
+  </section>
+
+  <section class="product-shot-section wrap" aria-label="VektorDeck dashboard screenshot">
+    <figure class="product-shot product-shot-wide">
+      <img src={`${baseURL}vektordeck/dashboard.webp`} alt="VektorDeck 1.0 dashboard showing live CPU, RAM, GPU and VRAM telemetry with local runtime controls" width="1920" height="1079" loading="eager" />
+      <figcaption><span class="mono">01 / CONTROL DECK</span><p>The finished 1.0 dashboard on the workstation it was built for: live telemetry, saved profiles, runtime targets and release status in one local control surface.</p></figcaption>
+    </figure>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div>
+      <p class="eyebrow">The problem</p>
+      <h2>Local AI should feel like software, not command-line archaeology.</h2>
+    </div>
+    <div class="case-long-copy">
+      <p>My local AI setup worked, but it was increasingly difficult to reason about. Models lived across drives. Commands depended on exact flags. Vision required the right projector. Ports could already be occupied. A benchmark could look fast even when the machine was already under load.</p>
+      <p>VektorDeck turns that into one persistent local control surface. It discovers assets, inspects GGUF metadata, validates saved profiles, launches runtimes safely, watches the machine, records evidence and explains why a recommendation exists.</p>
+      <p>The project deliberately avoids becoming another chat frontend. Its job is to make the workstation itself understandable and trustworthy.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="architecture">
+    <div class="case-section-heading">
+      <p class="eyebrow">Architecture</p>
+      <h2>One local control deck. Clear boundaries underneath.</h2>
+      <p>The browser never launches arbitrary commands or scans drives directly. System-specific behavior stays behind a loopback FastAPI service and explicit runtime adapters.</p>
+    </div>
+
+    <div class="architecture-flow" aria-label="VektorDeck architecture">
+      <div class="arch-node arch-input"><span class="mono">UI</span><strong>React + TypeScript</strong><small>dashboard, profiles, evidence views</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">API</span><strong>FastAPI</strong><small>loopback-only control boundary</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">CORE</span><strong>Python services</strong><small>intelligence, safety, telemetry, runtime control</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node arch-output"><span class="mono">STATE</span><strong>SQLite + local logs</strong><small>profiles, models, evidence, protocol provenance</small></div>
+    </div>
+
+    <div class="architecture-note mono"><span>BOUNDARY</span><p>VektorDeck manages llama.cpp, AUTOMATIC1111 and Hermes locally. It does not require a cloud account, and model/runtime control stays on the workstation.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Model intelligence + Smart Launch</p>
+      <h2>Understand the model first. Recommend a launch second.</h2>
+      <p>GGUF inspection and launch recommendations are deliberately linked but kept conceptually separate. Metadata describes what is installed; Smart Launch explains what the current machine should try.</p>
+    </div>
+
+    <figure class="product-shot">
+      <img src={`${baseURL}vektordeck/intelligence-tour.webp`} alt="VektorDeck Model Inspector and Smart Launch panels showing Qwen3.8 27B GGUF metadata, projector pairing and an experimental 8K launch recommendation" width="1564" height="947" loading="lazy" />
+      <figcaption><span class="mono">02 / INTELLIGENCE</span><p>Real Qwen3.8 27B metadata beside the hardware-aware launch recommendation. The recommendation is marked EXPERIMENTAL because the workstation has not yet produced two clean Protocol-v2 runs.</p></figcaption>
+    </figure>
+
+    <div class="model-grid case-feature-grid">
+      <article><span class="mono model-index">01</span><h3>Bounded GGUF parsing</h3><p>Architecture, context, tensor count, parameter hints and quantization metadata are read locally without loading the model for inference.</p></article>
+      <article><span class="mono model-index">02</span><h3>Projector pairing</h3><p>Vision projectors are suggested from folder/name evidence, shown with reasons, and never silently applied.</p></article>
+      <article><span class="mono model-index">03</span><h3>Profile readiness</h3><p>Saved configurations are checked against indexed assets, local-only host rules and GGUF-advertised context limits before launch.</p></article>
+      <article><span class="mono model-index">04</span><h3>Transparent heuristics</h3><p>The current 32 GB-class RAM / 16 GB VRAM workstation maps to an 8K starting point for this 11.15 GB multimodal model, with every reduction rule visible.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap" id="evidence">
+    <div class="field-grid">
+      <div class="case-section-heading">
+        <p class="eyebrow">Real workstation evidence</p>
+        <h2>Performance results are allowed to say “not proven yet.”</h2>
+        <p>The application preserves old results but separates legacy history from controlled evidence. If the machine is already busy, Protocol v2 refuses the run instead of creating a fake clean benchmark.</p>
+      </div>
+
+      <div class="field-console mono" aria-label="VektorDeck validated workstation evidence">
+        <div><span>release</span><b class="accent-value">1.0.0</b></div>
+        <div><span>language model</span><b>Qwen3.8 27B</b></div>
+        <div><span>model file</span><b>11.15 GB · IQ3_XS</b></div>
+        <div><span>advertised context</span><b>262,144</b></div>
+        <div><span>local RAM / VRAM</span><b>31.6 / 16.0 GiB</b></div>
+        <div><span>Smart Launch start point</span><b>8,192 ctx</b></div>
+        <div><span>release blockers</span><b class="accent-value">0</b></div>
+        <div class="field-result"><span>release validation</span><strong>CI GREEN · LOCAL BUILD PASS · LIVE SMOKE PASS</strong></div>
+        <div class="field-health"><span>READINESS</span><b>READY + NOTES</b><span>PERF EVIDENCE</span><b>PENDING</b><span>FAKE CLEAN RUNS</span><b>0</b></div>
+      </div>
+    </div>
+
+    <figure class="product-shot product-shot-evidence">
+      <img src={`${baseURL}vektordeck/evidence-tour.webp`} alt="VektorDeck Observability and Performance Trends panels showing pressured benchmark evidence and no trustworthy Protocol-v2 winner yet" width="1564" height="1292" loading="lazy" />
+      <figcaption><span class="mono">03 / EVIDENCE</span><p>Observability keeps the raw pressured result visible. Trends refuses to declare a winner because no profile yet has the required quiet-baseline Protocol-v2 evidence.</p></figcaption>
+    </figure>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Safety rules</p>
+      <h2>Failure is explicit rather than convenient.</h2>
+    </div>
+    <div class="rules-table">
+      <div class="rule-row"><span class="rule-no mono">01</span><strong>Unknown listener on a port?</strong><p>Do not replace it. Identify ownership where possible and fail closed when the process is not VektorDeck-managed.</p><b>REFUSE</b></div>
+      <div class="rule-row"><span class="rule-no mono">02</span><strong>Profile points outside indexed assets?</strong><p>Do not launch. Model and projector paths must resolve to assets the local inventory knows about.</p><b>BLOCK</b></div>
+      <div class="rule-row"><span class="rule-no mono">03</span><strong>Benchmark starts on a busy machine?</strong><p>Refuse the controlled run and surface likely contaminating processes instead of manufacturing clean evidence.</p><b>DEFER</b></div>
+      <div class="rule-row"><span class="rule-no mono">04</span><strong>Only one good benchmark?</strong><p>Keep the recommendation experimental. Promotion requires repeated Protocol-v2 HEALTHY/TIGHT evidence for the same profile.</p><b>NO PROMOTION</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Failure → redesign</p>
+      <h2>The failures became some of the strongest parts of the product.</h2>
+    </div>
+
+    <div class="failure-grid">
+      <article>
+        <span class="failure-label mono">OBSERVED FAILURE</span>
+        <h3>Benchmark numbers looked comparable until background CPU load changed the result.</h3>
+        <p>Inference-time telemetry could show pressure, but it could not prove the machine was quiet before the run began.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>Protocol v2 records a pre-inference baseline, source, contaminators and inference-time evidence. Busy machines are allowed to say “not now.”</p></div>
+      </article>
+      <article>
+        <span class="failure-label mono">OBSERVED FAILURE</span>
+        <h3>The updater downloaded its own fix but kept executing old PowerShell code already in memory.</h3>
+        <p>The file on disk was correct while the current update process was still running stale logic.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>The updater hashes itself before and after pull and automatically restarts once when its own script changes.</p></div>
+      </article>
+      <article>
+        <span class="failure-label mono">OBSERVED FAILURE</span>
+        <h3>A surviving runtime after backend restart could not simply be trusted by PID.</h3>
+        <p>PIDs are reusable, and blindly adopting a process would create a dangerous ownership assumption.</p>
+        <div class="failure-fix"><span>REDESIGN</span><p>Runtime recovery verifies the saved profile, PID, executable path, port, model path and live llama-compatible API before reclaiming ownership.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading">
+      <p class="eyebrow">Engineering surface</p>
+      <h2>What VektorDeck demonstrates.</h2>
+    </div>
+
+    <div class="skill-matrix">
+      <div><span>Python / FastAPI</span><p>Local APIs, runtime adapters, process ownership, telemetry, GGUF parsing, validation and orchestration.</p></div>
+      <div><span>React / TypeScript</span><p>Stateful control surfaces for runtimes, profiles, telemetry, evidence, Model Intelligence and release readiness.</p></div>
+      <div><span>SQLite</span><p>Persistent model inventory, launch profiles, benchmark history, runtime leases and Protocol-v2 provenance.</p></div>
+      <div><span>Systems engineering</span><p>Ports, process trees, Windows paths, PowerShell lifecycle issues, loopback networking and fail-closed ownership checks.</p></div>
+      <div><span>Evidence design</span><p>Explicit HEALTHY/TIGHT/PRESSURED/UNVERIFIED states, contamination checks and transparent recommendation reasons.</p></div>
+      <div><span>Release engineering</span><p>GitHub Actions, local regression/build gates, repair scripts, diagnostics and live post-relaunch smoke tests.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="architecture-note mono"><span>RÉSUMÉ</span><p>Built and released a local-first Windows AI workstation manager using Python/FastAPI, React/TypeScript and SQLite, with safe runtime ownership, GGUF metadata inspection, hardware telemetry, evidence-aware benchmarking, transparent launch recommendations, CI and live smoke validation.</p></div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">VektorDeck 1.0</p>
+    <h2>A finished tool built from a problem on my own machine.</h2>
+    <p>VektorDeck 1.0 deliberately stops at a complete Windows local-workstation product. Installer packaging, ComfyUI, remote control and plugins are future extensions rather than unfinished core requirements.</p>
+    <div class="case-actions">
+      <a class="button primary" href="https://github.com/marcelosofficial-ctrl/VektorDeck" target="_blank" rel="noreferrer">View VektorDeck on GitHub ↗</a>
+      <a class="button" href="/">Back to portfolio ↑</a>
+    </div>
+  </section>
+</BaseLayout>

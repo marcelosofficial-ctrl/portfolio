@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="MARCELO/LAB mark">
+  <rect width="180" height="180" rx="36" fill="#0d1012"/>
+  <rect x="2" y="2" width="176" height="176" rx="34" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/>
+  <path d="M38 128V52h20l32 48 32-48h20v76h-20V86l-32 44-32-44v42Z" fill="#f3f1e8"/>
+  <rect x="124" y="119" width="28" height="9" fill="#d6ff57"/>
+</svg>

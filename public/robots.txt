@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcelosofficial-ctrl.github.io/portfolio/sitemap.xml
