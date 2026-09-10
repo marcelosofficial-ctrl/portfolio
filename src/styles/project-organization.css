@@ -94,8 +94,3 @@
     padding-bottom:70px;
   }
 }
-
-@media (prefers-reduced-motion:reduce) {
-  .alias-page::before,
-  .alias-page::after { transform:none; }
-}
