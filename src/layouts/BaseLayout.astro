@@ -314,6 +314,9 @@ const websiteSchema = {
           min-width:30px;
           min-height:24px;
         }
+        html.mobile-nav-open .site-header nav .nav-language-switch {
+          animation-delay:.25s !important;
+        }
 
         /* No-JS resilience: if the enhancement script never marks the document ready,
            show the navigation directly instead of leaving a dead hamburger. */
@@ -519,9 +522,9 @@ const websiteSchema = {
           <a href={withBase(navHrefs.about)} aria-current={!isJapanese && navCurrent('/about') ? 'page' : undefined}>{labels.about}</a>
           <a href={withBase(navHrefs.resume)} aria-current={!isJapanese && navCurrent('/resume') ? 'page' : undefined}>{labels.resume}{isJapanese && <small> EN</small>}</a>
           <a href={withBase(navHrefs.contact)} aria-current={!isJapanese && navCurrent('/contact') ? 'page' : undefined}>{labels.contact}</a>
-          <a class="nav-language-switch" href={withBase(languageHref)} hreflang={languageTarget} lang={languageTarget} data-language-choice={languageTarget} aria-label={languageAria}><span>{languageLongLabel}</span><small>{languageLabel}</small></a>
           <a href="https://github.com/marcelosofficial-ctrl" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/marcelo-ellwanger-10657a435/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="nav-language-switch" href={withBase(languageHref)} hreflang={languageTarget} lang={languageTarget} data-language-choice={languageTarget} aria-label={languageAria}><span>{languageLongLabel}</span><small>{languageLabel}</small></a>
           <div class="mobile-nav-meta" aria-hidden="true"><span>JAPAN / 2026</span><span>REMOTE / GLOBAL</span></div>
         </nav>
       </header>
