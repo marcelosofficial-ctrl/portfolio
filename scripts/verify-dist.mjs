@@ -169,9 +169,9 @@ requireContent('homepage', home, [
   'Software &amp; Systems Developer',
   'Software / QA Résumé',
   'VektorDeck 1.0',
-  '185',
-  '0.2657%',
-  'V0.1 BETA READY',
+  '239/239',
+  '0.2365%',
+  '1.1.0 RELEASED',
   '48 TESTS · 0 WARNINGS',
   '0.6.1 · relocation-safe dual-provider build',
   'EasyFLix',
@@ -193,7 +193,7 @@ const about = readRoute('about/index.html');
 requireContent('about page', about, [
   'I build useful systems, then make them trustworthy.',
   'Software / QA résumé',
-  'CrashScope v0.1 beta ready',
+  'CrashScope 1.1 released',
   'VektorDeck 1.0',
   'EasyFLix · pre-1.0 ReelShelf'
 ]);
@@ -226,7 +226,7 @@ requireContent('Japanese contact page', japaneseContact, [
 const resume = readRoute('resume/index.html');
 requireContent('general resume', resume, [
   'Alma', 'VektorDeck', 'CrashScope', 'ReelShelf', '750+', '1,800+',
-  'Software / QA', 'QA / automation', '185 automated .NET tests', '0.2657% average Agent CPU'
+  'Software / QA', 'QA / automation', '239/239 automated .NET tests', '0.2365% average Agent CPU'
 ]);
 
 const japaneseResume = readRoute('ja/resume/index.html');
@@ -234,7 +234,7 @@ requireContent('Japanese career profile', japaneseResume, [
   '<html lang="ja">',
   'Professional profile · 職務プロフィール',
   '4,000時間以上',
-  '185件の自動.NETテスト',
+  '239/239件の自動.NETテスト',
   '海外のタイムゾーンや勤務時間にも柔軟に対応'
 ]);
 
@@ -251,9 +251,9 @@ requireContent('Japanese support profile', japaneseSupportResume, [
 const softwareResume = readRoute('resume/software/index.html');
 requireContent('software resume', softwareResume, [
   'Software Engineering · QA · Technical Systems',
-  '185 automated .NET tests',
-  '0.2657% average Agent CPU',
-  '95.83 MB peak working set',
+  '239/239 automated .NET tests',
+  '0.2365% average Agent CPU',
+  '94.58 MB peak working set',
   '48 passing tests',
   'zero build warnings',
   'VektorDeck 1.0',
@@ -266,7 +266,7 @@ requireContent('Japanese software profile', japaneseSoftwareResume, [
   '<html lang="ja">',
   'ソフトウェア開発 · QA · テクニカルシステム',
   '英文PDFをダウンロード',
-  '185件の自動.NETテスト',
+  '239/239件の自動.NETテスト',
   'localhost限定',
   '48件のテスト'
 ]);
@@ -287,20 +287,29 @@ requireContent('ReelShelf case study', reelshelf, [
 
 const crashscope = readRoute('projects/crashscope/index.html');
 requireContent('CrashScope case study', crashscope, [
-  'V0.1 BETA READY',
-  '185',
-  '0.2657%',
-  '93 MB',
-  '95.83 MB',
-  'RYZEN 5 7500F',
-  'RADEON RX 9070 XT',
-  'FIRST PUBLIC BETA VALIDATED · RELEASE IN PREPARATION',
-  'Auto Assist / Everyday Mode',
-  'Privacy-safe support bundles',
-  'LOCALHOST ONLY',
-  'PUBLIC RELEASE · COMING SOON'
+  '1.1.0 RELEASED',
+  '239/239 PASS',
+  '0.2365%',
+  '91.71 MB',
+  '94.58 MB',
+  '34.76 MB',
+  'ConfigTrace 1.0.1',
+  'TWO-PC VALIDATED',
+  '1.0.0 → 1.1.0',
+  'LOCALHOST',
+  'Download 1.1.0'
 ]);
 
+const configtrace = readRoute('projects/configtrace/index.html');
+requireContent('ConfigTrace case study', configtrace, [
+  '1.0.1',
+  '4.96 MB',
+  '4.99 MB',
+  '0.91 MB',
+  'NOT FOUND',
+  'b629c970',
+  'Download 1.0.1'
+]);
 const identityPages = [
   ['homepage', home],
   ['Japanese homepage', japaneseHome],

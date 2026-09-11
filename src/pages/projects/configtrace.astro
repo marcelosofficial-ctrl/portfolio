@@ -1,33 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="ConfigTrace | Marcelo Ellwanger" description="A lightweight Rust configuration-change tracer with deterministic snapshots, field-level diffs, secret redaction and an event-driven JSONL journal.">
+<BaseLayout title="ConfigTrace 1.0.1 | Marcelo Ellwanger" description="ConfigTrace 1.0.1 is a lightweight Rust configuration-change tracer with deterministic snapshots, field-level diffs, sensitive-key redaction, event-driven JSONL journals and a validated CrashScope 1.1 integration boundary.">
   <section class="case-hero case-hero-featured wrap">
     <div class="case-title-block">
-      <p class="eyebrow">08 · Focused project · Released · Rust</p>
+      <p class="eyebrow">08 · Focused project · 1.0.1 released · Rust</p>
       <h1>ConfigTrace</h1>
       <p class="case-copy">A standalone configuration-evidence engine that records what actually changed around a game or application session without turning a diagnostic helper into another heavyweight background monitor.</p>
       <div class="case-actions">
-        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">Open repository ↗</a>
-        <a class="button" href="https://github.com/marcelosofficial-ctrl/ConfigTrace/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Download 1.0.0 ↗</a>
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace/releases/download/v1.0.1/ConfigTrace-1.0.1-win-x64.zip" target="_blank" rel="noreferrer">Download 1.0.1 ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">Open repository ↗</a>
       </div>
     </div>
 
     <div class="case-status-panel mono" aria-label="ConfigTrace release and resource snapshot">
-      <div class="case-status-head"><span>FOCUSED / RELEASE</span><b>1.0.0</b></div>
+      <div class="case-status-head"><span>FOCUSED / RELEASE</span><b>1.0.1</b></div>
       <div class="case-status-row"><span>Runtime</span><strong>RUST</strong></div>
-      <div class="case-status-row"><span>Idle peak working set</span><strong>4.3 MB</strong></div>
-      <div class="case-status-row"><span>Idle CPU · 10 s</span><strong>0.016 s</strong></div>
-      <div class="case-status-row"><span>Machine contracts</span><strong>JSON + JSONL V1</strong></div>
-      <div class="case-status-foot"><span class="status-dot">MEASURED / RELEASED</span></div>
+      <div class="case-status-row"><span>CrashScope sample · avg WS</span><strong>4.96 MB</strong></div>
+      <div class="case-status-row"><span>CrashScope sample · peak WS</span><strong>4.99 MB</strong></div>
+      <div class="case-status-row"><span>Measured avg CPU</span><strong>0%</strong></div>
+      <div class="case-status-foot"><span class="status-dot">1.0.1 · RELEASED · PRIVACY FIX VALIDATED</span></div>
     </div>
   </section>
 
   <section class="case-section wrap case-intro-grid">
     <div><p class="eyebrow">The design choice</p><h2>Keep the evidence provider independent from the product consuming it.</h2></div>
     <div class="case-long-copy">
-      <p>ConfigTrace is useful on its own, but it was also designed around a future CrashScope integration. Rather than binding C# directly to a Rust ABI, the first integration boundary is process isolation and a stable schema-versioned contract.</p>
-      <p>That keeps lifecycle, failure isolation and versioning explicit: CrashScope can launch ConfigTrace when a monitored session needs it, consume evidence, and stop it without duplicating its parsing logic.</p>
+      <p>ConfigTrace is useful on its own and now ships as CrashScope 1.1's first external evidence provider. The integration boundary is process isolation plus schema-versioned JSON/JSONL contracts rather than a direct Rust/C# ABI.</p>
+      <p>That keeps lifecycle, failure isolation and versioning explicit: CrashScope can launch ConfigTrace for a monitored session, consume bounded evidence, and stop it without duplicating its parsing logic or letting provider failure take down the host.</p>
     </div>
   </section>
 
@@ -36,23 +36,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="model-grid">
       <article><span class="mono model-index">01</span><h3>Deterministic snapshots</h3><p>Regular files receive streamed SHA-256 fingerprints and stable relative paths for repeatable comparison.</p></article>
       <article><span class="mono model-index">02</span><h3>Field-level diffs</h3><p>JSON and common INI/CFG-style files expose structured value changes instead of only whole-file hashes.</p></article>
-      <article><span class="mono model-index">03</span><h3>Privacy-aware redaction</h3><p>Potential passwords, tokens and session values display as &lt;redacted&gt; while hashed fingerprints still reveal whether the secret changed.</p></article>
+      <article><span class="mono model-index">03</span><h3>Privacy-aware redaction</h3><p>Version 1.0.1 fixes sensitive-key recognition for camelCase/PascalCase values such as apiToken, accessToken, clientSecret, sessionId and APIKey while keeping change fingerprints useful.</p></article>
       <article><span class="mono model-index">04</span><h3>Event-driven journal</h3><p>Native filesystem notifications wake the watcher, then a settle window and semantic resnapshot turn noisy writes into stable JSONL change records.</p></article>
     </div>
   </section>
 
   <section class="case-section wrap">
     <div class="field-grid">
-      <div class="case-section-heading"><p class="eyebrow">Measured overhead</p><h2>Small enough to be a sidecar without becoming the problem.</h2><p>The figures below are measurements from the local validation machine, not universal performance claims.</p></div>
-      <div class="field-console mono" aria-label="ConfigTrace validation evidence">
-        <div><span>idle peak working set</span><b>4.3 MB</b></div>
-        <div><span>idle CPU · 10 seconds</span><b>0.016 s</b></div>
-        <div><span>active peak working set</span><b>4.3 MB</b></div>
-        <div><span>automated tests</span><b>16 PASS</b></div>
-        <div><span>release EXE</span><b>532.5 KiB</b></div>
-        <div><span>release ZIP</span><b>264 KiB</b></div>
-        <div><span>frozen commit</span><b>488f498</b></div>
-        <div class="field-result"><span>release state</span><strong>VALIDATED 1.0.0</strong></div>
+      <div class="case-section-heading"><p class="eyebrow">Validated integration overhead</p><h2>Small enough to stay a sidecar.</h2><p>These figures come from CrashScope 1.1's final active provider validation sample, not a universal performance claim.</p></div>
+      <div class="field-console mono">
+        <div><span>measured average CPU</span><b>0%</b></div>
+        <div><span>average working set</span><b>4.96 MB</b></div>
+        <div><span>peak working set</span><b>4.99 MB</b></div>
+        <div><span>average private memory</span><b>0.91 MB</b></div>
+        <div><span>provider journal</span><b>PASS</b></div>
+        <div><span>plaintext test secret</span><b>NOT FOUND</b></div>
+        <div><span>validated commit</span><b>b629c970</b></div>
+        <div class="field-result"><span>release state</span><strong>RELEASED 1.0.1</strong></div>
       </div>
     </div>
   </section>
@@ -60,15 +60,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="case-section wrap">
     <div class="case-section-heading"><p class="eyebrow">CrashScope boundary</p><h2>Correlation evidence, never automatic causation.</h2></div>
     <div class="case-long-copy">
-      <p>A future CrashScope incident can say that HDR, renderer or another configuration field changed a measured amount of time before a crash. ConfigTrace alone does not justify claiming that the change caused the crash.</p>
-      <p>The schema-v1 snapshot/diff and live-journal contracts are frozen for the 1.0 integration boundary. New ConfigTrace features should come from a concrete diagnostic need rather than expanding the tool for its own sake.</p>
+      <p>CrashScope 1.1 can report that HDR, renderer or another configuration field changed a measured amount of time before an incident. ConfigTrace alone does not justify claiming that the change caused the incident.</p>
+      <p>The schema-v1 snapshot/diff and live-journal contracts remain the stable integration boundary used by CrashScope 1.1, while ConfigTrace stays independently usable as a standalone utility.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Release provenance</p><h2>A small maintenance release with a concrete reason.</h2></div>
+    <div class="skill-matrix">
+      <div><span>Validated commit</span><p><code>b629c970dfc14fca5df1e0ef2b0d1d07d0d8c56c</code></p></div>
+      <div><span>Windows EXE SHA-256</span><p><code>fe1c470a58402e82e97ee529c6a6b02822430da70e65ffc5fc5a71359ad4e521</code></p></div>
+      <div><span>Release ZIP SHA-256</span><p><code>9374128c42e3bf3e1fd8f48bdddd7485e421da543c80f54d454985e1bcccbafe</code></p></div>
+      <div><span>1.0.1 change</span><p>Fix camelCase sensitive-key redaction discovered during CrashScope 1.1 integration.</p></div>
     </div>
   </section>
 
   <section class="case-section case-closing wrap">
-    <p class="eyebrow">Focused utility</p>
+    <p class="eyebrow">Focused utility · 1.0.1</p>
     <h2>A tiny Rust process with a deliberately stable boundary.</h2>
-    <p>ConfigTrace shows systems work at a small scale: filesystem events, deterministic state, privacy constraints, integration contracts and measured resource use.</p>
-    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">View source ↗</a><a class="button" href="/">Back to portfolio ↑</a></div>
+    <p>ConfigTrace shows systems work at a small scale: filesystem events, deterministic state, privacy constraints, integration contracts, measured resource use and a maintenance release driven by a real integration finding.</p>
+    <div class="case-actions">
+      <a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace/releases/download/v1.0.1/ConfigTrace-1.0.1-win-x64.zip" target="_blank" rel="noreferrer">Download 1.0.1 ↗</a>
+      <a class="button" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">View source ↗</a>
+      <a class="button" href="/">Back to portfolio ↑</a>
+    </div>
   </section>
 </BaseLayout>
