@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="ConfigTrace | Marcelo Ellwanger" description="A lightweight Rust configuration-change tracer with deterministic snapshots, field-level diffs, secret redaction and an event-driven JSONL journal.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">08 · Focused project · Released · Rust</p>
+      <h1>ConfigTrace</h1>
+      <p class="case-copy">A standalone configuration-evidence engine that records what actually changed around a game or application session without turning a diagnostic helper into another heavyweight background monitor.</p>
+      <div class="case-actions">
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">Open repository ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl/ConfigTrace/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Download 1.0.0 ↗</a>
+      </div>
+    </div>
+
+    <div class="case-status-panel mono" aria-label="ConfigTrace release and resource snapshot">
+      <div class="case-status-head"><span>FOCUSED / RELEASE</span><b>1.0.0</b></div>
+      <div class="case-status-row"><span>Runtime</span><strong>RUST</strong></div>
+      <div class="case-status-row"><span>Idle peak working set</span><strong>4.3 MB</strong></div>
+      <div class="case-status-row"><span>Idle CPU · 10 s</span><strong>0.016 s</strong></div>
+      <div class="case-status-row"><span>Machine contracts</span><strong>JSON + JSONL V1</strong></div>
+      <div class="case-status-foot"><span class="status-dot">MEASURED / RELEASED</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The design choice</p><h2>Keep the evidence provider independent from the product consuming it.</h2></div>
+    <div class="case-long-copy">
+      <p>ConfigTrace is useful on its own, but it was also designed around a future CrashScope integration. Rather than binding C# directly to a Rust ABI, the first integration boundary is process isolation and a stable schema-versioned contract.</p>
+      <p>That keeps lifecycle, failure isolation and versioning explicit: CrashScope can launch ConfigTrace when a monitored session needs it, consume evidence, and stop it without duplicating its parsing logic.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Semantic evidence</p><h2>Record meaningful state changes, not raw filesystem noise.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Deterministic snapshots</h3><p>Regular files receive streamed SHA-256 fingerprints and stable relative paths for repeatable comparison.</p></article>
+      <article><span class="mono model-index">02</span><h3>Field-level diffs</h3><p>JSON and common INI/CFG-style files expose structured value changes instead of only whole-file hashes.</p></article>
+      <article><span class="mono model-index">03</span><h3>Privacy-aware redaction</h3><p>Potential passwords, tokens and session values display as &lt;redacted&gt; while hashed fingerprints still reveal whether the secret changed.</p></article>
+      <article><span class="mono model-index">04</span><h3>Event-driven journal</h3><p>Native filesystem notifications wake the watcher, then a settle window and semantic resnapshot turn noisy writes into stable JSONL change records.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="field-grid">
+      <div class="case-section-heading"><p class="eyebrow">Measured overhead</p><h2>Small enough to be a sidecar without becoming the problem.</h2><p>The figures below are measurements from the local validation machine, not universal performance claims.</p></div>
+      <div class="field-console mono" aria-label="ConfigTrace validation evidence">
+        <div><span>idle peak working set</span><b>4.3 MB</b></div>
+        <div><span>idle CPU · 10 seconds</span><b>0.016 s</b></div>
+        <div><span>active peak working set</span><b>4.3 MB</b></div>
+        <div><span>automated tests</span><b>16 PASS</b></div>
+        <div><span>release EXE</span><b>532.5 KiB</b></div>
+        <div><span>release ZIP</span><b>264 KiB</b></div>
+        <div><span>frozen commit</span><b>488f498</b></div>
+        <div class="field-result"><span>release state</span><strong>VALIDATED 1.0.0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">CrashScope boundary</p><h2>Correlation evidence, never automatic causation.</h2></div>
+    <div class="case-long-copy">
+      <p>A future CrashScope incident can say that HDR, renderer or another configuration field changed a measured amount of time before a crash. ConfigTrace alone does not justify claiming that the change caused the crash.</p>
+      <p>The schema-v1 snapshot/diff and live-journal contracts are frozen for the 1.0 integration boundary. New ConfigTrace features should come from a concrete diagnostic need rather than expanding the tool for its own sake.</p>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Focused utility</p>
+    <h2>A tiny Rust process with a deliberately stable boundary.</h2>
+    <p>ConfigTrace shows systems work at a small scale: filesystem events, deterministic state, privacy constraints, integration contracts and measured resource use.</p>
+    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/ConfigTrace" target="_blank" rel="noreferrer">View source ↗</a><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="ExactArtifact | Marcelo Ellwanger" description="A focused C#/.NET artifact-integrity utility with streaming SHA-256, deterministic manifests, automated tests, CLI and WPF interfaces.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">06 · Focused project · Released · C# / .NET</p>
+      <h1>ExactArtifact</h1>
+      <p class="case-copy">A compact Windows integrity tool built around one practical question: is this exactly the file or directory state that was tested, packaged or handed to someone else?</p>
+      <div class="case-actions">
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/ExactArtifact" target="_blank" rel="noreferrer">Open repository ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl/ExactArtifact/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Download 1.0.0 ↗</a>
+      </div>
+    </div>
+
+    <div class="case-status-panel mono" aria-label="ExactArtifact release snapshot">
+      <div class="case-status-head"><span>FOCUSED / RELEASE</span><b>1.0.0</b></div>
+      <div class="case-status-row"><span>Core</span><strong>C# / .NET</strong></div>
+      <div class="case-status-row"><span>Desktop UI</span><strong>WPF</strong></div>
+      <div class="case-status-row"><span>Automated tests</span><strong>22 PASS</strong></div>
+      <div class="case-status-row"><span>File hashing</span><strong>STREAMING SHA-256</strong></div>
+      <div class="case-status-foot"><span class="status-dot">VALIDATED / RELEASED</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The problem</p><h2>Artifact identity should be evidence, not a filename.</h2></div>
+    <div class="case-long-copy">
+      <p>Installers, model files, archives and build outputs can keep the same name while their contents change. ExactArtifact gives those handoffs a deterministic integrity layer through streamed hashes and manifests.</p>
+      <p>The core library is intentionally independent from the WPF interface. The CLI supports automation and verification workflows while the GUI keeps the common file and folder operations accessible.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering surface</p><h2>Small scope, explicit guarantees.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Streaming hashes</h3><p>Files are hashed as streams so memory use does not scale with artifact size.</p></article>
+      <article><span class="mono model-index">02</span><h3>Deterministic manifests</h3><p>Directory entries are normalized and sorted so repeated snapshots of unchanged content remain stable.</p></article>
+      <article><span class="mono model-index">03</span><h3>Precise mismatches</h3><p>Verification distinguishes added, removed and modified content rather than collapsing every failure into a generic mismatch.</p></article>
+      <article><span class="mono model-index">04</span><h3>Two interfaces</h3><p>A reusable .NET core supports both a command-line workflow and a compact WPF desktop interface.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="field-grid">
+      <div class="case-section-heading"><p class="eyebrow">Release evidence</p><h2>The packaged artifact is part of the test surface.</h2><p>The 1.0 candidate was rebuilt, tested, packaged, hashed and then smoke-tested from the release archive rather than assuming a successful source build was enough.</p></div>
+      <div class="field-console mono" aria-label="ExactArtifact release evidence">
+        <div><span>tests</span><b>22 / 22 PASS</b></div>
+        <div><span>GUI packaging</span><b>SELF-CONTAINED WIN-X64</b></div>
+        <div><span>CLI packaging</span><b>SINGLE-FILE WIN-X64</b></div>
+        <div><span>release ZIP</span><b>90.71 MiB</b></div>
+        <div><span>frozen commit</span><b>a44e028</b></div>
+        <div class="field-result"><span>release state</span><strong>VALIDATED 1.0.0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Focused utility</p>
+    <h2>Integrity tooling that stays narrow enough to trust.</h2>
+    <p>ExactArtifact is deliberately not a package manager or cloud service. It solves local artifact identity and verification cleanly, then stops.</p>
+    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/ExactArtifact" target="_blank" rel="noreferrer">View source ↗</a><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="GapTrace | Marcelo Ellwanger" description="A lightweight Go network diagnostics and micro-outage recorder using concurrent DNS, TCP and HTTP probes with evidence-oriented outage analysis.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">07 · Focused project · Released · Go</p>
+      <h1>GapTrace</h1>
+      <p class="case-copy">A lightweight recorder for the kind of internet failure that is easy to feel and surprisingly hard to prove: short DNS, reachability and latency disruptions that disappear before a manual test catches them.</p>
+      <div class="case-actions">
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/GapTrace" target="_blank" rel="noreferrer">Open repository ↗</a>
+        <a class="button" href="https://github.com/marcelosofficial-ctrl/GapTrace/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Download 1.0.0 ↗</a>
+      </div>
+    </div>
+
+    <div class="case-status-panel mono" aria-label="GapTrace release and resource snapshot">
+      <div class="case-status-head"><span>FOCUSED / RELEASE</span><b>1.0.0</b></div>
+      <div class="case-status-row"><span>Runtime</span><strong>GO</strong></div>
+      <div class="case-status-row"><span>Peak working set</span><strong>16.2 MB</strong></div>
+      <div class="case-status-row"><span>CPU · validation run</span><strong>0.016 s</strong></div>
+      <div class="case-status-row"><span>Evidence</span><strong>CSV + JSON</strong></div>
+      <div class="case-status-foot"><span class="status-dot">MEASURED / RELEASED</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The problem</p><h2>“Online” is too coarse to explain a two-second failure.</h2></div>
+    <div class="case-long-copy">
+      <p>GapTrace was motivated by intermittent mobile-tether and game-connectivity problems where ordinary ping tests could look healthy while DNS, TCP or HTTP reachability failed briefly.</p>
+      <p>The probes run concurrently and remain deliberately unprivileged: no raw-ICMP requirement, service installation or administrator-only capture layer.</p>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Failure model</p><h2>Record symptoms precisely without pretending to know the carrier root cause.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>DNS</h3><p>Separates name-resolution failure from broader connectivity loss.</p></article>
+      <article><span class="mono model-index">02</span><h3>TCP</h3><p>Tests practical socket reachability independently of DNS success.</p></article>
+      <article><span class="mono model-index">03</span><h3>HTTP</h3><p>Adds an application-layer reachability signal instead of relying on one network primitive.</p></article>
+      <article><span class="mono model-index">04</span><h3>Analysis</h3><p>Extracts outage events, recovery durations, availability and latency distributions from recorded evidence.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="field-grid">
+      <div class="case-section-heading"><p class="eyebrow">Measured release</p><h2>Background diagnostics should not become the workload.</h2><p>The 1.0 release was validated locally with a sustained monitor run and a packaged executable smoke test.</p></div>
+      <div class="field-console mono" aria-label="GapTrace validation evidence">
+        <div><span>peak working set</span><b>16.2 MB</b></div>
+        <div><span>CPU time · validation</span><b>0.016 s</b></div>
+        <div><span>release EXE</span><b>6812.5 KiB</b></div>
+        <div><span>release ZIP</span><b>2.8 MiB</b></div>
+        <div><span>frozen commit</span><b>b77911d</b></div>
+        <div class="field-result"><span>release state</span><strong>VALIDATED 1.0.0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">Focused utility</p>
+    <h2>Capture the transient failure first. Diagnose from evidence second.</h2>
+    <p>GapTrace is useful independently, and its structured evidence can later become an optional low-overhead network source for CrashScope.</p>
+    <div class="case-actions"><a class="button primary" href="https://github.com/marcelosofficial-ctrl/GapTrace" target="_blank" rel="noreferrer">View source ↗</a><a class="button" href="/">Back to portfolio ↑</a></div>
+  </section>
+</BaseLayout>

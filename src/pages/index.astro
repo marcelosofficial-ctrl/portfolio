@@ -156,6 +156,47 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div class="clock-visual mono" aria-hidden="true"><strong id="portfolio-clock">20:25</strong><span>LOCAL / SYSTEM TIME</span></div>
           <span class="text-link">View focused project ↗</span>
         </a>
+        <a class="project compact-project" href="/projects/exactartifact/">
+          <div class="project-top"><span class="eyebrow">06 · Artifact integrity</span><span class="project-state">1.0.0</span></div>
+          <h3>ExactArtifact</h3>
+          <p>A compact C#/.NET integrity utility for streaming SHA-256, deterministic directory manifests and precise mismatch reporting, with both CLI and WPF interfaces.</p>
+          <span class="status-note">Built to make “is this exactly the artifact I tested?” answerable with deterministic evidence rather than filenames or assumptions.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>C# · .NET · WPF</b></div>
+            <div><span>AUTOMATED TESTS</span><b>22 PASS</b></div>
+            <div><span>HASHING</span><b>STREAMING SHA-256</b></div>
+            <div><span>RELEASE</span><b class="good">1.0.0</b></div>
+          </div>
+          <span class="text-link">Open focused project ↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/gaptrace/">
+          <div class="project-top"><span class="eyebrow">07 · Network diagnostics</span><span class="project-state">1.0.0</span></div>
+          <h3>GapTrace</h3>
+          <p>A lightweight Go utility that records DNS, TCP and HTTP reachability, classifies micro-outages, preserves CSV evidence and analyzes recovery windows.</p>
+          <span class="status-note">Built after intermittent mobile-tether failures were too brief and inconsistent for ordinary “is the internet working?” tests to explain.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>GO · CONCURRENCY</b></div>
+            <div><span>PEAK WORKING SET</span><b>16.2 MB</b></div>
+            <div><span>CPU · VALIDATION RUN</span><b>0.016 s</b></div>
+            <div><span>RELEASE</span><b class="good">1.0.0</b></div>
+          </div>
+          <span class="text-link">Open focused project ↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/configtrace/">
+          <div class="project-top"><span class="eyebrow">08 · Configuration evidence</span><span class="project-state">1.0.0</span></div>
+          <h3>ConfigTrace</h3>
+          <p>A Rust configuration-change tracer with deterministic snapshots, semantic field diffs, privacy-aware redaction and an event-driven JSONL journal.</p>
+          <span class="status-note">Built as a standalone low-overhead evidence provider that can also integrate cleanly with CrashScope without binding CrashScope to Rust internals.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>RUST · JSONL</b></div>
+            <div><span>IDLE PEAK WORKING SET</span><b>4.3 MB</b></div>
+            <div><span>IDLE CPU · 10 S</span><b>0.016 s</b></div>
+            <div><span>RELEASE</span><b class="good">1.0.0</b></div>
+          </div>
+          <span class="text-link">Open focused project ↗</span>
+        </a>
       </div>
     </div>
 

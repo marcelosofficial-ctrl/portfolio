@@ -114,7 +114,11 @@ const routes = [
   'ja/resume/software/index.html',
   'projects/vektordeck/index.html', 'projects/reseller-ai/index.html',
   'projects/crashscope/index.html', 'projects/reelshelf/index.html',
-  'projects/rainmeter-clock/index.html', '404.html',
+  'projects/rainmeter-clock/index.html',
+  'projects/exactartifact/index.html',
+  'projects/gaptrace/index.html',
+  'projects/configtrace/index.html',
+  '404.html',
 ];
 
 for (const route of routes) {
