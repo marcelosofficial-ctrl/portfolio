@@ -169,9 +169,9 @@ requireContent('homepage', home, [
   'Software &amp; Systems Developer',
   'Software / QA Résumé',
   'VektorDeck 1.0',
-  '239/239',
+  '266/266',
   '0.2365%',
-  '1.1.0 RELEASED',
+  '1.2.0 RELEASED',
   '48 TESTS · 0 WARNINGS',
   '0.6.1 · relocation-safe dual-provider build',
   'EasyFLix',
@@ -193,7 +193,7 @@ const about = readRoute('about/index.html');
 requireContent('about page', about, [
   'I build useful systems, then make them trustworthy.',
   'Software / QA résumé',
-  'CrashScope 1.1 released',
+  'CrashScope 1.2 released',
   'VektorDeck 1.0',
   'EasyFLix · pre-1.0 ReelShelf'
 ]);
@@ -204,6 +204,7 @@ requireContent('Japanese about page', japaneseAbout, [
   '実用的な仕組みをつくり、信頼して使えるところまで仕上げる。',
   '現場経験からソフトウェアへ。',
   '5言語でのコミュニケーション',
+  'CrashScope 1.2 released',
   'ソフトウェア / QA 職務プロフィール'
 ]);
 
@@ -226,7 +227,7 @@ requireContent('Japanese contact page', japaneseContact, [
 const resume = readRoute('resume/index.html');
 requireContent('general resume', resume, [
   'Alma', 'VektorDeck', 'CrashScope', 'ReelShelf', '750+', '1,800+',
-  'Software / QA', 'QA / automation', '239/239 automated .NET tests', '0.2365% average Agent CPU'
+  'Software / QA', 'QA / automation', '266/266 automated .NET tests', '0.2365% average Agent CPU'
 ]);
 
 const japaneseResume = readRoute('ja/resume/index.html');
@@ -234,7 +235,7 @@ requireContent('Japanese career profile', japaneseResume, [
   '<html lang="ja">',
   'Professional profile · 職務プロフィール',
   '4,000時間以上',
-  '239/239件の自動.NETテスト',
+  '266/266件の自動.NETテスト',
   '海外のタイムゾーンや勤務時間にも柔軟に対応'
 ]);
 
@@ -251,7 +252,7 @@ requireContent('Japanese support profile', japaneseSupportResume, [
 const softwareResume = readRoute('resume/software/index.html');
 requireContent('software resume', softwareResume, [
   'Software Engineering · QA · Technical Systems',
-  '239/239 automated .NET tests',
+  '266/266 automated .NET tests',
   '0.2365% average Agent CPU',
   '94.58 MB peak working set',
   '48 passing tests',
@@ -266,7 +267,7 @@ requireContent('Japanese software profile', japaneseSoftwareResume, [
   '<html lang="ja">',
   'ソフトウェア開発 · QA · テクニカルシステム',
   '英文PDFをダウンロード',
-  '239/239件の自動.NETテスト',
+  '266/266件の自動.NETテスト',
   'localhost限定',
   '48件のテスト'
 ]);
@@ -287,17 +288,19 @@ requireContent('ReelShelf case study', reelshelf, [
 
 const crashscope = readRoute('projects/crashscope/index.html');
 requireContent('CrashScope case study', crashscope, [
-  '1.1.0 RELEASED',
-  '239/239 PASS',
+  '1.2.0 RELEASED',
+  '266/266 PASS',
+  'WPF / WebView2',
   '0.2365%',
   '91.71 MB',
   '94.58 MB',
   '34.76 MB',
   'ConfigTrace 1.0.1',
   'TWO-PC VALIDATED',
-  '1.0.0 → 1.1.0',
   'LOCALHOST',
-  'Download 1.1.0'
+  'Download 1.2.0',
+  '5cd5821800b2e5f2c4ace319a6921267414465129c704b8e50c83b1a1a932b04',
+  'a37c012293a1c5e5aa94c823f1898a85ef0bc896b5b3cf03d870e8191050a12e'
 ]);
 
 const configtrace = readRoute('projects/configtrace/index.html');

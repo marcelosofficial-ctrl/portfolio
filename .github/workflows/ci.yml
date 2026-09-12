@@ -1,10 +1,11 @@
 name: CI
 
+# Main pushes are already built and verified by the Pages deployment workflow.
+# Keep this separate CI workflow for pull requests and deliberate manual checks.
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read

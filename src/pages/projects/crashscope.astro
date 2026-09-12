@@ -1,25 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="CrashScope 1.1 Released | Marcelo Ellwanger" description="CrashScope 1.1 is a released local-first Windows crash-diagnostics system with 239/239 automated .NET tests, ConfigTrace 1.0.1 provider integration, exact validated release artifacts, upgrade validation and genuine second-PC validation.">
+<BaseLayout title="CrashScope 1.2 Released | Marcelo Ellwanger" description="CrashScope 1.2 is a released local-first Windows crash-diagnostics system with a native WPF/WebView2 desktop shell, 266/266 automated .NET tests, ConfigTrace 1.0.1 integration, exact validated release artifacts and genuine second-PC validation.">
   <section class="case-hero case-hero-featured wrap crashscope-hero">
     <div class="case-title-block">
-      <p class="eyebrow">03 · Windows diagnostics · 1.1 released · Systems engineering</p>
+      <p class="eyebrow">03 · Windows diagnostics · 1.2 released · Native Windows app</p>
       <h1>CrashScope</h1>
       <p class="case-copy">A local-first Windows crash-diagnostics system built to answer a practical question: <em>what happened around the moment my game, GPU driver, AI workload, application or PC failed?</em></p>
       <div class="case-actions">
-        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/CrashScope/releases/tag/v1.1.0" target="_blank" rel="noreferrer">Download 1.1.0 ↗</a>
+        <a class="button primary" href="https://github.com/marcelosofficial-ctrl/CrashScope/releases/tag/v1.2.0" target="_blank" rel="noreferrer">Download 1.2.0 ↗</a>
         <a class="button" href="https://github.com/marcelosofficial-ctrl/CrashScope" target="_blank" rel="noreferrer">View source ↗</a>
         <a class="button" href="#evidence">Validation evidence ↓</a>
       </div>
     </div>
     <div class="case-status-panel mono" aria-label="CrashScope release status">
-      <div class="case-status-head"><span>PROJECT / STATE</span><b>1.1.0 RELEASED</b></div>
+      <div class="case-status-head"><span>PROJECT / STATE</span><b>1.2.0 RELEASED</b></div>
       <div class="case-status-row"><span>Core</span><strong>C# / .NET 10</strong></div>
-      <div class="case-status-row"><span>Dashboard</span><strong>React / TypeScript</strong></div>
-      <div class="case-status-row"><span>Persistence</span><strong>SQLite</strong></div>
-      <div class="case-status-row"><span>Automated tests</span><strong>239/239 PASS</strong></div>
-      <div class="case-status-foot"><span class="status-dot">1.1 RELEASED · TWO-PC VALIDATED</span></div>
+      <div class="case-status-row"><span>Desktop</span><strong>WPF / WebView2</strong></div>
+      <div class="case-status-row"><span>Local UI</span><strong>React / TypeScript</strong></div>
+      <div class="case-status-row"><span>Automated tests</span><strong>266/266 PASS</strong></div>
+      <div class="case-status-foot"><span class="status-dot">1.2 RELEASED · NATIVE APP · TWO-PC VALIDATED</span></div>
     </div>
   </section>
 
@@ -33,12 +33,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <section class="case-section wrap">
-    <div class="case-section-heading"><p class="eyebrow">CrashScope 1.1</p><h2>External evidence without coupling failures together.</h2><p>Version 1.1 adds a generic provider boundary and ships ConfigTrace 1.0.1 as the first process-isolated external evidence source.</p></div>
+    <div class="case-section-heading"><p class="eyebrow">CrashScope 1.1 → 1.2</p><h2>External evidence, then a native Windows shell.</h2><p>Version 1.1 added the generic provider boundary and ConfigTrace 1.0.1. Version 1.2 keeps the lightweight Agent architecture and adds a native WPF/WebView2 desktop shell that exists only while the UI is open.</p></div>
     <div class="model-grid">
       <article><span class="mono model-index">01</span><h3>Generic EvidenceEvent boundary</h3><p>Provider evidence enters a bounded chronological model with timestamp, source, kind, severity, summary and details. Nearby events are context unless stronger evidence supports a causal claim.</p></article>
       <article><span class="mono model-index">02</span><h3>ConfigTrace 1.0.1</h3><p>The Rust sidecar is off by default, starts only while a selected workload is monitored, and remains process-isolated so provider failure cannot take CrashScope down.</p></article>
       <article><span class="mono model-index">03</span><h3>Privacy-first redaction</h3><p>CrashScope integration uncovered and validated the ConfigTrace 1.0.1 sensitive-key fix for camelCase and PascalCase fields such as apiToken, clientSecret and sessionId.</p></article>
-      <article><span class="mono model-index">04</span><h3>Upgrade path proven</h3><p>A true installed 1.0.0 → 1.1.0 upgrade preserved settings, startup state and an existing incident while migrating the settings schema from v2 to v3.</p></article>
+      <article><span class="mono model-index">04</span><h3>Native Windows shell</h3><p>CrashScope 1.2 adds a WPF/WebView2 desktop application with true single-instance activation, native dark title-bar behavior and browser fallback while the Agent remains authoritative.</p></article>
     </div>
   </section>
 
@@ -48,9 +48,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="arch-node arch-input"><span class="mono">CORE</span><strong>CrashScope.Core</strong><small>incidents, telemetry, evidence roles, sessions</small></div><div class="arch-arrow">→</div>
       <div class="arch-node"><span class="mono">ADAPTERS</span><strong>Infrastructure</strong><small>hardware, Event Log, WER, SQLite</small></div><div class="arch-arrow">→</div>
       <div class="arch-node"><span class="mono">HOST</span><strong>CrashScope.Agent</strong><small>sampler, persistence, correlation, local API</small></div><div class="arch-arrow">→</div>
-      <div class="arch-node arch-output"><span class="mono">PROVIDERS / UI</span><strong>ConfigTrace + React dashboard</strong><small>optional context evidence + local presentation</small></div>
+      <div class="arch-node arch-output"><span class="mono">PROVIDERS / UI</span><strong>Desktop + ConfigTrace + dashboard</strong><small>native shell + optional context evidence + local presentation</small></div>
     </div>
-    <div class="architecture-note mono"><span>RULE</span><p>The dashboard consumes telemetry already produced by the central Agent. ConfigTrace runs only when enabled for a monitored workload and does not create a second general-purpose monitoring stack.</p></div>
+    <div class="architecture-note mono"><span>RULE</span><p>The dashboard and native Desktop shell consume telemetry already produced by the central Agent. Closing the shell unloads WebView2 while the Agent can continue running; ConfigTrace remains workload-scoped and optional.</p></div>
   </section>
 
   <section class="case-section wrap">
@@ -64,22 +64,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="case-section wrap" id="evidence">
     <div class="field-grid">
-      <div class="case-section-heading"><p class="eyebrow">Final 1.1 validation</p><h2>Low overhead with the provider off or active.</h2><p>These are measured release-validation results, not universal guarantees for every PC.</p></div>
+      <div class="case-section-heading"><p class="eyebrow">Release validation</p><h2>266 automated tests, with measured low-overhead evidence preserved honestly.</h2><p>CrashScope 1.2 closes at 266/266 automated .NET tests. The CPU and memory figures below are the final integrated 1.1 Agent/ConfigTrace measurements; they are retained as measured evidence rather than relabeled as fresh 1.2 performance data.</p></div>
       <div class="field-console mono">
-        <div><span>automated .NET tests</span><b class="accent-value">239/239 PASS</b></div>
-        <div><span>ConfigTrace OFF · avg Agent CPU</span><b class="accent-value">0.2365%</b></div>
+        <div><span>automated .NET tests</span><b class="accent-value">266/266 PASS</b></div>
+        <div><span>1.1 ConfigTrace OFF · avg Agent CPU</span><b class="accent-value">0.2365%</b></div>
         <div><span>ConfigTrace OFF · avg working set</span><b>91.71 MB</b></div>
         <div><span>ConfigTrace OFF · peak working set</span><b>94.58 MB</b></div>
         <div><span>ConfigTrace OFF · avg private memory</span><b>34.76 MB</b></div>
-        <div><span>ConfigTrace ON · avg Agent CPU</span><b>0.1966%</b></div>
+        <div><span>1.1 ConfigTrace ON · avg Agent CPU</span><b>0.1966%</b></div>
         <div><span>ConfigTrace ON · avg working set</span><b>95.36 MB</b></div>
         <div><span>ConfigTrace ON · peak working set</span><b>97.31 MB</b></div>
         <div><span>ConfigTrace provider · avg CPU</span><b>0%</b></div>
         <div><span>ConfigTrace provider · avg / peak WS</span><b>4.96 / 4.99 MB</b></div>
         <div><span>ConfigTrace provider · avg private</span><b>0.91 MB</b></div>
         <div><span>stale frames / delivery misses</span><b>0 / 0</b></div>
-        <div class="field-result"><span>release interpretation</span><strong>PUBLIC 1.1.0</strong></div>
-        <div class="field-health"><span>UPGRADE</span><b>PASS</b><span>SECOND PC</span><b>PASS</b><span>PRIVACY</span><b>PASS</b></div>
+        <div class="field-result"><span>release interpretation</span><strong>PUBLIC 1.2.0</strong></div>
+        <div class="field-health"><span>DESKTOP</span><b>PASS</b><span>SECOND PC</span><b>PASS</b><span>PRIVACY</span><b>PASS</b></div>
       </div>
     </div>
     <div class="architecture-note mono"><span>HARDWARE SCOPE</span><p>Primary validation passed on Ryzen 5 7500F + Radeon RX 9070 XT. Genuine second-PC automated and manual visual validation also passed on Windows 10 with Intel Core i5-3210M + Intel HD Graphics 4000. NVIDIA GPU hardware remains an unvalidated path and is not presented as tested.</p></div>
@@ -96,23 +96,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <section class="case-section wrap">
-    <div class="case-section-heading"><p class="eyebrow">Release engineering</p><h2>The exact validated artifacts are public.</h2><p>CrashScope 1.0.0 and 1.1.0 were published from privacy-safe public source snapshots whose Git trees match the privately validated engineering release boundaries.</p></div>
+    <div class="case-section-heading"><p class="eyebrow">Release engineering</p><h2>The exact validated 1.2 artifacts are public.</h2><p>CrashScope 1.2.0 was built and validated locally, then published through a privacy-safe public runtime commit whose Git tree exactly matches the frozen private runtime boundary.</p></div>
     <div class="skill-matrix">
-      <div><span>1.0 provenance</span><p>Validated private engineering boundary: <code>10c5769364068619f026e609a3c221d2665ede57</code>. Public v1.0.0 snapshot: <code>4336d5cde8b2e0fcd07e3397abe0b72826b6a49f</code>.</p></div>
-      <div><span>1.1 provenance</span><p>Validated private engineering boundary: <code>e51943f6b7aecaf98223ef30cbec10ef94c1eba1</code>. Public v1.1.0 snapshot: <code>341487a0f82c15523611a92fb2829a16cf97d2a7</code>.</p></div>
-      <div><span>Portable 1.1</span><p><code>CrashScope-v1.1.0-win-x64.zip</code><br/>SHA-256: <code>4ac728d03d634218add25d94e69a1a55ddd3283b6afc786dc155e1e7e15360a9</code></p></div>
-      <div><span>Installer 1.1</span><p><code>CrashScope-Setup-1.1.0.exe</code><br/>SHA-256: <code>eb0acdab0f1da5ae5fbaeceadbd3691ee188f0d42204ddffc9527aa38f28062f</code></p></div>
-      <div><span>Release pipeline</span><p>The current public release workflow was repaired to acquire and verify ConfigTrace 1.0.1 before portable smoke testing, then passed publicly.</p></div>
-      <div><span>Public-history boundary</span><p>The full engineering history remains private because historical commit metadata included personal author/committer email information; the public repository exposes clean source snapshots instead.</p></div>
+      <div><span>1.2 runtime provenance</span><p>Validated private runtime: <code>3a6a3ffd9ad40943e7e5fc8be4d8faf0fc7b9912</code>. Public v1.2.0 runtime: <code>8ce9c25dc40f6481bf7b782d3dae67deeb3e6cef</code>. Shared Git tree: <code>b23d4e4e8f79598362d8d9cc9d1a405e989ee3c6</code>.</p></div>
+      <div><span>Portable 1.2</span><p><code>CrashScope-v1.2.0-win-x64.zip</code><br/>SHA-256: <code>5cd5821800b2e5f2c4ace319a6921267414465129c704b8e50c83b1a1a932b04</code></p></div>
+      <div><span>Installer 1.2</span><p><code>CrashScope-Setup-1.2.0.exe</code><br/>SHA-256: <code>a37c012293a1c5e5aa94c823f1898a85ef0bc896b5b3cf03d870e8191050a12e</code></p></div>
+      <div><span>Validation boundary</span><p>266/266 automated .NET tests passed. Installed production-preview validation also passed upgrade preservation, native-shell launch/single-instance behavior, shortcut behavior and uninstall data preservation.</p></div>
+      <div><span>ConfigTrace provider</span><p>Bundled ConfigTrace 1.0.1 executable SHA-256: <code>fe1c470a58402e82e97ee529c6a6b02822430da70e65ffc5fc5a71359ad4e521</code>.</p></div>
+      <div><span>Public-history boundary</span><p>The full engineering history remains private; public release commits preserve the exact validated Git trees while using privacy-safe public commit metadata.</p></div>
     </div>
   </section>
 
   <section class="case-section case-closing wrap">
-    <p class="eyebrow">CrashScope 1.1 · released</p>
-    <h2>Validated, downloadable and still designed to stay out of the way.</h2>
-    <p>CrashScope 1.1 combines local Windows evidence, persistent incidents and optional ConfigTrace context while preserving the core rule that temporal correlation is not automatically root cause.</p>
+    <p class="eyebrow">CrashScope 1.2 · released</p>
+    <h2>Native on Windows, validated, downloadable and still designed to stay out of the way.</h2>
+    <p>CrashScope 1.2 combines the native Windows shell, local Windows evidence, persistent incidents and optional ConfigTrace context while preserving the core rule that temporal correlation is not automatically root cause.</p>
     <div class="case-actions">
-      <a class="button primary" href="https://github.com/marcelosofficial-ctrl/CrashScope/releases/tag/v1.1.0" target="_blank" rel="noreferrer">Download 1.1.0 ↗</a>
+      <a class="button primary" href="https://github.com/marcelosofficial-ctrl/CrashScope/releases/tag/v1.2.0" target="_blank" rel="noreferrer">Download 1.2.0 ↗</a>
       <a class="button" href="https://github.com/marcelosofficial-ctrl/CrashScope" target="_blank" rel="noreferrer">Source ↗</a>
       <a class="button" href="/">Back to portfolio ↑</a>
     </div>
