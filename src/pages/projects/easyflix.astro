@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="EasyFlix 1.4 | Marcelo Ellwanger" description="EasyFlix is a polished local-first Windows media library for legally acquired movies, TV and anime, built with C#/.NET 10, WPF and SQLite.">
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">04 · EasyFlix 1.4 · Windows desktop · Local-first media</p>
+      <h1>EasyFlix <em>1.4</em></h1>
+      <p class="case-copy">A polished Windows media library that turns legally acquired movie, TV and anime files into a streaming-style experience while keeping the filesystem authoritative and the original media untouched.</p>
+      <div class="case-actions"><a class="button" href="#workflow">Explore the product</a><a class="button" href="https://github.com/marcelosofficial-ctrl/EasyFlix" target="_blank" rel="noreferrer">View source</a><a class="button primary" href="https://github.com/marcelosofficial-ctrl/EasyFlix/releases/tag/v1.4.0" target="_blank" rel="noreferrer">Download 1.4.0</a></div>
+    </div>
+    <div class="case-status-panel mono" aria-label="EasyFlix 1.4 project status">
+      <div class="case-status-head"><span>PROJECT / STATE</span><b>1.4.0 RELEASED</b></div>
+      <div class="case-status-row"><span>Platform</span><strong>WPF · .NET 10</strong></div>
+      <div class="case-status-row"><span>Model</span><strong>LOCAL-FIRST</strong></div>
+      <div class="case-status-row"><span>Tests</span><strong>219 / 219 PASS</strong></div>
+      <div class="case-status-row"><span>Build</span><strong>0 WARNINGS · 0 ERRORS</strong></div>
+      <div class="case-status-row"><span>Artifact</span><strong>SINGLE-FILE WIN-X64</strong></div>
+      <div class="case-status-foot"><span class="status-dot">PUBLIC RELEASED · MIT RELEASE LIVE</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">The idea</p><h2>A personal media library that feels like a product.</h2></div>
+    <div class="case-long-copy">
+      <p>My media collection already lived across several drives. I did not want another system that required reorganizing everything into a proprietary folder structure just to get a clean interface.</p>
+      <p>EasyFlix sits on top of the files instead. It discovers configured sources read-only, keeps Online / Offline / Missing state explicit, and presents movies, TV and anime through a refined desktop interface without treating the source archive as disposable.</p>
+      <p>The result is a local-first streaming-style experience built around files the user already controls.</p>
+    </div>
+  </section>
+
+  <section class="case-section product-shot-section wrap" id="screenshots">
+    <div class="case-section-heading">
+      <p class="eyebrow">Real EasyFlix UI</p>
+      <h2>The library, not a mockup.</h2>
+      <p>These captures come from the validated EasyFlix desktop build and show the actual local-first browsing experience used during development and release acceptance.</p>
+    </div>
+    <figure class="product-shot product-shot-wide">
+      <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix Home view with featured media, Continue Watching and local library shelves" width="1000" height="565" loading="lazy" decoding="async" />
+      <figcaption><span class="mono">HOME</span><p>Cached-first browsing, a featured title, Continue Watching and local library shelves in the real Windows application.</p></figcaption>
+    </figure>
+    <figure class="product-shot">
+      <img src={baseURL + 'easyflix/library.webp'} alt="EasyFlix All Library view showing a large mixed local media collection" width="1000" height="565" loading="lazy" decoding="async" />
+      <figcaption><span class="mono">ALL LIBRARY</span><p>A dense mixed collection remains visually browsable without moving or rewriting the source media.</p></figcaption>
+    </figure>
+    <figure class="product-shot">
+      <img src={baseURL + 'easyflix/details.webp'} alt="EasyFlix title details overlay with local media and playback controls" width="900" height="509" loading="lazy" decoding="async" />
+      <figcaption><span class="mono">TITLE DETAILS</span><p>Focused title details and playback controls stay inside the browsing context instead of replacing the entire application.</p></figcaption>
+    </figure>
+  </section>
+  <section class="case-section wrap" id="workflow">
+    <div class="case-section-heading"><p class="eyebrow">Core workflow</p><h2>Keep the filesystem authoritative. Improve everything around it.</h2><p>Normal library maintenance stays local. Network metadata is an explicit <strong>Sync Metadata</strong> action rather than a hidden startup dependency.</p></div>
+    <div class="architecture-flow">
+      <div class="arch-node arch-input"><span class="mono">FILES</span><strong>Existing media roots</strong><small>multiple drives · explicit exclusions · source remains untouched</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">REFRESH</span><strong>Local discovery</strong><small>movies · TV · anime · availability state</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node"><span class="mono">LIBRARY</span><strong>Streaming-style browsing</strong><small>artwork · grouping · watch state · focused details</small></div><div class="arch-arrow">→</div>
+      <div class="arch-node arch-output"><span class="mono">PLAY</span><strong>Resume naturally</strong><small>mpv · subtitles · Continue Watching · Up Next</small></div>
+    </div>
+    <div class="architecture-note mono"><span>LOCAL-FIRST CONTRACT</span><p>Refresh is local-only. Provider metadata sync is explicit. Original media remains authoritative at its source path.</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Product experience</p><h2>Designed to make a large local collection feel calm.</h2></div>
+    <div class="model-grid">
+      <article><span class="mono model-index">01</span><h3>Movies, TV and anime</h3><p>A mixed archive is presented as a coherent visual library instead of a collection of unrelated folder trees.</p></article>
+      <article><span class="mono model-index">02</span><h3>Multi-drive awareness</h3><p>Configured roots can live across several drives, with Online / Offline / Missing state kept explicit rather than guessed.</p></article>
+      <article><span class="mono model-index">03</span><h3>Focused title details</h3><p>Selected media expands into a richer in-window details experience while preserving the main browsing context.</p></article>
+      <article><span class="mono model-index">04</span><h3>Watch-state continuity</h3><p>Resume progress, Continue Watching, deterministic episodic Up Next and Watch History make the library useful day to day.</p></article>
+      <article><span class="mono model-index">05</span><h3>Metadata and artwork</h3><p>Explicit provider sync enriches titles without making browsing depend on network access or weak automatic guesses.</p></article>
+      <article><span class="mono model-index">06</span><h3>Subtitle workflows</h3><p>Embedded and sidecar tracks are inspected first, with safe optional provider and local transcription workflows available when needed.</p></article>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">EasyFlix 1.4</p><h2>Maintenance became part of the product.</h2><p>The 1.4 pass is not just visual polish. It makes the application easier to understand and maintain months later.</p></div>
+    <div class="skill-matrix">
+      <div><span>Add Media Center</span><p>Built-in guidance explains movie, TV, anime and special naming, roots, Refresh, metadata sync, poster composition and troubleshooting.</p></div>
+      <div><span>Copy AI Instructions</span><p>The app can copy its own durable intake rules so an ordinary future AI chat can help without reconstructing project history.</p></div>
+      <div><span>Save AI Handoff</span><p>A sanitized text handoff can be exported without private drive letters or library paths, making future assistance portable.</p></div>
+      <div><span>Transparent Windows icon</span><p>The EasyFlix mark now uses a transparent multi-size Windows icon validated on the real Desktop, installer and portable build.</p></div>
+      <div><span>Cached-first startup</span><p>The interface paints quickly while more expensive local reconciliation stays bounded and background-friendly.</p></div>
+      <div><span>Real 4K discipline</span><p>Motion and scrolling avoid expensive per-frame layout work so polish does not come at the cost of responsiveness.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Real-library validation</p><h2>Tested against the collection it was built to manage.</h2><p>The final catalog gate was measured against a real multi-drive library rather than a toy fixture.</p></div>
+    <div class="rules-table">
+      <div class="rule-row"><span>PHYSICAL MEDIA</span><strong>2,193 non-excluded files</strong><b>ACCOUNTED</b></div>
+      <div class="rule-row"><span>CATALOG PATHS</span><strong>2,301 tracked paths</strong><b>COHERENT</b></div>
+      <div class="rule-row"><span>OFFLINE HISTORY</span><strong>108 entries for an unavailable source</strong><b>PRESERVED</b></div>
+      <div class="rule-row"><span>PATH COHERENCE</span><strong>0 physical paths missing from catalog</strong><b>PASS</b></div>
+      <div class="rule-row"><span>DUPLICATES</span><strong>0 duplicate paths / provider identities</strong><b>PASS</b></div>
+      <div class="rule-row"><span>SERIES CORRECTNESS</span><strong>0 duplicate canonical series titles</strong><b>PASS</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering evidence</p><h2>A polished interface backed by release discipline.</h2><p>EasyFlix 1.4.0 is publicly released under MIT from a privacy-sanitized clean-history source snapshot. The release passed the full 219-test suite and Release build, and the installer/portable artifacts were re-downloaded from GitHub and hash-verified after publication.</p></div>
+    <div class="rules-table">
+      <div class="rule-row"><span>TEST SUITE</span><strong>219 / 219 automated .NET tests</strong><b>PASS</b></div>
+      <div class="rule-row"><span>BUILD QUALITY</span><strong>0 warnings · 0 errors</strong><b>PASS</b></div>
+      <div class="rule-row"><span>DEPENDENCIES</span><strong>NuGet vulnerability audit</strong><b>PASS</b></div>
+      <div class="rule-row"><span>WINDOWS PACKAGE</span><strong>Self-contained · single-file · win-x64</strong><b>PASS</b></div>
+      <div class="rule-row"><span>RELEASE ARTIFACTS</span><strong>Installer + portable win-x64 + SHA256SUMS</strong><b>VALIDATED</b></div>
+      <div class="rule-row"><span>DESKTOP</span><strong>One canonical EasyFlix launcher</strong><b>PASS</b></div>
+    </div>
+    <div class="architecture-note mono"><span>PUBLIC RELEASE</span><p>EasyFlix 1.4.0 is publicly released under MIT from a sanitized clean-history source snapshot. Installer, portable build and SHA256SUMS are live and round-trip verified.</p></div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">1.4.0 released</p>
+    <h2>EasyFlix 1.4.0 is released. Installer, portable build and source are live.</h2>
+    <p>EasyFlix 1.4.0 is available as a per-user installer and portable win-x64 build, with MIT-licensed public source and SHA-256 checksums on GitHub.</p>
+    <div class="case-actions"><a class="button" href="/">Back to portfolio</a><a class="button" href="https://github.com/marcelosofficial-ctrl/EasyFlix" target="_blank" rel="noreferrer">Source</a><a class="button primary" href="https://github.com/marcelosofficial-ctrl/EasyFlix/releases/tag/v1.4.0" target="_blank" rel="noreferrer">Download 1.4.0</a></div>
+  </section>
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Windows distribution</p><h2>Installer and portable builds are both validated.</h2><p>EasyFlix 1.4 keeps the self-contained portable option while adding a per-user Windows installer with Desktop, Start Menu, Add/Remove Programs, uninstall/data-preservation and handoff-association lifecycle validation.</p></div>
+    <div class="rules-table">
+      <div class="rule-row"><span>DISTRIBUTION</span><strong>INSTALLER + PORTABLE WIN-X64</strong><b>PASS</b></div>
+    </div>
+  </section>
+</BaseLayout>

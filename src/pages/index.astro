@@ -43,7 +43,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div><span>01</span><b>VektorDeck</b><em>SHIPPED</em></div>
           <div><span>02</span><b>Retro Game Vision</b><em>FIELD TESTED</em></div>
           <div><span>03</span><b>CrashScope</b><em>1.2 RELEASED</em></div>
-          <div><span>04</span><b>ReelShelf → EasyFLix 1.0</b><em>ACTIVE</em></div>
+          <div><span>04</span><b>EasyFlix 1.4</b><em>RELEASED</em></div>
+          <div><span>05</span><b>RevDev</b><em>ACTIVE DEV</em></div>
         </div>
         <div class="identity-contact"><span>REMOTE / GLOBAL · OPEN TO WORK</span><a href="/contact/">Start a conversation ↗</a></div>
       </aside>
@@ -128,18 +129,33 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <span class="text-link">Open validated case study ↗</span>
         </a>
 
-        <a class="project compact-project" href="/projects/reelshelf/">
-          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
-          <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
-          <p>A Windows WPF/.NET 10 desktop application for legally acquired local media, with safe read-only multi-drive scanning, expandable movie/TV/anime grouping, artwork and subtitle workflows, and unified shortcuts that leave source files untouched.</p>
-          <span class="status-note">Built around a simple constraint from my own media library: organize what is already on disk without rearranging or risking the source files.</span>
+        <a class="project compact-project" href="/projects/easyflix/">
+          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
+          <h3>EasyFlix</h3>
+          <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
+          <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
           <div class="active-build-visual" aria-hidden="true">
-            <div><span>STACK</span><b>WPF · .NET 10</b></div>
-            <div><span>SAFETY</span><b>READ-ONLY SCAN</b></div>
-            <div><span>VALIDATION</span><b>48 TESTS · 0 WARNINGS</b></div>
-            <div><span>ARTIFACT</span><b class="good">PORTABLE WIN-X64</b></div>
+            <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
+            <div><span>MODEL</span><b>LOCAL-FIRST</b></div>
+            <div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div>
+            <div><span>ARTIFACT</span><b class="good">INSTALLER + PORTABLE WIN-X64</b></div>
           </div>
-          <span class="status-note">0.6.1 · relocation-safe dual-provider build · EasyFLix planned for 1.0</span>
+          <span class="status-note">1.4.0 publicly released · privacy sanitization complete · MIT public release verified</span>
+          <span class="text-link">Open EasyFlix case study ↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/revdev/">
+          <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
+          <h3>RevDev</h3>
+          <p>A native Windows control surface for durable multi-project AI-assisted development via Dev Relay, with guarded execution, deterministic project state, a five-tool hub, failure learning and local-first validation.</p>
+          <span class="status-note">Built to keep long-running AI-assisted engineering work visible and resumable across projects, chats and model boundaries without handing execution authority to the UI.</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>.NET 8 · WPF</b></div>
+            <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
+            <div><span>CONTINUITY</span><b>GIT · RESULTS · GOALS</b></div>
+            <div><span>SAFETY</span><b class="good">LOCAL-FIRST · HOSTED_DENY</b></div>
+          </div>
+          <span class="status-note">Current R143 work is closing restart persistence and final release-lifecycle acceptance before any public-release freeze.</span>
           <span class="text-link">Open active case study ↗</span>
         </a>
       </div>

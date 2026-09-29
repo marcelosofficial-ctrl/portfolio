@@ -46,7 +46,8 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div><span>01</span><b>VektorDeck</b><em>SHIPPED</em></div>
           <div><span>02</span><b>Retro Game Vision</b><em>FIELD TESTED</em></div>
           <div><span>03</span><b>CrashScope</b><em>1.2 RELEASED</em></div>
-          <div><span>04</span><b>ReelShelf → EasyFLix 1.0</b><em>ACTIVE</em></div>
+          <div><span>04</span><b>EasyFlix 1.4</b><em>RELEASED</em></div>
+          <div><span>05</span><b>RevDev</b><em>ACTIVE DEV</em></div>
         </div>
         <div class="identity-contact"><span>リモート勤務可 · グローバル対応</span><a href="#contact">連絡する ↗</a></div>
       </aside>
@@ -131,19 +132,34 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <span class="text-link">検証内容を見る（英語）↗</span>
         </a>
 
-        <a class="project compact-project" href="/projects/reelshelf/" hreflang="en">
-          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">ACTIVE</span></div>
-          <h3>ReelShelf <small class="project-rename-note">(EasyFLix at 1.0)</small></h3>
+        <a class="project compact-project" href="/projects/easyflix/" hreflang="en">
+          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
+          <h3>EasyFlix <small class="project-rename-note">1.4 released</small></h3>
           <p>複数ドライブに保存した自分のローカルメディアを、元ファイルを移動・変更せずに整理するWPF/.NET 10デスクトップアプリ。映画・TV・アニメの分類、アートワーク、字幕ワークフローを扱います。</p>
           <span class="status-note">自分のメディアライブラリで「すでにあるファイルを壊さず、見やすく整理したい」と感じたことが出発点です。</span>
           <div class="active-build-visual" aria-hidden="true">
             <div><span>STACK</span><b>WPF · .NET 10</b></div>
             <div><span>SAFETY</span><b>READ-ONLY SCAN</b></div>
-            <div><span>VALIDATION</span><b>48 TESTS · 0 WARNINGS</b></div>
-            <div><span>ARTIFACT</span><b class="good">PORTABLE WIN-X64</b></div>
+            <div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div>
+            <div><span>ARTIFACT</span><b class="good">INSTALLER + PORTABLE WIN-X64</b></div>
           </div>
-          <span class="status-note">0.6.1 · relocation-safe dual-provider build · 1.0でEasyFLixへ移行予定</span>
+          <span class="status-note">1.4.0 · MITライセンスで公開済み · プライバシーサニタイズ完了 · GitHubリリース検証済み</span>
           <span class="text-link">開発中ケーススタディ（英語）↗</span>
+        </a>
+
+        <a class="project compact-project" href="/projects/revdev/" hreflang="en">
+          <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
+          <h3>RevDev</h3>
+          <p>Dev Relay を操作する Windows ネイティブの開発コントロールサーフェス。複数プロジェクトの AI 支援開発を、永続的な状態・安全な実行境界・進捗可視化・5つのツール連携で管理します。</p>
+          <span class="status-note">チャットやモデルが変わっても、Git・結果・目標を永続的な状態として残し、長時間の開発作業を再開しやすくするために構築しています。</span>
+          <div class="active-build-visual" aria-hidden="true">
+            <div><span>STACK</span><b>.NET 8 · WPF</b></div>
+            <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
+            <div><span>CONTINUITY</span><b>GIT · RESULTS · GOALS</b></div>
+            <div><span>SAFETY</span><b class="good">LOCAL-FIRST · HOSTED_DENY</b></div>
+          </div>
+          <span class="status-note">現在は再起動時の状態復元と最終リリースライフサイクルの受け入れ検証を進めています。</span>
+          <span class="text-link">ケーススタディ（英語）↗</span>
         </a>
       </div>
     </div>

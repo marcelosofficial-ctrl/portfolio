@@ -74,6 +74,14 @@ function requireContent(label, html, required) {
   }
 }
 
+function requireEasyFlixCompatibilityRoute(label, html) {
+  if (!html) return;
+  const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*\bnoindex\b[^"']*["'])[^>]*>/i.test(html);
+  const canonical = /<link\b(?=[^>]*\brel=["']canonical["'])(?=[^>]*\bhref=["'][^"']*\/projects\/easyflix\/["'])[^>]*>/i.test(html);
+  if (!noindex) fail(`${label} is missing robots noindex`); else pass(`${label} robots noindex`);
+  if (!canonical) fail(`${label} is missing canonical EasyFlix route`); else pass(`${label} canonical EasyFlix route`);
+}
+
 function requireLanguagePair(label, englishHtml, japaneseHtml, englishPath, japanesePath) {
   if (!englishHtml || !japaneseHtml) return;
 
@@ -113,7 +121,8 @@ const routes = [
   'resume/software/index.html',
   'ja/resume/software/index.html',
   'projects/vektordeck/index.html', 'projects/reseller-ai/index.html',
-  'projects/crashscope/index.html', 'projects/reelshelf/index.html',
+  'projects/crashscope/index.html', 'projects/easyflix/index.html',
+  'projects/revdev/index.html', 'projects/reelshelf/index.html', 'projects/media-library/index.html',
   'projects/rainmeter-clock/index.html',
   'projects/exactartifact/index.html',
   'projects/gaptrace/index.html',
@@ -138,6 +147,9 @@ const webpAssets = [
   ['brand/reseller.webp', 2000],
   ['brand/vektordeck.webp', 2000],
   ['brand/reelshelf.webp', 2000],
+  ['easyflix/home.webp', 5000],
+  ['easyflix/library.webp', 5000],
+  ['easyflix/details.webp', 5000],
 ];
 
 for (const [asset, minimumBytes] of webpAssets) {
@@ -172,9 +184,11 @@ requireContent('homepage', home, [
   '266/266',
   '0.2365%',
   '1.2.0 RELEASED',
-  '48 TESTS · 0 WARNINGS',
-  '0.6.1 · relocation-safe dual-provider build',
-  'EasyFLix',
+  '219 TESTS',
+  '1.4.0 publicly released',
+  'EasyFlix',
+  'RevDev',
+  'ACTIVE DEVELOPMENT',
   'Software engineering, QA / automation and technical systems roles.'
 ]);
 
@@ -195,7 +209,7 @@ requireContent('about page', about, [
   'Software / QA résumé',
   'CrashScope 1.2 released',
   'VektorDeck 1.0',
-  'EasyFLix · pre-1.0 ReelShelf'
+  'EasyFlix 1.4 released'
 ]);
 
 const japaneseAbout = readRoute('ja/about/index.html');
@@ -205,6 +219,8 @@ requireContent('Japanese about page', japaneseAbout, [
   '現場経験からソフトウェアへ。',
   '5言語でのコミュニケーション',
   'CrashScope 1.2 released',
+  'EasyFlix 1.4 released',
+  '219件の自動テスト',
   'ソフトウェア / QA 職務プロフィール'
 ]);
 
@@ -226,7 +242,7 @@ requireContent('Japanese contact page', japaneseContact, [
 
 const resume = readRoute('resume/index.html');
 requireContent('general resume', resume, [
-  'Alma', 'VektorDeck', 'CrashScope', 'ReelShelf', '750+', '1,800+',
+  'Alma', 'VektorDeck', 'CrashScope', 'EasyFlix', 'RevDev', '750+', '1,800+',
   'Software / QA', 'QA / automation', '266/266 automated .NET tests', '0.2365% average Agent CPU'
 ]);
 
@@ -236,6 +252,7 @@ requireContent('Japanese career profile', japaneseResume, [
   'Professional profile · 職務プロフィール',
   '4,000時間以上',
   '266/266件の自動.NETテスト',
+  'RevDev',
   '海外のタイムゾーンや勤務時間にも柔軟に対応'
 ]);
 
@@ -255,11 +272,12 @@ requireContent('software resume', softwareResume, [
   '266/266 automated .NET tests',
   '0.2365% average Agent CPU',
   '94.58 MB peak working set',
-  '48 passing tests',
+  '219 / 219',
   'zero build warnings',
   'VektorDeck 1.0',
   'Retro Game Vision',
-  'EasyFLix'
+  'EasyFlix',
+  'RevDev'
 ]);
 
 const japaneseSoftwareResume = readRoute('ja/resume/software/index.html');
@@ -269,7 +287,9 @@ requireContent('Japanese software profile', japaneseSoftwareResume, [
   '英文PDFをダウンロード',
   '266/266件の自動.NETテスト',
   'localhost限定',
-  '48件のテスト'
+  '219件のテスト',
+  'EasyFlix · 1.4 released',
+  'RevDev · ACTIVE DEVELOPMENT'
 ]);
 
 requireLanguagePair('homepage', home, japaneseHome, '/', '/ja/');
@@ -279,13 +299,28 @@ requireLanguagePair('general career profile', resume, japaneseResume, '/resume/'
 requireLanguagePair('support career profile', supportResume, japaneseSupportResume, '/resume/support/', '/ja/resume/support/');
 requireLanguagePair('software career profile', softwareResume, japaneseSoftwareResume, '/resume/software/', '/ja/resume/software/');
 
+const easyflix = readRoute('projects/easyflix/index.html');
+const revdev = readRoute('projects/revdev/index.html');
 const reelshelf = readRoute('projects/reelshelf/index.html');
-requireContent('ReelShelf case study', reelshelf, [
-  'ReelShelf', 'EasyFLix', 'WPF', '.NET 10', 'legally acquired local media',
-  'SubDL', 'OpenSubtitles REST API', 'Whisper.net', '48 passing tests', 'Zero build warnings',
-  'PORTABLE WIN-X64', '99.36%', 'Cross-language draft translation paused'
+const mediaLibrary = readRoute('projects/media-library/index.html');
+requireContent('EasyFlix case study', easyflix, [
+  'EasyFlix', '1.4.0 RELEASED', 'WPF', '.NET 10', 'legally acquired',
+  '219 / 219', 'Add Media Center', 'Save AI Handoff', '2,193',
+  'PUBLIC RELEASE',
+  'LOCAL-FIRST', 'Continue Watching', 'Sync Metadata',
+  'INSTALLER + PORTABLE WIN-X64', '2,301', '108 entries',
+  'The library, not a mockup.', 'ALL LIBRARY', 'TITLE DETAILS'
 ]);
 
+requireContent('RevDev case study', revdev, [
+  'RevDev', 'ACTIVE DEVELOPMENT', '.NET 8', 'WPF', 'Dev Relay',
+  '5 PROVIDERS', 'HOSTED_DENY', 'Durable continuity', 'Tool hub',
+  'Real final-state captures only.'
+]);
+requireContent('ReelShelf compatibility route', reelshelf, ['ReelShelf became', '/projects/easyflix/']);
+requireEasyFlixCompatibilityRoute('ReelShelf compatibility route', reelshelf);
+requireContent('Media Library compatibility route', mediaLibrary, ['EasyFlix', '1.4', '/projects/easyflix/']);
+requireEasyFlixCompatibilityRoute('Media Library compatibility route', mediaLibrary);
 const crashscope = readRoute('projects/crashscope/index.html');
 requireContent('CrashScope case study', crashscope, [
   '1.2.0 RELEASED',
