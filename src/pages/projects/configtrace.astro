@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="ConfigTrace 1.0.1 | Marcelo Ellwanger" description="ConfigTrace 1.0.1 is a lightweight Rust configuration-change tracer with deterministic snapshots, field-level diffs, sensitive-key redaction, event-driven JSONL journals and a validated CrashScope 1.1 integration boundary.">
+<BaseLayout title="ConfigTrace 1.0.1 | Marcelo Ellwanger" description="ConfigTrace 1.0.1 is a lightweight Rust configuration-change tracer with deterministic snapshots, field-level diffs, sensitive-key redaction, event-driven JSONL journals and a validated CrashScope integration boundary.">
   <section class="case-hero case-hero-featured wrap">
     <div class="case-title-block">
       <p class="eyebrow">08 · Focused project · 1.0.1 released · Rust</p>
@@ -26,7 +26,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="case-section wrap case-intro-grid">
     <div><p class="eyebrow">The design choice</p><h2>Keep the evidence provider independent from the product consuming it.</h2></div>
     <div class="case-long-copy">
-      <p>ConfigTrace is useful on its own and now ships as CrashScope 1.1's first external evidence provider. The integration boundary is process isolation plus schema-versioned JSON/JSONL contracts rather than a direct Rust/C# ABI.</p>
+      <p>ConfigTrace is useful on its own, and CrashScope 1.2 includes ConfigTrace 1.0.1 as its optional external configuration-evidence provider. The integration boundary is process isolation plus schema-versioned JSON/JSONL contracts rather than a direct Rust/C# ABI.</p>
       <p>That keeps lifecycle, failure isolation and versioning explicit: CrashScope can launch ConfigTrace for a monitored session, consume bounded evidence, and stop it without duplicating its parsing logic or letting provider failure take down the host.</p>
     </div>
   </section>
@@ -60,8 +60,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="case-section wrap">
     <div class="case-section-heading"><p class="eyebrow">CrashScope boundary</p><h2>Correlation evidence, never automatic causation.</h2></div>
     <div class="case-long-copy">
-      <p>CrashScope 1.1 can report that HDR, renderer or another configuration field changed a measured amount of time before an incident. ConfigTrace alone does not justify claiming that the change caused the incident.</p>
-      <p>The schema-v1 snapshot/diff and live-journal contracts remain the stable integration boundary used by CrashScope 1.1, while ConfigTrace stays independently usable as a standalone utility.</p>
+      <p>CrashScope 1.2 can report that HDR, renderer or another configuration field changed a measured amount of time before an incident. ConfigTrace alone does not justify claiming that the change caused the incident.</p>
+      <p>The schema-v1 snapshot/diff and live-journal contracts remain the stable integration boundary used by CrashScope 1.2, while ConfigTrace stays independently usable as a standalone utility.</p>
     </div>
   </section>
 
@@ -71,7 +71,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div><span>Validated commit</span><p><code>b629c970dfc14fca5df1e0ef2b0d1d07d0d8c56c</code></p></div>
       <div><span>Windows EXE SHA-256</span><p><code>fe1c470a58402e82e97ee529c6a6b02822430da70e65ffc5fc5a71359ad4e521</code></p></div>
       <div><span>Release ZIP SHA-256</span><p><code>9374128c42e3bf3e1fd8f48bdddd7485e421da543c80f54d454985e1bcccbafe</code></p></div>
-      <div><span>1.0.1 change</span><p>Fix camelCase sensitive-key redaction discovered during CrashScope 1.1 integration.</p></div>
+      <div><span>1.0.1 change</span><p>Fix camelCase sensitive-key redaction originally discovered during CrashScope 1.1 integration.</p></div>
     </div>
   </section>
 
