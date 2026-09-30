@@ -560,3 +560,167 @@ main:has(.identity-hero) .active-project-grid > .project:hover {
   .site-header nav a::before,
   .site-header nav a::after { transition:none !important; }
 }
+
+
+/* --------------------------------------------------------------------------
+   Sleek editorial pass 04: hierarchy over density.
+   Presentation only. Project facts, release states and routes stay untouched.
+   -------------------------------------------------------------------------- */
+
+/* Let the homepage breathe. The composition should feel designed before it
+   feels informational. */
+main:has(.identity-hero) .identity-hero {
+  padding-bottom: clamp(52px, 6vw, 78px);
+}
+main:has(.identity-hero) .identity-proof {
+  border-top-color: rgba(255,255,255,.055);
+  border-bottom-color: rgba(255,255,255,.055);
+}
+main:has(.identity-hero) .identity-proof > div {
+  min-height: 74px;
+  padding: 16px 20px;
+}
+main:has(.identity-hero) .identity-proof strong {
+  letter-spacing: -.045em;
+}
+
+/* The project tier headers are labels, not competing headlines. */
+main:has(.identity-hero) .project-tier-head {
+  grid-template-columns: minmax(0,1fr) minmax(240px,.62fr);
+  align-items:end;
+  gap: 40px;
+  padding-left: 2px;
+}
+main:has(.identity-hero) .project-tier-head h3 {
+  letter-spacing: -.035em;
+  font-weight: 520;
+}
+main:has(.identity-hero) .project-tier-head > p {
+  max-width: 440px;
+  line-height: 1.65;
+}
+
+/* Cards use one quiet edge and one clear focal point instead of a box inside
+   another box inside another box. */
+main:has(.identity-hero) .project {
+  border-color: rgba(255,255,255,.075);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(214,255,87,.035), transparent 34%),
+    linear-gradient(145deg,#111517,#0e1113);
+}
+main:has(.identity-hero) .project::before {
+  opacity: .34;
+}
+main:has(.identity-hero) .project:hover {
+  border-color: rgba(214,255,87,.22);
+  box-shadow: 0 24px 64px rgba(0,0,0,.22);
+}
+main:has(.identity-hero) .project-top {
+  margin-bottom: 20px;
+}
+main:has(.identity-hero) .project h3 {
+  text-wrap: balance;
+}
+
+/* Secondary copy is deliberately quieter. The case-study link remains the
+   strongest action in each card. */
+main:has(.identity-hero) .project > p,
+main:has(.identity-hero) .project .status-note {
+  color: #858e91;
+}
+main:has(.identity-hero) .project .status-note {
+  border-left-color: rgba(214,255,87,.18);
+}
+main:has(.identity-hero) .project .text-link {
+  margin-top: 26px;
+  color: #e6e9e6;
+}
+
+/* Give the flagship project a magazine-like opening spread. */
+main:has(.identity-hero) .project-featured {
+  min-height: 470px;
+}
+main:has(.identity-hero) .project-featured .project-copy {
+  max-width: 760px;
+}
+main:has(.identity-hero) .project-featured h3 {
+  max-width: 720px;
+  font-size: clamp(2.7rem, 5vw, 5.2rem);
+  line-height: .94;
+  letter-spacing: -.055em;
+  font-weight: 500;
+}
+main:has(.identity-hero) .project-featured .status-note {
+  max-width: 610px;
+}
+
+/* Compact systems should read as a grid of instruments, not a wall of cards. */
+main:has(.identity-hero) .active-project-grid {
+  gap: 12px;
+}
+main:has(.identity-hero) .active-project-grid > .project {
+  min-height: 100%;
+}
+main:has(.identity-hero) .active-build-visual {
+  border-color: rgba(255,255,255,.055);
+  background: rgba(255,255,255,.012);
+}
+main:has(.identity-hero) .active-build-visual > div {
+  border-color: rgba(255,255,255,.055);
+}
+
+/* Keep the visual telemetry, but lower its contrast so it supports the story
+   instead of becoming another headline. */
+main:has(.identity-hero) .resale-visual,
+main:has(.identity-hero) .forge-visual,
+main:has(.identity-hero) .clock-visual {
+  border-color: rgba(255,255,255,.065);
+  background-color: rgba(255,255,255,.008);
+}
+
+/* Editorial separators use the same signal language as the profile artwork. */
+main:has(.identity-hero) .project-tier + .project-tier {
+  position: relative;
+}
+main:has(.identity-hero) .project-tier + .project-tier::before {
+  content: "";
+  display: block;
+  width: 86px;
+  height: 1px;
+  margin-bottom: 72px;
+  background: linear-gradient(90deg,var(--accent),transparent);
+  opacity: .38;
+}
+
+/* The closing area should feel like a destination, not another content card. */
+main:has(.identity-hero) .home-about-strip {
+  border-color: rgba(255,255,255,.06);
+}
+main:has(.identity-hero) .home-about-strip::before {
+  width: 86px;
+  opacity: .66;
+}
+main:has(.identity-hero) .home-about-strip h3 {
+  font-weight: 500;
+}
+
+/* Small screens: preserve the hierarchy without forcing the desktop density. */
+@media (max-width: 760px) {
+  main:has(.identity-hero) .project-tier-head {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  main:has(.identity-hero) .project-tier + .project-tier::before {
+    margin-bottom: 48px;
+  }
+  main:has(.identity-hero) .project-featured {
+    min-height: 0;
+  }
+  main:has(.identity-hero) .project-featured h3 {
+    font-size: clamp(2.45rem, 12vw, 4rem);
+  }
+  main:has(.identity-hero) .identity-proof > div {
+    min-height: 0;
+    padding: 14px 12px;
+  }
+}
