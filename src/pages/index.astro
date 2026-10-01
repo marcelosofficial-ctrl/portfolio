@@ -110,16 +110,22 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       </div>
     </div>
 
-    <div class="project-tier">
-      <div class="project-tier-head"><div><p class="eyebrow">Systems in motion</p><h3>Released and actively evolving.</h3></div><p>Substantial systems with either a current public release or active engineering underway, with their state shown explicitly.</p></div>
+    <div class="project-tier project-tier-primary">
+      <div class="project-tier-head"><div><p class="eyebrow">Core products</p><h3>Three systems worth opening first.</h3></div><p>CrashScope, EasyFlix and RevDev are the strongest expression of the portfolio's current engineering work, so they get the clearest visual treatment and the most direct path into their case studies.</p></div>
 
       <div class="active-project-grid">
-        <a class="project compact-project" href="/projects/crashscope/">
+        <a class="project compact-project priority-project crashscope-project" href="/projects/crashscope/">
           <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div>
           <h3>CrashScope</h3>
           <p>A privacy-first Windows crash-diagnostics system with a native WPF/WebView2 desktop shell that correlates hardware telemetry with Event Log, WER and persistent incident evidence without pretending correlation proves root cause.</p>
           <span class="status-note">Built after repeated game, GPU and workload failures made it obvious how fragmented useful Windows diagnostic evidence can be.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <div class="priority-visual crashscope-visual" aria-hidden="true">
+            <div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div>
+            <div class="diagnostic-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>CONFIGTRACE</span><b>OPTIONAL</b></div>
+            <div class="diagnostic-foot mono"><span>266/266 TESTS</span><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
+          </div>
+          <div class="active-build-visual">
             <div><span>1.1 AGENT CPU · AVG</span><b>0.2365%</b></div>
             <div><span>WORKING SET · AVG</span><b>91.71 MB</b></div>
             <div><span>AUTOMATED TESTS</span><b>266/266</b></div>
@@ -129,12 +135,16 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <span class="text-link">Open validated case study ↗</span>
         </a>
 
-        <a class="project compact-project" href="/projects/easyflix/">
+        <a class="project compact-project priority-project easyflix-project" href="/projects/easyflix/">
           <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
           <h3>EasyFlix</h3>
           <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
           <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <figure class="priority-screenshot">
+            <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix home screen showing a real local media library" width="1000" height="565" loading="lazy" decoding="async" />
+            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>LOCAL LIBRARY</b></figcaption>
+          </figure>
+          <div class="active-build-visual">
             <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
             <div><span>MODEL</span><b>LOCAL-FIRST</b></div>
             <div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div>
@@ -144,12 +154,19 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <span class="text-link">Open EasyFlix case study ↗</span>
         </a>
 
-        <a class="project compact-project" href="/projects/revdev/">
+        <a class="project compact-project priority-project revdev-project" href="/projects/revdev/">
           <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
           <h3>RevDev</h3>
           <p>A native Windows control surface for durable multi-project AI-assisted development via Dev Relay, with guarded execution, deterministic project state, a five-tool hub, failure learning and local-first validation.</p>
           <span class="status-note">Built to keep long-running AI-assisted engineering work visible and resumable across projects, chats and model boundaries without handing execution authority to the UI.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <div class="priority-visual revdev-visual" aria-hidden="true">
+            <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
+            <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
+            <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
+            <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
+            <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
+          </div>
+          <div class="active-build-visual">
             <div><span>STACK</span><b>.NET 8 · WPF</b></div>
             <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
             <div><span>CONTINUITY</span><b>GIT · RESULTS · GOALS</b></div>
@@ -163,7 +180,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
     <div class="project-tier">
       <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>Small, finished, intentional.</h3></div><p>Compact projects that show interface craft or a focused technical idea without pretending to be flagship systems.</p></div>
-      <div class="focused-project-grid">
+      <div class="focused-project-grid" aria-label="Focused projects">
         <a class="project compact-project clock-project" href="/projects/rainmeter-clock/">
           <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
           <h3>MinimalClock</h3>
