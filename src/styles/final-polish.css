@@ -881,3 +881,30 @@ main:has(.identity-hero) .home-about-strip h3 {
 @media(max-width:980px){.project-carousel-window{min-height:500px}}
 @media(max-width:760px){.identity-hero .identity-foot{white-space:normal;flex-wrap:wrap;gap:8px 12px}.identity-hero .identity-foot i{width:16px;flex-basis:16px}.project-carousel-window{min-height:520px}.project-carousel-slide{padding:20px}.project-carousel-controls{grid-template-columns:36px 1fr 36px}.carousel-timer{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.project-carousel-slide,.carousel-arrow,.carousel-dot{transition:none!important}.carousel-timer i{animation:none!important}}
+
+
+/* Carousel r4 */
+.identity-hero .identity-foot{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;white-space:nowrap!important;gap:14px!important}
+.identity-hero .identity-foot i{display:block!important;width:22px!important;min-width:22px!important;flex:0 0 22px!important;height:1px!important}
+.focused-project-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important}
+.project-carousel-slide{grid-template-columns:minmax(0,1fr) minmax(300px,430px);grid-template-rows:1fr;align-items:stretch;gap:clamp(24px,4vw,58px);padding:clamp(24px,3vw,38px)}
+.carousel-slide-copy{align-self:center}
+.carousel-visual-column{width:min(100%,430px);display:flex;flex-direction:column;justify-content:center;align-items:center;justify-self:center;min-width:0}
+.carousel-visual{width:100%;aspect-ratio:1/1;min-height:0!important;height:auto!important}
+.carousel-shot{margin:0}
+.carousel-shot img{width:100%;height:100%;min-height:0;object-fit:cover}
+.carousel-controls-inner{width:min(100%,430px);margin:0 auto;display:grid;grid-template-columns:38px minmax(0,1fr) 38px;gap:10px;align-items:center}
+.project-carousel-controls{display:flex;flex-direction:column;align-items:center;gap:8px}
+.project-carousel-controls .carousel-timer{width:min(100%,430px)}
+.carousel-dots{width:100%;justify-content:center;gap:5px;overflow:hidden}
+.carousel-dot{width:18px;height:3px}.carousel-dot.is-active{width:30px}
+.revdev-icon-stage{display:grid;place-items:center;min-height:140px;margin-bottom:8px}
+.revdev-icon-stage img{display:block;width:min(42%,170px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 0 8px rgba(214,255,87,.40)) drop-shadow(0 0 22px rgba(214,255,87,.18))}
+.resale-mini-row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.045);font:500 .56rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:#5f696c}
+.resale-mini-row b{color:#b6bfbb;font-weight:500;text-align:right}
+.clock-carousel-visual{align-items:flex-start;gap:10px}.clock-carousel-visual span,.clock-carousel-visual small{color:#687276}.clock-carousel-visual strong{font-size:clamp(3.2rem,7vw,5.4rem);letter-spacing:-.07em;color:var(--text)}
+.gap-signal{margin-top:28px}.gap-signal i{height:calc(12px + var(--signal,22px))}
+.gap-signal i:nth-child(1){--signal:14px}.gap-signal i:nth-child(2){--signal:34px}.gap-signal i:nth-child(3){--signal:8px}.gap-signal i:nth-child(4){--signal:42px}.gap-signal i:nth-child(5){--signal:20px}.gap-signal i:nth-child(6){--signal:31px}.gap-signal i:nth-child(7){--signal:12px}
+@media(max-width:1100px){.focused-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.project-carousel-slide{grid-template-columns:minmax(0,1fr) minmax(280px,380px)}.carousel-visual-column,.carousel-controls-inner,.project-carousel-controls .carousel-timer{width:min(100%,380px)}}
+@media(max-width:760px){.identity-hero .identity-foot{white-space:normal!important;flex-wrap:wrap!important;gap:8px 12px!important}.identity-hero .identity-foot i{width:16px!important;min-width:16px!important;flex-basis:16px!important}.focused-project-grid{grid-template-columns:1fr!important}.project-carousel-window{min-height:720px}.project-carousel-slide{grid-template-columns:1fr;grid-template-rows:auto auto;gap:24px}.carousel-visual-column{width:min(100%,360px)}.project-carousel-controls .carousel-timer{width:min(100%,360px)}}
+@media(prefers-reduced-motion:reduce){.project-carousel-slide,.carousel-arrow,.carousel-dot{transition:none!important}}
