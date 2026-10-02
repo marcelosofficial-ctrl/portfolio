@@ -224,3 +224,43 @@ This pass is durable project direction, not chat-only context.
 - Verify every project's square stage is visually aligned with the controls beneath it.
 - Verify the first three projects remain the primary ordering: CrashScope, EasyFlix, RevDev.
 - Do not call a carousel pass complete based only on source-code inspection. Treat visible layout behavior as a required QA target.
+
+
+## 2026-10-02 corrective visual pass r6: equal focused cards, larger carousel composition, and asset fidelity
+
+### 18. Focused-project card equality is non-negotiable
+- The four cards under **“Small, finished, intentional.”** are one visual group.
+- At normal desktop widths they must have exactly the same grid column width and the same visual card footprint.
+- No individual card may grow wider because of content, long words, intrinsic sizing, or a project-specific class.
+- Use min-width:0, max-width:none, explicit equal grid tracks, and controlled text wrapping so ConfigTrace cannot become visibly wider than MinimalClock, ExactArtifact, or GapTrace.
+- The four cards may collapse responsively below desktop breakpoints, but desktop must be a true four-column equal grid.
+
+### 19. Carousel editorial balance
+- The previous carousel composition gave the project copy too little horizontal room, producing ugly multi-line titles such as CrashScope breaking across four lines.
+- The desktop carousel must give the editorial copy enough width for project names and descriptions to read as intentional typography.
+- The square visual stage should be substantially larger than the old ~360-420px treatment where screen width allows.
+- Copy and visual should remain separate columns, with the visual stage centered in its own column.
+- Long project names should wrap only when necessary, and should not be forced into arbitrary character-level breaks.
+- At narrower widths, the carousel may stack copy above the visual rather than compressing both into unreadable columns.
+
+### 20. EasyFlix source-resolution boundary
+- The checked-in EasyFlix source captures currently verified in the public repository are 1000×565 (home.jpg, library.jpg) and 900×509 (details.jpg).
+- The portfolio must not claim those are larger than they are.
+- They must be displayed at native quality without blurry derivatives, accidental upscaling beyond useful size, or awkward off-center containment.
+- The carousel treatment should center the EasyFlix capture and make the visual stage feel intentional.
+- A genuinely higher-resolution EasyFlix screenshot should replace the current source when one is supplied or otherwise validated. Until then, do not fabricate or AI-upscale product UI and present it as a real screenshot.
+
+### 21. RevDev icon remediation
+- The supplied RevDev artwork is 1254×1254 RGBA and was inspected directly.
+- Its outer background is removable transparency territory; the artwork itself does not contain the rainbow artifact reported on the deployed 64px derivative.
+- The publication asset must be derived from the supplied artwork, remove only the unintended outer black background, preserve the actual dark icon surface, and retain the green aura as CSS presentation rather than baking a second glow into the artwork.
+- Do not use the old 64px derivative as the canonical publication asset.
+- The final QA target is: no rainbow artifact, no unintended rectangular black backdrop, crisp icon at its rendered size.
+
+### 22. Required visual QA for r6
+- Compare all four focused cards side by side at desktop width and confirm equal outer widths.
+- Confirm ConfigTrace cannot change its own column width.
+- Confirm CrashScope, EasyFlix, RevDev, and the other carousel projects have readable title/description proportions.
+- Confirm EasyFlix is centered in the square stage and uses the verified JPG source rather than a WebP derivative.
+- Confirm the RevDev asset has no rainbow artifact and no unintended outer black rectangle.
+- Do not mark the pass complete merely because the CSS contains the intended rules. Check the effective cascade and built output.
