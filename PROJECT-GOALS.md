@@ -300,3 +300,13 @@ This pass is durable project direction, not chat-only context.
 - Removed the non-canonical RevDev icon from active presentation points rather than continuing to display the hand-drawn SVG or the visibly corrupted low-resolution PNG. The RevDev carousel retains its truthful engineering-console evidence panel. Re-enable the icon only after the exact supplied/canonical artwork has been added as a repository binary and checked at rendered size.
 - Remaining media task: transfer the two supplied EasyFlix screenshots and the exact RevDev artwork through a binary-capable local Git workflow, verify checksums/dimensions, and then restore the real assets to the carousel/card icon system. Do not create a synthetic or hand-redrawn replacement.
 - No new CrashScope or RevDev product screenshots are approved; keep the existing designed evidence panels and do not import private captures.
+
+
+## 2026-10-03 r9: supplied EasyFlix media verified, repository transfer still pending
+
+- The user re-supplied the authoritative Home and All Library captures as 2047×1151 JPEGs.
+- Verified source files for the current transfer workflow: Home 2047×1151 RGB JPEG; All Library 2047×1151 RGB JPEG.
+- The homepage markup and EasyFlix case study now declare the supplied 2047×1151 intrinsic dimensions instead of the old 1000×565 dimensions.
+- The actual binary files are still not committed to the GitHub branch through the current execution path. Do not call the media replacement complete until public/easyflix/home.jpg and public/easyflix/library.jpg have been replaced and their committed dimensions/content are verified.
+- The carousel continues to use All Library as its EasyFlix visual, while the primary EasyFlix project card and case-study gallery use Home.
+- Do not revert the intrinsic dimensions to 1000×565 after the supplied binaries are transferred.
