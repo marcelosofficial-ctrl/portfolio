@@ -908,3 +908,17 @@ main:has(.identity-hero) .home-about-strip h3 {
 @media(max-width:1100px){.focused-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.project-carousel-slide{grid-template-columns:minmax(0,1fr) minmax(280px,380px)}.carousel-visual-column,.carousel-controls-inner,.project-carousel-controls .carousel-timer{width:min(100%,380px)}}
 @media(max-width:760px){.identity-hero .identity-foot{white-space:normal!important;flex-wrap:wrap!important;gap:8px 12px!important}.identity-hero .identity-foot i{width:16px!important;min-width:16px!important;flex-basis:16px!important}.focused-project-grid{grid-template-columns:1fr!important}.project-carousel-window{min-height:720px}.project-carousel-slide{grid-template-columns:1fr;grid-template-rows:auto auto;gap:24px}.carousel-visual-column{width:min(100%,360px)}.project-carousel-controls .carousel-timer{width:min(100%,360px)}}
 @media(prefers-reduced-motion:reduce){.project-carousel-slide,.carousel-arrow,.carousel-dot{transition:none!important}}
+
+
+/* EasyFlix product-specific visual treatment */
+.easyflix-product-shot{position:relative;isolation:isolate;background:#0b0f10;overflow:hidden}
+.easyflix-product-shot::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,7,8,.02) 38%,rgba(5,7,8,.76) 100%)}
+.easyflix-product-shot img{display:block;width:100%;height:auto;aspect-ratio:1000/565;object-fit:cover;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease}
+.easyflix-product-shot:hover img{transform:scale(1.012);filter:saturate(1.04) contrast(1.015)}
+.easyflix-shot-overlay{position:absolute;z-index:2;left:16px;right:16px;bottom:47px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 11px;border:1px solid rgba(255,255,255,.10);background:rgba(7,10,11,.72);backdrop-filter:blur(8px);color:#8e999a;font-size:.48rem;letter-spacing:.11em}
+.easyflix-shot-overlay>span{color:var(--accent)}
+.easyflix-shot-overlay>div{display:flex;align-items:center;gap:8px}
+.easyflix-shot-overlay i{width:14px;height:1px;background:rgba(214,255,87,.35);display:block}
+.easyflix-shot-overlay b{font-weight:500;color:#c3c9c7}
+.easyflix-product-shot figcaption{position:relative;z-index:3}
+@media(max-width:760px){.easyflix-shot-overlay{left:10px;right:10px;bottom:43px;flex-direction:column;align-items:flex-start;gap:6px}.easyflix-shot-overlay>div{flex-wrap:wrap}}
