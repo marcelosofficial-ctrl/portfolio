@@ -771,6 +771,103 @@ const websiteSchema = {
         }
       }
 
+      const carousel = document.querySelector('[data-carousel]');
+      if (carousel) {
+        const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+        const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
+        const prev = carousel.querySelector('[data-carousel-prev]');
+        const next = carousel.querySelector('[data-carousel-next]');
+        const progressBar = carousel.querySelector('[data-carousel-progress]');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const intervalMs = 6500;
+        let index = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
+        let timer = 0;
+        let paused = reduceMotion.matches;
+
+        const resetProgress = () => {
+          if (!progressBar) return;
+          progressBar.style.transition = 'none';
+          progressBar.style.width = '0%';
+          if (paused) return;
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              progressBar.style.transition = 'width ' + intervalMs + 'ms linear';
+              progressBar.style.width = '100%';
+            });
+          });
+        };
+
+        const stopAuto = () => {
+          if (timer) window.clearTimeout(timer);
+          timer = 0;
+          if (progressBar) {
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+          }
+        };
+
+        const scheduleAuto = () => {
+          if (paused || document.hidden || slides.length < 2) return;
+          if (timer) window.clearTimeout(timer);
+          resetProgress();
+          timer = window.setTimeout(() => {
+            index = (index + 1) % slides.length;
+            render(index);
+            scheduleAuto();
+          }, intervalMs);
+        };
+
+        const render = (nextIndex) => {
+          index = (nextIndex + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            const active = i === index;
+            slide.classList.toggle('is-active', active);
+            slide.setAttribute('aria-hidden', String(!active));
+            slide.style.pointerEvents = active ? 'auto' : 'none';
+            slide.querySelectorAll('a,button').forEach((el) => el.tabIndex = active ? 0 : -1);
+          });
+          dots.forEach((dot, i) => {
+            const active = i === index;
+            dot.classList.toggle('is-active', active);
+            dot.setAttribute('aria-selected', String(active));
+          });
+          resetProgress();
+        };
+
+        const userGo = (nextIndex) => {
+          stopAuto();
+          render(nextIndex);
+          paused = false;
+          scheduleAuto();
+        };
+
+        prev?.addEventListener('click', (event) => { event.preventDefault(); userGo(index - 1); });
+        next?.addEventListener('click', (event) => { event.preventDefault(); userGo(index + 1); });
+        dots.forEach((dot, i) => dot.addEventListener('click', () => userGo(i)));
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', () => { if (!reduceMotion.matches) scheduleAuto(); });
+        carousel.addEventListener('focusin', stopAuto);
+        carousel.addEventListener('focusout', (event) => {
+          if (!carousel.contains(event.relatedTarget) && !reduceMotion.matches) scheduleAuto();
+        });
+        carousel.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft') { event.preventDefault(); userGo(index - 1); }
+          if (event.key === 'ArrowRight') { event.preventDefault(); userGo(index + 1); }
+        });
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) stopAuto();
+          else if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+        });
+        reduceMotion.addEventListener?.('change', (event) => {
+          paused = event.matches;
+          if (paused) stopAuto();
+          else if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+        });
+
+        render(index);
+        if (!paused) scheduleAuto();
+      }
+
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!prefersReducedMotion) {
         const targets = document.querySelectorAll('.section-head, .project, .principle-grid article, .case-section-heading, .arch-node, .model-grid article, .failure-grid article, .skill-matrix div, .field-console, .boundary-table, .field-note, .about-story-grid article, .achievement-grid article, .current-focus-grid a, .home-about-strip, .about-manifesto');
