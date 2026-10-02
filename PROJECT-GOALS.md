@@ -149,3 +149,18 @@ This pass is durable project direction, not chat-only context.
   - MinimalClock 1.0.0: MinimalClock_1.0.0.rmskin
 - Source-only projects may expose a clearly labeled source/archive route when no packaged binary is published. Do not label a source ZIP as an application binary.
 - RevDev has no public download while it is in active development. The case study should say so plainly instead of fabricating an access route.
+
+
+## 2026-10-02 next pass: product-specific evidence treatment
+
+### EasyFlix
+- The primary EasyFlix card should feel like a product surface, not a generic screenshot container.
+- Keep the full-resolution real capture as the visual source.
+- Overlay restrained product-language metadata such as filesystem authority, watch state and playback without obscuring the actual UI.
+- Keep the case-study gallery as the source of truth for the complete real screenshots.
+
+### Next visual audit
+- Review every featured-project case study for a clear, honest access action.
+- Review every carousel visual for equal rendered stage dimensions and crisp source media.
+- Do not replace missing approved screenshots with synthetic screenshots.
+- If new validated screenshots become available for CrashScope or RevDev, promote them into the carousel and case studies rather than creating decorative substitutes.
