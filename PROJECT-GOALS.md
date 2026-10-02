@@ -264,3 +264,30 @@ This pass is durable project direction, not chat-only context.
 - Confirm EasyFlix is centered in the square stage and uses the verified JPG source rather than a WebP derivative.
 - Confirm the RevDev asset has no rainbow artifact and no unintended outer black rectangle.
 - Do not mark the pass complete merely because the CSS contains the intended rules. Check the effective cascade and built output.
+
+ 
+## 2026-10-03 corrective visual pass r7: user-supplied EasyFlix evidence and desktop readability
+
+### 22. Supplied EasyFlix captures
+- Two new user-supplied EasyFlix captures are authoritative visual evidence for the next media replacement:
+  - All Library capture: 2047×1151
+  - Home capture: 2047×1151
+- The All Library capture is the intended carousel/library visual.
+- The Home capture is the intended primary EasyFlix product-card visual.
+- Preserve the full 16:9 composition. Do not crop either capture into a square.
+- When transferring these captures into the repository publication assets, preserve their supplied resolution and visual content rather than substituting the older 1000×565 repository copies.
+
+### 23. Carousel readability correction
+- On wide desktop layouts, the featured carousel must allocate enough horizontal space to its editorial copy that normal project names such as CrashScope remain visually intentional rather than collapsing into multiple narrow lines.
+- The square visual stage remains large, centered in its own column, and aligned with the controls/timer beneath it.
+- Below the wide-desktop breakpoint, stacking the carousel is preferred to compressing copy into an unreadable narrow column.
+
+### 24. Focused-project equality
+- The four cards under “Small, finished, intentional.” are a true equal four-column desktop grid.
+- Every card must use the same grid track, equal vertical footprint, and min-width:0.
+- Project names must wrap naturally. Character-level breaking is not acceptable when normal typography can fit.
+
+### 25. RevDev icon integrity
+- The active RevDev visual must use the exact canonical/supplied artwork, not a hand-redrawn approximation.
+- CSS may add the existing green aura, but must not alter the source artwork with cropping or a replacement mark.
+- Any generated vector approximation is not a valid substitute and must not become the active RevDev asset.
