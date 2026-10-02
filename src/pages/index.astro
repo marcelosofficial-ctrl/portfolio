@@ -23,59 +23,54 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <section class="project-carousel" aria-label="Featured projects" data-carousel>
         <div class="project-carousel-window">
           <a class="project-carousel-slide is-active" href="/projects/crashscope/" data-slide aria-hidden="false">
-            <div class="carousel-slide-copy">
-              <div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div>
-              <h2>CrashScope</h2>
-              <p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p>
-              <span class="carousel-link">Open CrashScope case study ↗</span>
-            </div>
-            <div class="carousel-console" aria-hidden="true">
-              <div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div>
-              <div class="carousel-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>TESTS</span><b>266/266</b></div>
-              <div class="diagnostic-foot mono"><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
-            </div>
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div><h2>CrashScope</h2><p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console" aria-hidden="true"><div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div><div class="carousel-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>TESTS</span><b>266/266</b></div><div class="diagnostic-foot mono"><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div></div></div>
           </a>
           <a class="project-carousel-slide" href="/projects/easyflix/" data-slide aria-hidden="true">
-            <div class="carousel-slide-copy">
-              <div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
-              <h2>EasyFlix</h2>
-              <p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p>
-              <span class="carousel-link">Open EasyFlix case study ↗</span>
-            </div>
-            <figure class="carousel-shot" aria-hidden="true">
-              <img src={baseURL + 'easyflix/library.jpg'} alt="" loading="eager" decoding="async" />
-              <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>LOCAL LIBRARY</b></figcaption>
-            </figure>
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div><h2>EasyFlix</h2><p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot"><img src={baseURL + 'easyflix/library.jpg'} alt="" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES LIBRARY</b></figcaption></figure></div>
           </a>
           <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true">
-            <div class="carousel-slide-copy">
-              <div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
-              <h2>RevDev</h2>
-              <p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p>
-              <span class="carousel-link">Open RevDev case study ↗</span>
-            </div>
-            <div class="carousel-console" aria-hidden="true">
-              <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
-              <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
-              <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
-              <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
-              <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
-            </div>
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console revdev-visual" aria-hidden="true"><div class="revdev-icon-stage"><img src={baseURL + 'brand/revdev.png'} alt="" /></div><div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div><div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div><div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div></div></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/reseller-ai/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">04 · Computer vision / resale</span><span class="project-state">FIELD TESTED</span></div><h2>Retro Game Vision &amp; Resale System</h2><p>Computer-vision-assisted field tooling for identifying, pricing and deciding what to do with retro-game inventory.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console" aria-hidden="true"><div class="priority-visual-head mono"><span>FIELD / INVENTORY</span><b>VALIDATED</b></div><div class="resale-mini-row"><span>IDENTIFY</span><b>VISION</b></div><div class="resale-mini-row"><span>PRICE</span><b>MARKET</b></div><div class="resale-mini-row"><span>DECIDE</span><b>BUY / RESEARCH / SKIP</b></div></div></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/vektordeck/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">05 · Presentation tooling</span><span class="project-state">1.0 · SOURCE</span></div><h2>VektorDeck</h2><p>A focused presentation system built around structured slides, controlled visuals and a deliberately constrained authoring model.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot"><img src={baseURL + 'vektordeck/dashboard.webp'} alt="" loading="lazy" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>DASHBOARD</b></figcaption></figure></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/rainmeter-clock/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">06 · Desktop utility</span><span class="project-state">1.0.0</span></div><h2>MinimalClock</h2><p>A compact desktop clock experiment in browser rendering, typography and lightweight Rainmeter integration.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console clock-carousel-visual" aria-hidden="true"><span class="mono">LOCAL / SYSTEM TIME</span><strong id="portfolio-carousel-clock">20:25</strong><small class="mono">RAINMETER · HTML/CSS/JS</small></div></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/exactartifact/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">07 · Artifact integrity</span><span class="project-state">1.0.0</span></div><h2>ExactArtifact</h2><p>A deterministic integrity utility for streaming SHA-256, directory manifests and precise mismatch reporting.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console" aria-hidden="true"><div class="priority-visual-head mono"><span>ARTIFACT / VERIFY</span><b>PASS</b></div><div class="resale-mini-row"><span>HASH</span><b>SHA-256</b></div><div class="resale-mini-row"><span>MANIFEST</span><b>DETERMINISTIC</b></div><div class="resale-mini-row"><span>RELEASE</span><b>1.0.0</b></div></div></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/gaptrace/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">08 · Network diagnostics</span><span class="project-state">1.0.0</span></div><h2>GapTrace</h2><p>A lightweight reachability recorder for DNS, TCP and HTTP micro-outages with persistent CSV evidence.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console" aria-hidden="true"><div class="priority-visual-head mono"><span>NETWORK / EVIDENCE</span><b>RECORDING</b></div><div class="carousel-signal gap-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="diagnostic-foot mono"><span>DNS</span><span>TCP</span><span>HTTP</span></div></div></div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/configtrace/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">09 · Configuration evidence</span><span class="project-state">1.0.1</span></div><h2>ConfigTrace</h2><p>A Rust configuration-change tracer with deterministic snapshots, semantic diffs and a privacy-aware JSONL journal.</p><span class="carousel-link">Open case study ↗</span></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console" aria-hidden="true"><div class="priority-visual-head mono"><span>CONFIG / JOURNAL</span><b>TRACKING</b></div><div class="resale-mini-row"><span>SNAPSHOT</span><b>DETERMINISTIC</b></div><div class="resale-mini-row"><span>DIFF</span><b>SEMANTIC</b></div><div class="resale-mini-row"><span>JOURNAL</span><b>JSONL</b></div></div></div>
           </a>
         </div>
         <div class="project-carousel-controls">
-          <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous featured project">←</button>
-          <div class="carousel-dots" role="tablist" aria-label="Featured project slides">
-            <button class="carousel-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show CrashScope" data-carousel-dot="0"></button>
-            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show EasyFlix" data-carousel-dot="1"></button>
-            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show RevDev" data-carousel-dot="2"></button>
+          <div class="carousel-controls-inner">
+            <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous featured project">←</button>
+            <div class="carousel-dots" role="tablist" aria-label="Featured project slides">
+              <button class="carousel-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show CrashScope" data-carousel-dot="0"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show EasyFlix" data-carousel-dot="1"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show RevDev" data-carousel-dot="2"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show Retro Game Vision & Resale System" data-carousel-dot="3"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show VektorDeck" data-carousel-dot="4"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show MinimalClock" data-carousel-dot="5"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show ExactArtifact" data-carousel-dot="6"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show GapTrace" data-carousel-dot="7"></button><button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show ConfigTrace" data-carousel-dot="8"></button>
+            </div>
+            <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next featured project">→</button>
           </div>
-          <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next featured project">→</button>
           <span class="carousel-timer mono" aria-hidden="true"><i data-carousel-progress></i></span>
         </div>
       </section>
-    </div>
+      </div>
     <div class="identity-proof" aria-label="Professional snapshot">
       <div><strong>1.0</strong><span>VektorDeck source available</span></div>
       <div><strong>266/266</strong><span>CrashScope 1.2 automated .NET tests</span></div>

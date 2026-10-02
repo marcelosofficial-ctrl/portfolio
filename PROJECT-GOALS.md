@@ -110,3 +110,42 @@ These goals are persistent project requirements. Do not rely on conversation mem
 - Prefer the highest-resolution validated real capture available for each public project.
 - Keep screenshots crisp at their rendered size and avoid stretching small source images into large hero surfaces.
 - CrashScope and RevDev should only receive real screenshots once approved/validated publication assets are available.
+
+
+## 2026-10-02 design pass: carousel system, project access, and exact RevDev branding
+
+This pass is durable project direction, not chat-only context.
+
+### Homepage identity
+- “Small, finished, intentional.” must remain horizontally composed on normal desktop widths. Its separators are horizontal rules, not stacked vertical separators.
+- The identity row may wrap only at genuinely narrow responsive widths.
+
+### Featured project carousel
+- The homepage featured carousel is a nine-project system, not a three-project-only showcase.
+- Required order: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, VektorDeck, MinimalClock, ExactArtifact, GapTrace, ConfigTrace.
+- The first projects are the most important/current work and therefore remain first.
+- Every slide is a clickable project card linking to its case study.
+- Every slide uses the same square visual stage dimensions so screenshots and designed evidence feel like one coherent carousel.
+- The visual stage and the arrow/pagination control group must share the same centered horizontal axis. Controls must not drift left under the text column.
+- Keep smooth transitions, timed autoplay, manual previous/next controls, one pagination indicator per slide, pause on hover/focus, visibility-aware pausing, and reduced-motion support.
+- Use validated real product screenshots when approved assets exist. Prefer full-resolution source captures over derivatives. Do not invent screenshots for projects that do not have approved publication media.
+- Projects without approved real screenshots use clearly designed evidence panels until validated media exists.
+
+### RevDev branding
+- Use the exact RevDev icon supplied for the portfolio, registered through the same project icon system as the other projects.
+- Preserve the icon artwork. The portfolio may add the existing green aura/glow through CSS, but must not redraw or substitute the icon.
+- Canonical source remains the RevDev application's src/RevDev.App/Assets/RevDev.ico / approved supplied icon asset.
+- RevDev remains active development only. Do not imply a public release or invent a downloadable build.
+
+### Project access and downloads
+- Every public project case study should expose a clear Download or Access action near the top.
+- When a published binary exists, link directly to the validated release asset rather than only to a release page.
+- Current direct-release assets:
+  - CrashScope 1.2.0: CrashScope-Setup-1.2.0.exe
+  - EasyFlix 1.4.0: EasyFlix-Setup-1.4.0.exe
+  - ExactArtifact 1.0.0: ExactArtifact-1.0.0-win-x64.zip
+  - GapTrace 1.0.0: GapTrace-1.0.0-win-x64.zip
+  - ConfigTrace 1.0.1: ConfigTrace-1.0.1-win-x64.zip
+  - MinimalClock 1.0.0: MinimalClock_1.0.0.rmskin
+- Source-only projects may expose a clearly labeled source/archive route when no packaged binary is published. Do not label a source ZIP as an application binary.
+- RevDev has no public download while it is in active development. The case study should say so plainly instead of fabricating an access route.
