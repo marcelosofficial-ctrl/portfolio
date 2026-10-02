@@ -187,3 +187,40 @@ This pass is durable project direction, not chat-only context.
 - Public released projects should have direct binary download actions where a validated release asset exists.
 - Source-only projects should expose a clearly labeled source/archive action, not a fake application binary.
 - RevDev remains case-study-only while active development continues and must not gain a fabricated public download.
+
+
+## 2026-10-02 carousel r5 polish pass: autoplay, hard layout boundaries, and media clarity
+
+### 14. Carousel behavior is functional, not decorative
+- Homepage featured carousel must automatically advance through all nine featured projects.
+- Current rotation interval: **6.5 seconds per slide**.
+- The progress bar must visibly track the same interval.
+- Hovering or focusing the carousel pauses rotation and removes the progress countdown.
+- Leaving hover/focus resumes rotation.
+- Browser-tab visibility pauses rotation while hidden and resumes when visible.
+- prefers-reduced-motion disables automatic rotation.
+- Arrow buttons, pagination dots, and Left/Right keyboard navigation must remain functional.
+- Only the active slide may be interactive. Hidden slide links/buttons must not capture focus or clicks.
+
+### 15. Carousel slide composition
+- Every slide must maintain a hard visual separation between the editorial copy and the square project visual.
+- Project titles must never sit on top of screenshot/evidence imagery.
+- Long project names must wrap cleanly rather than collide with the visual stage.
+- The square visual stage remains the same rendered size across projects.
+- Controls and timer must share the same centered horizontal axis as the square visual stage.
+- Real screenshots should use object-fit contain inside the square stage when the source aspect ratio is not square, so the full capture remains readable rather than being aggressively cropped.
+
+### 16. RevDev icon quality
+- The RevDev project icon must remain the exact supplied/canonical artwork, not a new invented logo.
+- Do not ship a visibly corrupted, rainbow-artifact, or blurry derivative.
+- Remove any unintended outer black background from the supplied image treatment while preserving the icon's intended dark internal surface.
+- Preserve the green aura/glow used by the other project icons through CSS rather than painting it into the source artwork.
+- Prefer a high-resolution source asset and avoid enlarging a tiny derivative beyond its useful display size.
+
+### 17. Visual QA before each subsequent carousel pass
+- Verify the carousel actually advances after one full interval, not merely that a timer element exists.
+- Verify the active title remains readable at desktop widths on both wide and constrained browser windows.
+- Verify EasyFlix's native-resolution JPG captures are used rather than low-resolution derivatives.
+- Verify every project's square stage is visually aligned with the controls beneath it.
+- Verify the first three projects remain the primary ordering: CrashScope, EasyFlix, RevDev.
+- Do not call a carousel pass complete based only on source-code inspection. Treat visible layout behavior as a required QA target.
