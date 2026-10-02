@@ -838,7 +838,7 @@ const websiteSchema = {
           stopAuto();
           render(nextIndex);
           paused = false;
-          scheduleAuto();
+          if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
         };
 
         prev?.addEventListener('click', (event) => { event.preventDefault(); userGo(index - 1); });
