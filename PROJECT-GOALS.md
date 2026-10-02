@@ -310,3 +310,5 @@ This pass is durable project direction, not chat-only context.
 - The actual binary files are still not committed to the GitHub branch through the current execution path. Do not call the media replacement complete until public/easyflix/home.jpg and public/easyflix/library.jpg have been replaced and their committed dimensions/content are verified.
 - The carousel continues to use All Library as its EasyFlix visual, while the primary EasyFlix project card and case-study gallery use Home.
 - Do not revert the intrinsic dimensions to 1000×565 after the supplied binaries are transferred.
+
+- Current supplied-source SHA-256: Home `b66713a7214bc53efdc6f09e43a4528bd50e427eb253cb91f6a9677f3ea3229d`; All Library `c199de46e17b4ba483611c78a52c622302ff2563b895ea4e02bcbee6d41e5a36`.
