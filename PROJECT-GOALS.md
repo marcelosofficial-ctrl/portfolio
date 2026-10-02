@@ -164,3 +164,26 @@ This pass is durable project direction, not chat-only context.
 - Review every carousel visual for equal rendered stage dimensions and crisp source media.
 - Do not replace missing approved screenshots with synthetic screenshots.
 - If new validated screenshots become available for CrashScope or RevDev, promote them into the carousel and case studies rather than creating decorative substitutes.
+
+
+## 2026-10-02 corrective visual audit: cascade ownership and screenshot fidelity
+
+### Required implementation correction
+- The desktop **Focused projects / “Small, finished, intentional.”** group must be four columns at normal desktop widths. A later stylesheet must not override this back to a single column.
+- The homepage carousel's visual stage, arrows, pagination and timer must share one centered visual axis. The controls belong to the visual column, not the copy column.
+- These rules must live in the final effective homepage cascade, not merely in an earlier stylesheet that can be overridden later.
+
+### EasyFlix source-media finding
+- The current public EasyFlix repository contains only three checked-in screenshot originals:
+  - `docs/screenshots/home.jpg` = 1000×565
+  - `docs/screenshots/library.jpg` = 1000×565
+  - `docs/screenshots/details.jpg` = 900×509
+- The portfolio copies are byte-identical to those current EasyFlix repository sources.
+- Do not claim a larger source exists unless a larger validated capture is actually supplied or found.
+- Do not crop these captures into a square merely to fill the carousel stage. Preserve the complete screenshot inside the fixed square stage.
+- If higher-resolution originals are supplied later, replace the portfolio media with those originals and retain the same presentation system.
+
+### Project access truth
+- Public released projects should have direct binary download actions where a validated release asset exists.
+- Source-only projects should expose a clearly labeled source/archive action, not a fake application binary.
+- RevDev remains case-study-only while active development continues and must not gain a fabricated public download.
