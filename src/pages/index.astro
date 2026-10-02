@@ -305,12 +305,12 @@ const carousel=document.querySelector('[data-carousel]');
 if(carousel){
  const slides=[...carousel.querySelectorAll('[data-slide]')],dots=[...carousel.querySelectorAll('[data-carousel-dot]')];
  const progress=carousel.querySelector('[data-carousel-progress]'),prev=carousel.querySelector('[data-carousel-prev]'),next=carousel.querySelector('[data-carousel-next]');
- const reduce=window.matchMedia('(prefers-reduced-motion: reduce)'); let current=0,timer=null; const duration=7000;
- const show=(n)=>{current=(n+slides.length)%slides.length;slides.forEach((s,i)=>{s.classList.toggle('is-active',i===current);s.setAttribute('aria-hidden',i===current?'false':'true')});dots.forEach((d,i)=>{const active=i===current;d.classList.toggle('is-active',active);d.setAttribute('aria-selected',active?'true':'false')});if(progress){progress.style.animation='none';void progress.offsetWidth;if(!reduce.matches)progress.style.animation='carousel-progress 7s linear forwards'}};
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)'); let current=0,timer=null; const duration=6500;
+ const show=(n)=>{current=(n+slides.length)%slides.length;slides.forEach((s,i)=>{s.classList.toggle('is-active',i===current);s.setAttribute('aria-hidden',i===current?'false':'true')});dots.forEach((d,i)=>{const active=i===current;d.classList.toggle('is-active',active);d.setAttribute('aria-selected',active?'true':'false')});if(progress){progress.style.animation='none';void progress.offsetWidth;if(!reduce.matches)progress.style.animation='carousel-progress 6.5s linear forwards'}};
  const stop=()=>{if(timer)clearInterval(timer);timer=null;if(progress)progress.style.animationPlayState='paused'};
  const start=()=>{stop();if(reduce.matches)return;if(progress)progress.style.animationPlayState='running';timer=setInterval(()=>show(current+1),duration)};
  dots.forEach(d=>d.addEventListener('click',()=>{show(Number(d.dataset.carouselDot));start()}));prev?.addEventListener('click',()=>{show(current-1);start()});next?.addEventListener('click',()=>{show(current+1);start()});
- carousel.addEventListener('mouseenter',stop);carousel.addEventListener('mouseleave',start);carousel.addEventListener('focusin',stop);carousel.addEventListener('focusout',e=>{if(!carousel.contains(e.relatedTarget))start()});document.addEventListener('visibilitychange',()=>document.hidden?stop():start());reduce.addEventListener?.('change',start);show(0);start();
+ carousel.addEventListener('mouseenter',stop);carousel.addEventListener('mouseleave',start);carousel.addEventListener('focusin',stop);carousel.addEventListener('focusout',e=>{if(!carousel.contains(e.relatedTarget))start()});carousel.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);start()}else if(e.key==='ArrowRight'){e.preventDefault();show(current+1);start()}});document.addEventListener('visibilitychange',()=>document.hidden?stop():start());reduce.addEventListener?.('change',start);show(0);start();
 }
 </script>
 </BaseLayout>
