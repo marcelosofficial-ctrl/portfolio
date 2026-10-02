@@ -70,3 +70,43 @@ Keep the existing MARCELO/LAB visual language:
 - mobile and reduced-motion behavior must remain intentional
 
 These goals are persistent project requirements. Do not rely on conversation memory alone when continuing the portfolio overhaul.
+
+
+## 2026-10-02 design pass: homepage carousel, evidence quality, and hierarchy
+
+### 8. Homepage order and primary project presentation
+- **“Three systems worth opening first.” must appear before “Built, validated and field-tested.”**
+- CrashScope, EasyFlix and RevDev should be the first substantive project presentation after the identity hero.
+- Their presentation should feel like a coherent primary product group, not three ordinary cards buried below flagship-history content.
+- The older “Built, validated and field-tested.” section remains useful, but it should follow the primary product group.
+
+### 9. Homepage featured-project carousel
+- Replace the static single-project panel in the top hero with a **three-slide project carousel** featuring CrashScope, EasyFlix and RevDev.
+- Each slide is a complete clickable project card that routes to that project's case study.
+- The carousel must use a constrained viewing window and polished transitions.
+- It must provide one pagination indicator per slide, manual previous/next controls, and automatic timed rotation.
+- Auto-rotation should pause while hovered or focused, resume afterward, and respect `prefers-reduced-motion`.
+- The carousel should present real screenshots where validated assets exist and designed evidence panels only where a real public screenshot is not yet approved.
+- Do not invent product screenshots or release evidence.
+
+### 10. EasyFlix screenshot quality
+- Do not use the low-resolution WebP portfolio captures as the primary visual treatment when higher-resolution real source captures are available.
+- The authoritative real source captures currently available in the EasyFlix repository are `docs/screenshots/home.jpg`, `docs/screenshots/library.jpg`, and `docs/screenshots/details.jpg`.
+- The portfolio should use these real JPG captures at their native resolution and should not artificially upscale blurry WebP derivatives.
+- Use more than one EasyFlix capture where it improves the homepage/case-study presentation without overwhelming the design.
+
+### 11. RevDev icon boundary
+- The exact canonical RevDev icon remains required.
+- Canonical source: `src/RevDev.App/Assets/RevDev.ico` in the local RevDev application.
+- The portfolio and DevRelay-Missions GitHub trees inspected during this pass do not contain the binary `.ico` itself.
+- Do not substitute a generated, approximate, or unrelated icon.
+- Once the exact binary is made accessible to the portfolio publication pipeline, add it to the same project-icon system used by the other projects.
+
+### 12. Horizontal tagline
+- **“Small, finished, intentional.” must be horizontally composed on desktop**, with the words reading as a deliberate single-line editorial statement rather than a vertical stack.
+- Responsive layouts may collapse naturally on narrow screens.
+
+### 13. Evidence-first screenshot policy
+- Prefer the highest-resolution validated real capture available for each public project.
+- Keep screenshots crisp at their rendered size and avoid stretching small source images into large hero surfaces.
+- CrashScope and RevDev should only receive real screenshots once approved/validated publication assets are available.

@@ -10,53 +10,78 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <h1 class="identity-name">Software &amp;<br />systems developer.</h1>
         <div class="identity-statement">
           <p class="identity-role">I turn real-world friction into software that earns trust.</p>
-          <p class="hero-copy">A hands-on builder working across local AI, Windows diagnostics, automation, computer vision and data. My projects usually begin with something I genuinely want to understand, fix or make easier.</p>
+          <p class="hero-copy">A hands-on builder working across local AI, Windows diagnostics, automation, computer vision and data. My projects begin with something I genuinely want to understand, fix or make easier.</p>
         </div>
         <div class="hero-actions">
           <a class="button primary" href="#work">Explore selected work ↓</a>
           <a class="button" href="/about/">About me ↗</a>
           <a class="button" href="/resume/software/">Software / QA Résumé ↗</a>
         </div>
-        <div class="identity-foot mono">
-          <span>BASED IN JAPAN</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>BUILDING IN PUBLIC</span>
-        </div>
+        <div class="identity-foot mono"><span>BASED IN JAPAN</span><i></i><span>REMOTE / GLOBAL</span><i></i><span>BUILDING IN PUBLIC</span></div>
       </div>
 
-      <aside class="identity-rail" aria-label="Current engineering work">
-        <div class="identity-rail-head mono">
-          <div class="identity-author">
-            <span><b>FROM MARCELO'S DESK</b><small>JAPAN / 2026</small></span>
+      <section class="project-carousel" aria-label="Featured projects" data-carousel>
+        <div class="project-carousel-window">
+          <a class="project-carousel-slide is-active" href="/projects/crashscope/" data-slide aria-hidden="false">
+            <div class="carousel-slide-copy">
+              <div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div>
+              <h2>CrashScope</h2>
+              <p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p>
+              <span class="carousel-link">Open CrashScope case study ↗</span>
+            </div>
+            <div class="carousel-console" aria-hidden="true">
+              <div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div>
+              <div class="carousel-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>TESTS</span><b>266/266</b></div>
+              <div class="diagnostic-foot mono"><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
+            </div>
+          </a>
+          <a class="project-carousel-slide" href="/projects/easyflix/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy">
+              <div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
+              <h2>EasyFlix</h2>
+              <p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p>
+              <span class="carousel-link">Open EasyFlix case study ↗</span>
+            </div>
+            <figure class="carousel-shot" aria-hidden="true">
+              <img src={baseURL + 'easyflix/library.jpg'} alt="" loading="eager" decoding="async" />
+              <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>LOCAL LIBRARY</b></figcaption>
+            </figure>
+          </a>
+          <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true">
+            <div class="carousel-slide-copy">
+              <div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
+              <h2>RevDev</h2>
+              <p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p>
+              <span class="carousel-link">Open RevDev case study ↗</span>
+            </div>
+            <div class="carousel-console" aria-hidden="true">
+              <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
+              <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
+              <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
+              <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
+              <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
+            </div>
+          </a>
+        </div>
+        <div class="project-carousel-controls">
+          <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Previous featured project">←</button>
+          <div class="carousel-dots" role="tablist" aria-label="Featured project slides">
+            <button class="carousel-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show CrashScope" data-carousel-dot="0"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show EasyFlix" data-carousel-dot="1"></button>
+            <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Show RevDev" data-carousel-dot="2"></button>
           </div>
-          <span class="status-dot">BUILDING</span>
+          <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next featured project">→</button>
+          <span class="carousel-timer mono" aria-hidden="true"><i data-carousel-progress></i></span>
         </div>
-        <a class="identity-current" href="/projects/crashscope/">
-          <span class="mono">1.2 RELEASED · NATIVE WINDOWS APP</span>
-          <strong>CrashScope</strong>
-          <p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p>
-          <b>OPEN CASE STUDY ↗</b>
-        </a>
-        <div class="identity-release">
-          <span class="mono">LATEST SHIP</span>
-          <div><strong>CrashScope 1.2</strong><b>RELEASED</b></div>
-        </div>
-        <div class="identity-project-log mono">
-          <div><span>01</span><b>VektorDeck</b><em>SOURCE</em></div>
-          <div><span>02</span><b>Retro Game Vision</b><em>FIELD TESTED</em></div>
-          <div><span>03</span><b>CrashScope</b><em>1.2 RELEASED</em></div>
-          <div><span>04</span><b>EasyFlix 1.4</b><em>RELEASED</em></div>
-          <div><span>05</span><b>RevDev</b><em>ACTIVE DEV</em></div>
-        </div>
-        <div class="identity-contact"><span>REMOTE / GLOBAL · OPEN TO WORK</span><a href="/contact/">Start a conversation ↗</a></div>
-      </aside>
+      </section>
     </div>
-
     <div class="identity-proof" aria-label="Professional snapshot">
       <div><strong>1.0</strong><span>VektorDeck source available</span></div>
       <div><strong>266/266</strong><span>CrashScope 1.2 automated .NET tests</span></div>
-      <div><strong>0.2365%</strong><span>CrashScope final integrated Agent CPU</span></div>
+      <div><strong>219</strong><span>EasyFlix 1.4 automated tests</span></div>
       <div><strong>4,000+</strong><span>hands-on electrical trade hours</span></div>
     </div>
-
     <div class="hero-meta identity-skills" aria-label="Core technologies">
       <span class="pill">Python</span><span class="pill">C# / .NET</span><span class="pill">FastAPI</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">SQLite</span><span class="pill">Computer Vision</span><span class="pill">Windows Diagnostics</span><span class="pill">Automation</span>
     </div>
@@ -64,6 +89,76 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   <section class="section wrap" id="work">
     <div class="section-head"><p class="eyebrow">Selected work</p><div><h2>Built from real use cases.</h2><p class="section-intro">Shipped systems, active engineering work and smaller focused tools are separated clearly so the state of each project is obvious.</p></div></div>
+
+    <div class="project-tier project-tier-primary">
+      <div class="project-tier-head"><div><p class="eyebrow">Core products</p><h3>Three systems worth opening first.</h3></div><p>CrashScope, EasyFlix and RevDev are the strongest expression of the portfolio's current engineering work, so they get the clearest visual treatment and the most direct path into their case studies.</p></div>
+
+      <div class="active-project-grid">
+        <a class="project compact-project priority-project crashscope-project" href="/projects/crashscope/">
+          <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div>
+          <h3>CrashScope</h3>
+          <p>A privacy-first Windows crash-diagnostics system with a native WPF/WebView2 desktop shell that correlates hardware telemetry with Event Log, WER and persistent incident evidence without pretending correlation proves root cause.</p>
+          <span class="status-note">Built after repeated game, GPU and workload failures made it obvious how fragmented useful Windows diagnostic evidence can be.</span>
+          <div class="priority-visual crashscope-visual" aria-hidden="true">
+            <div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div>
+            <div class="diagnostic-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>CONFIGTRACE</span><b>OPTIONAL</b></div>
+            <div class="diagnostic-foot mono"><span>266/266 TESTS</span><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
+          </div>
+          <div class="active-build-visual">
+            <div><span>1.1 AGENT CPU · AVG</span><b>0.2365%</b></div>
+            <div><span>WORKING SET · AVG</span><b>91.71 MB</b></div>
+            <div><span>AUTOMATED TESTS</span><b>266/266</b></div>
+            <div><span>RELEASE STATE</span><b class="good">PUBLIC · 1.2.0</b></div>
+          </div>
+          <span class="status-note">CrashScope 1.2 is publicly released with a native Windows desktop shell and 266/266 automated tests. Primary AMD validation and genuine second-PC validation on Windows 10 / Intel Core i5-3210M / Intel HD Graphics 4000 both passed; NVIDIA real-hardware validation remains outstanding.</span>
+          <span class="text-link">Open validated case study ↗</span>
+        </a>
+
+        <a class="project compact-project priority-project easyflix-project" href="/projects/easyflix/">
+          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
+          <h3>EasyFlix</h3>
+          <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
+          <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
+          <figure class="priority-screenshot">
+            <img src={baseURL + 'easyflix/home.jpg'} alt="EasyFlix home screen showing a real local media library" width="1000" height="565" loading="lazy" decoding="async" />
+            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>LOCAL LIBRARY</b></figcaption>
+          </figure>
+          <div class="active-build-visual">
+            <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
+            <div><span>MODEL</span><b>LOCAL-FIRST</b></div>
+            <div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div>
+            <div><span>ARTIFACT</span><b class="good">INSTALLER + PORTABLE WIN-X64</b></div>
+          </div>
+          <span class="status-note">1.4.0 publicly released · privacy sanitization complete · MIT public release verified</span>
+          <span class="text-link">Open EasyFlix case study ↗</span>
+        </a>
+
+        <a class="project compact-project priority-project revdev-project" href="/projects/revdev/">
+          <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
+          <h3>RevDev</h3>
+          <p>A native Windows control surface for durable multi-project AI-assisted development via Dev Relay, with guarded execution, deterministic project state, a five-tool hub, failure learning and local-first validation.</p>
+          <span class="status-note">Built to keep long-running AI-assisted engineering work visible and resumable across projects, chats and model boundaries without handing execution authority to the UI.</span>
+          <div class="priority-visual revdev-visual" aria-hidden="true">
+            <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
+            <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
+            <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
+            <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
+            <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
+          </div>
+          <div class="active-build-visual">
+            <div><span>STACK</span><b>.NET 8 · WPF</b></div>
+            <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
+            <div><span>CONTINUITY</span><b>GIT · RESULTS · GOALS</b></div>
+            <div><span>SAFETY</span><b class="good">LOCAL-FIRST · HOSTED_DENY</b></div>
+          </div>
+          <span class="status-note">Active development is focused on restart-safe state, grouped multi-step progress and liveness, and final release-lifecycle hardening before any public release.</span>
+          <span class="text-link">Open active case study ↗</span>
+        </a>
+      </div>
+    </div>
+
+
 
     <div class="project-tier">
       <div class="project-tier-head"><div><p class="eyebrow">Flagship systems</p><h3>Built, validated and field-tested.</h3></div><p>The deepest case studies: products with substantial architecture, validation and real-world use behind them.</p></div>
@@ -106,74 +201,6 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
             <img src={`${baseURL}vektordeck/dashboard.webp`} alt="VektorDeck 1.0 dashboard with hardware telemetry and local runtime controls" width="1920" height="1079" loading="lazy" decoding="async" />
             <figcaption class="mono"><span>REAL PRODUCT / 1.0</span><b>LOCAL WORKSTATION · SOURCE AVAILABLE</b></figcaption>
           </figure>
-        </a>
-      </div>
-    </div>
-
-    <div class="project-tier project-tier-primary">
-      <div class="project-tier-head"><div><p class="eyebrow">Core products</p><h3>Three systems worth opening first.</h3></div><p>CrashScope, EasyFlix and RevDev are the strongest expression of the portfolio's current engineering work, so they get the clearest visual treatment and the most direct path into their case studies.</p></div>
-
-      <div class="active-project-grid">
-        <a class="project compact-project priority-project crashscope-project" href="/projects/crashscope/">
-          <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state">1.2.0 RELEASED</span></div>
-          <h3>CrashScope</h3>
-          <p>A privacy-first Windows crash-diagnostics system with a native WPF/WebView2 desktop shell that correlates hardware telemetry with Event Log, WER and persistent incident evidence without pretending correlation proves root cause.</p>
-          <span class="status-note">Built after repeated game, GPU and workload failures made it obvious how fragmented useful Windows diagnostic evidence can be.</span>
-          <div class="priority-visual crashscope-visual" aria-hidden="true">
-            <div class="priority-visual-head mono"><span>INCIDENT / 1.2.0</span><b>CAPTURED</b></div>
-            <div class="diagnostic-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>CONFIGTRACE</span><b>OPTIONAL</b></div>
-            <div class="diagnostic-foot mono"><span>266/266 TESTS</span><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
-          </div>
-          <div class="active-build-visual">
-            <div><span>1.1 AGENT CPU · AVG</span><b>0.2365%</b></div>
-            <div><span>WORKING SET · AVG</span><b>91.71 MB</b></div>
-            <div><span>AUTOMATED TESTS</span><b>266/266</b></div>
-            <div><span>RELEASE STATE</span><b class="good">PUBLIC · 1.2.0</b></div>
-          </div>
-          <span class="status-note">CrashScope 1.2 is publicly released with a native Windows desktop shell and 266/266 automated tests. Primary AMD validation and genuine second-PC validation on Windows 10 / Intel Core i5-3210M / Intel HD Graphics 4000 both passed; NVIDIA real-hardware validation remains outstanding.</span>
-          <span class="text-link">Open validated case study ↗</span>
-        </a>
-
-        <a class="project compact-project priority-project easyflix-project" href="/projects/easyflix/">
-          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
-          <h3>EasyFlix</h3>
-          <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
-          <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
-          <figure class="priority-screenshot">
-            <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix home screen showing a real local media library" width="1000" height="565" loading="lazy" decoding="async" />
-            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>LOCAL LIBRARY</b></figcaption>
-          </figure>
-          <div class="active-build-visual">
-            <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
-            <div><span>MODEL</span><b>LOCAL-FIRST</b></div>
-            <div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div>
-            <div><span>ARTIFACT</span><b class="good">INSTALLER + PORTABLE WIN-X64</b></div>
-          </div>
-          <span class="status-note">1.4.0 publicly released · privacy sanitization complete · MIT public release verified</span>
-          <span class="text-link">Open EasyFlix case study ↗</span>
-        </a>
-
-        <a class="project compact-project priority-project revdev-project" href="/projects/revdev/">
-          <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
-          <h3>RevDev</h3>
-          <p>A native Windows control surface for durable multi-project AI-assisted development via Dev Relay, with guarded execution, deterministic project state, a five-tool hub, failure learning and local-first validation.</p>
-          <span class="status-note">Built to keep long-running AI-assisted engineering work visible and resumable across projects, chats and model boundaries without handing execution authority to the UI.</span>
-          <div class="priority-visual revdev-visual" aria-hidden="true">
-            <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
-            <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
-            <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
-            <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
-            <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
-          </div>
-          <div class="active-build-visual">
-            <div><span>STACK</span><b>.NET 8 · WPF</b></div>
-            <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
-            <div><span>CONTINUITY</span><b>GIT · RESULTS · GOALS</b></div>
-            <div><span>SAFETY</span><b class="good">LOCAL-FIRST · HOSTED_DENY</b></div>
-          </div>
-          <span class="status-note">Active development is focused on restart-safe state, grouped multi-step progress and liveness, and final release-lifecycle hardening before any public release.</span>
-          <span class="text-link">Open active case study ↗</span>
         </a>
       </div>
     </div>
@@ -276,4 +303,18 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     tick();
     setInterval(tick, 1000);
   </script>
+
+<script>
+const carousel=document.querySelector('[data-carousel]');
+if(carousel){
+ const slides=[...carousel.querySelectorAll('[data-slide]')],dots=[...carousel.querySelectorAll('[data-carousel-dot]')];
+ const progress=carousel.querySelector('[data-carousel-progress]'),prev=carousel.querySelector('[data-carousel-prev]'),next=carousel.querySelector('[data-carousel-next]');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)'); let current=0,timer=null; const duration=7000;
+ const show=(n)=>{current=(n+slides.length)%slides.length;slides.forEach((s,i)=>{s.classList.toggle('is-active',i===current);s.setAttribute('aria-hidden',i===current?'false':'true')});dots.forEach((d,i)=>{const active=i===current;d.classList.toggle('is-active',active);d.setAttribute('aria-selected',active?'true':'false')});if(progress){progress.style.animation='none';void progress.offsetWidth;if(!reduce.matches)progress.style.animation='carousel-progress 7s linear forwards'}};
+ const stop=()=>{if(timer)clearInterval(timer);timer=null;if(progress)progress.style.animationPlayState='paused'};
+ const start=()=>{stop();if(reduce.matches)return;if(progress)progress.style.animationPlayState='running';timer=setInterval(()=>show(current+1),duration)};
+ dots.forEach(d=>d.addEventListener('click',()=>{show(Number(d.dataset.carouselDot));start()}));prev?.addEventListener('click',()=>{show(current-1);start()});next?.addEventListener('click',()=>{show(current+1);start()});
+ carousel.addEventListener('mouseenter',stop);carousel.addEventListener('mouseleave',start);carousel.addEventListener('focusin',stop);carousel.addEventListener('focusout',e=>{if(!carousel.contains(e.relatedTarget))start()});document.addEventListener('visibilitychange',()=>document.hidden?stop():start());reduce.addEventListener?.('change',start);show(0);start();
+}
+</script>
 </BaseLayout>
