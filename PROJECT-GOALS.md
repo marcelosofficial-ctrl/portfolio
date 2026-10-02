@@ -291,3 +291,12 @@ This pass is durable project direction, not chat-only context.
 - The active RevDev visual must use the exact canonical/supplied artwork, not a hand-redrawn approximation.
 - CSS may add the existing green aura, but must not alter the source artwork with cropping or a replacement mark.
 - Any generated vector approximation is not a valid substitute and must not become the active RevDev asset.
+
+
+## 2026-10-03 r8: safe visual fallback and remaining binary-asset gate
+
+- EasyFlix carousel now preserves the entire 16:9 source capture in the foreground while a softened, same-image backdrop fills the square visual stage. This avoids both aggressive cropping and the empty letterbox look.
+- The currently checked-in EasyFlix media remains the older 1000×565 repository capture. The two user-supplied 2047×1151 captures are available in the conversation workspace, but have **not** been transferred into the Git repository yet. Do not mark that replacement complete until the actual committed binary dimensions and image content are verified.
+- Removed the non-canonical RevDev icon from active presentation points rather than continuing to display the hand-drawn SVG or the visibly corrupted low-resolution PNG. The RevDev carousel retains its truthful engineering-console evidence panel. Re-enable the icon only after the exact supplied/canonical artwork has been added as a repository binary and checked at rendered size.
+- Remaining media task: transfer the two supplied EasyFlix screenshots and the exact RevDev artwork through a binary-capable local Git workflow, verify checksums/dimensions, and then restore the real assets to the carousel/card icon system. Do not create a synthetic or hand-redrawn replacement.
+- No new CrashScope or RevDev product screenshots are approved; keep the existing designed evidence panels and do not import private captures.
