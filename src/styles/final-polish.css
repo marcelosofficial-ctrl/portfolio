@@ -1076,3 +1076,140 @@ main:has(.identity-hero) .home-about-strip h3 {
   .carousel-visual{max-width:360px}
 }
 
+
+
+/* Carousel r6: give the editorial copy and visual stage room to breathe. */
+main:has(.identity-hero) .identity-grid{
+  grid-template-columns:minmax(0,1fr) minmax(500px,1fr);
+  gap:clamp(36px,4vw,64px);
+}
+main:has(.identity-hero) .project-carousel{
+  min-width:0;
+}
+main:has(.identity-hero) .project-carousel-window{
+  min-height:560px;
+}
+main:has(.identity-hero) .project-carousel-slide{
+  grid-template-columns:minmax(0,1fr) minmax(440px,500px);
+  gap:clamp(30px,4vw,64px);
+  padding:32px clamp(28px,3vw,42px);
+}
+main:has(.identity-hero) .carousel-slide-copy{
+  max-width:720px;
+  overflow:visible;
+}
+main:has(.identity-hero) .carousel-slide-copy h2{
+  font-size:clamp(3rem,5vw,5.4rem);
+  line-height:.94;
+  letter-spacing:-.055em;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-wrap:balance;
+}
+main:has(.identity-hero) .carousel-slide-copy p{
+  max-width:650px;
+  font-size:clamp(.95rem,1.15vw,1.08rem);
+  line-height:1.65;
+}
+main:has(.identity-hero) .carousel-visual-column{
+  width:min(100%,500px);
+  justify-self:center;
+}
+main:has(.identity-hero) .carousel-visual{
+  width:100%;
+  max-width:500px;
+}
+main:has(.identity-hero) .carousel-controls-inner,
+main:has(.identity-hero) .project-carousel-controls .carousel-timer{
+  width:min(100%,500px);
+}
+main:has(.identity-hero) .carousel-shot{
+  overflow:hidden;
+  background:#080b0c;
+}
+main:has(.identity-hero) .carousel-shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover!important;
+  object-position:center center!important;
+  background:#080b0c;
+}
+main:has(.identity-hero) .carousel-shot figcaption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  min-height:36px;
+  background:linear-gradient(180deg,transparent,rgba(5,8,9,.94) 34%);
+  border-top:0;
+  padding:24px 14px 10px;
+}
+main:has(.identity-hero) .easyflix-carousel-shot img{
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+main:has(.identity-hero) .focused-project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  align-items:stretch!important;
+  gap:16px!important;
+}
+main:has(.identity-hero) .focused-project-grid > .project{
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
+}
+main:has(.identity-hero) .focused-project-grid > .project h3{
+  font-size:clamp(1.45rem,1.8vw,2rem);
+  line-height:1;
+  overflow-wrap:anywhere;
+}
+@media(max-width:1280px){
+  main:has(.identity-hero) .identity-grid{
+    grid-template-columns:minmax(0,1fr) minmax(460px,1fr);
+    gap:34px;
+  }
+  main:has(.identity-hero) .project-carousel-slide{
+    grid-template-columns:minmax(0,1fr) minmax(400px,460px);
+    gap:28px;
+  }
+  main:has(.identity-hero) .carousel-visual,
+  main:has(.identity-hero) .carousel-visual-column,
+  main:has(.identity-hero) .carousel-controls-inner,
+  main:has(.identity-hero) .project-carousel-controls .carousel-timer{
+    width:min(100%,460px);
+    max-width:460px;
+  }
+}
+@media(max-width:1100px){
+  main:has(.identity-hero) .identity-grid{
+    grid-template-columns:1fr;
+  }
+  main:has(.identity-hero) .project-carousel{
+    width:100%;
+  }
+  main:has(.identity-hero) .project-carousel-slide{
+    grid-template-columns:minmax(0,1fr) minmax(420px,500px);
+  }
+}
+@media(max-width:900px){
+  main:has(.identity-hero) .project-carousel-window{
+    min-height:620px;
+  }
+  main:has(.identity-hero) .project-carousel-slide{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+  }
+  main:has(.identity-hero) .carousel-visual-column{
+    justify-self:center;
+  }
+}
+@media(max-width:760px){
+  main:has(.identity-hero) .focused-project-grid{
+    grid-template-columns:1fr!important;
+  }
+}
