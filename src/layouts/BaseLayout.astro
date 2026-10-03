@@ -872,12 +872,13 @@ const websiteSchema = {
         dots.forEach((dot, i) => dot.addEventListener('click', () => userGo(i)));
         carousel.addEventListener('mouseenter', stopAuto);
         carousel.addEventListener('mouseleave', () => { if (!reduceMotion.matches) scheduleAuto(); });
-        carousel.addEventListener('focusin', stopAuto);
-        carousel.addEventListener('focusout', () => {
-          // WAI-ARIA APG: once keyboard focus has entered an auto-rotating carousel,
-          // rotation remains stopped until the user explicitly presses PLAY.
+        carousel.addEventListener('focusin', () => {
+          // Once focus enters, require explicit PLAY before rotation can resume.
+          userPaused = true;
           stopAuto();
+          updateRotationToggle();
         });
+        carousel.addEventListener('focusout', stopAuto);
         carousel.addEventListener('keydown', (event) => {
           if (event.key === 'ArrowLeft') { event.preventDefault(); userGo(index - 1); }
           if (event.key === 'ArrowRight') { event.preventDefault(); userGo(index + 1); }
