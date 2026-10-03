@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const projects = {
+  crashscope: {
+    title: 'CrashScope',
+    eyebrow: 'Windows診断 · 1.3 開発中',
+    description: 'Windowsのクラッシュや不安定動作を、Event Log、WER、ハードウェア情報、永続インシデントからローカルで調べる診断システム。',
+    status: '1.3 開発中 · 1.2.0 公開',
+    stack: '.NET · WPF · WebView2',
+    access: '公開版 1.2.0',
+    href: 'https://github.com/marcelosofficial-ctrl/CrashScope/releases/tag/v1.2.0',
+    problem: 'Windowsの有用な診断情報は、Event Log、WER、ハードウェア状態など複数の場所に分散しています。CrashScopeは、それらを一つのローカルファーストな調査面にまとめます。',
+    architecture: 'ネイティブWPF/WebView2シェル、永続インシデント、Event Log/WER収集、ハードウェアテレメトリ、プライバシーを考慮したサポートバンドルで構成しています。',
+    evidence: '公開版1.2.0は266/266の自動テストを通過。1.3は現在の開発ラインであり、公開ダウンロードは1.2.0のままです。',
+    lessons: '相関関係を根本原因と誤認しないことをUIとデータモデルの両方で明示し、診断結果よりも「どの証拠が存在するか」を先に扱える設計にしています.'
+  },
+  easyflix: {
+    title: 'EasyFlix',
+    eyebrow: 'Windowsローカルメディア · 1.4.0 公開',
+    description: '実ファイルを権威とする、ストリーミング風のWindowsローカルメディアライブラリ。',
+    status: '1.4.0 公開 · MIT',
+    stack: 'WPF · .NET 10 · SQLite',
+    access: '1.4.0 公開版',
+    href: 'https://github.com/marcelosofficial-ctrl/EasyFlix/releases/tag/v1.4.0',
+    problem: 'すでにディスクにある映画、TV、アニメを、ファイルを移動・破壊せずに見やすく扱いたいという問題から始まりました。',
+    architecture: '複数ドライブの発見、ローカルSQLite状態、メタデータ・アートワーク、字幕、視聴状態をWPF UIでまとめ、filesystemを最終的な真実として扱います。',
+    evidence: '1.4.0は219テスト、0 warnings、installer + portable Win-x64を備えた公開版です。',
+    lessons: '見た目をストリーミングサービスに寄せても、データの所有権はローカルファイルに残すという境界を優先しています.'
+  },
+  revdev: {
+    title: 'RevDev',
+    eyebrow: 'Developer infrastructure · Active development',
+    description: 'Dev Relayを安全な実行境界として使う、永続状態つきWindowsネイティブ開発コントロールサーフェス。',
+    status: 'ACTIVE DEVELOPMENT · 公開ダウンロードなし',
+    stack: '.NET 8 · WPF · Dev Relay',
+    access: '公開リリースなし',
+    href: 'https://github.com/marcelosofficial-ctrl/portfolio',
+    problem: 'AI支援開発は、チャットが変わると目標、実行状態、結果、失敗履歴が分断されやすくなります。RevDevはそれをオペレーターが見える状態にします。',
+    architecture: 'UIは操作面に限定し、Dev Relayがguarded executionを担当。Git、exact results、CURRENT_GOALSなどを会話の外に残し、再開可能な状態を作ります。',
+    evidence: '現在は再起動安全性、結果公開、進捗/liveness、最終リリースライフサイクルの受け入れを進めています。公開版とは扱いません。',
+    lessons: 'UIに実行権限を与えず、状態の可視化と実行権限を分離することで、長時間のAI支援作業を追跡可能にしています.'
+  },
+  reseller-ai: {
+    title: 'Retro Game Vision & Resale System',
+    eyebrow: 'Computer vision / resale · Field tested',
+    description: '日本の中古ゲーム店の写真を、証拠と市場情報を含む購入判断へ変換するフィールドパイプライン。',
+    status: 'FIELD TESTED · GUI RELEASEなし',
+    stack: 'Python · SQLite · Vision · CI',
+    access: 'Source / case study',
+    href: 'https://github.com/marcelosofficial-ctrl',
+    problem: '店頭の価格タグだけでは、実際の版・状態・市場価値まで判断できないことから始まりました。',
+    architecture: '写真、現物状態、識別情報、市場情報、証拠のつながりを保持し、BUY / RESEARCH / SKIPの判断へまとめます。',
+    evidence: '公開GUIを持つ製品としては扱っていません。ポートフォリオのビジュアルも実在しないGUIスクリーンショットではなく、判断パイプラインを示します。',
+    lessons: '不確実性を消すのではなく、どの観測から判断したかを残すことがこのシステムの中心です.'
+  },
+  vektordeck: {
+    title: 'VektorDeck',
+    eyebrow: 'Local AI workstation · 1.0.0',
+    description: 'GGUFモデル情報、ランタイム管理、ハードウェアテレメトリ、証拠ベースのベンチマークをまとめるローカルAIワークステーションマネージャー。',
+    status: '1.0.0 RELEASED · SOURCE AVAILABLE',
+    stack: 'Python · FastAPI · React · TypeScript · SQLite',
+    access: 'Source available',
+    href: 'https://github.com/marcelosofficial-ctrl/VektorDeck',
+    problem: 'モデルファイル、起動フラグ、ランタイム、ベンチマークがターミナルに分散し、ローカルAI環境そのものを理解しづらくなっていました。',
+    architecture: 'React/TypeScriptのUI、loopback-only FastAPI、Pythonサービス、SQLiteとローカルログを分離。GGUF解析、Smart Launch、runtime ownership、telemetryを一つの制御面にまとめます。',
+    evidence: '1.0.0はCI、local build、live smokeを通過。性能比較については、汚染されたベンチマークを勝者として扱わない設計です。',
+    lessons: '「速い数字」を作るより、なぜその推薦や結果になったかを説明できる状態を優先しています.'
+  },
+  'rainmeter-clock': {
+    title: 'MinimalClock',
+    eyebrow: 'Desktop utility · Shipped',
+    description: 'Rainmeter上で動く、軽量で静かなデスクトップ時計。',
+    status: 'SHIPPED · 1.0.0',
+    stack: 'Rainmeter · Desktop UI',
+    access: '1.0.0 package',
+    href: 'https://github.com/marcelosofficial-ctrl',
+    problem: '自分のデスクトップに欲しかった小さな時計を、余計なランタイムや大きなUIなしで作るところから始まりました。',
+    architecture: 'タイポグラフィ、最小限の設定、実測性能、配布パッケージを一つの小さな製品として仕上げています。',
+    evidence: '1.0.0を配布可能なRainmeter skinとして完成させています。',
+    lessons: '小さなユーティリティでも、表示、設定、性能、配布までを一つの完成した体験として扱うことを重視しました.'
+  },
+  exactartifact: {
+    title: 'ExactArtifact',
+    eyebrow: 'Artifact integrity · 1.0.0',
+    description: 'SHA-256と決定論的マニフェストで、テスト済み成果物と現在の成果物が同一かを検証するC#/.NETツール。',
+    status: '1.0.0 RELEASED',
+    stack: 'C# · .NET · WPF',
+    access: '1.0.0 release',
+    href: 'https://github.com/marcelosofficial-ctrl',
+    problem: 'ファイル名やフォルダ名だけでは、今見ている成果物が本当にテストしたものか確認できません。',
+    architecture: 'streaming SHA-256、決定論的ディレクトリマニフェスト、CLI/WPF、正確な差分報告を組み合わせています。',
+    evidence: '22 automated testsを通過した1.0.0を公開しています。',
+    lessons: 'リリースの同一性を推測ではなく再現可能な証拠に置き換えました.'
+  },
+  gaptrace: {
+    title: 'GapTrace',
+    eyebrow: 'Network diagnostics · 1.0.0',
+    description: 'DNS、TCP、HTTPの短い通信断を記録し、CSV証拠と復旧時間を残すGo製ネットワーク診断ツール。',
+    status: '1.0.0 RELEASED',
+    stack: 'Go · Concurrency',
+    access: '1.0.0 release',
+    href: 'https://github.com/marcelosofficial-ctrl',
+    problem: 'モバイルテザリングの瞬断は短すぎて、通常の「インターネットが動くか」チェックでは説明できませんでした。',
+    architecture: '複数の到達性チェックを並行実行し、DNS/TCP/HTTPの状態を記録してmicro-outageを分類します。',
+    evidence: 'peak working set 16.2 MB、validation run CPU 0.016 sという小さな診断面を1.0.0として公開しています。',
+    lessons: '一瞬の失敗でも、あとから時系列で説明できる証拠に変えることを目標にしました.'
+  },
+  configtrace: {
+    title: 'ConfigTrace',
+    eyebrow: 'Configuration evidence · 1.0.1',
+    description: '設定変更を決定論的スナップショット、意味のある差分、JSONLジャーナルとして残すRustツール。',
+    status: '1.0.1 RELEASED',
+    stack: 'Rust · JSONL',
+    access: '1.0.1 release',
+    href: 'https://github.com/marcelosofficial-ctrl',
+    problem: '診断時に「何が変わったか」を後から説明できるよう、設定変更を低オーバーヘッドで記録する必要がありました。',
+    architecture: '決定論的snapshot、semantic field diff、privacy-aware redaction、event-driven JSONL journalを独立した証拠プロバイダーとして構成しています。',
+    evidence: '1.0.1を公開し、CrashScopeとの連携境界も明確にしています。',
+    lessons: '小さな補助ツールを独立した証拠プロバイダーとして設計することで、他システムとの結合を減らしています.'
+  }
+};
+
+export function getStaticPaths() {
+  return Object.keys(projects).map((slug) => ({ params: { slug }, props: { project: projects[slug as keyof typeof projects], slug } }));
+}
+
+const { project, slug } = Astro.props;
+const englishPath = `/projects/${slug}/`;
+---
+<BaseLayout
+  locale="ja"
+  alternatePath={englishPath}
+  title={`${project.title} | Marcelo Ellwanger`}
+  description={project.description}
+>
+  <section class="case-hero case-hero-featured wrap">
+    <div class="case-title-block">
+      <p class="eyebrow">{project.eyebrow}</p>
+      <h1>{project.title}</h1>
+      <p class="case-copy">{project.description}</p>
+      <div class="case-actions">
+        <a class="button primary" href={project.href} target="_blank" rel="noreferrer">{project.access} ↗</a>
+        <a class="button" href={englishPath} lang="en" hreflang="en">English case study ↗</a>
+        <a class="button" href="/ja/#work">プロジェクト一覧 ↑</a>
+      </div>
+    </div>
+    <div class="case-status-panel mono" aria-label={`${project.title} プロジェクト状態`}>
+      <div class="case-status-head"><span>PROJECT / STATUS</span><b>{project.status}</b></div>
+      <div class="case-status-row"><span>STACK</span><strong>{project.stack}</strong></div>
+      <div class="case-status-row"><span>ACCESS</span><strong>{project.access}</strong></div>
+      <div class="case-status-row"><span>LANGUAGE</span><strong>日本語 / English</strong></div>
+      <div class="case-status-foot"><span class="status-dot">SOURCE OF TRUTH / PROJECT PAGE</span></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap case-intro-grid">
+    <div><p class="eyebrow">課題</p><h2>実際の問題を、検証可能なシステムにする。</h2></div>
+    <div class="case-long-copy"><p>{project.problem}</p><p>{project.description}</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Architecture</p><h2>境界を明確にして、何を証明できるかを残す。</h2><p>{project.architecture}</p></div>
+    <div class="architecture-note mono"><span>STATE</span><p>{project.status}</p></div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Evidence</p><h2>「まだ証明できない」ことも状態として残す。</h2><p>{project.evidence}</p></div>
+    <div class="field-console mono">
+      <div><span>project</span><b>{project.title}</b></div>
+      <div><span>status</span><b class="accent-value">{project.status}</b></div>
+      <div><span>stack</span><b>{project.stack}</b></div>
+      <div><span>access</span><b>{project.access}</b></div>
+    </div>
+  </section>
+
+  <section class="case-section wrap">
+    <div class="case-section-heading"><p class="eyebrow">Engineering note</p><h2>失敗や制約を、次の設計判断へ。</h2><p>{project.lessons}</p></div>
+  </section>
+
+  <section class="case-section case-closing wrap">
+    <p class="eyebrow">{project.title}</p>
+    <h2>日本語ページも、現在の公開状態をそのまま表現します。</h2>
+    <p>このページは英語版と同じプロジェクト一覧・状態・アクセス境界を日本語で確認できるようにしたものです。公開版、開発中、ソースのみの区別を崩しません。</p>
+    <div class="case-actions">
+      <a class="button primary" href={englishPath} lang="en" hreflang="en">English case study ↗</a>
+      <a class="button" href="/ja/">日本語トップへ ↑</a>
+    </div>
+  </section>
+</BaseLayout>
