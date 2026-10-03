@@ -65,7 +65,16 @@ const languagePairs = new Map<string, string>([
   ['/contact', '/ja/contact'],
   ['/resume', '/ja/resume'],
   ['/resume/software', '/ja/resume/software'],
-  ['/resume/support', '/ja/resume/support']
+  ['/resume/support', '/ja/resume/support'],
+  ['/projects/crashscope', '/ja/projects/crashscope'],
+  ['/projects/easyflix', '/ja/projects/easyflix'],
+  ['/projects/revdev', '/ja/projects/revdev'],
+  ['/projects/reseller-ai', '/ja/projects/reseller-ai'],
+  ['/projects/vektordeck', '/ja/projects/vektordeck'],
+  ['/projects/rainmeter-clock', '/ja/projects/rainmeter-clock'],
+  ['/projects/exactartifact', '/ja/projects/exactartifact'],
+  ['/projects/gaptrace', '/ja/projects/gaptrace'],
+  ['/projects/configtrace', '/ja/projects/configtrace']
 ]);
 const reverseLanguagePairs = new Map(Array.from(languagePairs, ([en, ja]) => [ja, en]));
 const inferredAlternatePath = isJapanese ? reverseLanguagePairs.get(localPath) : languagePairs.get(localPath);
