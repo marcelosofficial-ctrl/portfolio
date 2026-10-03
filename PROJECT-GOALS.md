@@ -423,3 +423,12 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Slide pickers now use button semantics with `aria-pressed` synchronized by the authoritative `BaseLayout.astro` controller.
 - No visual carousel behavior was changed: five-slide grouping, 6.5-second rotation, explicit PAUSE/PLAY, focus/hover/visibility handling, reduced-motion behavior and hidden-slide focus suppression remain intact.
 - No screenshot-dependent work was performed because the user will supply the screenshot batch after the non-media work is complete.
+
+
+## 2026-10-03 screenshot batch update: supplied evidence triage
+
+- CrashScope screenshot supplied by the user was inspected at 2048×1108 RGBA. It is **not publication-safe for the public portfolio** because the visible app state identifies **v1.3.0**; the public portfolio must continue to represent CrashScope 1.2.0. Do not crop, blur or relabel this capture as 1.2. It remains a reference only.
+- RevDev screenshot supplied by the user was inspected at 2048×1108 RGBA and is a genuine operator-console capture. Source SHA-256: `3d3ffe10eea32d365a130443e2a3b7bf0f47fe2b88d0a070d941e86a637a5449`. It is eligible for publication after binary transfer/sanitization review; the current GitHub connector path still cannot upload local binary files.
+- Retro Game Vision & Resale System: user confirms there is no known launchable GUI capture to provide. The portfolio must not fabricate one. The homepage carousel visual has therefore been changed from `SCREENSHOTS PENDING` to an explicitly labeled `NO GUI RELEASE` decision-pipeline visual. The case study should continue to describe the public synthetic/CLI demo rather than implying a desktop GUI exists.
+- Small-project carousel card correction: reserve a fixed eyebrow line box so ConfigTrace's two-line `Configuration evidence` label no longer pushes its title lower than the other cards; reduce the focused-card project-name scale so MinimalClock fits cleanly inside its equal-width card without the final `k` protruding.
+- Featured-carousel collision guard: featured copy is explicitly shrinkable, and the carousel stacks copy above the visual at <=1000px so a project title cannot intrude into the square visual stage on constrained desktop widths. This is a layout guard, not a content-specific workaround.

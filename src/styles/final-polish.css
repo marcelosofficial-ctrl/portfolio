@@ -1386,13 +1386,17 @@ main:has(.identity-hero) .carousel-small-card:focus-visible{
 }
 main:has(.identity-hero) .carousel-small-card .eyebrow{
   color:#687276;
+  min-height:2.4em;
+  display:block;
+  line-height:1.2;
 }
 main:has(.identity-hero) .carousel-small-card h3{
   margin:14px 0 10px;
-  font-size:clamp(1.35rem,1.8vw,2rem);
-  line-height:1;
+  font-size:clamp(1.15rem,1.45vw,1.55rem);
+  line-height:1.05;
   letter-spacing:-.035em;
-  overflow-wrap:normal;
+  max-width:100%;
+  overflow-wrap:anywhere;
   word-break:normal;
 }
 main:has(.identity-hero) .carousel-small-card p{
@@ -1413,6 +1417,33 @@ main:has(.identity-hero) .carousel-small-projects-slide .project-top{
 }
 main:has(.identity-hero) .carousel-small-projects-slide .project-state{
   white-space:nowrap;
+}
+
+ /* Keep featured copy and its visual stage physically separated at constrained
+    desktop widths. Grid items are explicitly shrinkable, then the composition
+    stacks before the copy becomes narrow enough to visually collide with the
+    square stage. */
+main:has(.identity-hero) .carousel-slide-copy{
+  min-width:0;
+  max-width:100%;
+}
+main:has(.identity-hero) .carousel-visual-column{
+  position:relative;
+  z-index:1;
+  min-width:0;
+}
+@media(max-width:1000px){
+  main:has(.identity-hero) .project-carousel-slide{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+    gap:24px;
+  }
+  main:has(.identity-hero) .carousel-slide-copy{
+    max-width:760px;
+  }
+  main:has(.identity-hero) .carousel-visual-column{
+    justify-self:center;
+  }
 }
 
 @media(max-width:1400px){
