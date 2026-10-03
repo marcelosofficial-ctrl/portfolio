@@ -2331,3 +2331,73 @@ main:has(.identity-hero) .project-carousel-slide p{
     transition:none!important;
   }
 }
+
+
+/* Focused-tool motifs: tiny domain diagrams, not generic decoration. */
+.small-project-motif{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:38px;
+  margin-top:14px;
+  padding:9px 10px;
+  border:1px solid rgba(255,255,255,.055);
+  background:rgba(255,255,255,.012);
+  color:#697477;
+  font-size:.48rem;
+  letter-spacing:.08em;
+}
+.small-project-motif i{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(214,255,87,.22),rgba(255,255,255,.06));
+}
+.small-project-motif b{
+  color:#c6cfcb;
+  font-weight:500;
+}
+.small-project-motif small{
+  color:#586164;
+  font-size:.42rem;
+}
+.artifact-motif::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:rgba(214,255,87,.42);
+}
+.gaptrace-motif{
+  justify-content:space-between;
+}
+.gaptrace-motif i{
+  flex:0 1 28px;
+}
+.gaptrace-motif b{
+  padding-left:7px;
+  border-left:1px solid rgba(214,255,87,.16);
+  color:#d4dad7;
+}
+.configtrace-motif{
+  justify-content:flex-start;
+}
+.configtrace-motif .minus{color:#7e7777}
+.configtrace-motif .plus{color:#b5c99b}
+.configtrace-motif b{
+  margin-left:auto;
+}
+@media (hover:hover) and (pointer:fine){
+  .carousel-small-card:hover .small-project-motif{
+    border-color:rgba(214,255,87,.13);
+    transform:translateY(-1px);
+  }
+}
+.small-project-motif{
+  transition:border-color .24s ease,transform .28s var(--ease-ui);
+}
+@media (prefers-reduced-motion:reduce){
+  .small-project-motif{transition:none!important}
+}
