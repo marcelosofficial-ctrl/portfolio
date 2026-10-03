@@ -191,9 +191,6 @@ const webpAssets = [
   ['brand/reseller.webp', 2000],
   ['brand/vektordeck.webp', 2000],
   ['brand/reelshelf.webp', 2000],
-  ['easyflix/home.webp', 5000],
-  ['easyflix/library.webp', 5000],
-  ['easyflix/details.webp', 5000],
 ];
 const screenshotAssets = [];
 
