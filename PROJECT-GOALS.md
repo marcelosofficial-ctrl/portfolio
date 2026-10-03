@@ -495,3 +495,32 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - The VektorDeck evidence panel is intentionally designed to accept the real capture later without changing the surrounding layout.
 - Do not request the VektorDeck screenshot yet during ordinary work. Finish all other non-media QA first; when the site is otherwise complete, request exactly one clean VektorDeck capture at **1920×1080 OR HIGHER**.
 - Final publication remains gated by: real media transfer/verification, the one VektorDeck capture, exact RevDev icon transfer, final visual/build/access audit, and a successful final Pages deployment.
+
+
+## r16 — 2026-10-03 product-grade design research and audit
+
+Research-informed design direction now applied to the final cascade:
+
+- Apple HIG principles used as a reference for simplicity, hierarchy, craft, agency and purposeful motion, not as a literal copy of Apple UI.
+- Large surfaces now use restrained rounded geometry and translucent chrome is reserved for navigation, while content surfaces remain solid and readable.
+- Frequent interactions use short, precise feedback rather than long or theatrical motion.
+- Homepage carousel motion is now a short settle/crossfade with a tiny transform, preserving continuity without making the page feel like a slideshow.
+- Page-to-page same-origin navigation opts into CSS View Transitions where supported, with a very short fade/settle and progressive enhancement fallback.
+- Entrance reveals were shortened to reduce perceived waiting and preserve content readability.
+- Animation properties remain primarily opacity and transform; no broad will-change usage was introduced.
+- Reduced-motion and reduced-transparency preferences remain explicit.
+- EasyFlix active presentation CSS now uses the supplied 2047×1151 source ratio rather than the historical 1000×565 ratio.
+- Apple HIG guidance emphasizes consistent alignment, restrained color, legible typography, enough control spacing, and motion that reinforces context rather than competing with it.
+- W3C WCAG 2.2 requires a user mechanism to pause/stop/hide automatically moving content that meets the applicable timing conditions. The carousel keeps its explicit PAUSE/PLAY control.
+- MDN/web.dev performance guidance favors compositor-friendly transform/opacity animation and warns against unnecessary animation and indiscriminate will-change.
+
+Current content/audit findings:
+
+- English project/case-study release and access paths audited for CrashScope, EasyFlix, RevDev, Retro Game Vision, VektorDeck, MinimalClock, ExactArtifact, GapTrace and ConfigTrace.
+- Public project READMEs audited for the same set. Current public/release boundaries are internally consistent with the portfolio: CrashScope 1.2.0 public / 1.3 development, EasyFlix 1.4.0 released, VektorDeck 1.0.0 source release, Retro Game Vision field-tested/no GUI release, MinimalClock 1.0.0, ExactArtifact 1.0.0, GapTrace 1.0.0, ConfigTrace 1.0.1, RevDev active development/no public download.
+- Found and corrected a stale Japanese About-page phrase that incorrectly described CrashScope 1.3 as released.
+- Corrected the Japanese RevDev carousel label so it points to the Japanese case study rather than describing it as an English case study.
+- The exact RevDev canonical icon remains intentionally gated until the genuine binary asset is available.
+- VektorDeck screenshot remains intentionally gated until the user supplies a clean 1920×1080 OR HIGHER capture.
+- Supplied CrashScope, RevDev, MinimalClock and EasyFlix media still require final repository transfer and checksum/dimension verification before the media gate can be declared complete.
+- Do not declare final visual QA complete or publish until the remaining media transfer, VektorDeck capture, final build verification and one coordinated Pages deployment are complete.
