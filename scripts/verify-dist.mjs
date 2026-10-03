@@ -218,7 +218,7 @@ requireContent('Japanese about page', japaneseAbout, [
   '実用的な仕組みをつくり、信頼して使えるところまで仕上げる。',
   '現場経験からソフトウェアへ。',
   '5言語でのコミュニケーション',
-  'CrashScope 1.2 released',
+  'CrashScope 1.3 development / 1.2.0 released',
   'EasyFlix 1.4 released',
   '219件の自動テスト',
   'ソフトウェア / QA 職務プロフィール'
