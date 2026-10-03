@@ -122,10 +122,21 @@ const projects = {
 };
 
 export function getStaticPaths() {
-  return Object.keys(projects).map((slug) => ({ params: { slug }, props: { project: projects[slug as keyof typeof projects], slug } }));
+  return [
+    'crashscope',
+    'easyflix',
+    'revdev',
+    'reseller-ai',
+    'vektordeck',
+    'rainmeter-clock',
+    'exactartifact',
+    'gaptrace',
+    'configtrace'
+  ].map((slug) => ({ params: { slug } }));
 }
 
-const { project, slug } = Astro.props;
+const slug = Astro.params.slug as keyof typeof projects;
+const project = projects[slug];
 const englishPath = `/projects/${slug}/`;
 ---
 <BaseLayout
