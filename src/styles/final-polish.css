@@ -891,7 +891,7 @@ main:has(.identity-hero) .home-about-strip h3 {
 /* EasyFlix product-specific visual treatment */
 .easyflix-product-shot{position:relative;isolation:isolate;background:#0b0f10;overflow:hidden}
 .easyflix-product-shot::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,7,8,.02) 38%,rgba(5,7,8,.76) 100%)}
-.easyflix-product-shot img{display:block;width:100%;height:auto;aspect-ratio:2047/1151;object-fit:contain;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease}
+.easyflix-product-shot img{display:block;width:100%;height:auto;aspect-ratio:2660/1440;object-fit:contain;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease}
 .easyflix-product-shot:hover img{transform:scale(1.012);filter:saturate(1.04) contrast(1.015)}
 .easyflix-shot-overlay{position:absolute;z-index:2;left:16px;right:16px;bottom:47px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 11px;border:1px solid rgba(255,255,255,.10);background:rgba(7,10,11,.72);backdrop-filter:blur(8px);color:#8e999a;font-size:.48rem;letter-spacing:.11em}
 .easyflix-shot-overlay>span{color:var(--accent)}
@@ -1882,7 +1882,7 @@ main:has(.identity-hero) .carousel-rotation-toggle:hover{
   transform:translateY(-1px);
 }
 main:has(.identity-hero) .carousel-shot img{
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
 }
 
 .reveal-ready{
@@ -1925,7 +1925,7 @@ main:has(.identity-hero) .carousel-shot img{
 }
 
 .easyflix-product-shot img{
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
 }
 
 
@@ -2288,7 +2288,7 @@ main:has(.identity-hero) .project-carousel-slide p{
   display:block;
   width:100%;
   height:auto;
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
   object-fit:contain;
   background:#080b0c;
   transition:transform .45s var(--ease-spring),filter .35s ease;
