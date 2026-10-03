@@ -95,29 +95,7 @@
   border-color: rgba(214,255,87,.52);
 }
 
-/* The original VektorDeck web screenshots are real product captures, but the
-   checked-in copies are compact web previews (1000px / 760px wide). Never
-   stretch those previews beyond their native pixel width on large displays. */
-.product-shot img[src*="vektordeck/dashboard.webp"] {
-  width: min(100%, 1000px);
-  margin-inline: auto;
-}
-.product-shot img[src*="vektordeck/intelligence-tour.webp"],
-.product-shot img[src*="vektordeck/evidence-tour.webp"] {
-  width: min(100%, 760px);
-  margin-inline: auto;
-}
-.product-shot:has(img[src*="vektordeck/"]) {
-  background:
-    linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px),
-    linear-gradient(145deg,#0f1315,#0b0e10);
-  background-size: 30px 30px, 30px 30px, auto;
-}
-
-/* The homepage previously enlarged the compressed VektorDeck dashboard preview.
-   Use a crisp CSS product-summary panel there instead. The real screenshots
-   remain available inside the case study. */
+/* VektorDeck uses the structured evidence panel until the new real capture is supplied. */
 .project-snapshot {
   position: relative;
   min-height: 270px;
