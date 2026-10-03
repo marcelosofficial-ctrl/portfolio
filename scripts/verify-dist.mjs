@@ -407,7 +407,7 @@ requireContent('EasyFlix case study', easyflix, [
   'PUBLIC RELEASE',
   'LOCAL-FIRST', 'Continue Watching', 'Sync Metadata',
   'INSTALLER + PORTABLE WIN-X64', '2,301', '108 entries',
-  'The library, not a mockup.', 'ALL LIBRARY', 'TITLE DETAILS'
+  'The final capture stays real.', '2660×1440 REQUIRED', 'NO UPSCALING'
 ]);
 
 requireContent('RevDev case study', revdev, [
