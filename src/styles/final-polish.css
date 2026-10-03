@@ -1474,3 +1474,42 @@ main:has(.identity-hero) .carousel-small-projects-slide .project-state{
     min-height:126px;
   }
 }
+
+
+/* Explicit carousel rotation control: WAI guidance recommends a user-visible
+   stop/start control for auto-rotating carousels. Keep it compact so it reads
+   as a utility control rather than competing with the slide content. */
+main:has(.identity-hero) .carousel-controls-inner{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+main:has(.identity-hero) .carousel-rotation-toggle{
+  flex:none;
+  min-width:58px;
+  height:32px;
+  padding:0 9px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background:rgba(10,13,14,.76);
+  color:#8f9996;
+  font:600 .52rem/1 var(--mono,monospace);
+  letter-spacing:.12em;
+  cursor:pointer;
+  transition:border-color .18s ease,color .18s ease,background .18s ease;
+}
+main:has(.identity-hero) .carousel-rotation-toggle:hover,
+main:has(.identity-hero) .carousel-rotation-toggle:focus-visible{
+  border-color:rgba(214,255,87,.34);
+  color:var(--accent);
+  background:rgba(20,25,27,.92);
+  outline:none;
+}
+@media(max-width:760px){
+  main:has(.identity-hero) .carousel-controls-inner{
+    gap:7px;
+  }
+  main:has(.identity-hero) .carousel-rotation-toggle{
+    min-width:54px;
+  }
+}
