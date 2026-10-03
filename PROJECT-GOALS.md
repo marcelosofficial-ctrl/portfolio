@@ -321,13 +321,13 @@ This is the durable execution plan for the remaining portfolio visual overhaul. 
 - Stable carousel geometry at every breakpoint; no slide changes the outer page height because of title length or visual content.
 - Homepage carousel grouping: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, then one “Smaller but Useful” slide containing exactly MinimalClock, ExactArtifact, GapTrace and ConfigTrace.
 - Every small-project tile is individually clickable and legible.
-- Retro Game Vision has approved real screenshots in its case study and carousel.
-- CrashScope and RevDev have approved real screenshots; no synthetic screenshots are presented as real evidence.
+- Retro Game Vision has no known launchable GUI capture; no screenshot is required or should be fabricated.
+- CrashScope and RevDev have supplied real screenshots; they are awaiting repository binary transfer. No synthetic screenshot may be presented as real evidence.
 - VektorDeck screenshots are replaced/improved when better source captures are supplied, with centered intentional framing.
 - MinimalClock visuals are improved when approved screenshots are supplied.
 - RevDev uses the exact approved transparent icon asset with the same CSS green aura treatment as other project marks. Never substitute the hand-drawn SVG or corrupted low-resolution PNG.
 - EasyFlix uses the two supplied 2047×1151 captures once actually transferred: Home for the main product visual and All Library for the carousel/library visual.
-- Public truth remains intact: CrashScope 1.2.0 public; CrashScope 1.3 never exposed; EasyFlix 1.4.0 public; RevDev active development with no public download.
+- Public truth remains intact: CrashScope 1.3 is current development, CrashScope 1.2.0 is the public release; EasyFlix 1.4.0 is public; RevDev is active development with no public download.
 
 ### B. Carousel architecture
 - Current target: 5 slides: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, Smaller but Useful.
@@ -348,13 +348,12 @@ This is the durable execution plan for the remaining portfolio visual overhaul. 
 ### D. User-screenshot acquisition protocol
 When screenshots are needed, do all code/layout work that does not depend on them first. Then request no more than 2–3 screenshots in one pass and state the exact target resolution in BIG TEXT in the chat.
 Current acquisition order:
-1. CrashScope — clean representative public-release UI state.
-2. RevDev — clean representative operator UI state.
-3. Retro Game Vision & Resale System — representative field/vision workflow.
-Next batch after those are integrated:
-4. VektorDeck — replace current low-resolution/right-shifted captures with clean centered captures.
-5. MinimalClock — capture the finished utility at a useful readable size.
-Do not request another screenshot batch until the current batch has been integrated and visually checked.
+1. Transfer/integrate the supplied CrashScope 1.3 development capture.
+2. Transfer/integrate the supplied RevDev operator-console capture.
+3. Integrate the supplied MinimalClock capture.
+4. Obtain one clean VektorDeck capture at the target resolution.
+5. No Retro Game Vision screenshot is required because there is no known launchable GUI.
+Do not request another screenshot batch until the current media gate has been integrated and visually checked.
 
 ### E. RevDev asset gate
 - Required artwork is the exact transparent supplied/canonical icon, not a recreation.
@@ -381,14 +380,14 @@ Every homepage pass must verify:
 - autoplay advances after the full 6.5-second interval;
 - hover/focus/reduced-motion/visibility behavior remains correct;
 - desktop and mobile breakpoints remain coherent;
-- no CrashScope 1.3 language or release artifact is exposed;
+- CrashScope 1.3 may be shown as current development state, but no 1.3 public release/download claim or artifact is exposed;
 - build/CI passes before publication.
 
 ### H. Efficient pass order
 Pass 1 — now: durable master plan + carousel consolidation + fixed geometry + four-project grouped slide + research-backed accessibility/media framing.
-Pass 2: integrate first 2–3 approved screenshots (CrashScope, RevDev, Retro) and exact RevDev icon if supplied; repair their case-study media.
-Pass 3: integrate VektorDeck and MinimalClock captures; improve centering, resolution and case-study presentation.
-Pass 4: transfer and verify the two supplied EasyFlix binaries and exact RevDev binary through a local Git-capable path; verify checksums/dimensions.
+Pass 2: integrate supplied CrashScope, RevDev and MinimalClock captures plus the exact RevDev icon through the available Git-capable transfer path.
+Pass 3: integrate the missing VektorDeck capture and improve centering/resolution in its case study.
+Pass 4: transfer and verify the two supplied EasyFlix JPEGs; verify checksums/dimensions and all media paths.
 Pass 5: full visual QA across desktop/mobile, case-study access/media audit, build, then final publication.
 If a pass is blocked by user-supplied media, finish all non-blocked work first and stop only at the explicit media gate.
 
@@ -404,8 +403,8 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Added a visible PAUSE/PLAY control. This follows current WAI carousel guidance that auto-rotating carousels should expose a user control to stop/restart rotation. Hover/focus pausing remains separate from explicit user pause.
 - Kept the existing 6.5-second timing, arrows, slide dots, keyboard navigation, reduced-motion behavior and hidden-slide focus suppression.
 - Research used for this pass: W3C WAI carousel pattern/tutorials; MDN object-fit/object-position, aspect-ratio, image dimensions/CLS, and CSS Grid/minmax guidance.
-- No CrashScope, RevDev, Retro, VektorDeck or MinimalClock screenshots were available in the current conversation/library search during this pass, so no screenshot-dependent claims or fabricated media were added.
-- Next blocking media batch remains CrashScope + RevDev + Retro Game Vision, maximum three screenshots. After integration and QA, proceed to VektorDeck + MinimalClock.
+- Historical note: this pass originally began before the current screenshot batch was supplied; subsequent authoritative entries below supersede that media-availability statement.
+- Superseded by the 2026-10-03 screenshot batch: CrashScope, RevDev and MinimalClock captures are now supplied; VektorDeck remains the only missing screenshot.
 
 
 ## 2026-10-03 r11: controller audit and semantic cleanup
@@ -414,7 +413,7 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Found that `src/pages/index.astro` still contained the obsolete second carousel controller despite the earlier plan saying it had been removed. Removed that duplicate controller; `BaseLayout.astro` remains the sole carousel state machine.
 - Changed the slide-picker container from `role="tablist"` / tab semantics to a plain button group. The pickers are controls, not tabs/panels; active-state styling remains class-based and the shared controller no longer writes stale `aria-selected` state onto them.
 - Preserved the authoritative 6.5-second timer, PAUSE/PLAY control, hover/focus/visibility pause, reduced-motion handling, keyboard arrows, hidden-slide tab suppression and five-slide grouping.
-- Screenshot and binary-media gates remain unchanged: no synthetic CrashScope/RevDev/Retro/VektorDeck/MinimalClock screenshots, no non-canonical RevDev artwork, and the supplied EasyFlix JPEGs are not considered transferred until their actual repository binaries are replaced and verified.
+- Screenshot and binary-media gates remain: use only supplied/validated real captures, no synthetic Retro/VektorDeck/other screenshots, no non-canonical RevDev artwork, and the supplied EasyFlix JPEGs are not considered transferred until their actual repository binaries are replaced and verified.
 
 
 ## 2026-10-03 r12: carousel picker state audit
