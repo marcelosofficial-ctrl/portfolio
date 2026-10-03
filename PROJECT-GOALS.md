@@ -605,3 +605,12 @@ Do not request the VektorDeck screenshot until the non-media design, IA and acce
 - Superseded EasyFlix JPG assets (home.jpg, library.jpg, details.jpg) were removed from the portfolio repository so stale low-resolution media cannot accidentally become live again. Current references use WebP assets.
 - English EasyFlix case study now uses details.webp as well as the full-resolution Home/Library WebP captures.
 - VektorDeck's old screenshot captures remain excluded from the homepage and its hero media surface. The case study continues to use an evidence panel until the user supplies the clean 1920×1080+ real product capture; that capture is the final media gate.
+
+
+## 2026-10-03 final pre-VektorDeck evidence cleanup
+
+- Removed superseded EasyFlix JPG captures and all references; WebP is now the only EasyFlix media path.
+- Removed the two legacy VektorDeck screenshot assets from the repository. Until the user's new 1920×1080+ capture arrives, the VektorDeck case study uses deliberate evidence panels instead of pretending old screenshots are current.
+- Added structured VektorDeck Model Intelligence and Performance Evidence panels so the case study remains visually complete without false screenshot evidence.
+- Added small, domain-specific motifs for ExactArtifact (hash/manifest), GapTrace (DNS→TCP→HTTP), and ConfigTrace (old/new diff), mirrored in Japanese.
+- Japanese homepage and Japanese EasyFlix case study were brought to current media/interaction parity. The malformed Japanese skills aria-label was fixed and carousel focus state is explicit in source markup.
