@@ -34,6 +34,9 @@ function readImageDimensions(bytes, extension) {
       const b0 = bytes[21], b1 = bytes[22], b2 = bytes[23], b3 = bytes[24];
       return { width: 1 + (b0 | ((b1 & 0x3f) << 8)), height: 1 + ((b1 >> 6) | (b2 << 2) | ((b3 & 0x0f) << 10)) };
     }
+    if (chunk === 'VP8 ' && bytes.length >= 30 && bytes[23] === 0x9d && bytes[24] === 0x01 && bytes[25] === 0x2a) {
+      return { width: bytes.readUInt16LE(26) & 0x3fff, height: bytes.readUInt16LE(28) & 0x3fff };
+    }
   }
   return null;
 }
