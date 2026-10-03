@@ -2293,3 +2293,41 @@ main:has(.identity-hero) .project-carousel-slide p{
     transition:none!important;
   }
 }
+
+
+/* Japanese EasyFlix case study: show the same real, full-resolution evidence set
+   as the English page, with a quiet two-up composition that collapses cleanly. */
+.easyflix-case-media-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.easyflix-case-media-grid .case-media-card{
+  min-width:0;
+  overflow:hidden;
+}
+.easyflix-case-media-grid .case-media-card img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:2047/1151;
+  object-fit:contain;
+  background:#080b0c;
+  transition:transform .45s var(--ease-spring),filter .35s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .easyflix-case-media-grid .case-media-card:hover img{
+    transform:scale(1.008);
+    filter:saturate(1.025) contrast(1.01);
+  }
+}
+@media (max-width:900px){
+  .easyflix-case-media-grid{
+    grid-template-columns:1fr;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .easyflix-case-media-grid .case-media-card img{
+    transition:none!important;
+  }
+}
