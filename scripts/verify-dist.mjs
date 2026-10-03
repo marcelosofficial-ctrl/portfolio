@@ -199,7 +199,7 @@ requireContent('Japanese homepage', japaneseHome, [
   '現場の不便や複雑さを、信頼して使えるソフトウェアに変える。',
   '実際の課題から生まれたプロジェクト。',
   '現在、公開の連絡窓口はLinkedInにまとめています。',
-  'ケーススタディ（英語）',
+  '日本語ケーススタディ ↗',
   'class="language-toggle"'
 ]);
 
@@ -207,7 +207,7 @@ const about = readRoute('about/index.html');
 requireContent('about page', about, [
   'I build useful systems, then make them trustworthy.',
   'Software / QA résumé',
-  'CrashScope 1.2 released',
+  'CrashScope 1.3 development / 1.2.0 released',
   'VektorDeck 1.0',
   'EasyFlix 1.4 released'
 ]);
