@@ -470,3 +470,12 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Added restrained interaction polish to buttons, project cards and carousel slide entry. Motion remains disabled/neutralized under prefers-reduced-motion.
 - Research basis: W3C WAI carousel guidance, W3C Japanese accessibility/design guidance, W3C Japanese text-layout guidance, and MDN reduced-motion/accessibility guidance.
 - Do not interpret the localized project pages as replacing the full English case-study content; they are the Japanese presentation/parity layer and provide a clear path to the complete English technical case study.
+
+## 2026-10-03 r15: current polish boundary before media capture
+
+- Japanese homepage and project routing are now first-class rather than English-link placeholders. The Japanese home uses the same five-slide carousel and project hierarchy, and /ja/projects/<slug>/ provides localized pages for all current projects.
+- English and Japanese About/contact/resume status summaries now identify CrashScope 1.3 as current development and 1.2.0 as the public release.
+- The previous low-resolution VektorDeck homepage/case-study screenshot treatment has been replaced with an explicit evidence panel. This avoids presenting an old low-resolution capture as final media while waiting for the user's new clean screenshot.
+- The VektorDeck evidence panel is intentionally designed to accept the real capture later without changing the surrounding layout.
+- Do not request the VektorDeck screenshot yet during ordinary work. Finish all other non-media QA first; when the site is otherwise complete, request exactly one clean VektorDeck capture at **1920×1080 OR HIGHER**.
+- Final publication remains gated by: real media transfer/verification, the one VektorDeck capture, exact RevDev icon transfer, final visual/build/access audit, and a successful final Pages deployment.
