@@ -1724,3 +1724,228 @@ html[lang="ja"] .carousel-small-card p{
 @media (prefers-reduced-motion:reduce){
   .vektordeck-evidence-visual{transition:none!important}
 }
+
+
+/* --------------------------------------------------------------------------
+   r16: product-grade craft pass
+   Research basis: Apple HIG principles of simplicity, hierarchy, craft and
+   purposeful motion; W3C pause/stop/hide; MDN compositor-friendly animation.
+   This layer intentionally overrides older exploratory polish rules so the
+   effective cascade ends in one restrained interaction language.
+   -------------------------------------------------------------------------- */
+
+:root{
+  --ease-ui:cubic-bezier(.22,.75,.24,1);
+  --ease-spring:cubic-bezier(.16,1,.3,1);
+  --radius-surface:18px;
+  --radius-control:12px;
+}
+
+html{
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,ui-sans-serif,system-ui,"Segoe UI",sans-serif;
+}
+
+@view-transition{
+  navigation:auto;
+}
+
+::view-transition-group(root){
+  animation-duration:.32s;
+  animation-timing-function:var(--ease-ui);
+}
+::view-transition-old(root){
+  animation:portfolio-page-out .20s var(--ease-ui) both;
+}
+::view-transition-new(root){
+  animation:portfolio-page-in .32s var(--ease-spring) both;
+}
+@keyframes portfolio-page-out{
+  to{opacity:0;transform:translateY(-3px) scale(.998)}
+}
+@keyframes portfolio-page-in{
+  from{opacity:0;transform:translateY(5px) scale(.998)}
+  to{opacity:1;transform:none}
+}
+
+.site-shell{
+  background:rgba(11,13,14,.72);
+  border-bottom-color:rgba(255,255,255,.065);
+}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .site-shell{
+    backdrop-filter:blur(20px) saturate(118%);
+    -webkit-backdrop-filter:blur(20px) saturate(118%);
+  }
+}
+.site-header{
+  min-height:72px;
+}
+.site-header nav a{
+  transition:color .18s ease,transform .18s var(--ease-ui);
+}
+.site-header nav a:hover{
+  transform:translateY(-1px);
+}
+
+.project,
+.project-featured,
+.identity-rail,
+.lab-panel,
+.case-status-panel,
+.contact-panel,
+.resale-visual,
+.product-shot,
+.project-snapshot,
+.carousel-console,
+.carousel-shot,
+.carousel-small-card,
+.model-grid article,
+.failure-grid article,
+.skill-matrix>div,
+.boundary-table,
+.rules-table,
+.field-console,
+.about-card{
+  border-radius:var(--radius-surface);
+}
+.button,
+.language-toggle,
+.mobile-nav-toggle,
+.carousel-arrow,
+.carousel-rotation-toggle{
+  border-radius:999px;
+}
+.carousel-dot{
+  border-radius:999px;
+}
+
+@media (hover:hover) and (pointer:fine){
+  main:has(.identity-hero) .project{
+    transform:translateZ(0);
+    transition:
+      transform .30s var(--ease-ui),
+      border-color .24s ease,
+      box-shadow .30s ease,
+      background .24s ease;
+  }
+  main:has(.identity-hero) .project:hover{
+    transform:translate3d(0,-2px,0);
+    box-shadow:0 20px 54px rgba(0,0,0,.18);
+  }
+  .carousel-small-card:hover,
+  .button:hover{
+    transform:translateY(-1px);
+  }
+}
+
+.button{
+  min-height:42px;
+  padding:11px 17px;
+  transition:
+    transform .22s var(--ease-ui),
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    box-shadow .22s ease;
+}
+.button:active{
+  transform:scale(.985);
+}
+.project:active,
+.carousel-small-card:active{
+  transform:scale(.997);
+}
+
+main:has(.identity-hero) .project-carousel-window{
+  border-radius:22px;
+  box-shadow:0 34px 92px rgba(0,0,0,.22);
+}
+main:has(.identity-hero) .project-carousel-slide{
+  transform:translate3d(8px,0,0) scale(.992);
+  transition:
+    opacity .38s ease,
+    transform .50s var(--ease-spring),
+    visibility .38s;
+}
+main:has(.identity-hero) .project-carousel-slide.is-active{
+  transform:none;
+}
+main:has(.identity-hero) .carousel-visual{
+  border-radius:18px;
+  overflow:hidden;
+}
+main:has(.identity-hero) .carousel-shot img{
+  transition:transform .65s var(--ease-spring),filter .35s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  main:has(.identity-hero) .carousel-shot:hover img{
+    transform:scale(1.008);
+  }
+}
+main:has(.identity-hero) .carousel-controls-inner{
+  gap:12px;
+}
+main:has(.identity-hero) .carousel-arrow,
+main:has(.identity-hero) .carousel-rotation-toggle{
+  transition:
+    transform .20s var(--ease-ui),
+    border-color .20s ease,
+    background .20s ease,
+    color .20s ease;
+}
+main:has(.identity-hero) .carousel-arrow:hover,
+main:has(.identity-hero) .carousel-rotation-toggle:hover{
+  transform:translateY(-1px);
+}
+main:has(.identity-hero) .carousel-shot img{
+  aspect-ratio:2047/1151;
+}
+
+.reveal-ready{
+  transform:translate3d(0,12px,0);
+  transition:
+    opacity .56s var(--ease-spring),
+    transform .56s var(--ease-spring);
+}
+
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root){
+    animation:none!important;
+  }
+  .reveal-ready{
+    opacity:1;
+    transform:none;
+    transition:none!important;
+  }
+  .project,
+  .carousel-small-card,
+  .button,
+  .site-header nav a,
+  .carousel-arrow,
+  .carousel-rotation-toggle,
+  .carousel-shot img{
+    transition:none!important;
+    transform:none!important;
+  }
+}
+
+@media (prefers-reduced-transparency:reduce){
+  .site-shell{
+    background:#0b0d0e;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+}
+
+.easyflix-product-shot img{
+  aspect-ratio:2047/1151;
+}
