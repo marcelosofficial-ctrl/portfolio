@@ -406,3 +406,12 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Research used for this pass: W3C WAI carousel pattern/tutorials; MDN object-fit/object-position, aspect-ratio, image dimensions/CLS, and CSS Grid/minmax guidance.
 - No CrashScope, RevDev, Retro, VektorDeck or MinimalClock screenshots were available in the current conversation/library search during this pass, so no screenshot-dependent claims or fabricated media were added.
 - Next blocking media batch remains CrashScope + RevDev + Retro Game Vision, maximum three screenshots. After integration and QA, proceed to VektorDeck + MinimalClock.
+
+
+## 2026-10-03 r11: controller audit and semantic cleanup
+
+- Re-inspected the live `main` source rather than trusting the previous handoff state.
+- Found that `src/pages/index.astro` still contained the obsolete second carousel controller despite the earlier plan saying it had been removed. Removed that duplicate controller; `BaseLayout.astro` remains the sole carousel state machine.
+- Changed the slide-picker container from `role="tablist"` / tab semantics to a plain button group. The pickers are controls, not tabs/panels; active-state styling remains class-based and the shared controller no longer writes stale `aria-selected` state onto them.
+- Preserved the authoritative 6.5-second timer, PAUSE/PLAY control, hover/focus/visibility pause, reduced-motion handling, keyboard arrows, hidden-slide tab suppression and five-slide grouping.
+- Screenshot and binary-media gates remain unchanged: no synthetic CrashScope/RevDev/Retro/VektorDeck/MinimalClock screenshots, no non-canonical RevDev artwork, and the supplied EasyFlix JPEGs are not considered transferred until their actual repository binaries are replaced and verified.
