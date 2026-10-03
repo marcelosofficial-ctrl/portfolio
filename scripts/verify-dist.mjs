@@ -127,6 +127,12 @@ const routes = [
   'projects/exactartifact/index.html',
   'projects/gaptrace/index.html',
   'projects/configtrace/index.html',
+  'projects/forgedeck/index.html',
+  'ja/projects/crashscope/index.html', 'ja/projects/easyflix/index.html',
+  'ja/projects/revdev/index.html', 'ja/projects/reseller-ai/index.html',
+  'ja/projects/vektordeck/index.html', 'ja/projects/rainmeter-clock/index.html',
+  'ja/projects/exactartifact/index.html', 'ja/projects/gaptrace/index.html',
+  'ja/projects/configtrace/index.html',
   '404.html',
 ];
 
@@ -135,6 +141,32 @@ for (const route of routes) {
   if (!existsSync(file)) fail(`missing generated route: ${route}`);
   else if (statSync(file).size < 400) fail(`generated route is suspiciously small: ${route}`);
   else pass(`route ${route}`);
+}
+
+const sitemapFile = join(root, 'sitemap.xml');
+if (!existsSync(sitemapFile)) {
+  fail('missing sitemap.xml');
+} else {
+  const sitemap = readFileSync(sitemapFile, 'utf8');
+  const requiredSitemapRoutes = [
+    '/', '/ja/', '/about/', '/ja/about/', '/contact/', '/ja/contact/',
+    '/resume/', '/ja/resume/', '/resume/software/', '/ja/resume/software/',
+    '/resume/support/', '/ja/resume/support/',
+    '/projects/crashscope/', '/ja/projects/crashscope/',
+    '/projects/easyflix/', '/ja/projects/easyflix/',
+    '/projects/revdev/', '/ja/projects/revdev/',
+    '/projects/reseller-ai/', '/ja/projects/reseller-ai/',
+    '/projects/vektordeck/', '/ja/projects/vektordeck/',
+    '/projects/rainmeter-clock/', '/ja/projects/rainmeter-clock/',
+    '/projects/exactartifact/', '/ja/projects/exactartifact/',
+    '/projects/gaptrace/', '/ja/projects/gaptrace/',
+    '/projects/configtrace/', '/ja/projects/configtrace/'
+  ];
+  for (const route of requiredSitemapRoutes) {
+    const absolute = `https://marcelosofficial-ctrl.github.io/portfolio${route}`;
+    if (!sitemap.includes(`<loc>${absolute}</loc>`)) fail(`sitemap missing route: ${route}`);
+  }
+  pass(`sitemap route coverage checked: ${requiredSitemapRoutes.length} primary routes`);
 }
 
 const webpAssets = [
