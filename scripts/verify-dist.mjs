@@ -25,6 +25,50 @@ function walk(directory) {
   return files;
 }
 
+function readImageDimensions(bytes, extension) {
+  if (extension === '.png') {
+    if (bytes.length < 24 || bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') return null;
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+
+  if (extension === '.jpg' || extension === '.jpeg') {
+    if (bytes.length < 4 || bytes[0] !== 0xff || bytes[1] !== 0xd8) return null;
+    let offset = 2;
+    while (offset + 9 < bytes.length) {
+      if (bytes[offset] !== 0xff) { offset += 1; continue; }
+      while (offset < bytes.length && bytes[offset] === 0xff) offset += 1;
+      const marker = bytes[offset++];
+      if (marker === 0xd9 || marker === 0xda) break;
+      if (offset + 1 >= bytes.length) break;
+      const segmentLength = bytes.readUInt16BE(offset);
+      if (segmentLength < 2 || offset + segmentLength > bytes.length) return null;
+      const isSof = (marker >= 0xc0 && marker <= 0xc3) ||
+        (marker >= 0xc5 && marker <= 0xc7) ||
+        (marker >= 0xc9 && marker <= 0xcb) ||
+        (marker >= 0xcd && marker <= 0xcf);
+      if (isSof && segmentLength >= 7) {
+        return { height: bytes.readUInt16BE(offset + 3), width: bytes.readUInt16BE(offset + 5) };
+      }
+      offset += segmentLength;
+    }
+    return null;
+  }
+
+  if (extension === '.webp') {
+    if (bytes.length < 30 || bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') return null;
+    const chunk = bytes.subarray(12, 16).toString('ascii');
+    if (chunk === 'VP8X') return { width: 1 + bytes[24] + (bytes[25] << 8) + (bytes[26] << 16), height: 1 + bytes[27] + (bytes[28] << 8) + (bytes[29] << 16) };
+    if (chunk === 'VP8L' && bytes.length >= 25 && bytes[20] === 0x2f) {
+      const b0 = bytes[21], b1 = bytes[22], b2 = bytes[23], b3 = bytes[24];
+      return { width: 1 + (b0 | ((b1 & 0x3f) << 8)), height: 1 + ((b1 >> 6) | (b2 << 2) | ((b3 & 0x0f) << 10)) };
+    }
+    if (chunk === 'VP8 ' && bytes.length >= 30 && bytes[23] === 0x9d && bytes[24] === 0x01 && bytes[25] === 0x2a) {
+      return { width: bytes.readUInt16LE(26) & 0x3fff, height: bytes.readUInt16LE(28) & 0x3fff };
+    }
+  }
+
+  return null;
+}
 function routeTarget(localPath) {
   const normalized = localPath.replace(/^\/+/, '');
   if (!normalized) return join(root, 'index.html');
@@ -176,10 +220,8 @@ const webpAssets = [
   ['brand/reseller.webp', 2000],
   ['brand/vektordeck.webp', 2000],
   ['brand/reelshelf.webp', 2000],
-  ['easyflix/home.webp', 5000],
-  ['easyflix/library.webp', 5000],
-  ['easyflix/details.webp', 5000],
 ];
+const screenshotAssets = [];
 
 for (const [asset, minimumBytes] of webpAssets) {
   const file = join(root, asset);
@@ -195,6 +237,59 @@ for (const [asset, minimumBytes] of webpAssets) {
   else pass(`asset ${asset} (${size} bytes)`);
 }
 
+const forbiddenLegacyAssets = [
+  'brand/revdev.png',
+  'brand/revdev.svg',
+  'vektordeck/dashboard.webp',
+  'vektordeck/intelligence-tour.webp',
+  'vektordeck/evidence-tour.webp'
+];
+const generatedPaths = walk(root).map((file) => relative(root, file).replaceAll('\\', '/'));
+for (const forbidden of forbiddenLegacyAssets) {
+  if (generatedPaths.includes(forbidden)) fail(`superseded legacy asset remains: ${forbidden}`);
+  else pass(`superseded legacy asset absent: ${forbidden}`);
+}
+
+const forbiddenRetroEvidence = [
+  'Japanese PS1 title',
+  'Collector edition',
+  'Disc-only copy',
+  'A-042',
+  'A-043',
+  'A-044'
+];
+const generatedHtmlForEvidence = generatedPaths
+  .filter((file) => file.endsWith('.html'))
+  .map((file) => ({ file, html: readFileSync(join(root, file), 'utf8') }));
+for (const { file, html } of generatedHtmlForEvidence) {
+  for (const forbidden of forbiddenRetroEvidence) {
+    if (html.includes(forbidden)) fail(`${file} contains fabricated Retro evidence label: ${forbidden}`);
+  }
+}
+pass('generated HTML contains no fabricated Retro evidence examples');
+
+const candidateScreenshotFiles = generatedPaths.filter((file) => {
+  if (!/\\.(?:webp|png|jpe?g)$/i.test(file)) return false;
+  return screenshotAssetRoots.some((rootName) => file.startsWith(rootName + '/'));
+});
+for (const asset of candidateScreenshotFiles) {
+  const file = join(root, asset);
+  const extension = file.slice(file.lastIndexOf('.')).toLowerCase();
+  const dimensions = readImageDimensions(readFileSync(file), extension);
+  if (!dimensions) fail(asset + ' dimensions could not be decoded');
+  else if (dimensions.width !== 2660 || dimensions.height !== 1440) fail(asset + ' is ' + dimensions.width + '×' + dimensions.height + '; required 2660×1440');
+  else pass(asset + ' exact screenshot dimensions: 2660×1440');
+}
+if (!candidateScreenshotFiles.length) pass('no project screenshot binaries present; media gate remains explicit');
+const generatedHtmlForMedia = generatedPaths
+  .filter((file) => file.endsWith('.html'))
+  .map((file) => ({ file, html: readFileSync(join(root, file), 'utf8') }));
+for (const { file, html } of generatedHtmlForMedia) {
+  for (const stale of ['2047×1151', '2048×1108', '2048×1152', '1000×565', '900×509', 'home.jpg', 'library.jpg', 'details.jpg', 'details.webp']) {
+    if (html.includes(stale)) fail(file + ' contains stale screenshot reference: ' + stale);
+  }
+}
+pass('generated HTML contains no superseded screenshot dimensions or EasyFlix legacy media references');
 const qr = join(root, 'portfolio-qr.svg');
 if (!existsSync(qr)) fail('missing portfolio QR code');
 else {
@@ -338,7 +433,7 @@ requireContent('EasyFlix case study', easyflix, [
   'PUBLIC RELEASE',
   'LOCAL-FIRST', 'Continue Watching', 'Sync Metadata',
   'INSTALLER + PORTABLE WIN-X64', '2,301', '108 entries',
-  'The library, not a mockup.', 'ALL LIBRARY', 'TITLE DETAILS'
+  'The final capture stays real.', '2660×1440 REQUIRED', 'NO UPSCALING'
 ]);
 
 requireContent('RevDev case study', revdev, [

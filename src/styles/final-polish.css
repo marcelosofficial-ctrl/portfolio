@@ -95,29 +95,7 @@
   border-color: rgba(214,255,87,.52);
 }
 
-/* The original VektorDeck web screenshots are real product captures, but the
-   checked-in copies are compact web previews (1000px / 760px wide). Never
-   stretch those previews beyond their native pixel width on large displays. */
-.product-shot img[src*="vektordeck/dashboard.webp"] {
-  width: min(100%, 1000px);
-  margin-inline: auto;
-}
-.product-shot img[src*="vektordeck/intelligence-tour.webp"],
-.product-shot img[src*="vektordeck/evidence-tour.webp"] {
-  width: min(100%, 760px);
-  margin-inline: auto;
-}
-.product-shot:has(img[src*="vektordeck/"]) {
-  background:
-    linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px),
-    linear-gradient(145deg,#0f1315,#0b0e10);
-  background-size: 30px 30px, 30px 30px, auto;
-}
-
-/* The homepage previously enlarged the compressed VektorDeck dashboard preview.
-   Use a crisp CSS product-summary panel there instead. The real screenshots
-   remain available inside the case study. */
+/* VektorDeck uses the structured evidence panel until the new real capture is supplied. */
 .project-snapshot {
   position: relative;
   min-height: 270px;
@@ -913,7 +891,7 @@ main:has(.identity-hero) .home-about-strip h3 {
 /* EasyFlix product-specific visual treatment */
 .easyflix-product-shot{position:relative;isolation:isolate;background:#0b0f10;overflow:hidden}
 .easyflix-product-shot::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,7,8,.02) 38%,rgba(5,7,8,.76) 100%)}
-.easyflix-product-shot img{display:block;width:100%;height:auto;aspect-ratio:2047/1151;object-fit:contain;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease}
+.easyflix-product-shot img{display:block;width:100%;height:auto;aspect-ratio:2660/1440;object-fit:contain;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease}
 .easyflix-product-shot:hover img{transform:scale(1.012);filter:saturate(1.04) contrast(1.015)}
 .easyflix-shot-overlay{position:absolute;z-index:2;left:16px;right:16px;bottom:47px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 11px;border:1px solid rgba(255,255,255,.10);background:rgba(7,10,11,.72);backdrop-filter:blur(8px);color:#8e999a;font-size:.48rem;letter-spacing:.11em}
 .easyflix-shot-overlay>span{color:var(--accent)}
@@ -1904,7 +1882,7 @@ main:has(.identity-hero) .carousel-rotation-toggle:hover{
   transform:translateY(-1px);
 }
 main:has(.identity-hero) .carousel-shot img{
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
 }
 
 .reveal-ready{
@@ -1947,7 +1925,7 @@ main:has(.identity-hero) .carousel-shot img{
 }
 
 .easyflix-product-shot img{
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
 }
 
 
@@ -2310,7 +2288,7 @@ main:has(.identity-hero) .project-carousel-slide p{
   display:block;
   width:100%;
   height:auto;
-  aspect-ratio:2047/1151;
+  aspect-ratio:2660/1440;
   object-fit:contain;
   background:#080b0c;
   transition:transform .45s var(--ease-spring),filter .35s ease;
@@ -2478,3 +2456,15 @@ main:has(.identity-hero) .project-carousel-slide p{
 @media (prefers-reduced-motion:reduce){
   .vektordeck-inspector-panel{transition:none!important}
 }
+
+/* EasyFlix final-media gate: evidence surface remains product-like without implying a screenshot. */
+.easyflix-evidence-surface{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:260px;padding:clamp(20px,2.6vw,32px);background:radial-gradient(circle at 82% 14%,rgba(214,255,87,.055),transparent 32%),linear-gradient(145deg,#101516,#090c0d);border:1px solid rgba(255,255,255,.085);box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}
+.easyflix-evidence-surface::before{content:"LOCAL / PRODUCT SURFACE";position:absolute;right:24px;top:18px;color:rgba(255,255,255,.12);font:500 .46rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;pointer-events:none}
+.easyflix-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.06)}
+.easyflix-evidence-grid>div{min-width:0;display:grid;gap:7px;padding:16px;background:rgba(8,11,12,.9)}
+.easyflix-evidence-grid span{font:500 .5rem/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;color:#687274}
+.easyflix-evidence-grid b{font-size:clamp(.72rem,1vw,.92rem);font-weight:570;letter-spacing:-.015em;color:#d8ddda}
+.easyflix-evidence-grid small{font-size:.68rem;line-height:1.45;color:#737e80}
+.easyflix-evidence-surface .diagnostic-foot{margin-top:auto}
+.easyflix-case-evidence{min-height:360px}
+@media(max-width:760px){.easyflix-evidence-grid{grid-template-columns:1fr}.easyflix-evidence-surface{min-height:300px}.easyflix-case-evidence{min-height:330px}}
