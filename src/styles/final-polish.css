@@ -1949,3 +1949,30 @@ main:has(.identity-hero) .carousel-shot img{
 .easyflix-product-shot img{
   aspect-ratio:2047/1151;
 }
+
+
+/* Final craft correction: controls should meet a generous touch target,
+   while frequent interactions stay quiet rather than decorative. */
+.button{
+  min-height:44px;
+}
+
+.button::after{
+  display:none;
+}
+
+main:has(.identity-hero) .project-carousel-slide.is-active .carousel-slide-copy,
+main:has(.identity-hero) .project-carousel-slide.is-active .carousel-visual-column{
+  animation:none;
+}
+
+:where(a,button,[role="button"],input,select,textarea):focus-visible{
+  outline:2px solid rgba(214,255,87,.78);
+  outline-offset:4px;
+}
+
+@media (prefers-reduced-motion:no-preference){
+  html{
+    scroll-behavior:smooth;
+  }
+}
