@@ -1,5 +1,14 @@
 # CURRENT MEDIA RESOLUTION CORRECTION — 2026-10-03
 
+> This correction supersedes every older screenshot-resolution note below. All real screenshots used by the portfolio must be **exactly 2660×1440**. Any 2048×1108, 2048×1152, 2047×1151, 1000×565, 900×509, or other non-2660×1440 screenshot is superseded/low-resolution and must not be used as final portfolio media.
+>
+> The current branch intentionally contains **no EasyFlix screenshot binaries** because the only checked-in derivatives were confirmed by CI as 1000×565. They are removed from the presentation until the correct supplied 2660×1440 captures can be transferred and verified.
+>
+> CrashScope, RevDev and MinimalClock likewise remain media-gated until their correct 2660×1440 binaries are actually available to the publication pipeline. VektorDeck remains the final user-supplied capture gate and must also be exactly 2660×1440.
+>
+> The final verifier must inspect actual image dimensions, not trust HTML width/height attributes.
+
+
 > This correction supersedes every older screenshot-resolution note below. All real screenshots used by the portfolio must be **exactly 2660×1440**. Any 2048×1108, 2048×1152, 2047×1151, 1000×565, 900×509, or other non-2660×1440 screenshot is considered superseded/low-resolution and must not be used as final portfolio media.
 >
 > This applies to CrashScope, RevDev, MinimalClock, EasyFlix and every other real screenshot used on the site. VektorDeck remains the only missing user-supplied screenshot. Do not upscale or AI-generate a smaller capture and present it as a real screenshot.
