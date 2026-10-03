@@ -28,7 +28,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           </a>
           <a class="project-carousel-slide" href="/projects/easyflix/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div><h2>EasyFlix</h2><p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style="--easyflix-backdrop:url('/portfolio/easyflix/library.webp')"><img src="/portfolio/easyflix/library.webp" alt="EasyFlix library screen" width="2660" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>USER-SUPPLIED / 2660×1440</b></figcaption></figure></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console easyflix-evidence-visual" aria-hidden="true"><div class="priority-visual-head mono"><span>EASYFLIX / LOCAL LIBRARY</span><b>MEDIA GATE</b></div><div class="easyflix-evidence-grid"><div><span>AUTHORITY</span><b>FILESYSTEM</b><small>source files stay in place</small></div><div><span>STATE</span><b>WATCH + RESUME</b><small>local continuity</small></div><div><span>DRIVES</span><b>ONLINE / OFFLINE</b><small>availability stays explicit</small></div><div><span>INTAKE</span><b>DETERMINISTIC</b><small>GUI + handoff path</small></div></div><div class="diagnostic-foot mono"><span>1.4.0 RELEASED</span><span>219 TESTS</span><span>2660×1440 CAPTURE PENDING</span></div></div></div>
           </a>
           <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p><span class="carousel-link">Open case study ↗</span></div>
@@ -105,11 +105,11 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>EasyFlix</h3>
           <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
           <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
-          <figure class="priority-screenshot easyflix-product-shot">
-            <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix home screen showing a real local media library" width="2660" height="1440" loading="lazy" decoding="async" />
-            <div class="easyflix-shot-overlay mono" aria-hidden="true"><span>LOCAL LIBRARY</span><div><b>FILESYSTEM</b><i></i><b>WATCH STATE</b><i></i><b>PLAYBACK</b></div></div>
-            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME</b></figcaption>
-          </figure>
+          <div class="priority-screenshot easyflix-product-shot easyflix-evidence-surface" aria-label="EasyFlix product evidence panel. Final 2660 by 1440 screenshot pending media transfer.">
+            <div class="priority-visual-head mono"><span>EASYFLIX / PRODUCT EVIDENCE</span><b>1.4.0 RELEASED</b></div>
+            <div class="easyflix-evidence-grid"><div><span>FILES</span><b>AUTHORITATIVE</b><small>non-destructive source handling</small></div><div><span>LIBRARY</span><b>STREAMING-STYLE</b><small>movies · TV · anime</small></div><div><span>CONTINUITY</span><b>219 TESTS</b><small>release validation</small></div><div><span>MEDIA</span><b>2660×1440</b><small>final capture gate</small></div></div>
+            <div class="diagnostic-foot mono"><span>REAL PRODUCT CAPTURE WILL REPLACE THIS SURFACE</span><span>NO UPSCALING</span></div>
+          </div>
           <div class="active-build-visual">
             <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
             <div><span>MODEL</span><b>LOCAL-FIRST</b></div>
