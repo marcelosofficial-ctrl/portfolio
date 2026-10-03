@@ -777,11 +777,13 @@ const websiteSchema = {
         const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
         const prev = carousel.querySelector('[data-carousel-prev]');
         const next = carousel.querySelector('[data-carousel-next]');
+        const rotationToggle = carousel.querySelector('[data-carousel-toggle]');
         const progressBar = carousel.querySelector('[data-carousel-progress]');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const intervalMs = 6500;
         let index = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
         let timer = 0;
+        let userPaused = false;
         let paused = reduceMotion.matches;
 
         const resetProgress = () => {
@@ -806,8 +808,15 @@ const websiteSchema = {
           }
         };
 
+        const updateRotationToggle = () => {
+          if (!rotationToggle) return;
+          rotationToggle.setAttribute('aria-pressed', String(userPaused));
+          rotationToggle.setAttribute('aria-label', userPaused ? 'Start automatic slide rotation' : 'Stop automatic slide rotation');
+          rotationToggle.textContent = userPaused ? 'PLAY' : 'PAUSE';
+        };
+
         const scheduleAuto = () => {
-          if (paused || document.hidden || slides.length < 2) return;
+          if (paused || userPaused || document.hidden || slides.length < 2) return;
           if (timer) window.clearTimeout(timer);
           resetProgress();
           timer = window.setTimeout(() => {
@@ -837,9 +846,16 @@ const websiteSchema = {
         const userGo = (nextIndex) => {
           stopAuto();
           render(nextIndex);
-          paused = false;
-          if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          paused = reduceMotion.matches;
+          if (!userPaused && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
         };
+
+        rotationToggle?.addEventListener('click', () => {
+          userPaused = !userPaused;
+          if (userPaused) stopAuto();
+          else if (!reduceMotion.matches && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          updateRotationToggle();
+        });
 
         prev?.addEventListener('click', (event) => { event.preventDefault(); userGo(index - 1); });
         next?.addEventListener('click', (event) => { event.preventDefault(); userGo(index + 1); });
@@ -861,9 +877,11 @@ const websiteSchema = {
         reduceMotion.addEventListener?.('change', (event) => {
           paused = event.matches;
           if (paused) stopAuto();
-          else if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          else if (!userPaused && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          updateRotationToggle();
         });
 
+        updateRotationToggle();
         render(index);
         if (!paused) scheduleAuto();
       }
