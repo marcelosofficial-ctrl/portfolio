@@ -396,3 +396,13 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - W3C WAI-ARIA carousel guidance: pause controls, keyboard operation, hidden-slide focus management, and predictable slide semantics.
 - MDN CSS object-fit/object-position guidance: preserve image aspect ratio and deliberately align contained media.
 - MDN CSS Grid/minmax guidance: equal flexible tracks should use minmax(0,1fr) so intrinsic content does not widen one column.
+
+## 2026-10-03 r10: carousel accessibility and controller consolidation
+
+- Removed the duplicate homepage carousel controller that was competing with the shared BaseLayout controller. There is now one authoritative carousel state machine.
+- Added explicit carousel semantics: role="region" plus aria-roledescription="carousel" and an accessible label.
+- Added a visible PAUSE/PLAY control. This follows current WAI carousel guidance that auto-rotating carousels should expose a user control to stop/restart rotation. Hover/focus pausing remains separate from explicit user pause.
+- Kept the existing 6.5-second timing, arrows, slide dots, keyboard navigation, reduced-motion behavior and hidden-slide focus suppression.
+- Research used for this pass: W3C WAI carousel pattern/tutorials; MDN object-fit/object-position, aspect-ratio, image dimensions/CLS, and CSS Grid/minmax guidance.
+- No CrashScope, RevDev, Retro, VektorDeck or MinimalClock screenshots were available in the current conversation/library search during this pass, so no screenshot-dependent claims or fabricated media were added.
+- Next blocking media batch remains CrashScope + RevDev + Retro Game Vision, maximum three screenshots. After integration and QA, proceed to VektorDeck + MinimalClock.
