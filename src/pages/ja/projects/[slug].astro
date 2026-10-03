@@ -35,7 +35,7 @@ const projects = {
     status: 'ACTIVE DEVELOPMENT · 公開ダウンロードなし',
     stack: '.NET 8 · WPF · Dev Relay',
     access: '公開リリースなし',
-    href: 'https://github.com/marcelosofficial-ctrl/portfolio',
+    href: null,
     problem: 'AI支援開発は、チャットが変わると目標、実行状態、結果、失敗履歴が分断されやすくなります。RevDevはそれをオペレーターが見える状態にします。',
     architecture: 'UIは操作面に限定し、Dev Relayがguarded executionを担当。Git、exact results、CURRENT_GOALSなどを会話の外に残し、再開可能な状態を作ります。',
     evidence: '現在は再起動安全性、結果公開、進捗/liveness、最終リリースライフサイクルの受け入れを進めています。公開版とは扱いません。',
@@ -48,7 +48,7 @@ const projects = {
     status: 'FIELD TESTED · GUI RELEASEなし',
     stack: 'Python · SQLite · Vision · CI',
     access: 'Source / case study',
-    href: 'https://github.com/marcelosofficial-ctrl',
+    href: 'https://github.com/marcelosofficial-ctrl/Retro-Game-Vision-Pipeline',
     problem: '店頭の価格タグだけでは、実際の版・状態・市場価値まで判断できないことから始まりました。',
     architecture: '写真、現物状態、識別情報、市場情報、証拠のつながりを保持し、BUY / RESEARCH / SKIPの判断へまとめます。',
     evidence: '公開GUIを持つ製品としては扱っていません。ポートフォリオのビジュアルも実在しないGUIスクリーンショットではなく、判断パイプラインを示します。',
@@ -199,12 +199,12 @@ const englishPath = `/projects/${slug}/`;
   </section>
 
   <section class="case-section wrap">
-    <div class="case-section-heading"><p class="eyebrow">Architecture</p><h2>境界を明確にして、何を証明できるかを残す。</h2><p>{project.architecture}</p></div>
+    <div class="case-section-heading"><p class="eyebrow">設計</p><h2>境界を明確にして、何を証明できるかを残す。</h2><p>{project.architecture}</p></div>
     <div class="architecture-note mono"><span>STATE</span><p>{project.status}</p></div>
   </section>
 
   <section class="case-section wrap">
-    <div class="case-section-heading"><p class="eyebrow">Evidence</p><h2>「まだ証明できない」ことも状態として残す。</h2><p>{project.evidence}</p></div>
+    <div class="case-section-heading"><p class="eyebrow">検証</p><h2>「まだ証明できない」ことも状態として残す。</h2><p>{project.evidence}</p></div>
     <div class="field-console mono">
       <div><span>project</span><b>{project.title}</b></div>
       <div><span>status</span><b class="accent-value">{project.status}</b></div>
@@ -214,7 +214,7 @@ const englishPath = `/projects/${slug}/`;
   </section>
 
   <section class="case-section wrap">
-    <div class="case-section-heading"><p class="eyebrow">Engineering note</p><h2>失敗や制約を、次の設計判断へ。</h2><p>{project.lessons}</p></div>
+    <div class="case-section-heading"><p class="eyebrow">開発ノート</p><h2>失敗や制約を、次の設計判断へ。</h2><p>{project.lessons}</p></div>
   </section>
 
   <section class="case-section case-closing wrap">
