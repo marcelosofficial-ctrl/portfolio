@@ -47,7 +47,7 @@ const localPath = basePrefix && currentPath.startsWith(basePrefix)
 const locale = localeProp ?? (localPath === '/ja' || localPath.startsWith('/ja/') ? 'ja' : 'en');
 const isJapanese = locale === 'ja';
 const navCurrent = (path: string) => localPath === path || (path !== '/' && localPath.startsWith(`${path}/`));
-const workCurrent = isJapanese ? localPath === '/ja' : (localPath === '/' || localPath.startsWith('/projects/'));
+const workCurrent = isJapanese ? (localPath === '/ja' || localPath.startsWith('/ja/projects/')) : (localPath === '/' || localPath.startsWith('/projects/'));
 const aboutCurrent = isJapanese ? navCurrent('/ja/about') : navCurrent('/about');
 const resumeCurrent = isJapanese ? navCurrent('/ja/resume') : navCurrent('/resume');
 const contactCurrent = isJapanese ? navCurrent('/ja/contact') : navCurrent('/contact');
