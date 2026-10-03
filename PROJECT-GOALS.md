@@ -1,5 +1,21 @@
 # Portfolio Project Goals
 
+# CURRENT AUTHORITATIVE STATE — 2026-10-03
+
+> This block supersedes older historical notes below when they conflict with the current implementation.
+
+- Homepage featured carousel is **5 slides**: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, and Smaller but Useful.
+- The Japanese homepage mirrors the English information architecture and uses localized `/ja/projects/<slug>/` project routes.
+- CrashScope: **1.3 is current development; 1.2.0 is the public release**. Never describe 1.2.0 as the current development line.
+- EasyFlix: **1.4.0 released**.
+- RevDev: **active development only; no public download**.
+- Retro Game Vision & Resale System: **field-tested decision pipeline; no GUI release**. Never invent a GUI screenshot.
+- VektorDeck: **1.0.0 released/source available**. The old low-resolution capture has been removed from the final presentation; an evidence panel is used until the user's new clean screenshot is supplied.
+- Focused projects remain four equal desktop cards: MinimalClock, ExactArtifact, GapTrace, ConfigTrace.
+- Final media gates still outstanding: supplied CrashScope/RevDev/MinimalClock/EasyFlix media transfer and verification, exact canonical RevDev icon, one clean VektorDeck screenshot at **1920×1080 OR HIGHER**, final QA, and successful Pages deployment.
+- Do not request the VektorDeck screenshot until all other non-media work and QA are complete.
+
+
 This file is the durable source of truth for the current visual-overhaul goals. Future implementation chats should read this file before making portfolio design changes.
 
 ## Current priority: project hierarchy and visual evidence
