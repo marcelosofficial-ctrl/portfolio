@@ -26,6 +26,34 @@ function walk(directory) {
 }
 
 function readImageDimensions(bytes, extension) {
+  if (extension === '.png') {
+    if (bytes.length < 24 || bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') return null;
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+
+  if (extension === '.jpg' || extension === '.jpeg') {
+    if (bytes.length < 4 || bytes[0] !== 0xff || bytes[1] !== 0xd8) return null;
+    let offset = 2;
+    while (offset + 9 < bytes.length) {
+      if (bytes[offset] !== 0xff) { offset += 1; continue; }
+      while (offset < bytes.length && bytes[offset] === 0xff) offset += 1;
+      const marker = bytes[offset++];
+      if (marker === 0xd9 || marker === 0xda) break;
+      if (offset + 1 >= bytes.length) break;
+      const segmentLength = bytes.readUInt16BE(offset);
+      if (segmentLength < 2 || offset + segmentLength > bytes.length) return null;
+      const isSof = (marker >= 0xc0 && marker <= 0xc3) ||
+        (marker >= 0xc5 && marker <= 0xc7) ||
+        (marker >= 0xc9 && marker <= 0xcb) ||
+        (marker >= 0xcd && marker <= 0xcf);
+      if (isSof && segmentLength >= 7) {
+        return { height: bytes.readUInt16BE(offset + 3), width: bytes.readUInt16BE(offset + 5) };
+      }
+      offset += segmentLength;
+    }
+    return null;
+  }
+
   if (extension === '.webp') {
     if (bytes.length < 30 || bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') return null;
     const chunk = bytes.subarray(12, 16).toString('ascii');
@@ -38,6 +66,7 @@ function readImageDimensions(bytes, extension) {
       return { width: bytes.readUInt16LE(26) & 0x3fff, height: bytes.readUInt16LE(28) & 0x3fff };
     }
   }
+
   return null;
 }
 function routeTarget(localPath) {
@@ -240,12 +269,13 @@ for (const { file, html } of generatedHtmlForEvidence) {
 pass('generated HTML contains no fabricated Retro evidence examples');
 
 const candidateScreenshotFiles = generatedPaths.filter((file) => {
-  if (!/\\.webp$/i.test(file)) return false;
+  if (!/\\.(?:webp|png|jpe?g)$/i.test(file)) return false;
   return screenshotAssetRoots.some((rootName) => file.startsWith(rootName + '/'));
 });
 for (const asset of candidateScreenshotFiles) {
   const file = join(root, asset);
-  const dimensions = readImageDimensions(readFileSync(file), '.webp');
+  const extension = file.slice(file.lastIndexOf('.')).toLowerCase();
+  const dimensions = readImageDimensions(readFileSync(file), extension);
   if (!dimensions) fail(asset + ' dimensions could not be decoded');
   else if (dimensions.width !== 2660 || dimensions.height !== 1440) fail(asset + ' is ' + dimensions.width + '×' + dimensions.height + '; required 2660×1440');
   else pass(asset + ' exact screenshot dimensions: 2660×1440');
