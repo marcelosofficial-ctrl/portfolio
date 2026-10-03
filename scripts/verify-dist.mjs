@@ -172,8 +172,6 @@ if (!existsSync(sitemapFile)) {
 const webpAssets = [
   ['profile/marcelo-profile.webp', 5000],
   ['vektordeck/dashboard.webp', 5000],
-  ['vektordeck/intelligence-tour.webp', 5000],
-  ['vektordeck/evidence-tour.webp', 5000],
   ['brand/marcelo-lab.webp', 2000],
   ['brand/crashscope.webp', 2000],
   ['brand/reseller.webp', 2000],
