@@ -559,3 +559,40 @@ Research references used for this pass:
 - MDN — Animation performance and frame rate: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Animation_performance_and_frame_rate
 
 Current media gate remains unchanged: integrate the supplied CrashScope/RevDev/MinimalClock/EasyFlix assets and the forthcoming VektorDeck capture only after exact source verification; do not fabricate or substitute missing evidence.
+
+## 2026-10-03 deep visual craft pass 2
+
+The portfolio is being treated as a product interface rather than a collection of decorated project cards. This pass addresses the requirement for a sleek Apple-like finish with small, smooth, project-specific details.
+
+### Interaction language
+- Hover effects are subtle and physical: cards lift slightly, internal visual surfaces can scale by about 0.8%, links gain a tiny amount of emphasis, and controls respond with short spring-like easing.
+- No decorative infinite animation. Motion is reserved for navigation, hover/focus feedback, carousel state changes and other information-bearing transitions.
+- Keep reduced-motion and reduced-transparency behavior intact.
+- Maintain 44px minimum primary button height and visible focus treatment.
+
+### Project-specific visual language
+- CrashScope: diagnostic measurement/ruler ticks reinforce telemetry, evidence and Windows-diagnostics language.
+- EasyFlix: restrained filmstrip edge marks reinforce the media-library/cinematic identity without competing with the real screenshot.
+- RevDev: queue -> mission -> result rail reinforces guarded execution and durable result flow.
+- VektorDeck: model/runtime/evidence labeling and telemetry ticks reinforce workstation-control language. Its evidence panel must never place decorative pseudo-content behind the structured meters.
+- Retro Game Vision & Resale System: field-note / price-tag treatment reinforces physical-store research. The carousel visual uses verified field-validation totals rather than fabricated game names/prices: 10 uploaded photos, 49 distinct physical copies, 48 directly readable prices, 55 compatible market observations, and output 1 BUY / 7 MAYBE / 41 RESEARCH.
+
+### Carousel corrections
+- Retro headline is explicitly constrained to an editorial two-line treatment so the copy cannot escape the fixed carousel frame.
+- Retro visual has substantially more information and a dedicated field-research motif while remaining clearly marked NO GUI RELEASE.
+- All carousel visuals remain equal-square stages.
+- VektorDeck's generic project-snapshot pseudo-artwork is disabled for its evidence panel so it cannot overlap the real metric rows.
+
+### EasyFlix media correction
+- The repository contains prepared public/easyflix/home.webp and public/easyflix/library.webp assets alongside legacy JPGs. The live portfolio now references the prepared WebP captures for both the homepage and EasyFlix case study, rather than the legacy JPGs.
+- The CSS media geometry is explicitly 2047/1151, matching the supplied capture dimensions rather than the old 1000/565 ratio.
+- The remaining media gate is to verify the deployed WebP assets visually against the supplied source captures; do not silently revert to the legacy JPGs.
+
+### Apple 2026 research applied
+Apple WWDC26 Principles of Great Design emphasizes purpose, agency, responsibility, familiarity, flexibility, simplicity, craft and delight. Simplicity is removing friction rather than merely minimizing UI; clarity comes from hierarchy through order, spacing and contrast; craft includes typography, responsive animation, performance and iteration.
+Sources: https://developer.apple.com/videos/play/wwdc2026/250/ and https://developer.apple.com/videos/play/wwdc2026/251/
+
+This means the portfolio should become more intentional, not merely more animated. Project-specific motifs are permitted only when they communicate the project's domain.
+
+### Final media gate
+Do not request the VektorDeck screenshot until the non-media design, IA and accessibility corrections are finished. Once the user supplies the clean 1920x1080+ VektorDeck capture, perform one coordinated media pass, then run final build, bilingual route verification, accessibility checks, screenshot containment checks and deployment verification before calling the portfolio published.
