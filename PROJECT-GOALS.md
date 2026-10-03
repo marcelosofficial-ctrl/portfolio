@@ -312,3 +312,87 @@ This pass is durable project direction, not chat-only context.
 - Do not revert the intrinsic dimensions to 1000×565 after the supplied binaries are transferred.
 
 - Current supplied-source SHA-256: Home `b66713a7214bc53efdc6f09e43a4528bd50e427eb253cb91f6a9677f3ea3229d`; All Library `c199de46e17b4ba483611c78a52c622302ff2563b895ea4e02bcbee6d41e5a36`.
+
+## 2026-10-03 master overhaul plan: evidence, carousel consolidation, and screenshot completion
+
+This is the durable execution plan for the remaining portfolio visual overhaul. Treat this file as the source of truth for future passes; do not rely on chat memory or repeatedly rediscover the same requirements.
+
+### A. Completion definition
+- Stable carousel geometry at every breakpoint; no slide changes the outer page height because of title length or visual content.
+- Homepage carousel grouping: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, then one “Smaller but Useful” slide containing exactly MinimalClock, ExactArtifact, GapTrace and ConfigTrace.
+- Every small-project tile is individually clickable and legible.
+- Retro Game Vision has approved real screenshots in its case study and carousel.
+- CrashScope and RevDev have approved real screenshots; no synthetic screenshots are presented as real evidence.
+- VektorDeck screenshots are replaced/improved when better source captures are supplied, with centered intentional framing.
+- MinimalClock visuals are improved when approved screenshots are supplied.
+- RevDev uses the exact approved transparent icon asset with the same CSS green aura treatment as other project marks. Never substitute the hand-drawn SVG or corrupted low-resolution PNG.
+- EasyFlix uses the two supplied 2047×1151 captures once actually transferred: Home for the main product visual and All Library for the carousel/library visual.
+- Public truth remains intact: CrashScope 1.2.0 public; CrashScope 1.3 never exposed; EasyFlix 1.4.0 public; RevDev active development with no public download.
+
+### B. Carousel architecture
+- Current target: 5 slides: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, Smaller but Useful.
+- The fifth slide contains four clickable cards: MinimalClock, ExactArtifact, GapTrace, ConfigTrace.
+- VektorDeck is no longer an individual homepage carousel slide; it remains a separate case study/portfolio project and its media still needs improvement.
+- Keep 6.5-second autoplay, arrows, pagination, keyboard Left/Right navigation, hover/focus pause, visibility pause, reduced-motion behavior, and hidden-slide tab suppression.
+- Normal slides keep editorial copy and square visual stage in separate columns.
+- The visual stage is square; real non-square screenshots remain fully visible with object-fit: contain and centered object-position, with a restrained same-image/background treatment where appropriate.
+- The four small-project cards use repeat(4,minmax(0,1fr)) on desktop so content cannot make one card intrinsically wider. Responsive layouts may reduce the count.
+
+### C. Evidence/media policy
+- Real screenshots are evidence, not decoration. Never fabricate, AI-generate, or silently substitute a screenshot and present it as real product evidence.
+- Before implementing a new screenshot treatment, research current guidance for the relevant layout/media/accessibility problem, then implement and verify the effective cascade/build.
+- Prefer the highest-resolution validated real capture available. Do not upscale a low-resolution capture and call it higher-resolution evidence.
+- Establish a deliberate capture ratio/resolution per project based on the actual UI and intended rendered size. For square carousel stages, preserve the full screenshot and use containment rather than destructive cropping.
+- Case-study galleries may use a wider source ratio when that better represents the product; carousel framing remains consistent.
+
+### D. User-screenshot acquisition protocol
+When screenshots are needed, do all code/layout work that does not depend on them first. Then request no more than 2–3 screenshots in one pass and state the exact target resolution in BIG TEXT in the chat.
+Current acquisition order:
+1. CrashScope — clean representative public-release UI state.
+2. RevDev — clean representative operator UI state.
+3. Retro Game Vision & Resale System — representative field/vision workflow.
+Next batch after those are integrated:
+4. VektorDeck — replace current low-resolution/right-shifted captures with clean centered captures.
+5. MinimalClock — capture the finished utility at a useful readable size.
+Do not request another screenshot batch until the current batch has been integrated and visually checked.
+
+### E. RevDev asset gate
+- Required artwork is the exact transparent supplied/canonical icon, not a recreation.
+- Canonical application source historically identified as src/RevDev.App/Assets/RevDev.ico; use the approved supplied artwork when available.
+- Green aura is CSS presentation only.
+- Do not activate public/brand/revdev.svg or the old corrupted public/brand/revdev.png as a substitute.
+- If the exact binary cannot be transferred through the current GitHub connector, use a local Git-capable transfer path rather than falsely claiming the asset was published.
+
+### F. EasyFlix binary gate
+- Home: 2047×1151 RGB JPEG, SHA-256 b66713a7214bc53efdc6f09e43a4528bd50e427eb253cb91f6a9677f3ea3229d
+- All Library: 2047×1151 RGB JPEG, SHA-256 c199de46e17b4ba483611c78a52c622302ff2563b895ea4e02bcbee6d41e5a36
+- Repository copies remain older 1000×565 files until actual binary replacement is verified.
+- Do not claim replacement is complete from HTML intrinsic dimensions alone.
+- After transfer, verify repository blob dimensions/content and retain the source checksums in this file.
+
+### G. Visual QA gate
+Every homepage pass must verify:
+- all carousel slides have identical outer dimensions;
+- long Retro Game Vision title does not enlarge the slide;
+- small-project slide has four equal, readable, clickable cards;
+- controls and timer remain aligned with the visual axis;
+- EasyFlix remains centered and uncropped;
+- hidden slides cannot receive focus;
+- autoplay advances after the full 6.5-second interval;
+- hover/focus/reduced-motion/visibility behavior remains correct;
+- desktop and mobile breakpoints remain coherent;
+- no CrashScope 1.3 language or release artifact is exposed;
+- build/CI passes before publication.
+
+### H. Efficient pass order
+Pass 1 — now: durable master plan + carousel consolidation + fixed geometry + four-project grouped slide + research-backed accessibility/media framing.
+Pass 2: integrate first 2–3 approved screenshots (CrashScope, RevDev, Retro) and exact RevDev icon if supplied; repair their case-study media.
+Pass 3: integrate VektorDeck and MinimalClock captures; improve centering, resolution and case-study presentation.
+Pass 4: transfer and verify the two supplied EasyFlix binaries and exact RevDev binary through a local Git-capable path; verify checksums/dimensions.
+Pass 5: full visual QA across desktop/mobile, case-study access/media audit, build, then final publication.
+If a pass is blocked by user-supplied media, finish all non-blocked work first and stop only at the explicit media gate.
+
+### I. Research references for implementation
+- W3C WAI-ARIA carousel guidance: pause controls, keyboard operation, hidden-slide focus management, and predictable slide semantics.
+- MDN CSS object-fit/object-position guidance: preserve image aspect ratio and deliberately align contained media.
+- MDN CSS Grid/minmax guidance: equal flexible tracks should use minmax(0,1fr) so intrinsic content does not widen one column.
