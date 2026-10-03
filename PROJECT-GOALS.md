@@ -445,3 +445,11 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - The current homepage carousel is intentionally **five slides**, not nine: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, and Smaller but Useful (MinimalClock, ExactArtifact, GapTrace, ConfigTrace).
 - The older nine-slide wording above is historical design direction and is superseded by the five-slide master plan. Do not restore VektorDeck or the four small projects as separate homepage carousel slides.
 - Remaining hard gates before final publication: transfer/verify supplied CrashScope, RevDev and MinimalClock binaries (plus the two supplied EasyFlix JPEGs and exact RevDev icon when available), obtain/integrate the missing VektorDeck capture, perform full visual/build/access audit, then publish once the final Pages run succeeds.
+
+
+## 2026-10-03 r13: carousel accessibility final audit
+
+- Rechecked the carousel against current WAI-ARIA/W3C guidance: the user-facing rotation control is an action button with a changing accessible label rather than a toggle state; its `aria-pressed` state was removed.
+- Keyboard focus entering the carousel still stops automatic rotation, and focus leaving no longer silently restarts it; the user can explicitly press PLAY to resume. This follows the WAI-ARIA APG carousel pattern.
+- Added a polite live-region announcement for user-selected slides so keyboard/manual slide changes communicate the current item without forcing focus movement.
+- Hover pause, visibility pause, reduced-motion behavior, Left/Right navigation, five-slide grouping and hidden-slide focus suppression remain intact.

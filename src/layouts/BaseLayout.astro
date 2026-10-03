@@ -779,6 +779,7 @@ const websiteSchema = {
         const next = carousel.querySelector('[data-carousel-next]');
         const rotationToggle = carousel.querySelector('[data-carousel-toggle]');
         const progressBar = carousel.querySelector('[data-carousel-progress]');
+        const liveRegion = carousel.querySelector('[data-carousel-live]');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const intervalMs = 6500;
         let index = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
@@ -810,7 +811,6 @@ const websiteSchema = {
 
         const updateRotationToggle = () => {
           if (!rotationToggle) return;
-          rotationToggle.setAttribute('aria-pressed', String(userPaused));
           rotationToggle.setAttribute('aria-label', userPaused ? 'Start automatic slide rotation' : 'Stop automatic slide rotation');
           rotationToggle.textContent = userPaused ? 'PLAY' : 'PAUSE';
         };
@@ -827,7 +827,7 @@ const websiteSchema = {
           }, intervalMs);
         };
 
-        const render = (nextIndex) => {
+        const render = (nextIndex, announce = false) => {
           index = (nextIndex + slides.length) % slides.length;
           slides.forEach((slide, i) => {
             const active = i === index;
@@ -842,11 +842,16 @@ const websiteSchema = {
             dot.setAttribute('aria-pressed', String(active));
           });
           resetProgress();
+          if (announce && liveRegion) {
+            const activeSlide = slides[index];
+            const title = activeSlide?.querySelector('h2,h3')?.textContent?.trim() || ('Slide ' + (index + 1));
+            liveRegion.textContent = 'Slide ' + (index + 1) + ' of ' + slides.length + ': ' + title;
+          }
         };
 
         const userGo = (nextIndex) => {
           stopAuto();
-          render(nextIndex);
+          render(nextIndex, true);
           paused = reduceMotion.matches;
           if (!userPaused && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
         };
@@ -864,8 +869,10 @@ const websiteSchema = {
         carousel.addEventListener('mouseenter', stopAuto);
         carousel.addEventListener('mouseleave', () => { if (!reduceMotion.matches) scheduleAuto(); });
         carousel.addEventListener('focusin', stopAuto);
-        carousel.addEventListener('focusout', (event) => {
-          if (!carousel.contains(event.relatedTarget) && !reduceMotion.matches) scheduleAuto();
+        carousel.addEventListener('focusout', () => {
+          // WAI-ARIA APG: once keyboard focus has entered an auto-rotating carousel,
+          // rotation remains stopped until the user explicitly presses PLAY.
+          stopAuto();
         });
         carousel.addEventListener('keydown', (event) => {
           if (event.key === 'ArrowLeft') { event.preventDefault(); userGo(index - 1); }
@@ -873,7 +880,7 @@ const websiteSchema = {
         });
         document.addEventListener('visibilitychange', () => {
           if (document.hidden) stopAuto();
-          else if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          else if (!carousel.contains(document.activeElement) && !carousel.matches(':hover')) scheduleAuto();
         });
         reduceMotion.addEventListener?.('change', (event) => {
           paused = event.matches;
