@@ -25,6 +25,18 @@ function walk(directory) {
   return files;
 }
 
+function readImageDimensions(bytes, extension) {
+  if (extension === '.webp') {
+    if (bytes.length < 30 || bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') return null;
+    const chunk = bytes.subarray(12, 16).toString('ascii');
+    if (chunk === 'VP8X') return { width: 1 + bytes[24] + (bytes[25] << 8) + (bytes[26] << 16), height: 1 + bytes[27] + (bytes[28] << 8) + (bytes[29] << 16) };
+    if (chunk === 'VP8L' && bytes.length >= 25 && bytes[20] === 0x2f) {
+      const b0 = bytes[21], b1 = bytes[22], b2 = bytes[23], b3 = bytes[24];
+      return { width: 1 + (b0 | ((b1 & 0x3f) << 8)), height: 1 + ((b1 >> 6) | (b2 << 2) | ((b3 & 0x0f) << 10)) };
+    }
+  }
+  return null;
+}
 function routeTarget(localPath) {
   const normalized = localPath.replace(/^\/+/, '');
   if (!normalized) return join(root, 'index.html');
@@ -228,6 +240,17 @@ if (!generatedHtmlForEvidence.some(({ html }) => forbiddenRetroEvidence.some((fo
   pass('generated HTML contains no fabricated Retro evidence examples');
 }
 
+for (const asset of screenshotAssets) {
+  const file = join(root, asset);
+  if (!existsSync(file)) {
+    fail('missing required 2660×1440 screenshot asset: ' + asset);
+    continue;
+  }
+  const dimensions = readImageDimensions(readFileSync(file), '.webp');
+  if (!dimensions) fail(asset + ' dimensions could not be decoded');
+  else if (dimensions.width !== 2660 || dimensions.height !== 1440) fail(asset + ' is ' + dimensions.width + '×' + dimensions.height + '; required 2660×1440');
+  else pass(asset + ' exact screenshot dimensions: 2660×1440');
+}
 const qr = join(root, 'portfolio-qr.svg');
 if (!existsSync(qr)) fail('missing portfolio QR code');
 else {
