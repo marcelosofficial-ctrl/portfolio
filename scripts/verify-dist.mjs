@@ -192,6 +192,7 @@ const webpAssets = [
   ['easyflix/library.webp', 5000],
   ['easyflix/details.webp', 5000],
 ];
+const screenshotAssets = ['easyflix/home.webp', 'easyflix/library.webp', 'easyflix/details.webp'];
 
 for (const [asset, minimumBytes] of webpAssets) {
   const file = join(root, asset);
