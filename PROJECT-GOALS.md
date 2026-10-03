@@ -524,3 +524,13 @@ Current content/audit findings:
 - VektorDeck screenshot remains intentionally gated until the user supplies a clean 1920×1080 OR HIGHER capture.
 - Supplied CrashScope, RevDev, MinimalClock and EasyFlix media still require final repository transfer and checksum/dimension verification before the media gate can be declared complete.
 - Do not declare final visual QA complete or publish until the remaining media transfer, VektorDeck capture, final build verification and one coordinated Pages deployment are complete.
+
+
+### r17 — final interaction craft corrections
+
+- Removed an older diagonal button shimmer that conflicted with the intended restrained product language.
+- Removed duplicate carousel child entrance animations; the carousel now has one clear transition system.
+- Raised primary interactive control height to 44px to provide a more generous hit target.
+- Added a consistent visible focus-visible treatment.
+- Enabled smooth anchor scrolling only when reduced motion is not requested.
+- The design standard remains: motion should communicate state or continuity, not exist merely as decoration. This follows Apple's current motion guidance and W3C carousel accessibility guidance.
