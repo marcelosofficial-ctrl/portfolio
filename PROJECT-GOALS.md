@@ -534,3 +534,28 @@ Current content/audit findings:
 - Added a consistent visible focus-visible treatment.
 - Enabled smooth anchor scrolling only when reduced motion is not requested.
 - The design standard remains: motion should communicate state or continuity, not exist merely as decoration. This follows Apple's current motion guidance and W3C carousel accessibility guidance.
+
+
+# 2026-10-03 research + product-motion craft pass
+
+This pass applies a stricter product-interface motion budget after reviewing current Apple Human Interface Guidelines / WWDC26 design principles, W3C carousel guidance and WCAG 2.2 Pause/Stop/Hide, and MDN animation-performance guidance.
+
+- **Simplicity before flourish:** motion exists to communicate state, continuity or feedback; decorative perpetual motion is not part of the visual language.
+- **Motion budget:** prefer short one-shot transitions for navigation, carousel changes and interaction feedback. Avoid continuous animation that runs while the user is reading.
+- **Carousel:** retain the explicit PAUSE/PLAY control, keyboard controls, live announcements, visibility pause and reduced-motion behavior. Keep slide movement compositor-friendly with transform/opacity rather than layout-affecting properties.
+- **Hero field:** the mobile signal/grid is now static rather than an infinite drift animation. This keeps the atmospheric treatment while removing an always-running animation that adds no information.
+- **Surface language:** use restrained translucency primarily for navigation/chrome, with readable solid content surfaces, coherent rounded geometry and quiet hover depth.
+- **Accessibility:** maintain generous 44px interactive targets, visible focus rings, reduced-motion support and no animation-only communication of important state.
+- **Performance:** avoid unnecessary timers and continuous rendering; use transform/opacity for motion and pause background work when the document is hidden.
+- **Typography:** preserve the system/SF-style stack, optical hierarchy, balanced headings and localized Japanese line rhythm rather than applying Latin tracking mechanically.
+- **Evidence integrity:** no visual polish may turn an evidence panel into an implied screenshot. VektorDeck remains a designed evidence panel until the user's clean 1920×1080+ capture arrives.
+
+Research references used for this pass:
+- Apple Human Interface Guidelines — Motion: https://developer.apple.com/design/human-interface-guidelines/motion
+- Apple WWDC26 — Principles of Great Design: https://developer.apple.com/videos/play/wwdc2026/250/
+- W3C WAI — Carousels Tutorial: https://www.w3.org/WAI/tutorials/carousels/
+- W3C WCAG 2.2 — Pause, Stop, Hide: https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide
+- MDN — CSS and JavaScript animation performance: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/CSS_JavaScript_animation_performance
+- MDN — Animation performance and frame rate: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Animation_performance_and_frame_rate
+
+Current media gate remains unchanged: integrate the supplied CrashScope/RevDev/MinimalClock/EasyFlix assets and the forthcoming VektorDeck capture only after exact source verification; do not fabricate or substitute missing evidence.
