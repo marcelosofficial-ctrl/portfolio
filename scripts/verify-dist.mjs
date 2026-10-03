@@ -195,6 +195,39 @@ for (const [asset, minimumBytes] of webpAssets) {
   else pass(`asset ${asset} (${size} bytes)`);
 }
 
+const forbiddenLegacyAssets = [
+  'brand/revdev.png',
+  'brand/revdev.svg',
+  'vektordeck/dashboard.webp',
+  'vektordeck/intelligence-tour.webp',
+  'vektordeck/evidence-tour.webp'
+];
+const generatedPaths = walk(root).map((file) => relative(root, file).replaceAll('\\', '/'));
+for (const forbidden of forbiddenLegacyAssets) {
+  if (generatedPaths.includes(forbidden)) fail(`superseded legacy asset remains: ${forbidden}`);
+  else pass(`superseded legacy asset absent: ${forbidden}`);
+}
+
+const forbiddenRetroEvidence = [
+  'Japanese PS1 title',
+  'Collector edition',
+  'Disc-only copy',
+  'A-042',
+  'A-043',
+  'A-044'
+];
+const generatedHtmlForEvidence = generatedPaths
+  .filter((file) => file.endsWith('.html'))
+  .map((file) => ({ file, html: readFileSync(join(root, file), 'utf8') }));
+for (const { file, html } of generatedHtmlForEvidence) {
+  for (const forbidden of forbiddenRetroEvidence) {
+    if (html.includes(forbidden)) fail(`${file} contains fabricated Retro evidence label: ${forbidden}`);
+  }
+}
+if (!generatedHtmlForEvidence.some(({ html }) => forbiddenRetroEvidence.some((forbidden) => html.includes(forbidden)))) {
+  pass('generated HTML contains no fabricated Retro evidence examples');
+}
+
 const qr = join(root, 'portfolio-qr.svg');
 if (!existsSync(qr)) fail('missing portfolio QR code');
 else {
