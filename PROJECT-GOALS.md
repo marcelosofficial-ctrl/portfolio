@@ -415,3 +415,11 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Changed the slide-picker container from `role="tablist"` / tab semantics to a plain button group. The pickers are controls, not tabs/panels; active-state styling remains class-based and the shared controller no longer writes stale `aria-selected` state onto them.
 - Preserved the authoritative 6.5-second timer, PAUSE/PLAY control, hover/focus/visibility pause, reduced-motion handling, keyboard arrows, hidden-slide tab suppression and five-slide grouping.
 - Screenshot and binary-media gates remain unchanged: no synthetic CrashScope/RevDev/Retro/VektorDeck/MinimalClock screenshots, no non-canonical RevDev artwork, and the supplied EasyFlix JPEGs are not considered transferred until their actual repository binaries are replaced and verified.
+
+
+## 2026-10-03 r12: carousel picker state audit
+
+- A second live-source audit found three remaining picker buttons still carrying obsolete tab semantics. Removed the remaining `role="tab" / aria-selected` attributes from all five slide pickers.
+- Slide pickers now use button semantics with `aria-pressed` synchronized by the authoritative `BaseLayout.astro` controller.
+- No visual carousel behavior was changed: five-slide grouping, 6.5-second rotation, explicit PAUSE/PLAY, focus/hover/visibility handling, reduced-motion behavior and hidden-slide focus suppression remain intact.
+- No screenshot-dependent work was performed because the user will supply the screenshot batch after the non-media work is complete.
