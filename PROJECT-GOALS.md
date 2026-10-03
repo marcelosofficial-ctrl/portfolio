@@ -20,7 +20,7 @@
 - Retro Game Vision & Resale System: **field-tested decision pipeline; no GUI release**. Never invent a GUI screenshot.
 - VektorDeck: **1.0.0 released/source available**. The old low-resolution capture has been removed from the final presentation; an evidence panel is used until the user's new clean screenshot is supplied.
 - Focused projects remain four equal desktop cards: MinimalClock, ExactArtifact, GapTrace, ConfigTrace.
-- Final media gates still outstanding: supplied CrashScope/RevDev/MinimalClock/EasyFlix media transfer and verification, exact canonical RevDev icon, one clean VektorDeck screenshot at **1920×1080 OR HIGHER**, final QA, and successful Pages deployment.
+- Final media gates still outstanding: supplied CrashScope/RevDev/MinimalClock/EasyFlix media transfer and verification, exact canonical RevDev icon, one clean VektorDeck screenshot at **exactly 2660×1440**, final QA, and successful Pages deployment.
 - Do not request the VektorDeck screenshot until all other non-media work and QA are complete.
 
 
@@ -529,7 +529,7 @@ Current content/audit findings:
 - Found and corrected a stale Japanese About-page phrase that incorrectly described CrashScope 1.3 as released.
 - Corrected the Japanese RevDev carousel label so it points to the Japanese case study rather than describing it as an English case study.
 - The exact RevDev canonical icon remains intentionally gated until the genuine binary asset is available.
-- VektorDeck screenshot remains intentionally gated until the user supplies a clean 1920×1080 OR HIGHER capture.
+- VektorDeck screenshot remains intentionally gated until the user supplies a clean **exactly 2660×1440** capture.
 - Supplied CrashScope, RevDev, MinimalClock and EasyFlix media still require final repository transfer and checksum/dimension verification before the media gate can be declared complete.
 - Do not declare final visual QA complete or publish until the remaining media transfer, VektorDeck capture, final build verification and one coordinated Pages deployment are complete.
 
@@ -556,7 +556,7 @@ This pass applies a stricter product-interface motion budget after reviewing cur
 - **Accessibility:** maintain generous 44px interactive targets, visible focus rings, reduced-motion support and no animation-only communication of important state.
 - **Performance:** avoid unnecessary timers and continuous rendering; use transform/opacity for motion and pause background work when the document is hidden.
 - **Typography:** preserve the system/SF-style stack, optical hierarchy, balanced headings and localized Japanese line rhythm rather than applying Latin tracking mechanically.
-- **Evidence integrity:** no visual polish may turn an evidence panel into an implied screenshot. VektorDeck remains a designed evidence panel until the user's clean 1920×1080+ capture arrives.
+- **Evidence integrity:** no visual polish may turn an evidence panel into an implied screenshot. VektorDeck remains a designed evidence panel until the user's clean **exactly 2660×1440** capture arrives.
 
 Research references used for this pass:
 - Apple Human Interface Guidelines — Motion: https://developer.apple.com/design/human-interface-guidelines/motion
@@ -603,7 +603,7 @@ Sources: https://developer.apple.com/videos/play/wwdc2026/250/ and https://devel
 This means the portfolio should become more intentional, not merely more animated. Project-specific motifs are permitted only when they communicate the project's domain.
 
 ### Final media gate
-Do not request the VektorDeck screenshot until the non-media design, IA and accessibility corrections are finished. Once the user supplies the clean 1920x1080+ VektorDeck capture, perform one coordinated media pass, then run final build, bilingual route verification, accessibility checks, screenshot containment checks and deployment verification before calling the portfolio published.
+Do not request the VektorDeck screenshot until the non-media design, IA and accessibility corrections are finished. Once the user supplies the clean **exactly 2660×1440** VektorDeck capture, perform one coordinated media pass, then run final build, bilingual route verification, accessibility checks, screenshot containment checks and deployment verification before calling the portfolio published.
 
 
 ## 2026-10-03 media/parity hardening pass
