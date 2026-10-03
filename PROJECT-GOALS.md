@@ -452,3 +452,21 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Keyboard focus entering the carousel still stops automatic rotation, and focus leaving no longer silently restarts it; the user can explicitly press PLAY to resume. This follows the WAI-ARIA APG carousel pattern.
 - Added a polite live-region announcement for user-selected slides so keyboard/manual slide changes communicate the current item without forcing focus movement.
 - Hover pause, visibility pause, reduced-motion behavior, Left/Right navigation, five-slide grouping and hidden-slide focus suppression remain intact.
+
+
+## 2026-10-03 r14: Japanese parity + restrained interaction polish
+
+- The Japanese homepage is now aligned with the current English information architecture:
+  - same five-slide featured carousel;
+  - CrashScope 1.3 current-development / 1.2.0 public-release distinction;
+  - EasyFlix 1.4.0 public state;
+  - RevDev active-development boundary;
+  - Retro Game Vision explicit no-GUI decision pipeline;
+  - one grouped “Small, finished, intentional.” slide containing MinimalClock, ExactArtifact, GapTrace and ConfigTrace;
+  - primary project group, flagship systems, focused projects, About and Open-to-work sections.
+- Added src/pages/ja/projects/[slug].astro with localized Japanese project pages for all current portfolio projects. Each page exposes the same basic status/access boundary and links directly to the English deep case study.
+- Added English↔Japanese language pairing for all project routes in BaseLayout.astro.
+- Japanese typography received a dedicated readability pass instead of inheriting English tracking literally. The page keeps the existing dark technical visual language while allowing Japanese text to breathe and wrap naturally.
+- Added restrained interaction polish to buttons, project cards and carousel slide entry. Motion remains disabled/neutralized under prefers-reduced-motion.
+- Research basis: W3C WAI carousel guidance, W3C Japanese accessibility/design guidance, W3C Japanese text-layout guidance, and MDN reduced-motion/accessibility guidance.
+- Do not interpret the localized project pages as replacing the full English case-study content; they are the Japanese presentation/parity layer and provide a clear path to the complete English technical case study.
