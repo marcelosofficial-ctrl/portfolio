@@ -432,3 +432,16 @@ If a pass is blocked by user-supplied media, finish all non-blocked work first a
 - Retro Game Vision & Resale System: user confirms there is no known launchable GUI capture to provide. The portfolio must not fabricate one. The homepage carousel visual has therefore been changed from `SCREENSHOTS PENDING` to an explicitly labeled `NO GUI RELEASE` decision-pipeline visual. The case study should continue to describe the public synthetic/CLI demo rather than implying a desktop GUI exists.
 - Small-project carousel card correction: reserve a fixed eyebrow line box so ConfigTrace's two-line `Configuration evidence` label no longer pushes its title lower than the other cards; reduce the focused-card project-name scale so MinimalClock fits cleanly inside its equal-width card without the final `k` protruding.
 - Featured-carousel collision guard: featured copy is explicitly shrinkable, and the carousel stacks copy above the visual at <=1000px so a project title cannot intrude into the square visual stage on constrained desktop widths. This is a layout guard, not a content-specific workaround.
+
+
+## 2026-10-03 authoritative correction: current CrashScope line and screenshot batch
+
+- **CrashScope 1.3 is the current development line. CrashScope 1.2.0 remains the public downloadable release.** The portfolio should show the current 1.3 development UI as current project state, while keeping every download/release action explicitly on validated 1.2.0 artifacts.
+- The supplied CrashScope screenshot (2048×1108) is therefore valid current-development evidence. It must not be relabeled as 1.2 or used to imply that 1.3 is a public release.
+- The supplied RevDev screenshot (2048×1108, SHA-256 `3d3ffe10eea32d365a130443e2a3b7bf0f47fe2b88d0a070d941e86a637a5449`) is valid real operator-console evidence and should be integrated once the binary transfer path is available.
+- The supplied MinimalClock screenshot (`desktop.png`, 2048×1152) is valid real product evidence. It should be integrated with a restrained crop/frame that makes the clock the subject rather than the desktop icons.
+- **No Retro Game Vision GUI screenshot is required.** The project has no known launchable GUI; keep the explicit no-GUI decision-pipeline visual and do not fabricate a screenshot.
+- The currently attached batch does **not** contain a VektorDeck screenshot binary in the conversation-mounted files. VektorDeck still needs one clean representative capture before the media pass can be declared complete.
+- The current homepage carousel is intentionally **five slides**, not nine: CrashScope, EasyFlix, RevDev, Retro Game Vision & Resale System, and Smaller but Useful (MinimalClock, ExactArtifact, GapTrace, ConfigTrace).
+- The older nine-slide wording above is historical design direction and is superseded by the five-slide master plan. Do not restore VektorDeck or the four small projects as separate homepage carousel slides.
+- Remaining hard gates before final publication: transfer/verify supplied CrashScope, RevDev and MinimalClock binaries (plus the two supplied EasyFlix JPEGs and exact RevDev icon when available), obtain/integrate the missing VektorDeck capture, perform full visual/build/access audit, then publish once the final Pages run succeeds.
