@@ -29,24 +29,24 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
       <section class="project-carousel" role="region" aria-roledescription="carousel" aria-label="注目プロジェクト" data-carousel>
   <div class="project-carousel-window">
-    <a class="project-carousel-slide is-active" href="/ja/projects/crashscope/" data-slide aria-hidden="false">
+    <a class="project-carousel-slide is-active" href="/ja/projects/crashscope/" data-slide aria-hidden="false" tabindex="0">
       <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">01 · Windows診断</span><span class="project-state">1.3 開発中 · 1.2.0 公開</span></div><h2>CrashScope</h2><p>Event Log、WER、ハードウェア情報、継続保存されるインシデント証拠をローカルでまとめるWindowsクラッシュ診断システム。</p><span class="carousel-link">日本語ケーススタディ ↗</span></div>
       <div class="carousel-visual-column"><div class="carousel-visual carousel-console crashscope-carousel-visual" aria-hidden="true"><div class="priority-visual-head mono"><span>CURRENT / 1.3</span><b>DEVELOPMENT</b></div><div class="carousel-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>TESTS</span><b>266/266</b></div><div class="diagnostic-foot mono"><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div></div></div>
     </a>
-    <a class="project-carousel-slide" href="/ja/projects/easyflix/" data-slide aria-hidden="true">
+    <a class="project-carousel-slide" href="/ja/projects/easyflix/" data-slide aria-hidden="true" tabindex="-1">
       <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">02 · Windowsローカルメディア</span><span class="project-state active">1.4.0 公開</span></div><h2>EasyFlix</h2><p>実ファイル、複数ドライブ、視聴状態、メタデータを中心にした、ストリーミング風のWindowsローカルメディアライブラリ。</p><span class="carousel-link">英語のケーススタディ ↗</span></div>
       <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style="--easyflix-backdrop:url('/portfolio/easyflix/library.webp')"><img src="/portfolio/easyflix/library.webp" alt="EasyFlixのライブラリ画面" width="2047" height="1151" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>USER-SUPPLIED / 2047×1151</b></figcaption></figure></div>
     </a>
-    <a class="project-carousel-slide" href="/ja/projects/revdev/" data-slide aria-hidden="true">
+    <a class="project-carousel-slide" href="/ja/projects/revdev/" data-slide aria-hidden="true" tabindex="-1">
       <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · 開発インフラ</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>Dev Relayを安全な実行境界として使い、複数プロジェクトのAI支援開発を永続状態とともに操作するWindowsネイティブのコントロールサーフェス。</p><span class="carousel-link">英語のケーススタディ ↗</span></div>
       <div class="carousel-visual-column"><div class="carousel-visual carousel-console revdev-visual" aria-hidden="true"><div class="revdev-icon-stage revdev-mark-pending" aria-label="RevDevの正式アイコンは公開素材として準備中"></div><div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div><div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div><div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div></div></div>
     </a>
-    <a class="project-carousel-slide retro-carousel-slide" href="/ja/projects/reseller-ai/" data-slide aria-hidden="true">
+    <a class="project-carousel-slide retro-carousel-slide" href="/ja/projects/reseller-ai/" data-slide aria-hidden="true" tabindex="-1">
       <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">04 · コンピュータビジョン / リセール</span><span class="project-state">FIELD TESTED</span></div><h2>Retro Game Vision<br />&amp; Resale System</h2><p>日本の中古ショップの写真から、現物の状態・版・市場情報・証拠を組み合わせて購入判断につなげるフィールドツール。</p><span class="carousel-link">英語のケーススタディ ↗</span></div>
       <div class="carousel-visual-column"><div class="carousel-visual carousel-console resale-carousel-visual" aria-hidden="true"><div class="priority-visual-head mono"><span>FIELD / DECISION PIPELINE</span><b>NO GUI RELEASE</b></div><div class="resale-mini-row"><span>INPUT</span><b>10 STORE PHOTOS</b></div><div class="resale-mini-row"><span>INVENTORY</span><b>49 PHYSICAL COPIES</b></div><div class="resale-mini-row"><span>PRICE EVIDENCE</span><b>48 DIRECTLY READABLE</b></div><div class="resale-mini-row"><span>MARKET</span><b>55 COMPATIBLE OBS.</b></div><div class="resale-outcome mono"><span>DECISION OUTPUT</span><strong>1 BUY · 7 MAYBE · 41 RESEARCH</strong></div></div></div>
     </a>
-    <div class="project-carousel-slide carousel-small-projects-slide" data-slide aria-hidden="true">
-      <div class="carousel-small-header"><div><div class="project-top"><span class="eyebrow">05 · Focused tools</span><span class="project-state">小さく、完成させたもの</span></div><h2>Small, finished, intentional.</h2><p>4つの小さな完成品を一つのスライドにまとめ、全体のリズムを保ちながら各プロジェクトへ直接アクセスできるようにしています。</p></div><span class="carousel-link">下のフォーカスプロジェクトへ ↓</span></div>
+    <div class="project-carousel-slide carousel-small-projects-slide" data-slide aria-hidden="true" tabindex="-1">
+      <div class="carousel-small-header"><div><div class="project-top"><span class="eyebrow">05 · Focused tools</span><span class="project-state">小さく、完成させたもの</span></div><h2>小さく、完成度高く。</h2><p>4つの小さな完成品を一つのスライドにまとめ、全体のリズムを保ちながら各プロジェクトへ直接アクセスできるようにしています。</p></div><span class="carousel-link">下のフォーカスプロジェクトへ ↓</span></div>
       <div class="carousel-small-grid" aria-label="小規模プロジェクト">
         <a class="carousel-small-card" href="/ja/projects/rainmeter-clock/" tabindex="-1"><span class="eyebrow">Desktop utility</span><h3>MinimalClock</h3><p>軽量なデスクトップ時計とRainmeterの実験。</p><span class="carousel-small-meta mono">SHIPPED · 1.0.0 ↗</span></a>
         <a class="carousel-small-card" href="/ja/projects/exactartifact/" tabindex="-1"><span class="eyebrow">Artifact integrity</span><h3>ExactArtifact</h3><p>決定論的なSHA-256とマニフェスト検証。</p><span class="carousel-small-meta mono">RELEASED · 1.0.0 ↗</span></a>
@@ -72,7 +72,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div><strong>219</strong><span>EasyFlix 1.4.0 自動テスト</span></div>
       <div><strong>4,000+</strong><span>電気工事・現場技術の実務時間</span></div>
     </div>
-    <div class="hero-meta identity-skills aria-label="主な技術">
+    <div class="hero-meta identity-skills" aria-label="主な技術">
       <span class="pill">Python</span><span class="pill">C# / .NET</span><span class="pill">FastAPI</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">SQLite</span><span class="pill">Computer Vision</span><span class="pill">Windows Diagnostics</span><span class="pill">Automation</span>
     </div>
   </section>
@@ -96,7 +96,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="project-top"><span class="eyebrow">02 · Windowsローカルメディア</span><span class="project-state active">1.4.0 公開</span></div><h3>EasyFlix</h3>
         <p>複数ドライブ上の実ファイルを中心に、視聴状態、アートワーク、字幕、メタデータを扱うストリーミング風WPFメディアライブラリ。</p>
         <span class="status-note">1.4.0をMITで公開済み。プライバシーサニタイズとGitHubリリース検証も完了しています。</span>
-        <figure class="priority-screenshot easyflix-product-shot"><img src={baseURL + 'easyflix/home.jpg'} alt="EasyFlixのホーム画面" width="2047" height="1151" loading="lazy" decoding="async" /><div class="easyflix-shot-overlay mono" aria-hidden="true"><span>LOCAL LIBRARY</span><div><b>FILESYSTEM</b><i></i><b>WATCH STATE</b><i></i><b>PLAYBACK</b></div></div><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME</b></figcaption></figure>
+        <figure class="priority-screenshot easyflix-product-shot"><img src={baseURL + 'easyflix/home.webp'} alt="EasyFlixのホーム画面" width="2047" height="1151" loading="lazy" decoding="async" /><div class="easyflix-shot-overlay mono" aria-hidden="true"><span>LOCAL LIBRARY</span><div><b>FILESYSTEM</b><i></i><b>WATCH STATE</b><i></i><b>PLAYBACK</b></div></div><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME</b></figcaption></figure>
         <div class="active-build-visual"><div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div><div><span>MODEL</span><b>LOCAL-FIRST</b></div><div><span>VALIDATION</span><b>219 TESTS · 0 WARNINGS</b></div><div><span>ARTIFACT</span><b class="good">INSTALLER + PORTABLE WIN-X64</b></div></div>
         <span class="text-link">EasyFlixケーススタディ ↗</span>
       </a>
