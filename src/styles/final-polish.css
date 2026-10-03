@@ -1976,3 +1976,320 @@ main:has(.identity-hero) .project-carousel-slide.is-active .carousel-visual-colu
     scroll-behavior:smooth;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   r18: project-specific craft + evidence layout pass
+   Small visual motifs are deliberately semantic: they make each project feel
+   authored without turning the portfolio into a collection of gimmicks.
+   -------------------------------------------------------------------------- */
+
+/* CrashScope — diagnostic ruler / measurement language. */
+.crashscope-carousel-visual,
+main:has(.identity-hero) .crashscope-visual{
+  position:relative;
+  isolation:isolate;
+}
+.crashscope-carousel-visual::after,
+main:has(.identity-hero) .crashscope-visual::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:18px;
+  bottom:0;
+  width:34px;
+  opacity:.48;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 10px,
+      rgba(214,255,87,.34) 10px 11px,
+      transparent 11px 20px);
+  border-left:1px solid rgba(214,255,87,.12);
+  mask-image:linear-gradient(to bottom,transparent,#000 10%,#000 90%,transparent);
+}
+.crashscope-carousel-visual::before{
+  content:"MS";
+  position:absolute;
+  right:25px;
+  top:50%;
+  z-index:2;
+  color:rgba(214,255,87,.42);
+  font:500 .42rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.12em;
+  transform:translateY(-50%) rotate(90deg);
+}
+
+/* EasyFlix — subtle filmstrip framing, kept secondary to the real screenshot. */
+.easyflix-product-shot,
+.easyflix-carousel-shot{
+  position:relative;
+  isolation:isolate;
+}
+.easyflix-product-shot::after,
+.easyflix-carousel-shot::before{
+  content:"";
+  position:absolute;
+  inset:10px auto 10px 10px;
+  width:5px;
+  z-index:3;
+  pointer-events:none;
+  opacity:.55;
+  background:
+    repeating-linear-gradient(to bottom,
+      rgba(214,255,87,.55) 0 7px,
+      transparent 7px 15px);
+}
+.easyflix-carousel-shot::before{right:10px;left:auto;}
+
+/* RevDev — queue/mission/result rail. */
+main:has(.identity-hero) .revdev-visual{
+  position:relative;
+  isolation:isolate;
+}
+main:has(.identity-hero) .revdev-visual::before{
+  content:"QUEUE  →  MISSION  →  RESULT";
+  position:absolute;
+  top:12px;
+  right:14px;
+  color:rgba(214,255,87,.32);
+  font:500 .43rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.10em;
+}
+main:has(.identity-hero) .revdev-visual .revdev-track:first-of-type{
+  margin-top:20px;
+}
+
+/* VektorDeck — telemetry ticks and model/runtime pairing. */
+.project-showcase .forge-visual{
+  position:relative;
+  isolation:isolate;
+}
+.project-showcase .forge-visual::before{
+  content:"MODEL / RUNTIME / EVIDENCE";
+  position:absolute;
+  top:-2px;
+  right:0;
+  color:rgba(214,255,87,.30);
+  font:500 .42rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.11em;
+}
+.project-showcase .forge-visual > div{
+  position:relative;
+  z-index:1;
+}
+.project-showcase .meter{
+  position:relative;
+  overflow:hidden;
+}
+.project-showcase .meter::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 19px,rgba(255,255,255,.09) 19px 20px);
+  pointer-events:none;
+}
+
+/* Retro — field notebook / price-tag language, not a fake GUI. */
+.resale-carousel-visual{
+  position:relative;
+  isolation:isolate;
+  padding:16px 18px 18px;
+}
+.resale-carousel-visual::after{
+  content:"FIELD NOTE  /  JP";
+  position:absolute;
+  right:18px;
+  bottom:12px;
+  color:rgba(214,255,87,.30);
+  font:500 .42rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.12em;
+  transform:rotate(-2deg);
+}
+.resale-carousel-visual .resale-mini-row{
+  padding:10px 0;
+}
+.resale-outcome{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid rgba(214,255,87,.12);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:baseline;
+  color:#697376;
+  font-size:.48rem;
+  letter-spacing:.08em;
+}
+.resale-outcome strong{
+  color:#d4dad7;
+  font-weight:500;
+  text-align:right;
+}
+
+/* VektorDeck evidence panel: never let the old generic project-snapshot
+   pseudo-artwork sit behind the real structured evidence rows. */
+.vektordeck-card-evidence.project-snapshot::before,
+.vektordeck-card-evidence.project-snapshot::after{
+  display:none!important;
+}
+.vektordeck-card-evidence{
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:14px;
+  padding:22px;
+  overflow:hidden;
+}
+.vektordeck-card-evidence .forge-visual{
+  display:grid;
+  gap:12px;
+  padding:10px 0;
+}
+.vektordeck-card-evidence .forge-visual > div:not(.meter){
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:baseline;
+}
+.vektordeck-card-evidence .forge-visual span{
+  min-width:0;
+  color:#6f797c;
+  font-size:.50rem;
+  letter-spacing:.08em;
+}
+.vektordeck-card-evidence .forge-visual b{
+  flex:0 1 auto;
+  color:#d0d6d3;
+  font-size:.54rem;
+  text-align:right;
+  white-space:nowrap;
+}
+.vektordeck-card-evidence .meter{
+  width:100%;
+  height:5px;
+  margin:0;
+}
+.vektordeck-card-evidence .diagnostic-foot{
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-size:.44rem;
+}
+.vektordeck-page-evidence{
+  min-height:420px;
+}
+.vektordeck-page-evidence::before{
+  opacity:.18;
+}
+.vektordeck-page-evidence .forge-visual{
+  display:grid;
+  gap:12px;
+}
+.vektordeck-page-evidence .forge-visual > div:not(.meter){
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:baseline;
+}
+.vektordeck-page-evidence .forge-visual span{
+  color:#717b7e;
+  font-size:.54rem;
+  letter-spacing:.10em;
+}
+.vektordeck-page-evidence .forge-visual b{
+  color:#d4dad7;
+  font-size:.60rem;
+  white-space:nowrap;
+}
+.vektordeck-page-evidence .meter{
+  height:6px;
+}
+.vektordeck-page-evidence .diagnostic-foot{
+  margin-top:4px;
+}
+
+/* Micro-interaction language: the object under the pointer subtly opens up,
+   while the outer card stays anchored. */
+@media (hover:hover) and (pointer:fine){
+  main:has(.identity-hero) .project{
+    transform:translateZ(0);
+  }
+  main:has(.identity-hero) .project:hover .priority-visual,
+  main:has(.identity-hero) .project:hover .resale-visual,
+  main:has(.identity-hero) .project:hover .forge-visual,
+  main:has(.identity-hero) .project:hover .priority-screenshot,
+  main:has(.identity-hero) .project:hover .project-snapshot{
+    transform:scale(1.008);
+  }
+  main:has(.identity-hero) .priority-visual,
+  main:has(.identity-hero) .resale-visual,
+  main:has(.identity-hero) .forge-visual,
+  main:has(.identity-hero) .priority-screenshot,
+  main:has(.identity-hero) .project-snapshot{
+    transition:transform .42s var(--ease-spring),border-color .28s ease,box-shadow .42s ease;
+  }
+  main:has(.identity-hero) .project:hover .text-link{
+    letter-spacing:.012em;
+  }
+  main:has(.identity-hero) .text-link{
+    transition:letter-spacing .28s var(--ease-ui),color .22s ease;
+  }
+  main:has(.identity-hero) .identity-skills .pill{
+    transition:transform .25s var(--ease-ui),border-color .22s ease,background .22s ease;
+  }
+  main:has(.identity-hero) .identity-skills .pill:hover{
+    transform:translateY(-2px);
+    border-color:rgba(214,255,87,.24);
+  }
+}
+
+/* Retro headline is intentionally editorial, not dominant. */
+main:has(.identity-hero) .retro-carousel-slide .carousel-slide-copy h2{
+  max-width:560px;
+  font-size:clamp(2.05rem,3.55vw,3.35rem);
+  line-height:.96;
+  letter-spacing:-.052em;
+}
+main:has(.identity-hero) .retro-carousel-slide .carousel-slide-copy p{
+  max-width:520px;
+}
+main:has(.identity-hero) .retro-carousel-slide .carousel-visual-column{
+  min-width:0;
+}
+main:has(.identity-hero) .retro-carousel-slide .carousel-console{
+  min-height:0;
+}
+
+/* Keep all carousel content inside its fixed visual boundary. */
+main:has(.identity-hero) .project-carousel-slide .carousel-slide-copy,
+main:has(.identity-hero) .project-carousel-slide .carousel-visual-column{
+  min-width:0;
+}
+main:has(.identity-hero) .project-carousel-slide h2,
+main:has(.identity-hero) .project-carousel-slide p{
+  overflow-wrap:anywhere;
+}
+@media (max-width:1100px){
+  main:has(.identity-hero) .retro-carousel-slide .carousel-slide-copy h2{
+    font-size:clamp(1.9rem,5.3vw,3rem);
+  }
+}
+@media (max-width:760px){
+  .vektordeck-page-evidence{
+    min-height:360px;
+  }
+  .vektordeck-card-evidence .forge-visual b{
+    white-space:normal;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  main:has(.identity-hero) .priority-visual,
+  main:has(.identity-hero) .resale-visual,
+  main:has(.identity-hero) .forge-visual,
+  main:has(.identity-hero) .priority-screenshot,
+  main:has(.identity-hero) .project-snapshot{
+    transition:none!important;
+  }
+}
