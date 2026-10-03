@@ -1283,3 +1283,194 @@ main:has(.identity-hero) .easyflix-carousel-shot img{
 }
 main:has(.identity-hero) .easyflix-carousel-shot figcaption{z-index:2}
 main:has(.identity-hero) .revdev-mark-pending{display:none!important}
+
+
+/* --------------------------------------------------------------------------
+   2026-10 carousel consolidation pass
+   Research basis: W3C carousel guidance requires predictable controls, keyboard
+   access, pause behavior, and a stable slide structure; MDN recommends
+   minmax(0,1fr) for equal grid tracks and object-fit/object-position for
+   deliberate media framing. The carousel therefore uses one fixed-height
+   viewport at each responsive breakpoint, while each slide owns the same
+   outer geometry.
+   -------------------------------------------------------------------------- */
+
+main:has(.identity-hero) .project-carousel-window{
+  height:600px!important;
+  min-height:600px!important;
+  max-height:600px!important;
+}
+main:has(.identity-hero) .project-carousel-slide{
+  height:600px!important;
+  min-height:600px!important;
+  max-height:600px!important;
+  box-sizing:border-box;
+}
+main:has(.identity-hero) .project-carousel-slide .carousel-visual-column{
+  min-height:0;
+}
+main:has(.identity-hero) .project-carousel-slide .carousel-visual{
+  flex:none;
+  width:min(100%,540px);
+  height:540px;
+  max-width:540px;
+  max-height:540px;
+  aspect-ratio:1/1;
+}
+main:has(.identity-hero) .project-carousel-slide .carousel-shot{
+  height:540px;
+  max-height:540px;
+}
+
+/* Special full-width composition for the four focused projects. */
+main:has(.identity-hero) .carousel-small-projects-slide{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:22px!important;
+  padding:34px clamp(30px,3vw,46px)!important;
+  overflow:hidden!important;
+}
+main:has(.identity-hero) .carousel-small-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  min-width:0;
+}
+main:has(.identity-hero) .carousel-small-header h2{
+  margin:10px 0 8px;
+  font-size:clamp(2.8rem,4vw,4.8rem);
+  line-height:.94;
+  letter-spacing:-.055em;
+}
+main:has(.identity-hero) .carousel-small-header p{
+  max-width:720px;
+  margin:0;
+  color:#a5ada9;
+  line-height:1.55;
+}
+main:has(.identity-hero) .carousel-small-header > .carousel-link{
+  flex:none;
+  align-self:flex-end;
+}
+main:has(.identity-hero) .carousel-small-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  min-width:0;
+  flex:1;
+  min-height:0;
+}
+main:has(.identity-hero) .carousel-small-card{
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:22px 20px;
+  border:1px solid rgba(255,255,255,.075);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(214,255,87,.035),transparent 48%),
+    linear-gradient(145deg,rgba(20,25,27,.92),rgba(11,14,16,.96));
+  color:inherit;
+  text-decoration:none;
+  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+main:has(.identity-hero) .carousel-small-card:hover,
+main:has(.identity-hero) .carousel-small-card:focus-visible{
+  border-color:rgba(214,255,87,.28);
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+  outline:none;
+}
+main:has(.identity-hero) .carousel-small-card .eyebrow{
+  color:#687276;
+}
+main:has(.identity-hero) .carousel-small-card h3{
+  margin:14px 0 10px;
+  font-size:clamp(1.35rem,1.8vw,2rem);
+  line-height:1;
+  letter-spacing:-.035em;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+main:has(.identity-hero) .carousel-small-card p{
+  margin:0;
+  color:#919a97;
+  line-height:1.48;
+  font-size:.84rem;
+}
+main:has(.identity-hero) .carousel-small-meta{
+  margin-top:auto;
+  padding-top:18px;
+  color:var(--accent);
+  font-size:.53rem;
+  letter-spacing:.11em;
+}
+main:has(.identity-hero) .carousel-small-projects-slide .project-top{
+  margin:0;
+}
+main:has(.identity-hero) .carousel-small-projects-slide .project-state{
+  white-space:nowrap;
+}
+
+@media(max-width:1400px){
+  main:has(.identity-hero) .project-carousel-window,
+  main:has(.identity-hero) .project-carousel-slide{
+    height:600px!important;
+    min-height:600px!important;
+    max-height:600px!important;
+  }
+}
+@media(max-width:1100px){
+  main:has(.identity-hero) .project-carousel-window,
+  main:has(.identity-hero) .project-carousel-slide{
+    height:650px!important;
+    min-height:650px!important;
+    max-height:650px!important;
+  }
+  main:has(.identity-hero) .project-carousel-slide .carousel-visual,
+  main:has(.identity-hero) .project-carousel-slide .carousel-shot{
+    width:min(100%,500px);
+    height:500px;
+    max-height:500px;
+  }
+  main:has(.identity-hero) .carousel-small-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:900px){
+  main:has(.identity-hero) .project-carousel-window,
+  main:has(.identity-hero) .project-carousel-slide{
+    height:700px!important;
+    min-height:700px!important;
+    max-height:700px!important;
+  }
+  main:has(.identity-hero) .carousel-small-projects-slide{
+    justify-content:flex-start!important;
+  }
+  main:has(.identity-hero) .carousel-small-header{
+    display:block;
+  }
+  main:has(.identity-hero) .carousel-small-header > .carousel-link{
+    display:inline-block;
+    margin-top:12px;
+  }
+}
+@media(max-width:760px){
+  main:has(.identity-hero) .project-carousel-window,
+  main:has(.identity-hero) .project-carousel-slide{
+    height:760px!important;
+    min-height:760px!important;
+    max-height:760px!important;
+  }
+  main:has(.identity-hero) .carousel-small-grid{
+    grid-template-columns:1fr;
+    overflow:auto;
+    padding-right:4px;
+  }
+  main:has(.identity-hero) .carousel-small-card{
+    min-height:126px;
+  }
+}
