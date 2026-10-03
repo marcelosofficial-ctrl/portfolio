@@ -167,10 +167,16 @@ const englishPath = `/projects/${slug}/`;
 
   <section class="case-media-section wrap" aria-label="プロジェクトの実画面・証拠">
     {slug === 'easyflix' ? (
-      <figure class="case-media-card">
-        <img src="/portfolio/easyflix/home.webp" alt="EasyFlixの実際のホーム画面" width="2047" height="1151" loading="eager" decoding="async" />
-        <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME</b></figcaption>
-      </figure>
+      <div class="easyflix-case-media-grid">
+        <figure class="case-media-card">
+          <img src="/portfolio/easyflix/home.webp" alt="EasyFlixの実際のホーム画面" width="2047" height="1151" loading="eager" decoding="async" />
+          <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME · 2047×1151</b></figcaption>
+        </figure>
+        <figure class="case-media-card">
+          <img src="/portfolio/easyflix/library.webp" alt="EasyFlixの実際のライブラリ画面" width="2047" height="1151" loading="lazy" decoding="async" />
+          <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / LIBRARY · 2047×1151</b></figcaption>
+        </figure>
+      </div>
     ) : slug === 'vektordeck' ? (
       <div class="case-media-card vektordeck-evidence-visual" aria-label="VektorDeckの証拠パネル">
         <div class="priority-visual-head mono"><span>VEKTORDECK / 1.0</span><b>CAPTURE UPDATE PENDING</b></div>
