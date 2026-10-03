@@ -1673,3 +1673,54 @@ html[lang="ja"] .carousel-small-card p{
     min-height:0;
   }
 }
+
+
+/* Interim VektorDeck evidence treatment: honest, structured, and ready to be
+   replaced by the user's new real capture without changing the surrounding layout. */
+.vektordeck-evidence-visual{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+  min-height:100%;
+  padding:clamp(22px,3vw,34px);
+  background:
+    radial-gradient(circle at 76% 18%,rgba(214,255,87,.06),transparent 34%),
+    linear-gradient(145deg,#101416,#0a0d0e);
+  border:1px solid rgba(255,255,255,.09);
+  overflow:hidden;
+}
+.vektordeck-evidence-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.010) 1px,transparent 1px);
+  background-size:28px 28px;
+  mask-image:linear-gradient(to bottom,black,transparent 86%);
+}
+.vektordeck-evidence-visual .forge-visual{
+  position:relative;
+  z-index:1;
+  width:100%;
+  margin:0;
+  padding:16px 0;
+}
+.vektordeck-evidence-visual .priority-visual-head,
+.vektordeck-evidence-visual .diagnostic-foot{
+  position:relative;
+  z-index:1;
+}
+.vektordeck-evidence-visual .diagnostic-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+@media (prefers-reduced-motion:reduce){
+  .vektordeck-evidence-visual{transition:none!important}
+}
