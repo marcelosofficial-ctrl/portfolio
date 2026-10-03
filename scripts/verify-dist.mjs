@@ -255,6 +255,15 @@ for (const asset of screenshotAssets) {
   else if (dimensions.width !== 2660 || dimensions.height !== 1440) fail(asset + ' is ' + dimensions.width + '×' + dimensions.height + '; required 2660×1440');
   else pass(asset + ' exact screenshot dimensions: 2660×1440');
 }
+const generatedHtmlForMedia = generatedPaths
+  .filter((file) => file.endsWith('.html'))
+  .map((file) => ({ file, html: readFileSync(join(root, file), 'utf8') }));
+for (const { file, html } of generatedHtmlForMedia) {
+  for (const stale of ['2047×1151', '2048×1108', '2048×1152', '1000×565', '900×509', 'home.jpg', 'library.jpg', 'details.jpg', 'details.webp']) {
+    if (html.includes(stale)) fail(file + ' contains stale screenshot reference: ' + stale);
+  }
+}
+pass('generated HTML contains no superseded screenshot dimensions or EasyFlix legacy media references');
 const qr = join(root, 'portfolio-qr.svg');
 if (!existsSync(qr)) fail('missing portfolio QR code');
 else {
