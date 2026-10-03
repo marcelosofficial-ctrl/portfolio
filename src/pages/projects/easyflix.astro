@@ -33,20 +33,19 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <section class="case-section product-shot-section wrap" id="screenshots">
     <div class="case-section-heading">
       <p class="eyebrow">Real EasyFlix UI</p>
-      <h2>The library, not a mockup.</h2>
-      <p>These captures come from the validated EasyFlix desktop build and show the actual local-first browsing experience used during development and release acceptance.</p>
+      <h2>The final capture stays real.</h2>
+      <p>The portfolio will use the supplied native-resolution product captures here. Until the verified 2660×1440 binaries are transferred, this surface deliberately shows product evidence instead of an upscaled or stale screenshot.</p>
     </div>
-    <figure class="product-shot product-shot-wide">
-      <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix Home view with featured media, Continue Watching and local library shelves" width="2660" height="1440" loading="lazy" decoding="async" />
-      <figcaption><span class="mono">HOME</span><p>Cached-first browsing, a featured title, Continue Watching and local library shelves in the real Windows application.</p></figcaption>
-    </figure>
-    <figure class="product-shot">
-      <img src={baseURL + 'easyflix/library.webp'} alt="EasyFlix All Library view showing a large mixed local media collection" width="2660" height="1440" loading="lazy" decoding="async" />
-      <figcaption><span class="mono">ALL LIBRARY</span><p>A dense mixed collection remains visually browsable without moving or rewriting the source media.</p></figcaption>
-    </figure>
-    <figure class="product-shot">
-      <figcaption><span class="mono">TITLE DETAILS</span><p>Focused title details and playback controls stay inside the browsing context instead of replacing the entire application.</p></figcaption>
-    </figure>
+    <div class="easyflix-evidence-surface easyflix-case-evidence">
+      <div class="priority-visual-head mono"><span>EASYFLIX / MEDIA ACCEPTANCE</span><b>2660×1440 REQUIRED</b></div>
+      <div class="easyflix-evidence-grid">
+        <div><span>PRODUCT</span><b>1.4.0 RELEASED</b><small>real Windows application</small></div>
+        <div><span>LIBRARY</span><b>FILESYSTEM-FIRST</b><small>source remains authoritative</small></div>
+        <div><span>VALIDATION</span><b>219 / 219</b><small>release test suite</small></div>
+        <div><span>MEDIA</span><b>NO UPSCALING</b><small>exact 2660×1440 capture gate</small></div>
+      </div>
+      <div class="diagnostic-foot mono"><span>REAL PRODUCT CAPTURE</span><span>FINAL MEDIA TRANSFER PENDING</span></div>
+    </div>
   </section>
   <section class="case-section wrap" id="workflow">
     <div class="case-section-heading"><p class="eyebrow">Core workflow</p><h2>Keep the filesystem authoritative. Improve everything around it.</h2><p>Normal library maintenance stays local. Network metadata is an explicit <strong>Sync Metadata</strong> action rather than a hidden startup dependency.</p></div>
