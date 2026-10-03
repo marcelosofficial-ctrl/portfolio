@@ -596,3 +596,12 @@ This means the portfolio should become more intentional, not merely more animate
 
 ### Final media gate
 Do not request the VektorDeck screenshot until the non-media design, IA and accessibility corrections are finished. Once the user supplies the clean 1920x1080+ VektorDeck capture, perform one coordinated media pass, then run final build, bilingual route verification, accessibility checks, screenshot containment checks and deployment verification before calling the portfolio published.
+
+
+## 2026-10-03 media/parity hardening pass
+
+- Japanese homepage is now structurally aligned with the English carousel: active/hidden slide focus state is explicit, the malformed core-skills aria-label was corrected, and the new Retro/VektorDeck/EasyFlix visual updates are mirrored.
+- Japanese EasyFlix now references the prepared full-resolution WebP capture rather than the superseded JPG, and its case-study media surface includes both the supplied Home and Library captures at 2047×1151.
+- Superseded EasyFlix JPG assets (home.jpg, library.jpg, details.jpg) were removed from the portfolio repository so stale low-resolution media cannot accidentally become live again. Current references use WebP assets.
+- English EasyFlix case study now uses details.webp as well as the full-resolution Home/Library WebP captures.
+- VektorDeck's old screenshot captures remain excluded from the homepage and its hero media surface. The case study continues to use an evidence panel until the user supplies the clean 1920×1080+ real product capture; that capture is the final media gate.
