@@ -815,8 +815,9 @@ const websiteSchema = {
           rotationToggle.textContent = userPaused ? 'PLAY' : 'PAUSE';
         };
 
-        const scheduleAuto = () => {
+        const scheduleAuto = (force = false) => {
           if (paused || userPaused || document.hidden || slides.length < 2) return;
+          if (!force && (carousel.matches(':hover') || carousel.contains(document.activeElement))) return;
           if (timer) window.clearTimeout(timer);
           resetProgress();
           timer = window.setTimeout(() => {
@@ -853,7 +854,7 @@ const websiteSchema = {
         rotationToggle?.addEventListener('click', () => {
           userPaused = !userPaused;
           if (userPaused) stopAuto();
-          else if (!reduceMotion.matches && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) scheduleAuto();
+          else if (!reduceMotion.matches) scheduleAuto(true);
           updateRotationToggle();
         });
 
