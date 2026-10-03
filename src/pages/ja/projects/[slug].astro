@@ -167,15 +167,15 @@ const englishPath = `/projects/${slug}/`;
 
   <section class="case-media-section wrap" aria-label="プロジェクトの実画面・証拠">
     {slug === 'easyflix' ? (
-      <div class="easyflix-case-media-grid">
-        <figure class="case-media-card">
-          <img src="/portfolio/easyflix/home.webp" alt="EasyFlixの実際のホーム画面" width="2660" height="1440" loading="eager" decoding="async" />
-          <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME · 2660×1440</b></figcaption>
-        </figure>
-        <figure class="case-media-card">
-          <img src="/portfolio/easyflix/library.webp" alt="EasyFlixの実際のライブラリ画面" width="2660" height="1440" loading="lazy" decoding="async" />
-          <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / LIBRARY · 2660×1440</b></figcaption>
-        </figure>
+      <div class="case-media-card easyflix-evidence-surface easyflix-case-evidence" aria-label="EasyFlixのメディア受け入れ証拠">
+        <div class="priority-visual-head mono"><span>EASYFLIX / MEDIA ACCEPTANCE</span><b>2660×1440 REQUIRED</b></div>
+        <div class="easyflix-evidence-grid">
+          <div><span>PRODUCT</span><b>1.4.0 公開</b><small>実在するWindowsアプリ</small></div>
+          <div><span>LIBRARY</span><b>FILESYSTEM-FIRST</b><small>元ファイルを権威として保持</small></div>
+          <div><span>VALIDATION</span><b>219 / 219</b><small>リリース検証</small></div>
+          <div><span>MEDIA</span><b>NO UPSCALING</b><small>正確な2660×1440キャプチャ待ち</small></div>
+        </div>
+        <div class="diagnostic-foot mono"><span>REAL PRODUCT CAPTURE</span><span>FINAL MEDIA TRANSFER PENDING</span></div>
       </div>
     ) : slug === 'vektordeck' ? (
       <div class="case-media-card vektordeck-evidence-visual" aria-label="VektorDeckの証拠パネル">
