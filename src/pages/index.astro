@@ -32,7 +32,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           </a>
           <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/revdev-dashboard.webp')`}><img src={baseURL + 'shots/revdev-dashboard.webp'} alt="RevDev dashboard showing multi-project status" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>REVDEV / DASHBOARD</b></figcaption></figure></div>
+            <div class="carousel-visual-column"><div class="carousel-visual carousel-console revdev-visual" aria-hidden="true"><div class="revdev-icon-stage"><img src={baseURL + 'shots/revdev-icon.webp'} alt="" width="512" height="512" loading="eager" decoding="async" /></div><div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div><div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div><div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div></div></div>
           </a>
           <a class="project-carousel-slide retro-carousel-slide" href="/projects/reseller-ai/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">04 · Computer vision / resale</span><span class="project-state">FIELD TESTED</span></div><h2>Retro Game Vision<br />&amp; Resale System</h2><p>Computer-vision-assisted field tooling for identifying, pricing and deciding what to do with retro-game inventory.</p><span class="carousel-link">Open case study ↗</span></div>
@@ -171,7 +171,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
             </div>
             <span class="text-link">Open 1.0 case study ↗</span>
           </div>
-          <figure class="project-snapshot"><img class="shot-fit" src={baseURL + 'shots/vektordeck-dashboard.webp'} alt="VektorDeck dashboard showing machine state and runtime deck" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
+          <figure class="project-snapshot vektordeck-card-evidence"><img class="shot-fit" src={baseURL + 'shots/vektordeck-dashboard.webp'} alt="VektorDeck dashboard showing machine state and runtime deck" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
         </a>
       </div>
     </div>
