@@ -24,15 +24,15 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="project-carousel-window">
           <a class="project-carousel-slide is-active" href="/projects/crashscope/" data-slide aria-hidden="false" tabindex="0">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state">1.3 IN DEVELOPMENT · 1.2.0 RELEASED</span></div><h2>CrashScope</h2><p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><div class="carousel-visual carousel-console crashscope-carousel-visual" aria-hidden="true"><div class="priority-visual-head mono"><span>CURRENT / 1.3</span><b>DEVELOPMENT</b></div><div class="carousel-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>TESTS</span><b>266/266</b></div><div class="diagnostic-foot mono"><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div></div></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/crashscope-overview.webp')`}><img src={baseURL + 'shots/crashscope-overview.webp'} alt="CrashScope overview showing live vitals and current workload" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>CRASHSCOPE / OVERVIEW</b></figcaption></figure></div>
           </a>
           <a class="project-carousel-slide" href="/projects/easyflix/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div><h2>EasyFlix</h2><p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style="--easyflix-backdrop:url('/portfolio/easyflix/library.webp')"><img src="/portfolio/easyflix/library.webp" alt="EasyFlix library screen" width="2047" height="1151" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>USER-SUPPLIED / 2047×1151</b></figcaption></figure></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/easyflix-home.webp')`}><img src={baseURL + 'shots/easyflix-home.webp'} alt="EasyFlix home screen showing a real local media library" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>EASYFLIX / HOME</b></figcaption></figure></div>
           </a>
           <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><div class="carousel-visual carousel-console revdev-visual" aria-hidden="true"><div class="revdev-icon-stage revdev-mark-pending" aria-label="RevDev icon awaiting approved canonical asset"></div><div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div><div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div><div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div></div></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/revdev-dashboard.webp')`}><img src={baseURL + 'shots/revdev-dashboard.webp'} alt="RevDev dashboard showing multi-project status" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>REVDEV / DASHBOARD</b></figcaption></figure></div>
           </a>
           <a class="project-carousel-slide retro-carousel-slide" href="/projects/reseller-ai/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">04 · Computer vision / resale</span><span class="project-state">FIELD TESTED</span></div><h2>Retro Game Vision<br />&amp; Resale System</h2><p>Computer-vision-assisted field tooling for identifying, pricing and deciding what to do with retro-game inventory.</p><span class="carousel-link">Open case study ↗</span></div>
@@ -80,16 +80,11 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
       <div class="active-project-grid">
         <a class="project compact-project priority-project crashscope-project" href="/projects/crashscope/">
-          <div class="project-top"><span class="eyebrow">03 · Windows diagnostics</span><span class="project-state active">1.3 IN DEVELOPMENT · 1.2.0 RELEASED</span></div>
+          <div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state active">1.3 IN DEVELOPMENT · 1.2.0 RELEASED</span></div>
           <h3>CrashScope</h3>
           <p>A privacy-first Windows crash-diagnostics system with a native WPF/WebView2 desktop shell that correlates hardware telemetry with Event Log, WER and persistent incident evidence without pretending correlation proves root cause.</p>
           <span class="status-note">Built after repeated game, GPU and workload failures made it obvious how fragmented useful Windows diagnostic evidence can be.</span>
-          <div class="priority-visual crashscope-visual" aria-hidden="true">
-            <div class="priority-visual-head mono"><span>CURRENT / 1.3 DEVELOPMENT</span><b>BUILD STATE</b></div>
-            <div class="diagnostic-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="diagnostic-readout mono"><span>EVENT LOG</span><b>LINKED</b><span>WER</span><b>LINKED</b><span>CONFIGTRACE</span><b>OPTIONAL</b></div>
-            <div class="diagnostic-foot mono"><span>266/266 TESTS</span><span>LOCAL-FIRST</span><span>ROOT CAUSE: NOT ASSUMED</span></div>
-          </div>
+          <figure class="priority-screenshot easyflix-product-shot"><img src={baseURL + 'shots/crashscope-overview.webp'} alt="CrashScope overview showing live vitals and current workload" width="2560" height="1440" loading="lazy" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>CRASHSCOPE / OVERVIEW</b></figcaption></figure>
           <div class="active-build-visual">
             <div><span>1.1 AGENT CPU · AVG</span><b>0.2365%</b></div>
             <div><span>WORKING SET · AVG</span><b>91.71 MB</b></div>
@@ -101,14 +96,13 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </a>
 
         <a class="project compact-project priority-project easyflix-project" href="/projects/easyflix/">
-          <div class="project-top"><span class="eyebrow">04 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
+          <div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div>
           <h3>EasyFlix</h3>
           <p>A polished local-first Windows media library for legally acquired movies, TV and anime, with multi-drive discovery, watch-state continuity, metadata and subtitle workflows, and a streaming-style WPF interface.</p>
           <span class="status-note">Built around a simple constraint from my own media library: make what is already on disk feel great without rearranging or risking the source files.</span>
-          <figure class="priority-screenshot easyflix-product-shot">
-            <img src={baseURL + 'easyflix/home.webp'} alt="EasyFlix home screen showing a real local media library" width="2047" height="1151" loading="lazy" decoding="async" />
+          <figure class="priority-screenshot easyflix-product-shot"><img src={baseURL + 'shots/easyflix-home.webp'} alt="EasyFlix home screen showing a real local media library" width="2560" height="1440" loading="lazy" decoding="async" />
             <div class="easyflix-shot-overlay mono" aria-hidden="true"><span>LOCAL LIBRARY</span><div><b>FILESYSTEM</b><i></i><b>WATCH STATE</b><i></i><b>PLAYBACK</b></div></div>
-            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>FULL-RES / HOME</b></figcaption>
+            <figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>EASYFLIX / HOME</b></figcaption>
           </figure>
           <div class="active-build-visual">
             <div><span>STACK</span><b>WPF · .NET 10 · SQLite</b></div>
@@ -121,17 +115,11 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </a>
 
         <a class="project compact-project priority-project revdev-project" href="/projects/revdev/">
-          <div class="project-top"><span class="eyebrow">Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
+          <div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div>
           <h3>RevDev</h3>
           <p>A native Windows control surface for durable multi-project AI-assisted development via Dev Relay, with guarded execution, deterministic project state, a five-tool hub, failure learning and local-first validation.</p>
           <span class="status-note">Built to keep long-running AI-assisted engineering work visible and resumable across projects, chats and model boundaries without handing execution authority to the UI.</span>
-          <div class="priority-visual revdev-visual" aria-hidden="true">
-            <div class="priority-visual-head mono"><span>REVDEV / OPERATOR</span><b>BUILDING</b></div>
-            <div class="revdev-track"><span>QUEUE</span><i></i><b>READY</b></div>
-            <div class="revdev-track"><span>MISSION</span><i></i><b>GUARDED</b></div>
-            <div class="revdev-track"><span>RESULT</span><i></i><b>PERSISTED</b></div>
-            <div class="diagnostic-foot mono"><span>GIT</span><span>RESULTS</span><span>GOALS</span><span>HOSTED_DENY</span></div>
-          </div>
+          <figure class="priority-screenshot easyflix-product-shot"><img src={baseURL + 'shots/revdev-dashboard.webp'} alt="RevDev dashboard showing multi-project status" width="2560" height="1440" loading="lazy" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>REVDEV / DASHBOARD</b></figcaption></figure>
           <div class="active-build-visual">
             <div><span>STACK</span><b>.NET 8 · WPF</b></div>
             <div><span>TOOLS</span><b>5 PROVIDERS</b></div>
@@ -152,7 +140,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div class="featured-project">
         <a class="project project-featured" href="/projects/reseller-ai/">
           <div class="project-copy">
-            <div class="project-kicker"><span class="eyebrow">01 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
+            <div class="project-kicker"><span class="eyebrow">04 · Flagship system</span><span class="project-state">FIELD TESTED</span></div>
             <h3>Retro Game Vision &<br />Resale System</h3>
             <p>A pipeline that turns Japanese second-hand store photos into traceable resale decisions while preserving uncertainty, evidence lineage and exact physical-copy state.</p>
             <span class="status-note">Started after noticing that a cheap price tag in a Japanese retro shop was rarely enough evidence to know whether a copy was actually worth buying.</span>
@@ -172,7 +160,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div class="project-grid secondary-grid">
         <a class="project compact-project project-showcase" href="/projects/vektordeck/">
           <div class="project-showcase-copy">
-            <div class="project-top"><span class="eyebrow">02 · Flagship system</span><span class="project-state">1.0.0</span></div>
+            <div class="project-top"><span class="eyebrow">05 · Flagship system</span><span class="project-state">1.0.0</span></div>
             <h3>VektorDeck</h3>
             <p>A local-first AI workstation manager for GGUF model intelligence, safe runtime ownership, hardware telemetry, evidence-aware benchmarking and explainable launch recommendations.</p>
             <span class="status-note">Built because my own local-AI setup had become too dependent on exact flags, scattered model files and terminal archaeology.</span>
@@ -183,7 +171,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
             </div>
             <span class="text-link">Open 1.0 case study ↗</span>
           </div>
-          <div class="project-snapshot vektordeck-evidence-visual vektordeck-card-evidence" aria-label="VektorDeck 1.0 evidence panel"><div class="priority-visual-head mono"><span>VEKTORDECK / 1.0</span><b>CAPTURE UPDATE PENDING</b></div><div class="forge-visual mono"><div><span>QWEN 27B · IQ3_XS</span><b>11.15 GB</b></div><div class="meter"><i style="width:82%"></i></div><div><span>SMART LAUNCH</span><b>8K · EXPERIMENTAL</b></div><div class="meter"><i style="width:64%"></i></div><div><span>RELEASE READINESS</span><b>0 BLOCKERS</b></div></div><div class="diagnostic-foot mono"><span>LOCAL WORKSTATION</span><span>REAL PRODUCT CAPTURE TO FOLLOW</span></div></div>
+          <figure class="project-snapshot"><img class="shot-fit" src={baseURL + 'shots/vektordeck-dashboard.webp'} alt="VektorDeck dashboard showing machine state and runtime deck" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
         </a>
       </div>
     </div>
@@ -192,15 +180,15 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <div class="project-tier-head"><div><p class="eyebrow">Focused projects</p><h3>Small, finished, intentional.</h3></div><p>Compact projects that show interface craft or a focused technical idea without pretending to be flagship systems.</p></div>
       <div class="focused-project-grid" aria-label="Focused projects">
         <a class="project compact-project clock-project" href="/projects/rainmeter-clock/">
-          <div class="project-top"><span class="eyebrow">05 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
+          <div class="project-top"><span class="eyebrow">06 · Desktop experiment</span><span class="project-state">SHIPPED</span></div>
           <h3>MinimalClock</h3>
           <p>A compact desktop clock experiment in browser rendering, typography and lightweight Rainmeter integration.</p>
           <span class="status-note">A tiny utility I wanted on my own desktop became an exercise in measuring overhead, packaging cleanly and resisting unnecessary runtime complexity.</span>
-          <div class="clock-visual mono" aria-hidden="true"><strong id="portfolio-clock">20:25</strong><span>LOCAL / SYSTEM TIME</span></div>
+          <figure class="priority-screenshot"><img class="shot-fit" src={baseURL + 'shots/minimalclock-desktop.webp'} alt="MinimalClock running on a desktop" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
           <span class="text-link">View focused project ↗</span>
         </a>
         <a class="project compact-project" href="/projects/exactartifact/">
-          <div class="project-top"><span class="eyebrow">06 · Artifact integrity</span><span class="project-state">1.0.0</span></div>
+          <div class="project-top"><span class="eyebrow">07 · Artifact integrity</span><span class="project-state">1.0.0</span></div>
           <h3>ExactArtifact</h3>
           <p>A compact C#/.NET integrity utility for streaming SHA-256, deterministic directory manifests and precise mismatch reporting, with both CLI and WPF interfaces.</p>
           <span class="status-note">Built to make “is this exactly the artifact I tested?” answerable with deterministic evidence rather than filenames or assumptions.</span>
@@ -214,7 +202,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </a>
 
         <a class="project compact-project" href="/projects/gaptrace/">
-          <div class="project-top"><span class="eyebrow">07 · Network diagnostics</span><span class="project-state">1.0.0</span></div>
+          <div class="project-top"><span class="eyebrow">08 · Network diagnostics</span><span class="project-state">1.0.0</span></div>
           <h3>GapTrace</h3>
           <p>A lightweight Go utility that records DNS, TCP and HTTP reachability, classifies micro-outages, preserves CSV evidence and analyzes recovery windows.</p>
           <span class="status-note">Built after intermittent mobile-tether failures were too brief and inconsistent for ordinary “is the internet working?” tests to explain.</span>
@@ -228,7 +216,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </a>
 
         <a class="project compact-project" href="/projects/configtrace/">
-          <div class="project-top"><span class="eyebrow">08 · Configuration evidence</span><span class="project-state">1.0.1</span></div>
+          <div class="project-top"><span class="eyebrow">09 · Configuration evidence</span><span class="project-state">1.0.1</span></div>
           <h3>ConfigTrace</h3>
           <p>A Rust configuration-change tracer with deterministic snapshots, semantic field diffs, privacy-aware redaction and an event-driven JSONL journal.</p>
           <span class="status-note">Built as a standalone low-overhead evidence provider that can also integrate cleanly with CrashScope without binding CrashScope to Rust internals.</span>
@@ -277,16 +265,10 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     </div>
   </section>
 
-  <script is:inline>
-    const clock = document.getElementById('portfolio-clock');
-    const tick = () => {
-      if (!clock) return;
-      clock.textContent = new Intl.DateTimeFormat([], { hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
-    };
-    tick();
-    setInterval(tick, 1000);
-  </script>
 
 
 
+  <style>
+    .shot-fit{display:block;width:100%;height:auto}
+  </style>
 </BaseLayout>
