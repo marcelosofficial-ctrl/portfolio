@@ -376,3 +376,71 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
   @keyframes aura-breathe { 50% { opacity: .72; scale: 1.06; } }
   .project-carousel-slide.is-active .revdev-badge::before { animation: aura-breathe 4.5s ease-in-out infinite; }
 }
+
+
+/* ======================================================================
+   PASS 6 — phone-forward design (<= 820px)
+   Research basis: iPhone HIG (44pt targets, 8pt grid, safe areas, 375-430pt widths) and the CSS scroll-snap card-rail recipe
+   (x mandatory, overscroll-behavior-x: contain, cards ~80% wide so the next one peeks).
+   ====================================================================== */
+@media (max-width: 820px) {
+
+  /* Touch feel: no grey tap flash, no double-tap zoom on controls */
+  a, button, summary, .project, .carousel-arrow, .carousel-dots button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+  /* FIX 7: the hero "scope" was an SVG stretched with preserveAspectRatio:none, so its circles became ovals.
+     Replaced by a soft aurora glow (pure gradients can't distort), and the clutter label is removed. */
+  main:has(.identity-hero) .identity-main::before {
+    top: -36px; left: -10%; width: 120%; height: 380px; opacity: 1;
+    background-image:
+      radial-gradient(55% 48% at 86% 22%, rgba(214, 255, 87, .17), rgba(214, 255, 87, 0) 70%),
+      radial-gradient(48% 42% at 8% 78%, rgba(120, 150, 255, .08), rgba(120, 150, 255, 0) 70%);
+    background-size: 100% 100%;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  main:has(.identity-hero) .identity-main::after { content: none; }
+
+  /* Hero actions: one primary full-width button, two secondary side by side (saves ~100px of scrolling) */
+  .identity-hero .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .identity-hero .hero-actions .button { min-height: 48px; justify-content: center; text-align: center; padding-inline: 10px; font-size: .92rem; }
+  .identity-hero .hero-actions .button:first-child { grid-column: 1 / -1; min-height: 52px; }
+
+  /* Stats: two columns instead of five stacked blocks; the odd last one spans the row */
+  main:has(.identity-hero) .identity-proof { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  main:has(.identity-hero) .identity-proof > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* Tighter vertical rhythm between sections */
+  main:has(.identity-hero) #work { padding-top: 56px; }
+  main:has(.identity-hero) .project-tier { margin-top: 44px; }
+
+  /* Core and flagship cards: the screenshots + readouts already tell the story, so the extra graphics stay on desktop and in swipe rails */
+  main:has(.identity-hero) .active-project-grid .card-art { display: none; }
+
+  /* "Small, finished, intentional." and any focused grid: horizontal swipe rail (full-bleed, snaps, next card peeks) */
+  main:has(.identity-hero) .focused-project-grid {
+    display: flex !important; grid-template-columns: none !important; gap: 12px !important; width: auto !important;
+    overflow-x: auto; overflow-y: hidden;
+    margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%); scroll-padding-inline: 16px;   /* % here would resolve against the scrollport, so use the page margin directly */
+    padding-block: 6px; margin-block: -6px;
+    scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  main:has(.identity-hero) .focused-project-grid::-webkit-scrollbar { display: none; }
+  main:has(.identity-hero) .focused-project-grid > .project {
+    flex: 0 0 min(84%, 340px) !important; width: auto !important; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always;
+  }
+  main:has(.identity-hero) .focused-project-grid > .project.clock-project { min-height: 0; }
+
+  /* Carousel facts: slightly smaller so three fit a 360pt screen */
+  .carousel-facts { gap: 8px; }
+  .carousel-facts > div { padding: 12px 11px 10px; }
+  .carousel-facts b { font-size: 1.02rem; }
+
+  /* Press feedback (uses the individual `scale` property so it never fights transform rules) */
+  main .project, .button { transition: scale .25s var(--apple-out), background .3s var(--apple-ease), border-color .3s var(--apple-ease); }
+  main .project:active { scale: .985; }
+  .button:active { scale: .97; }
+
+  /* Footer clears the iPhone home indicator */
+  footer { padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+}
