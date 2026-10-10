@@ -530,3 +530,42 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
   main:has(.identity-hero) .project-featured .project-copy > p { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
   main:has(.identity-hero) .active-project-grid .active-build-visual > div { min-height: 36px; }
 }
+
+
+/* ======================================================================
+   PASS 9 — phone: glow fade, swipeable carousel, skills rail, bigger tap targets
+   ====================================================================== */
+@media (max-width: 820px) {
+  /* The aurora was clipped by the header edge, leaving a hard line. Fade it in from fully transparent at the top and out at the bottom. */
+  html body main:has(.identity-hero) .identity-main::before {
+    top: -12px !important; height: 420px !important;
+    background-image:
+      radial-gradient(52% 40% at 88% 40%, rgba(214, 255, 87, .14), rgba(214, 255, 87, 0) 72%),
+      radial-gradient(46% 36% at 6% 78%, rgba(120, 150, 255, .07), rgba(120, 150, 255, 0) 72%) !important;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 34%, #000 66%, transparent 100%) !important;
+    mask-image: linear-gradient(180deg, transparent 0, #000 34%, #000 66%, transparent 100%) !important;
+  }
+
+  /* Swipe: horizontal drags go to the carousel script, vertical drags keep scrolling the page */
+  main:has(.identity-hero) .project-carousel-window { touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+
+  /* Core technologies: one swipeable line instead of a wall of wrapped pills */
+  main:has(.identity-hero) .identity-skills {
+    display: flex !important; flex-wrap: nowrap !important; gap: 8px !important; overflow-x: auto; overflow-y: hidden;
+    margin-inline: calc(50% - 50vw); padding-inline: 16px; scroll-padding-inline: 16px;
+    scroll-snap-type: x proximity; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  main:has(.identity-hero) .identity-skills::-webkit-scrollbar { display: none; }
+  main:has(.identity-hero) .identity-skills .pill { flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; min-height: 36px; display: inline-flex; align-items: center; }
+  /* hide the decorative signal strip under the skills row on phones; it only added height */
+  main:has(.identity-hero) .identity-skills::after, main:has(.identity-hero) .identity-skills::before { display: none !important; }
+  main:has(.identity-hero) .identity-skills { padding-bottom: 6px !important; }
+
+  /* Carousel controls: 44pt-style hit areas without changing how the dots look */
+  .project-carousel .carousel-dot { position: relative; }
+  .project-carousel .carousel-dot::after { content: ""; position: absolute; inset: -18px -6px; }
+  .project-carousel .carousel-arrow, .project-carousel .carousel-rotation-toggle { min-width: 44px; min-height: 44px; }
+}
+@media (max-width: 820px) {
+  .identity-hero .hero-actions .button { font-size: .82rem; padding-inline: 8px; letter-spacing: -.01em; }
+}
