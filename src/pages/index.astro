@@ -24,11 +24,11 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="project-carousel-window">
           <a class="project-carousel-slide is-active" href="/projects/crashscope/" data-slide aria-hidden="false" tabindex="0">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">01 · Windows diagnostics</span><span class="project-state">1.3 IN DEVELOPMENT · 1.2.0 RELEASED</span></div><h2>CrashScope</h2><p>Local-first Windows crash diagnostics with persistent incidents, Event Log + WER evidence and privacy-safe support bundles.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/crashscope-overview.webp')`}><img src={baseURL + 'shots/crashscope-overview.webp'} alt="CrashScope overview showing live vitals and current workload" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>CRASHSCOPE / OVERVIEW</b></figcaption></figure></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/crashscope-overview.webp')`}><img src={baseURL + 'shots/crashscope-overview.webp'} alt="CrashScope overview showing live vitals and current workload" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>CRASHSCOPE / OVERVIEW</b></figcaption></figure><div class="carousel-facts mono" aria-hidden="true"><div><b>266/266</b><span>TESTS PASSING</span></div><div><b>0.2365%</b><span>AVG AGENT CPU</span></div><div><b>LOCAL</b><span>FIRST · PRIVATE</span></div></div></div>
           </a>
           <a class="project-carousel-slide" href="/projects/easyflix/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">02 · Windows local media</span><span class="project-state active">1.4.0 RELEASED</span></div><h2>EasyFlix</h2><p>A polished local-first media library built around real files, removable drives, watch-state continuity and a streaming-style WPF interface.</p><span class="carousel-link">Open case study ↗</span></div>
-            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/easyflix-home.webp')`}><img src={baseURL + 'shots/easyflix-home.webp'} alt="EasyFlix home screen showing a real local media library" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>EASYFLIX / HOME</b></figcaption></figure></div>
+            <div class="carousel-visual-column"><figure class="carousel-visual carousel-shot easyflix-carousel-shot" style={`--easyflix-backdrop:url('${baseURL}shots/easyflix-home.webp')`}><img src={baseURL + 'shots/easyflix-home.webp'} alt="EasyFlix home screen showing a real local media library" width="2560" height="1440" loading="eager" decoding="async" /><figcaption class="mono"><span>REAL PRODUCT CAPTURE</span><b>EASYFLIX / HOME</b></figcaption></figure><div class="carousel-facts mono" aria-hidden="true"><div><b>219</b><span>AUTOMATED TESTS</span></div><div><b>1.4.0</b><span>PUBLIC RELEASE</span></div><div><b>WPF</b><span>.NET 10 · SQLITE</span></div></div></div>
           </a>
           <a class="project-carousel-slide" href="/projects/revdev/" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-slide-copy"><div class="project-top"><span class="eyebrow">03 · Developer infrastructure</span><span class="project-state active">ACTIVE DEVELOPMENT</span></div><h2>RevDev</h2><p>A native Windows control surface for durable multi-project AI-assisted development, guarded execution and persistent project continuity.</p><span class="carousel-link">Open case study ↗</span></div>
@@ -41,7 +41,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <div class="project-carousel-slide carousel-small-projects-slide" data-slide aria-hidden="true" tabindex="-1">
             <div class="carousel-small-header"><div><div class="project-top"><span class="eyebrow">05 · Focused tools</span><span class="project-state">SMALLER, FINISHED, INTENTIONAL</span></div><h2>Smaller but Useful</h2><p>Four compact projects, presented together so the carousel stays focused while each project remains one click away.</p></div><span class="carousel-link">Explore the focused projects ↓</span></div>
             <div class="carousel-small-grid" aria-label="Smaller but Useful projects">
-              <a class="carousel-small-card" href="/projects/rainmeter-clock/" tabindex="-1"><span class="eyebrow">Desktop utility</span><h3>MinimalClock</h3><p>Compact desktop clock and Rainmeter experiment.</p><span class="carousel-small-meta mono">SHIPPED · 1.0.0 ↗</span></a>
+              <a class="carousel-small-card" href="/projects/rainmeter-clock/" tabindex="-1"><span class="eyebrow">Desktop utility</span><h3>MinimalClock</h3><p>Compact desktop clock and Rainmeter experiment.</p><div class="small-project-motif clock-motif mono"><span>LOCAL TIME</span><i></i><b>NOW</b><small>RAINMETER</small></div><span class="carousel-small-meta mono">SHIPPED · 1.0.0 ↗</span></a>
               <a class="carousel-small-card" href="/projects/exactartifact/" tabindex="-1"><span class="eyebrow">Artifact integrity</span><h3>ExactArtifact</h3><p>Deterministic SHA-256 and manifest verification.</p><div class="small-project-motif artifact-motif mono"><span>SHA-256</span><i></i><b>EXACT</b><small>MANIFEST / MATCH</small></div><span class="carousel-small-meta mono">RELEASED · 1.0.0 ↗</span></a>
               <a class="carousel-small-card" href="/projects/gaptrace/" tabindex="-1"><span class="eyebrow">Network diagnostics</span><h3>GapTrace</h3><p>DNS, TCP and HTTP micro-outage evidence recorder.</p><div class="small-project-motif gaptrace-motif mono"><span>DNS</span><i></i><span>TCP</span><i></i><span>HTTP</span><b>GAP</b></div><span class="carousel-small-meta mono">RELEASED · 1.0.0 ↗</span></a>
               <a class="carousel-small-card" href="/projects/configtrace/" tabindex="-1"><span class="eyebrow">Configuration evidence</span><h3>ConfigTrace</h3><p>Deterministic snapshots and semantic configuration diffs.</p><div class="small-project-motif configtrace-motif mono"><span class="minus">− OLD</span><span class="plus">+ NEW</span><b>DIFF</b></div><span class="carousel-small-meta mono">RELEASED · 1.0.1 ↗</span></a>
@@ -184,7 +184,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>MinimalClock</h3>
           <p>A compact desktop clock experiment in browser rendering, typography and lightweight Rainmeter integration.</p>
           <span class="status-note">A tiny utility I wanted on my own desktop became an exercise in measuring overhead, packaging cleanly and resisting unnecessary runtime complexity.</span>
-          <figure class="priority-screenshot"><img class="shot-fit" src={baseURL + 'shots/minimalclock-desktop.webp'} alt="MinimalClock running on a desktop" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
+          <div class="small-project-motif clock-motif mono"><span>LOCAL TIME</span><i></i><b>NOW</b><small>RAINMETER</small></div><figure class="priority-screenshot"><img class="shot-fit" src={baseURL + 'shots/minimalclock-desktop.webp'} alt="MinimalClock running on a desktop" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
           <span class="text-link">View focused project ↗</span>
         </a>
         <a class="project compact-project" href="/projects/exactartifact/">
@@ -192,7 +192,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>ExactArtifact</h3>
           <p>A compact C#/.NET integrity utility for streaming SHA-256, deterministic directory manifests and precise mismatch reporting, with both CLI and WPF interfaces.</p>
           <span class="status-note">Built to make “is this exactly the artifact I tested?” answerable with deterministic evidence rather than filenames or assumptions.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <div class="small-project-motif artifact-motif mono"><span>SHA-256</span><i></i><b>EXACT</b><small>MANIFEST / MATCH</small></div><div class="active-build-visual" aria-hidden="true">
             <div><span>STACK</span><b>C# · .NET · WPF</b></div>
             <div><span>AUTOMATED TESTS</span><b>22 PASS</b></div>
             <div><span>HASHING</span><b>STREAMING SHA-256</b></div>
@@ -206,7 +206,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>GapTrace</h3>
           <p>A lightweight Go utility that records DNS, TCP and HTTP reachability, classifies micro-outages, preserves CSV evidence and analyzes recovery windows.</p>
           <span class="status-note">Built after intermittent mobile-tether failures were too brief and inconsistent for ordinary “is the internet working?” tests to explain.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <div class="small-project-motif gaptrace-motif mono"><span>DNS</span><i></i><span>TCP</span><i></i><span>HTTP</span><b>GAP</b></div><div class="active-build-visual" aria-hidden="true">
             <div><span>STACK</span><b>GO · CONCURRENCY</b></div>
             <div><span>PEAK WORKING SET</span><b>16.2 MB</b></div>
             <div><span>CPU · VALIDATION RUN</span><b>0.016 s</b></div>
@@ -220,7 +220,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>ConfigTrace</h3>
           <p>A Rust configuration-change tracer with deterministic snapshots, semantic field diffs, privacy-aware redaction and an event-driven JSONL journal.</p>
           <span class="status-note">Built as a standalone low-overhead evidence provider that can also integrate cleanly with CrashScope without binding CrashScope to Rust internals.</span>
-          <div class="active-build-visual" aria-hidden="true">
+          <div class="small-project-motif configtrace-motif mono"><span class="minus">− OLD</span><i></i><span class="plus">+ NEW</span><b>DIFF</b></div><div class="active-build-visual" aria-hidden="true">
             <div><span>STACK</span><b>RUST · JSONL</b></div>
             <div><span>IDLE PEAK WORKING SET</span><b>4.3 MB</b></div>
             <div><span>IDLE CPU · 10 S</span><b>0.016 s</b></div>
