@@ -351,3 +351,28 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
 .card-art.in-carousel .shelf > i:nth-child(even) { height: 54px; }
 .card-art.in-carousel .shelf > i:nth-child(3n) { height: 58px; }
 .card-art.in-carousel .shelf s { display: none; }
+
+
+/* ======================================================================
+   PASS 5 — RevDev slide (icon + screenshot, soft aura) and flagship art width
+   ====================================================================== */
+
+/* FIX 6: inside flex-column parents (the Retro card copy) an art box with only absolute children collapsed to 0 width. */
+.card-art { width: 100%; box-sizing: border-box; align-self: stretch; }
+.card-art.in-carousel { width: min(100%, 470px); align-self: flex-start; }
+
+/* RevDev carousel: icon badge above the capture. The aura is a big radial gradient that fades to fully transparent,
+   sitting BEHIND everything (the old drop-shadow was clipped into a hard rectangle). */
+.revdev-column { position: relative; isolation: isolate; }
+.revdev-badge { position: relative; display: grid; place-items: center; width: 100%; height: 92px; }
+.revdev-badge::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 56%; width: min(100%, 380px); aspect-ratio: 1.9; translate: -50% -50%;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(214, 255, 87, .34), rgba(214, 255, 87, .17) 34%, rgba(214, 255, 87, .06) 62%, rgba(214, 255, 87, 0) 100%);
+}
+.revdev-badge img { position: relative; width: 80px; height: 80px; border-radius: 22px; filter: none; box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .8); }
+@media (max-width: 760px) { .revdev-badge { height: 72px; } .revdev-badge img { width: 62px; height: 62px; border-radius: 17px; } }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes aura-breathe { 50% { opacity: .72; scale: 1.06; } }
+  .project-carousel-slide.is-active .revdev-badge::before { animation: aura-breathe 4.5s ease-in-out infinite; }
+}
