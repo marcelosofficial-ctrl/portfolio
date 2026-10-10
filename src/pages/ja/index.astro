@@ -213,4 +213,61 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       .ja-contact { padding-top:64px !important; }
     }
   </style>
+<script is:inline>
+  // Touch swipe for the homepage carousel. Reuses the existing prev/next buttons, so rotation, dots and announcements stay in one place.
+  (() => {
+    const carousel = document.querySelector('[data-carousel]');
+    if (!carousel || !window.PointerEvent) return;
+    const win = carousel.querySelector('.project-carousel-window') || carousel;
+    const prev = carousel.querySelector('[data-carousel-prev]');
+    const next = carousel.querySelector('[data-carousel-next]');
+    if (!prev || !next) return;
+    let sx = 0, sy = 0, st = 0, dx = 0, pid = null, mode = '', slide = null, swallow = false;
+    const clear = (el) => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; };
+    win.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' || !e.isPrimary) return;
+      pid = e.pointerId; sx = e.clientX; sy = e.clientY; st = e.timeStamp; dx = 0; mode = 'pending'; swallow = false;
+    });
+    win.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== pid) return;
+      const mx = e.clientX - sx, my = e.clientY - sy;
+      if (mode === 'pending') {
+        if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
+        if (Math.abs(mx) <= Math.abs(my) * 1.2) { mode = ''; return; }
+        slide = carousel.querySelector('[data-slide].is-active');
+        if (!slide) { mode = ''; return; }
+        mode = 'drag'; slide.style.transition = 'none';
+        try { win.setPointerCapture(pid); } catch (_) {}
+      }
+      if (mode !== 'drag') return;
+      dx = mx;
+      slide.style.transform = 'translate3d(' + (dx * 0.6) + 'px,0,0)';
+      slide.style.opacity = String(1 - Math.min(Math.abs(dx) / 360, 0.55));
+    });
+    const finish = (e, cancelled) => {
+      if (e.pointerId !== pid) return;
+      const was = mode; pid = null; mode = '';
+      if (was !== 'drag' || !slide) return;
+      const s = slide; slide = null;
+      const speed = Math.abs(dx) / Math.max(1, e.timeStamp - st);
+      const go = !cancelled && (Math.abs(dx) > 56 || (speed > 0.45 && Math.abs(dx) > 24));
+      swallow = Math.abs(dx) > 6;
+      if (go) {
+        const dir = dx < 0 ? 1 : -1;
+        s.style.transition = 'transform .32s cubic-bezier(.16,1,.3,1), opacity .28s ease';
+        s.style.transform = 'translate3d(' + (-dir * 48) + 'px,0,0)';
+        s.style.opacity = '0';
+        (dir > 0 ? next : prev).click();
+        setTimeout(() => clear(s), 420);
+      } else {
+        s.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1), opacity .4s ease';
+        s.style.transform = ''; s.style.opacity = '';
+        setTimeout(() => clear(s), 520);
+      }
+    };
+    win.addEventListener('pointerup', (e) => finish(e, false));
+    win.addEventListener('pointercancel', (e) => finish(e, true));
+    win.addEventListener('click', (e) => { if (swallow) { e.preventDefault(); e.stopPropagation(); swallow = false; } }, true);
+  })();
+</script>
 </BaseLayout>
