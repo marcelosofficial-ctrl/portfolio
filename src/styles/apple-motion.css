@@ -115,3 +115,69 @@ main:has(.identity-hero) .clock-project .priority-screenshot { margin-top: auto;
   .carousel-small-card { transition: transform .5s var(--apple-out), border-color .3s var(--apple-ease); }
   .carousel-small-card:hover { transform: translateY(-3px); }
 }
+
+
+/* ======================================================================
+   PASS 2 — carousel stage, title fit, project facts, domain motifs
+   ====================================================================== */
+
+/* FIX 4: the stage kept a fixed 540px square (older rules use height:540px). Make it exactly the screenshot's 16:9 shape;
+   the space this frees is filled by the .carousel-facts cards below the picture. */
+main:has(.identity-hero) .project-carousel-slide .carousel-shot {
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+main:has(.identity-hero) .project-carousel-slide .carousel-visual-column { gap: 14px; }
+
+/* FIX 5: "CrashScope" broke into "CrashSco / pe". Size the title from its own column width so any name always fits. */
+main:has(.identity-hero) .carousel-slide-copy { container-type: inline-size; }
+main:has(.identity-hero) .project-carousel-slide:not(.retro-carousel-slide) .carousel-slide-copy h2 {
+  font-size: clamp(2.6rem, min(4.2vw, 15cqi), 5.4rem);
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+/* Facts row under each screenshot */
+.carousel-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.carousel-facts > div {
+  position: relative; display: grid; gap: 7px; min-width: 0; overflow: hidden;
+  padding: 14px 14px 12px; border: 1px solid rgba(255, 255, 255, .075); border-radius: 14px;
+  background: radial-gradient(circle at 100% 0, rgba(214, 255, 87, .05), transparent 55%), linear-gradient(150deg, rgba(22, 28, 30, .92), rgba(11, 14, 16, .95));
+}
+.carousel-facts > div::before { content: ""; position: absolute; left: 14px; top: 0; width: 24px; height: 2px; border-radius: 0 0 2px 2px; background: var(--accent); opacity: .75; }
+.carousel-facts b { font: 560 1.2rem/1 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: -.035em; color: #eef1ec; overflow-wrap: anywhere; }
+.carousel-facts span { font-size: .5rem; letter-spacing: .1em; line-height: 1.35; color: #6d777b; }
+html[lang="ja"] .carousel-facts span { font-size: .6rem; letter-spacing: .03em; }
+
+/* Domain motifs on the small-project cards */
+.small-project-motif i { position: relative; overflow: hidden; }
+.clock-motif i {
+  height: 14px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .24) 0 1px, transparent 1px 7px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.clock-motif i::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(214, 255, 87, .5) 0 1px, transparent 1px 35px); }
+.gaptrace-motif b { color: #ffb86b; }
+.configtrace-motif .minus { color: #ff8f8f; }
+.configtrace-motif .plus { color: var(--accent); }
+.configtrace-motif i { flex: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-carousel-slide.is-active .carousel-facts > div { animation: apple-rise .8s var(--apple-out) backwards; }
+  .project-carousel-slide.is-active .carousel-facts > div:nth-child(1) { animation-delay: .3s; }
+  .project-carousel-slide.is-active .carousel-facts > div:nth-child(2) { animation-delay: .38s; }
+  .project-carousel-slide.is-active .carousel-facts > div:nth-child(3) { animation-delay: .46s; }
+
+  /* a data "packet" travels along each connector line */
+  @keyframes motif-sweep { from { translate: -110% 0; } to { translate: 360% 0; } }
+  .small-project-motif i::after {
+    content: ""; position: absolute; inset: 0 auto 0 0; width: 28%;
+    background: linear-gradient(90deg, transparent, #d6ff57); translate: -110% 0;
+    animation: motif-sweep 3s var(--apple-ease) infinite;
+  }
+  .small-project-motif i:nth-of-type(2)::after { animation-delay: .9s; }
+  .clock-motif i::after { width: 2px; background: #d6ff57; box-shadow: 0 0 10px rgba(214, 255, 87, .8); animation-duration: 6s; animation-timing-function: linear; }
+  @keyframes motif-blink { 50% { opacity: .35; } }
+  .gaptrace-motif b { animation: motif-blink 1.6s ease-in-out infinite; }
+}
