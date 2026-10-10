@@ -518,3 +518,15 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
   main:has(.identity-hero) .focused-project-grid > .project { height: auto !important; }
   main:has(.identity-hero) .focused-project-grid .status-note { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 }
+
+/* PASS 8 — phone: shorten the long Core/Flagship cards without removing anything (text is clamped; the case-study link has the rest) */
+@media (max-width: 820px) {
+  main:has(.identity-hero) .active-project-grid .status-note,
+  main:has(.identity-hero) .project-featured .status-note,
+  main:has(.identity-hero) .project-showcase .status-note {
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  main:has(.identity-hero) .active-project-grid > .project > p,
+  main:has(.identity-hero) .project-featured .project-copy > p { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+  main:has(.identity-hero) .active-project-grid .active-build-visual > div { min-height: 36px; }
+}
