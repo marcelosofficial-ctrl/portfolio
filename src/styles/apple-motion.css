@@ -569,3 +569,55 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
 @media (max-width: 820px) {
   .identity-hero .hero-actions .button { font-size: .82rem; padding-inline: 8px; letter-spacing: -.01em; }
 }
+
+
+/* ======================================================================
+   PASS 10 — phone carousel: equal-height slides, "deck" peek + edge fade + chevron, tighter content
+   ====================================================================== */
+.carousel-peek { display: none; }
+@media (max-width: 820px) {
+
+  /* 1) Equal height: stack all slides in one grid cell so the window is as tall as the tallest slide.
+        Controls then never jump while swiping. Text stays on top, screenshot + facts sit at the bottom. */
+  main:has(.identity-hero) .project-carousel-window { display: grid !important; position: relative; }
+  main:has(.identity-hero) .project-carousel-slide {
+    grid-area: 1 / 1 !important; position: relative !important; inset: auto !important; width: 100% !important;
+    grid-template-rows: auto 1fr !important; align-content: stretch !important;
+  }
+  main:has(.identity-hero) .project-carousel-slide .carousel-visual-column { align-self: end !important; }
+
+  /* 2) Shorter slides: copy clamped to 3 lines, smaller RevDev badge, no intro paragraph on the 2x2 slide */
+  main:has(.identity-hero) .carousel-slide-copy p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  main:has(.identity-hero) .carousel-small-projects-slide .carousel-slide-copy p { display: none; }
+  .revdev-badge { height: 76px; } .revdev-badge img { width: 64px; height: 64px; border-radius: 18px; }
+
+  /* 3) It must look like a carousel: cards peeking out behind the right edge (box-shadow with negative spread keeps the rounded shape) */
+  main:has(.identity-hero) .project-carousel-window {
+    box-shadow:
+      9px 0 0 -4px rgba(255, 255, 255, .075),
+      18px 0 0 -8px rgba(255, 255, 255, .04),
+      0 24px 50px -28px rgba(0, 0, 0, .8);
+  }
+  /* edge fade + chevron on the right, drawn by a real element so it can animate */
+  .carousel-peek { display: block; position: absolute; z-index: 6; top: 0; right: 0; bottom: 0; width: 44px; pointer-events: none;
+    background: linear-gradient(90deg, rgba(13, 18, 20, 0), rgba(13, 18, 20, .82) 78%); border-radius: 0 inherit inherit 0; }
+  .carousel-peek::after { content: ""; position: absolute; right: 9px; top: 50%; width: 11px; height: 11px; margin-top: -6px;
+    border-top: 2px solid rgba(214, 255, 87, .8); border-right: 2px solid rgba(214, 255, 87, .8); rotate: 45deg; border-radius: 1px; }
+  /* leave room so the fade never sits on top of text */
+  main:has(.identity-hero) .project-carousel-slide { padding-right: 24px !important; }
+
+  /* dots read as a pager: wider active pill */
+  .project-carousel .carousel-dot { transition: width .45s cubic-bezier(.16, 1, .3, 1), background-color .3s ease; }
+}
+@media (max-width: 820px) and (prefers-reduced-motion: no-preference) {
+  @keyframes peek-nudge { 0%, 100% { translate: 0 0; opacity: .85; } 50% { translate: 5px 0; opacity: 1; } }
+  .carousel-peek::after { animation: peek-nudge 2.2s ease-in-out infinite; }
+}
+@media (max-width: 820px) {
+  /* 2x2 board: titles + status only (descriptions stay on the full cards and case studies), so this slide is no taller than the others */
+  main:has(.identity-hero) .carousel-small-card p { display: none !important; }
+  main:has(.identity-hero) .carousel-small-card { padding: 16px 14px !important; gap: 8px; }
+}
+@media (max-width: 820px) {
+  main:has(.identity-hero) .carousel-small-projects-slide .carousel-slide-copy p { display: none !important; }
+}
