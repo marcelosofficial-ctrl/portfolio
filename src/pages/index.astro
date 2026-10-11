@@ -184,7 +184,7 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <h3>MinimalClock</h3>
           <p>A compact desktop clock experiment in browser rendering, typography and lightweight Rainmeter integration.</p>
           <span class="status-note">A tiny utility I wanted on my own desktop became an exercise in measuring overhead, packaging cleanly and resisting unnecessary runtime complexity.</span>
-          <div class="small-project-motif clock-motif mono"><span>LOCAL TIME</span><i></i><b>NOW</b><small>RAINMETER</small></div><figure class="priority-screenshot"><img class="shot-fit" src={baseURL + 'shots/minimalclock-desktop.webp'} alt="MinimalClock running on a desktop" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
+          <div class="small-project-motif clock-motif mono"><span>LOCAL TIME</span><i></i><b>NOW</b><small>RAINMETER</small></div><div class="card-art art-clock" aria-hidden="true"><span class="art-label mono">LOCAL TIME</span><div class="clock-face"><span class="clock-hm"><b data-clock="h">23</b><b data-clock="m">26</b></span><span class="clock-sec"><b data-clock="s">01</b><em>SEC</em></span><i class="clock-rule"></i><span class="clock-date"><b data-clock="dow">MON07</b><em data-clock="my">SEP 2026</em></span></div></div><figure class="priority-screenshot"><img class="shot-fit" src={baseURL + 'shots/minimalclock-desktop.webp'} alt="MinimalClock running on a desktop" width="2560" height="1440" loading="lazy" decoding="async" /></figure>
           <span class="text-link">View focused project ↗</span>
         </a>
         <a class="project compact-project" href="/projects/exactartifact/">
@@ -384,6 +384,22 @@ const baseURL = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       rail.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
       sync();
     });
+  })();
+  // Live time for the MinimalClock card (same layout as the Rainmeter widget).
+  (() => {
+    const els = {};
+    document.querySelectorAll('[data-clock]').forEach((e) => { (els[e.dataset.clock] = els[e.dataset.clock] || []).push(e); });
+    if (!Object.keys(els).length) return;
+    const DOW = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    const MON = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const pad = (n) => String(n).padStart(2, '0');
+    const set = (k, v) => (els[k] || []).forEach((e) => { e.textContent = v; });
+    const tick = () => {
+      const d = new Date();
+      set('h', pad(d.getHours())); set('m', pad(d.getMinutes())); set('s', pad(d.getSeconds()));
+      set('dow', DOW[d.getDay()] + pad(d.getDate())); set('my', MON[d.getMonth()] + ' ' + d.getFullYear());
+    };
+    tick(); setInterval(tick, 1000);
   })();
 </script>
 </BaseLayout>
