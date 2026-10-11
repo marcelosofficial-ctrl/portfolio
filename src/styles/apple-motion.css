@@ -712,3 +712,57 @@ main .revdev-project .easyflix-product-shot::after { content: none !important; }
   main:has(.identity-hero) .forge-visual > div:not(.meter) { min-height: 26px; }
   .art-vektordeck { height: 112px; }
 }
+
+
+/* ======================================================================
+   PASS 13 — live clock art for MinimalClock; every swipe-rail card fits one phone screen and matches its neighbours
+   ====================================================================== */
+.art-clock { height: auto; min-height: 132px; display: grid; place-items: center; padding: 34px 14px 16px; margin-block: auto; }
+.art-clock .clock-face { display: flex; align-items: center; gap: 14px; color: #eef1ec; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.art-clock .clock-hm { display: flex; gap: .26em; font-size: clamp(2.3rem, 11.5vw, 3.3rem); line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.art-clock .clock-hm b { font-weight: 250; }
+.art-clock .clock-sec { display: grid; gap: 3px; line-height: 1; font-variant-numeric: tabular-nums; }
+.art-clock .clock-sec b { font-size: 1.05rem; font-weight: 300; color: #d6ff57; }
+.art-clock em { font-style: normal; font-size: .56rem; letter-spacing: .14em; color: #7b868a; }
+.art-clock .clock-rule { align-self: stretch; width: 1px; background: rgba(255, 255, 255, .18); }
+.art-clock .clock-date { display: grid; gap: 4px; line-height: 1; }
+.art-clock .clock-date b { font-size: .86rem; font-weight: 400; letter-spacing: .07em; }
+.art-clock .clock-date em { font-size: .72rem; letter-spacing: .08em; color: #9aa3a6; }
+
+@media (max-width: 820px) {
+  /* Core rail: drop the "why I built it" note (it lives on the case-study page); keep the validation note, clamped */
+  main:has(.identity-hero) .active-project-grid > .project > .status-note:first-of-type { display: none; }
+
+  /* Same tile treatment for the small-projects rail */
+  main:has(.identity-hero) .focused-project-grid .active-build-visual { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  main:has(.identity-hero) .focused-project-grid .active-build-visual > div {
+    display: grid !important; gap: 4px; align-content: start; min-height: 0 !important; padding: 10px 11px;
+    border: 1px solid rgba(255, 255, 255, .07) !important; border-radius: 12px; background: rgba(255, 255, 255, .02);
+  }
+  main:has(.identity-hero) .focused-project-grid .active-build-visual > div > span { font-size: .5rem; }
+  main:has(.identity-hero) .focused-project-grid .active-build-visual > div > b { font-size: .7rem; overflow-wrap: anywhere; }
+  main:has(.identity-hero) .focused-project-grid .active-build-visual > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* every tile row the same height, in both rails */
+  main:has(.identity-hero) :is(.active-project-grid, .focused-project-grid) .active-build-visual { grid-auto-rows: 1fr; }
+
+  /* tighter text + art inside the small-projects cards */
+  main:has(.identity-hero) .focused-project-grid > .project > p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  main:has(.identity-hero) .focused-project-grid .status-note { -webkit-line-clamp: 2; }
+  .art-exact .pair + .pair { display: none; }              /* keep the match example, drop the mismatch example on phones */
+  .art-exact { padding-bottom: 14px; }
+  .focused-project-grid .card-art { height: 112px; }
+  .focused-project-grid .art-clock { height: auto; min-height: 112px; }
+  .art-clock .clock-hm { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+  /* screenshot figures on rail cards sit at the bottom so the cards line up */
+  main:has(.identity-hero) .focused-project-grid .clock-project .priority-screenshot { margin-top: auto; }
+}
+
+@media (max-width: 820px) {
+  /* Core rail: equal height cards (an older rule pinned them to their own height), no secondary notes, tighter spacing */
+  main:has(.identity-hero) .active-project-grid > .project { align-self: stretch !important; height: auto !important; }
+  main:has(.identity-hero) .active-project-grid > .project > .status-note { display: none; }
+  main:has(.identity-hero) :is(.active-project-grid, .focused-project-grid) > .project { gap: 10px !important; padding: 18px 18px 20px !important; }
+  main:has(.identity-hero) :is(.active-project-grid, .focused-project-grid) > .project h3 { margin: 6px 0 2px !important; line-height: 1.05; }
+  main:has(.identity-hero) :is(.active-project-grid, .focused-project-grid) > .project > p { margin: 0 0 4px !important; line-height: 1.5; }
+}
