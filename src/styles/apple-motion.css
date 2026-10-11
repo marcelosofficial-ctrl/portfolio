@@ -621,3 +621,18 @@ html[lang="ja"] main:has(.identity-hero) .carousel-slide-copy h2 { letter-spacin
 @media (max-width: 820px) {
   main:has(.identity-hero) .carousel-small-projects-slide .carousel-slide-copy p { display: none !important; }
 }
+
+
+/* ======================================================================
+   PASS 11 — project icons on every carousel slide (class names "revdev-badge/-column" are shared by all slides)
+   ====================================================================== */
+/* The Retro console was a fixed 540px square; with the icon row above it, give it the height that is left (desktop). */
+@media (min-width: 821px) {
+  main:has(.identity-hero) .project-carousel-slide.retro-carousel-slide .carousel-visual-column .carousel-visual {
+    height: 410px !important; max-height: 410px !important; min-height: 0 !important; aspect-ratio: auto !important;
+  }
+}
+/* Phone: drop the decorative "FIELD NOTE / JP" tag that overlapped the last row of the Retro console */
+@media (max-width: 820px) {
+  .resale-carousel-visual::after { content: none !important; }
+}
